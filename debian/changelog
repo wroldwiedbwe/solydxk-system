@@ -1,0 +1,235 @@
+solydxk-system (2.3.1) solydxk; urgency=low
+
+  * Replace /usr/bin/apt with Grizzler's version.
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 07 Jun 2016 10:36:50 +0200
+
+solydxk-system (2.2.9) solydxk; urgency=low
+
+  * Move scripts out of /usr/local/bin
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 05 Jun 2016 13:40:46 +0200
+
+solydxk-system (2.2.8) solydxk; urgency=low
+
+  * Update caches in adjust.py
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 02 Jun 2016 11:21:41 +0200
+
+solydxk-system (2.2.7) solydxk; urgency=low
+
+  * Added open-as-user to run commands as user from root
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 01 Jun 2016 17:18:45 +0200
+
+solydxk-system (2.2.6) solydxk; urgency=low
+
+  * upgrade script updated for stretch
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 02 May 2016 10:12:42 +0200
+
+solydxk-system (2.2.5) solydxk; urgency=low
+
+  * Added /etc/modprobe.d/nf_conntrack.conf
+  * Added trim script: cat /some-file | trim will remove leading and trailing spaces
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 30 Apr 2016 11:33:57 +0200
+
+solydxk-system (2.2.4) solydxk; urgency=low
+
+  * Added clamav to create log directory if it is missing (adjust.py)
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 22 Apr 2016 20:58:32 +0200
+
+solydxk-system (2.2.3) solydxk; urgency=low
+
+  * Added /etc/X11/xorg.conf.d/solydxk-synaptics.conf for touchpad defaults
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 15 Apr 2016 17:08:18 +0200
+
+solydxk-system (2.2.2) solydxk; urgency=low
+
+  * Changed pin release in /etc/apt/preferences.d/solydxk
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 24 Mar 2016 17:02:27 +0100
+
+solydxk-system (2.2.1) solydxk; urgency=low
+
+  * Added /apt/preferences.d/solydxk to give solydxk.com priority
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 14 Mar 2016 08:53:08 +0100
+
+solydxk-system (2.2.0) solydxk; urgency=low
+
+  * Use systemd instead of initv.
+  * Fix Apache2 and Mysql log when configured for SSD.
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 11 Mar 2016 10:50:15 +0100
+
+solydxk-system (2.1.9) solydxk; urgency=low
+
+  * Set UID on /bin/ping to be able to use ping as user
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 02 Jan 2016 13:00:00 +0100
+
+solydxk-system (2.1.8) solydxk; urgency=low
+
+  * Updated 02solydxk-periodic
+  * Overwrite Armenian keyboard layout
+  * Solved orphaned Xfce message in gufw.desktop
+  * Remove synaptic.desktop for overwriting
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 20 Dec 2015 22:00:00 +0100
+
+solydxk-system (2.1.5) solydxk; urgency=low
+
+  * Fix for SolydK BO users
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 22 Oct 2015 21:00:00 +0100
+
+solydxk-system (2.1.4) solydxk; urgency=low
+
+  * Updated /usr/local/apt using /usr/bin/apt when possible
+  * Added 'list' as command for apt
+  * Workaround for 'apt -f install'
+  * Adapt /usr/bin/os-prober to see connected LUKS partitions
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 07 Oct 2015 06:00:00 +0100
+
+solydxk-system (2.1.1) solydxk; urgency=low
+
+  * Start systemadm with gksudo
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 21 Jul 2015 09:00:00 +0100
+
+solydxk-system (2.1.0) solydxk; urgency=low
+
+  * Use UUID to identify ISO partition in boot-isos.sh
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 09 Jul 2015 12:00:00 +0100
+
+solydxk-system (2.0.9) solydxk; urgency=low
+
+  * Include release number in Grub menu
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 03 Jul 2015 16:00:00 +0100
+
+solydxk-system (2.0.7) solydxk; urgency=low
+
+  * Added gufw desktop file to integrate gufw with System Settings
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 07 May 2015 16:00:00 +0100
+
+solydxk-system (2.0.6) solydxk; urgency=low
+
+  * community.solydxk.com was not removed from the sources.list
+  * python-apt templates added
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 05 Mar 2015 10:00:00 +0100
+
+solydxk-system (2.0.5) solydxk; urgency=low
+
+  * Remove temporary /mnt/* directories in boot-isos.sh
+  * Prepare for enthusiasts editions
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 14 Feb 2015 12:00:00 +0100
+
+solydxk-system (2.0.3) solydxk; urgency=low
+
+  * Use current boot parameters in boot-isos.sh
+  * Added noswap to boot parameters in boot-isos.sh
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 09 Feb 2015 14:00:00 +0100
+
+solydxk-system (2.0.0) solydxk; urgency=low
+
+  * Added check on sources.list
+  * Python scripts converted to python3
+  * Add live isos to /boot/boot-isos
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 30 Aug 2014 16:00:00 +0100
+
+solydxk-system (1.2.4) solydxk; urgency=low
+
+  * Cleaning up code
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 07 Aug 2014 16:00:00 +0100
+
+solydxk-system (1.2.3) solydxk; urgency=low
+
+  * Only copy files if possible (prevent throwing cp error)
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 04 Aug 2014 17:00:00 +0100
+
+solydxk-system (1.2.2) solydxk; urgency=low
+
+  * Added vendor information: /etc/dpkg/origins/solydxk
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 28 Jul 2014 10:00:00 +0100
+
+solydxk-system (1.2.1) solydxk; urgency=low
+
+  * Speed improvements
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 20 Jul 2014 16:00:00 +0100
+
+solydxk-system (1.1.9) solydxk; urgency=low
+
+  * Added apt configuration
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 07 Jul 2014 14:00:00 +0100
+
+solydxk-system (1.1.8) solydxk; urgency=low
+
+  * Solved error in adjust.py
+  * Changed service dependency start order for systemd
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 22 Jun 2014 23:00:00 +0100
+
+solydxk-system (1.1.6) solydxk; urgency=low
+
+  * Cleaned up
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 08 Jan 2014 22:00:00 +0100
+
+solydxk-system (1.1.2) solydxk; urgency=low
+
+  * Move preferences file
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 07 Dec 2013 19:00:00 +0100
+
+solydxk-system (1.1.1) solydxk; urgency=low
+
+  * Make info packages recommended instead depending
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 29 Aug 2013 12:30:00 +0100
+
+solydxk-system (1.0.8) solydxk; urgency=low
+
+  * Adjustment for depricated update-rc.d start and stop
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 06 May 2013 09:30:00 +0100
+
+solydxk-system (1.0.7) solydxk; urgency=low
+
+  * Support SolydK BO
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 26 May 2013 19:00:00 +0100
+
+solydxk-system (1.0.6) solydxk; urgency=low
+
+  * Minor bugs fixed
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 05 Mar 2013 23:00:00 +0100
+ 
+solydxk-system (1.0.1) solydxk; urgency=low
+
+  * Added snd-hda-intel fix in postinst version 1.0.1
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 23 Feb 2013 15:00:00 +0100
+
+solydxk-system (1.0.0) solydxk; urgency=low
+
+  * Initial version version 1.0.0
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 23 Jan 2012 08:38:00 +0100

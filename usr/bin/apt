@@ -1,0 +1,211 @@
+#!/bin/bash
+
+ScriptName=apt
+ScriptVersion=2.8.2
+ScriptDate=2016-06-12
+
+# Copyright:  2011-2016 Frank & Arjen @ SolydXK
+# Licence:    EUPL 1.1 (GPL 2 compatible)
+#             https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+# Disclaimer: Use entirely at your own risk.
+
+Info="$ScriptName - version $ScriptVersion - $ScriptDate
+A bug-fixed, extended, simplified, plain bash version of Linux Mint's apt.
+
+Usage: $ScriptName command [options] [arguments]
+       $ScriptName --help|-h command [options] [arguments]
+
+Commands:
+autoclean       Erase all unavailable (see below) package files from local cache
+autoremove      Remove all unused, automatically installed packages 
+build           Build binary or source packages from sources
+build-dep       Configure build-dependencies for source packages
+changelog       View the changelogs of packages
+check           Verify that there are no broken dependencies
+clean           Delete all package files from the local cache
+contains        List packages containing the specified files
+content         List files contained in packages
+deb             Install .deb packages
+depends         Show raw dependency information for packages
+diversions      List all diversions (you may pass a string to limit the list)
+divert          Divert a file
+download        Download package files including dependencies
+dselect-upgrade Follow dselect selections
+edit-sources    Edit /etc/apt/sources.list with your favourite text editor
+fetch [-u]      Download package files WITHOUT dependencies - optionally unpack
+fix             Try to fix broken and/or misconfigured packages
+full-upgrade    Perform an upgrade, possibly installing and removing packages
+held            List all held packages
+hold            Hold packages
+install         Install or upgrade packages
+installed       List installed packages - all if no names are specified
+list            List available packages - all if no names are specified
+policy          Show policy settings for packages
+purge           Remove packages and their configuration files
+rdepends        Show reverse dependency information for packages
+reinstall       Download and (possibly) reinstall already installed packages
+remove          Remove packages
+repair          Try to fix broken and/or misconfigured packages
+search          Search for packages by name and/or expression
+show            Display detailed information about packages
+source          Download source archives
+stats           Show some information about the cache
+sync [-a] [-c]  Update, full-upgrade and -optionally- autoremove and/or clean
+unavailable     List installed packages no longer available in any repository
+undivert [-b]   Undivert a file or all files diverted by the package mentioned
+unhold          Unhold packages
+update          Download lists of new/upgradable packages
+upgradable      List upgradable packages - all if no names are specified
+upgrade         Perform a safe upgrade
+version         Show the installed version of packages
+
+If a command takes arguments such as names of packages or files, more than one
+argument may be given, unless that makes no sense (or the command is diversion
+related).
+All upgrade related commands can take a -v option, for a more detailed list of
+packages to upgrade."
+
+while [ $# -gt 0 ]; do
+	if [ "${1:0:1}" != "-" ]; then
+		[ "$Cmd" ] && Args+=" $1" || Cmd=$1
+	else
+		if [ "${1:1:1}" == "-" ]; then
+			case "${1:2}" in
+			help)OptH=1;;
+			version)echo "$ScriptName $ScriptVersion - $ScriptDate"; exit;;
+			*)Args+=" $1"
+			esac
+		else
+			S="${1:1}"
+			for ((I=0; I<${#S}; I++)); do
+				case "${S:I:1}" in
+				a)OptA=1;;
+				b)OptB=1;;
+				c)OptC=1;;
+				h)OptH=1;;
+				u)OptU=1;;
+				v)OptV=1;;
+				*)Args+=" -${S:I:1}"
+				esac
+			done
+		fi
+	fi
+	shift
+done
+Args=${Args:1}
+
+[ $EUID == 0 ] || Sudo='sudo '
+
+Fetch(){
+	local A D F I N R V
+	for I in "$Args"; do
+		R=$(LANG=C apt-get download $I)
+		if [ $? == 0 ] && [ "$R" ]; then
+			echo "$R"
+			I=${I%=*}
+			I=${I%:*}
+			R=${R#*$I}
+			A=$(cut -d' ' -f1 <<<$R)
+			V=$(cut -d' ' -f2 <<<$R)
+			D=${I}_${V}_$A
+			F=$D.deb
+			declare -i N=0
+			while [ -d $D ]; do
+				[ $N == 0 ] || D=${D%.*}
+				N+=1
+				D+=".$N"
+			done
+			mkdir -p $D || continue
+			dpkg-deb -R ${F//:/%3a} $D && echo "unpacked to $D"
+			[ $OptA ] && [ -d "$LOCAL_PACKAGE_ARCHIVE" ] && D="$LOCAL_PACKAGE_ARCHIVE"
+			mv -t $D ${F//:/%3a} && echo "package moved to $D"
+		else
+			echo "$I not fetched"
+		fi
+	done
+}
+
+[ -f /usr/bin/apt.divert ] && RealApt=/usr/bin/apt.divert || RealApt=/usr/bin/apt
+
+
+case $Cmd in
+autoclean|autoremove|build-deb|check|clean|dselect-upgrade|install|purge|remove|update)
+	Command="${Sudo}apt-get $Cmd $Args";;
+upg|upgrade)
+	Command="${Sudo}apt-get upgrade${OptV:+ --verbose-versions} $Args";;
+di|dist-upgrade|du|fu|full|full-upgrade)
+	Command="${Sudo}apt-get dist-upgrade${OptV:+ --verbose-versions} $Args";;
+bu|build)
+	Command="${Sudo}dpkg-buildpackage $Args";;
+changelog|moo|source)
+	Command="apt-get $Cmd $Args";;
+contains|has)
+	Command="dpkg-query --search $Args";;
+content)
+	Command="dpkg-query --listfiles $Args";;
+deb)
+	Command="${Sudo}dpkg -i $Args";;
+depends|rdepends|stats)
+	Command="apt-cache $Cmd $Args";;
+div|diversions)
+	Command="dpkg-divert --list"; [ "$Args" ] && Command="grep $Args < <($Command)";;
+divert)
+	R=$(sed -n 's|^.*diversion of \('$Args'\) .*$|\1|p' < <(LANG=C dpkg-divert --list))
+	[ "$R" ] && Command="echo already exists" || Command="${Sudo}dpkg-divert --add --rename --divert $Args.divert $Args"
+	;;
+dl|do|download)
+	Command="LANG=C apt-cache depends $Args | sed -r '/.+Conflicts:|Replaces:.+/d; s/^ .+ (.+)$/\\1/; s/[<>]//g' | xargs aptitude download -r";;
+edit-sources|sources)
+	Command="$Sudo$RealApt edit-sources";;
+fe|fetch|get)
+	if [ $OptU ]; then
+		Comment="\nThe 'Fetch' command is a bash function defined in this script."
+		Command="Fetch $Args"
+	else
+		Command="apt-get download $Args"
+	fi;;
+fi|fix|repair)
+	Command="${Sudo}dpkg --configure --pending; ${Sudo}apt-get install --fix-broken";;
+he|held)
+	Command='dpkg --get-selections | grep hold';;
+ho|hold)
+	Command="for I in $Args; do ${Sudo}dpkg --set-selections <<<\"\$I hold\"; done";;
+installed)
+	Command="$RealApt list --installed $Args";;
+list)
+	Command="$RealApt list $Args";;
+po|policy)
+	Command="apt-cache policy $Args";;
+rei|reinstall)
+	Command="${Sudo}apt-get install --reinstall $Args";;
+search|show)
+	Command="aptitude $Cmd $Args";;
+sy|sync)
+	Command="${Sudo}apt-get update && ${Sudo}apt-get dist-upgrade${OptV:+ --verbose-versions}"
+	[ $OptA ] && Command+=" && ${Sudo}apt-get autoremove"
+	[ $OptC ] && Command+=" && ${Sudo}apt-get clean"
+	;;
+una|unavailable)
+	Command="apt-show-versions | sed -n 's/^\(\S*\):.* .* available .*$/\\1/p'";;
+und|undivert)
+	if [ $OptB ]; then
+		R=$(sed -n 's|^.*diversion of \(\S*\) .* by '$Args'.*$|\1|p' < <(LANG=C dpkg-divert --list))
+	else
+		R=$(sed -n 's|^.*diversion of \('$Args'\) .*$|\1|p' < <(LANG=C dpkg-divert --list))
+	fi
+	for D in $R; do Command+="${Sudo}dpkg-divert --rename --remove $D;${OptH:+$'\n'}"; done
+	[ "$Command" ] && Command="${Command:0:-1}" || Command="echo no such diversion"
+	;;
+unh|unhold)
+	Command="for I in $Args; do ${Sudo}dpkg --set-selections <<<\"\$I install\"; done";;
+upg|upgradable)
+	Command="$RealApt list --upgradable $Args";;
+ve|version)
+	Command="LANG=C apt-cache policy $Args | sed -n 's/^ *Installed: \(.*\)$/\\1/p'";;
+*)
+	[ "$Cmd" ] && echo -e "$ScriptName: unknown command '$Cmd'\n"
+	echo "$Info"
+	exit
+esac
+
+[ $OptH ] && echo -e "\"$ScriptName $Cmd $Args\" is equivalent to:\n$Command$Comment" || eval "$Command"

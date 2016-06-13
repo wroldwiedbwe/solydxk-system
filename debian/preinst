@@ -1,0 +1,7 @@
+#!/bin/sh
+
+FLE=/usr/bin/apt
+ISDIVERTED=$(dpkg-divert --list $FLE)
+if [ -f $FLE ] && [ ! "$ISDIVERTED" ]; then
+  dpkg-divert --add --rename --divert $FLE.divert $FLE
+fi

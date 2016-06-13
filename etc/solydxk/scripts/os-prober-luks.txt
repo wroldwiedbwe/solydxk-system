@@ -1,0 +1,9 @@
+	# List connected LUKS devices
+	if type cryptsetup >/dev/null 2>&1; then
+		for device in $(ls /dev/mapper); do
+			if [ "$(cryptsetup status /dev/mapper/$device | grep LUKS)" != "" ]; then
+				echo "/dev/mapper/$device"
+			fi
+		done
+	fi
+ 

@@ -1,0 +1,22 @@
+Source: solydxk-system
+Section: admin
+Priority: optional
+Maintainer: Arjen Balfoort <arjenbalfoort@solydxk.com>
+Build-Depends: debhelper (>= 9)
+  , python3 (>= 3.2)
+  , intltool
+X-Python3-Version: >= 3.2
+Standards-Version: 3.9.5
+
+Package: solydxk-system
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+  , python3
+  , aptitude
+  , util-linux
+  , parted
+Recommends: solydk-info | solydx-info, solydx-system-adjustments | solydk-system-adjustments
+Conflicts: solydkbo-grub2-theme, solydkbe-grub2-theme, solydxbe-grub2-theme, solydk-grub2-theme
+Replaces: solydkbo-grub2-theme, solydkbe-grub2-theme, solydxbe-grub2-theme, solydk-grub2-theme
+Description: SolidXK System Base Package
+ Used by the desktop and other SolydXK tools to gather information and process common system tasks.

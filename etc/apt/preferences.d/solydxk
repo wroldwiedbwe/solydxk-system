@@ -1,0 +1,3 @@
+Package: *
+Pin: release o=solydxk
+Pin-Priority: 600 
