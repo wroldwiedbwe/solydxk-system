@@ -159,6 +159,16 @@ try:
     if exists(pix_cache):
         os.system("%s --update-cache" % pix_cache)
 
+    # When on Raspbian
+    raspi_config = '/usr/bin/raspi-config'
+    if exists(raspi_config):
+        os.system("sed -i 's/ pi / solydxk /g' %s" % raspi_config)
+        os.system("sed -i 's/(pi)/(solydxk)/g' %s" % raspi_config)
+        os.system("sed -i 's/=pi/=solydxk/g' %s" % raspi_config)
+        with open(raspi_config, 'r') as f:
+            if not '/boot/firmware' in f.read():
+                os.system("sed -i 's/\/boot/\/boot\/firmware/g' %s" % raspi_config)
+
 except Exception as detail:
     print(detail)
     log(detail)

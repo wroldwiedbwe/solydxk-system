@@ -1,3 +1,9 @@
+solydxk-system (2.3.2) solydxk; urgency=low
+
+  * Adapt for SolydX RPI
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 15 Jun 2016 20:36:14 +0200
+
 solydxk-system (2.3.1) solydxk; urgency=low
 
   * Replace /usr/bin/apt with Grizzler's version.
