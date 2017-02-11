@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=PlayOnLinux
+GenericName=Install MS Windows applications
+Type=Application
+Exec=playonlinux
+Icon=playonlinux
+Categories=Utility;

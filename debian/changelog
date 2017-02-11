@@ -1,3 +1,82 @@
+solydxk-system (2.4.5) solydxk; urgency=low
+
+  * Implement SolydXK configuration path changes
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 06 Feb 2017 11:36:06 +0100
+
+solydxk-system (2.4.4) solydxk; urgency=low
+
+  * Replace solydx/k-system-adjustments-8 with -9 on stretch
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 04 Feb 2017 11:17:38 +0100
+
+solydxk-system (2.4.3) solydxk; urgency=low
+
+  * Changed /var/log/sql to mysql:adm
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 02 Feb 2017 07:08:23 +0100
+
+solydxk-system (2.4.2) solydxk; urgency=low
+
+  * Extend fix for packages in adjust.py for adjustments packages
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 01 Feb 2017 14:46:40 +0100
+
+solydxk-system (2.4.1) solydxk; urgency=low
+
+  * Adapted /usr/bin/apt script
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 01 Feb 2017 07:18:34 +0100
+
+solydxk-system (2.4.0) solydxk; urgency=low
+
+  * Extend fix for packages in adjust.py for info packages
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 29 Jan 2017 19:28:03 +0100
+
+solydxk-system (2.3.9) solydxk; urgency=low
+
+  * postinst: check for rogue files
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 27 Jan 2017 08:50:41 +0100
+
+solydxk-system (2.3.8) solydxk; urgency=low
+
+  * Adapted gwenview.desktop not to include inode/directory as a mime type
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 05 Jan 2017 19:35:15 +0100
+
+solydxk-system (2.3.7) solydxk; urgency=low
+
+  * Enable prompt coloring in bash's /etc/skel/.bashrc for new users
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 29 Oct 2016 16:31:09 +0200
+
+solydxk-system (2.3.6) solydxk; urgency=low
+
+  * Updated apt script
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 02 Oct 2016 14:50:10 +0200
+
+solydxk-system (2.3.5) solydxk; urgency=low
+
+  * Updated SolydXK.mirrors
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 21 Aug 2016 12:28:33 +0200
+
+solydxk-system (2.3.4) solydxk; urgency=low
+
+  * X11 configuration for evdev and synaptics in /usr/share/X11/xorg.conf.d
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 18 Jul 2016 11:25:29 +0200
+
+solydxk-system (2.3.3) solydxk; urgency=low
+
+  * Check start menu favorites for Firefox ESR or Firefox.
+  * Add workaround for cifs mounts in fstab with wireless connection
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 01 Jul 2016 09:32:40 +0200
+
 solydxk-system (2.3.2) solydxk; urgency=low
 
   * Adapt for SolydX RPI

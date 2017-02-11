@@ -15,7 +15,7 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , aptitude
   , util-linux
   , parted
-Recommends: solydk-info | solydx-info, solydx-system-adjustments | solydk-system-adjustments
+Recommends: solydx-system-adjustments | solydk-system-adjustments
 Conflicts: solydkbo-grub2-theme, solydkbe-grub2-theme, solydxbe-grub2-theme, solydk-grub2-theme
 Replaces: solydkbo-grub2-theme, solydkbe-grub2-theme, solydxbe-grub2-theme, solydk-grub2-theme
 Description: SolidXK System Base Package

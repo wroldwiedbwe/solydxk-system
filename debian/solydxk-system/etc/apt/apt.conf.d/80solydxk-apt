@@ -1,0 +1,3 @@
+Acquire::Check-Valid-Until "false";
+APT::Install-Recommends "true";
+Acquire::Languages "none";
