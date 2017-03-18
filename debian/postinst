@@ -73,7 +73,7 @@ case "$1" in
 	  fi
 	fi
 	
-	/usr/lib/solydxk/system/adjust.py
+	/usr/bin/python3 /usr/lib/solydxk/system/adjust.py
 	
 	# Remove old initv script
 	INITCONF='/etc/init.d/solydxk-system'

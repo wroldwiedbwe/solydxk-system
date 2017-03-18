@@ -1,8 +1,0 @@
-/etc/modprobe.d/nf_conntrack.conf
-/etc/apt/apt.conf.d/02solydxk-periodic
-/etc/apt/apt.conf.d/80solydxk-apt
-/etc/apt/preferences.d/solydxk
-/etc/dpkg/origins/solydxk
-/etc/grub.d/07_solydxk_theme
-/etc/modprobe.d/nf_conntrack.conf
-/etc/systemd/system/wpa_supplicant.service.d/override.conf

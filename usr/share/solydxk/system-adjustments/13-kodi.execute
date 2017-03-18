@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Add kodi to the input group
+if id kodi >/dev/null 2>&1; then
+  if ! id -nG kodi | grep -qw input; then
+    usermod -a -G input kodi
+  fi
+fi

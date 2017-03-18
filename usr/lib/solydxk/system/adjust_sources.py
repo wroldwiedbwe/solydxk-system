@@ -4,6 +4,7 @@ from os.path import exists, realpath
 import re
 from shutil import move
 import time
+import subprocess
 
 
 class Sources():
@@ -11,16 +12,19 @@ class Sources():
     def __init__(self):
         self.domain = "solydxk.com"
         self.sourcesPath = "/etc/apt/sources.list"
-        self.business = False
+        self.infoPath = '/usr/share/solydxk/info'
         self.sources = self.readSources()
         self.sourcesData = self.readData()
+        self.deb_version = self.get_debian_version(True)
+        self.is_ee = self.isEnthusiastsEdition()
 
     def readData(self):
         # Data file structure:
         # 0) active (0, 1)
-        # 1) action (replace, remove, removeline, append)
-        # 2) search string
-        # 3) replace string
+        # 1) Debian version (0 = any)
+        # 2) action (replace, remove, removeline, append)
+        # 3) search string
+        # 4) replace string
 
         data = []
         datPath = "%s.dat" % realpath(__file__)
@@ -29,7 +33,9 @@ class Sources():
                 for line in f.readlines():
                     line = line.strip()
                     lineData = line.split(',')
-                    if lineData[0] == '1':
+                    lineData[0] = self.str_to_nr(lineData[0], True)
+                    lineData[1] = self.str_to_nr(lineData[1], True)
+                    if lineData[0] == 1:
                         data.append(lineData)
         return data
 
@@ -39,14 +45,10 @@ class Sources():
             with open(self.sourcesPath, 'r') as f:
                 for line in f.readlines():
                     sources.append(line.strip())
-                    if not self.business:
-                        if "business" in line or "wheezy" in line:
-                            self.business = True
         return sources
 
     def isEnthusiastsEdition(self):
-        infoPath = '/usr/share/solydxk/info'
-        with open(infoPath, 'r') as f:
+        with open(self.infoPath, 'r') as f:
             text = f.read()
             match = re.search('EDITION\s*\=\s*([a-z0-9]*)', text)
             # Check the last two characters
@@ -54,31 +56,70 @@ class Sources():
                 return True
         return False
 
+    # Convert string to number
+    def str_to_nr(self, stringnr, toInt=False):
+        nr = 0
+        stringnr = stringnr.strip()
+        try:
+            if toInt:
+                nr = int(float(stringnr))
+            else:
+                nr = float(stringnr)
+        except ValueError:
+            nr = 0
+        return nr
+
+    # Get output of command
+    def getoutput(self, command, always_as_list=False):
+        try:
+            output = subprocess.check_output(command, shell=True).decode('utf-8').strip().split('\n')
+        except:
+            # Even if an error occurs, don't crash here
+            output = ['']
+        if len(output) == 1 and not always_as_list:
+            # Single line: return as string
+            output = output[0]
+        return output
+
+    # Get Debian's version number (float)
+    def get_debian_version(self, toInt=False):
+        return self.str_to_nr(self.getoutput("head -n 1 /etc/debian_version | sed 's/[a-zA-Z]/0/' 2>/dev/null || echo 0"), toInt)
+
     def check(self):
         # Do not adjust sources.list for the EE
-        if not self.isEnthusiastsEdition():
+        if not self.is_ee:
             newSources = []
             changed = False
+
+            #print(('= deb_version ===================================='))
+            #print((self.deb_version))
+            #print(('= sources ===================================='))
+            #print((self.sources))
+            #print(('= sourcesData ===================================='))
+            #print((self.sourcesData))
+            #print(('====================================='))
 
             # Replace and remove
             for line in self.sources:
                 if "solydxk" in line:
                     for data in self.sourcesData:
-                        if data[2] in line:
-                            if data[1] == "replace":
+                        if data[3] in line and \
+                           (data[1] == self.deb_version or
+                           data[1] == 0):
+                            if data[2] == "replace":
                                 # Check if the line has been commented out
                                 match = re.search('(.*)deb\s+http', line)
                                 comment = match.group(1)
                                 if comment != '':
                                     comment += ' '
                                 # Save the new line
-                                line = "%s%s" % (comment, data[3])
+                                line = "%s%s" % (comment, data[4])
                                 changed = True
-                            elif data[1] == "remove":
+                            elif data[2] == "remove":
                                 # Remove search string from line
-                                line = line.replace(data[2], '')
+                                line = line.replace(data[3], '')
                                 changed = True
-                            elif data[1] == "removeline":
+                            elif data[2] == "removeline":
                                 # Remove the line
                                 line = ''
                                 changed = True
@@ -88,26 +129,20 @@ class Sources():
 
             # Append
             for data in self.sourcesData:
-                if data[1] == "append":
+                if data[2] == "append" and \
+                   (data[1] == self.deb_version or
+                   data[1] == 0):
                     append = True
-                    appLine = data[2].strip()
-
-                    # Ugly hack to make sure the right backports are added
-                    if self.business:
-                        if "jessie" in data[3]:
-                            append = False
-                    else:
-                        if "wheezy" in data[3]:
-                            append = False
+                    appLine = data[3].strip()
 
                     # Now check if the line already exists
+                    for line in newSources:
+                        if appLine in line:
+                            append = False
+                            break
+
                     if append:
-                        for line in newSources:
-                            if appLine in line:
-                                append = False
-                                break
-                    if append:
-                        newSources.append(data[3].strip())
+                        newSources.append(data[4].strip())
                         changed = True
 
             # Write the new sources.list file

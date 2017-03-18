@@ -1,8 +1,0 @@
-#!/bin/bash -e
-
-source /usr/lib/grub/grub-mkconfig_lib
-
-cat << EOF
-set color_normal=white/black
-set color_highlight=dark-gray/white
-EOF

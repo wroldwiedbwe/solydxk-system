@@ -58,12 +58,8 @@ def getPackageVersion(package, candidate=False):
 fix_progs = [['apache2', '/var/log/apache2', 'root:adm', 0],
              ['mysql-client', '/var/log/mysql', 'mysql:adm', 0],
              ['clamav', '/var/log/clamav', 'clamav:clamav', 0],
-             ['solydk-info-8', 'solydk-info', 'purge', 0],
-             ['solydx-info-8', 'solydx-info', 'purge', 0],
-             ['solydk-info-9', 'solydkee-info', 'purge', 0],
-             ['solydx-info-9', 'solydxee-info', 'purge', 0],
-             ['solydx-info-8', 'solydx-info-9', 'install', 9],
-             ['solydk-info-8', 'solydk-info-9', 'install', 9],
+             ['v86d', 'v86d', 'purge', 0],
+             ['usb-creator', 'solydxk-usb-creator', 'purge', 0],
              ['solydk-system-adjustments-8', 'solydk-system-adjustments', 'purge', 0],
              ['solydx-system-adjustments-8', 'solydx-system-adjustments', 'purge', 0],
              ['solydk-system-adjustments-9', 'solydk-system-adjustments', 'purge', 0],
@@ -116,24 +112,25 @@ try:
     adjustment_directory = "/usr/share/solydxk/system-adjustments/"
     array_preserves = []
     overwrites = {}
-    links = {}
 
     # Perform file execution adjustments
     for filename in sorted(os.listdir(adjustment_directory)):
+        full_path = adjustment_directory + filename
         bn, extension = splitext(filename)
         if extension == ".execute":
-            full_path = adjustment_directory + "/" + filename
+            log("> Execute: %s" % full_path)
             os.system("chmod a+rx %s" % full_path)
             os.system(full_path)
-            log("%s executed" % full_path)
         elif extension == ".preserve":
-            filehandle = open(adjustment_directory + "/" + filename)
+            log("> Preserve: %s" % full_path)
+            filehandle = open(full_path)
             for line in filehandle:
                 line = line.strip()
                 array_preserves.append(line)
             filehandle.close()
         elif extension == ".overwrite":
-            filehandle = open(adjustment_directory + "/" + filename)
+            log("> Overwrite: %s" % full_path)
+            filehandle = open(full_path)
             for line in filehandle:
                 line = line.strip()
                 line_items = line.split()
@@ -142,43 +139,38 @@ try:
                     if destination not in array_preserves:
                         overwrites[destination] = source
             filehandle.close()
+            # Perform file overwriting adjustments
+            for key in list(overwrites.keys()):
+                source = overwrites[key]
+                destination = key
+                if exists(source):
+                    if not "*" in destination:
+                        # Simple destination, do a cp
+                        if canCopy(source, destination):
+                            os.system("cp " + source + " " + destination)
+                            log(destination + " overwritten with " + source)
+                    else:
+                        # Wildcard destination, find all possible matching destinations
+                        matching_destinations = subprocess.getoutput("find " + destination)
+                        matching_destinations = matching_destinations.split("\n")
+                        for matching_destination in matching_destinations:
+                            matching_destination = matching_destination.strip()
+                            if canCopy(source, matching_destination):
+                                os.system("cp " + source + " " + matching_destination)
+                                log(matching_destination + " overwritten with " + source)
         elif extension == ".link":
-            filehandle = open(adjustment_directory + "/" + filename)
+            log("> Link: %s" % full_path)
+            filehandle = open(full_path)
             for line in filehandle:
                 line = line.strip()
                 line_items = line.split()
                 if len(line_items) == 2:
                     link, destination = line.split()
-                    if destination not in array_preserves:
-                        links[destination] = link
-            filehandle.close()
-
-    # Perform file overwriting adjustments
-    for key in list(links.keys()):
-        link = links[key]
-        destination = key
-        os.system("ln -sf " + destination + " " + link)
-        log("link " + link + " created to " + destination)
-
-    # Perform file overwriting adjustments
-    for key in list(overwrites.keys()):
-        source = overwrites[key]
-        destination = key
-        if exists(source):
-            if not "*" in destination:
-                # Simple destination, do a cp
-                if canCopy(source, destination):
-                    os.system("cp " + source + " " + destination)
-                    log(destination + " overwritten with " + source)
-            else:
-                # Wildcard destination, find all possible matching destinations
-                matching_destinations = subprocess.getoutput("find " + destination)
-                matching_destinations = matching_destinations.split("\n")
-                for matching_destination in matching_destinations:
-                    matching_destination = matching_destination.strip()
-                    if canCopy(source, matching_destination):
-                        os.system("cp " + source + " " + matching_destination)
-                        log(matching_destination + " overwritten with " + source)
+                    if destination not in array_preserves and \
+                       exists(dirname(link)) and \
+                       exists(destination):
+                        os.system("ln -sf " + destination + " " + link)
+                        log("link " + link + " created to " + destination)
 
     # Restore LSB information
     distribId = subprocess.getoutput("grep DISTRIB_ID /usr/share/solydxk/info").strip()
@@ -204,9 +196,16 @@ try:
     # Force prompt colors in bashrc
     bashrc = '/etc/skel/.bashrc'
     if exists(bashrc):
-        os.system("sed -i 's/#\s*force_color_prompt=yes/force_color_prompt=yes/' %s" % bashrc)
+        os.system("sed -i 's/#\s*force_color_prompt=.*/force_color_prompt=yes/' %s" % bashrc)
+        os.system("sed -i 's/;31m/;34m/' %s" % bashrc)
         os.system("sed -i 's/;32m/;34m/' %s" % bashrc)
         os.system("sed -i 's/#\s*alias\s/alias /g' %s" % bashrc)
+        if not stringExistsInFile(bashrc, "/usr/share/solydxk/info"):
+            with open(bashrc, 'a') as f:
+                f.write("\n# Source the SolydXK info file\n"
+                        "if [ -f /usr/share/solydxk/info ]; then\n"
+                        "  . /usr/share/solydxk/info\n"
+                        "fi\n")
 
     # Check start menu favorite for either Firefox ESR or Firefox
     ff = subprocess.getoutput("which firefox-esr")

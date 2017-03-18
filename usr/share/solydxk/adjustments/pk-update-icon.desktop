@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=PackageKit Update Applet
+Name[cs]=Aktualizační aplet PackageKit
+Name[de]=PackageKit Aktualisierungsapplet
+Name[fr]=Applet de mise à jour PackageKit
+Name[id]=PackageKit Update Applet
+Name[sk]=PackageKit Aktualizačný Applet
+GenericName=Update Applet
+GenericName[cs]=Aktualizační aplet
+GenericName[de]=Aktualisierungsapplet
+GenericName[fr]=Applet de mise à jour
+GenericName[id]=Update Applet
+GenericName[sk]=Aktualizačný Applet
+Comment=PackageKit Update Applet
+Comment[cs]=Aktualizační aplet PackageKit
+Comment[de]=PackageKit Aktualisierungsapplet
+Comment[fr]=Applet de mise à jour PackageKit
+Comment[id]=PackageKit Update Applet
+Comment[sk]=PackageKit Aktualizačný Applet
+Icon=system-software-update
+Exec=pk-update-icon -d 30 -i 3600
+Terminal=false
+Type=Application
+Categories=Utility;GTK;TrayIcon;
+NotShowIn=KDE;GNOME;
