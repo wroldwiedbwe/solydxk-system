@@ -1,3 +1,45 @@
+solydxk-system (2.6.1) solydxk; urgency=low
+
+  * Fix device notifiers for Plasma 5
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 30 Mar 2017 22:37:20 +0200
+
+solydxk-system (2.6.0) solydxk; urgency=low
+
+  * Added Plasma5 config files for Firefox version check
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 28 Mar 2017 07:30:47 +0200
+
+solydxk-system (2.5.9) solydxk; urgency=low
+
+  * Add udev rules when kodi is installed
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 21 Mar 2017 20:51:01 +0100
+
+solydxk-system (2.5.8) solydxk; urgency=low
+
+  * Create /var/lib/lightdm/data if it does not exist
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 21 Mar 2017 13:37:54 +0100
+
+solydxk-system (2.5.7) solydxk; urgency=low
+
+  * Include adapting some user configuration for new default locale
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 20 Mar 2017 09:54:44 +0100
+
+solydxk-system (2.5.6) solydxk; urgency=low
+
+  * Improved l10n package selection in /usr/bin/localize script
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 19 Mar 2017 12:12:48 +0100
+
+solydxk-system (2.5.5) solydxk; urgency=low
+
+  * Include localize script
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 18 Mar 2017 16:11:56 +0100
+
 solydxk-system (2.5.4) solydxk; urgency=low
 
   * Fix bug in adjust.py not creating multiple symlinks of the same file
