@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import os
-from os.path import exists, splitext, dirname, isdir, basename
+from os.path import exists, splitext, dirname, isdir, basename, join
 import subprocess
 import filecmp
 from time import strftime
@@ -58,6 +58,7 @@ def getPackageVersion(package, candidate=False):
 fix_progs = [['apache2', '/var/log/apache2', 'root:adm', 0],
              ['mysql-client', '/var/log/mysql', 'mysql:adm', 0],
              ['clamav', '/var/log/clamav', 'clamav:clamav', 0],
+             ['lightdm', '/var/lib/lightdm/data', 'lightdm:lightdm', 0],
              ['v86d', 'v86d', 'purge', 0],
              ['usb-creator', 'solydxk-usb-creator', 'purge', 0],
              ['solydk-system-adjustments-8', 'solydk-system-adjustments', 'purge', 0],
@@ -215,7 +216,10 @@ try:
         dt = "%s.desktop" % basename(ff)
         configs = ["/usr/share/solydxk/default-settings/kde4-profile/default/share/config/kickoffrc",
                    "/etc/xdg/kickoffrc",
-                   "/etc/skel/.config/xfce4/panel/whiskermenu-9.rc"]
+                   "/etc/skel/.config/xfce4/panel/whiskermenu-9.rc",
+                   "/usr/share/plasma/look-and-feel/org.kde.solydk.desktop/contents/layouts/org.kde.plasma.desktop.defaultPanel/contents/layout.js",
+                   "/usr/share/plasma/look-and-feel/org.kde.solydk-dark.desktop/contents/layouts/org.kde.plasma.desktop.defaultPanel/contents/layout.js",
+                   "/usr/share/solydxk/default-settings/plasma5-profile/kickoffrc"]
         for config in configs:
             if exists(config):
                 if not stringExistsInFile(config, dt):
@@ -228,6 +232,18 @@ try:
         if not stringExistsInFile(grubsh, livesh):
             escPath = livesh.replace('/', '\/')
             os.system("sed -i \"s/echo '}'/if [ -e %s ]; then \/bin\/bash %s; fi; echo '}'/\" %s" % (escPath, escPath, grubsh))
+
+    # Fix device notifiers for Plasma 5
+    actions_k4 = '/usr/share/kde4/apps/solid/actions/'
+    actions_p5 = '/usr/share/solid/actions/'
+    if exists(actions_k4) and exists(actions_p5):
+        for fle in os.listdir(actions_k4):
+            if fle.endswith(".desktop"):
+                link = join(actions_k4, fle)
+                destination = join(actions_p5, fle)
+                if not exists(destination):
+                    os.system("ln -s %s %s" % (link, destination))
+                    log("link " + link + " created to " + destination)
 
     # Make sure sources.list is correct
     sources = Sources()
