@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# root <arjenbalfoort@solydxk.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-24 21:23+0200\n"
+"PO-Revision-Date: 2017-04-24 21:31+0200\n"
+"Last-Translator: root <arjenbalfoort@solydxk.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+#: ../usr/lib/solydxk/system/main.py:25
+#: ../usr/lib/solydxk/system/solydxk_system.py:51
+#: ../usr/share/applications/solydxk-system.desktop.in.h:1
+msgid "SolydXK System Settings"
+msgstr "SolydXK Systeem Instellingen"
+
+#: ../usr/lib/solydxk/system/main.py:26
+msgid "SolydXK System Settings cannot be started in a live environment."
+msgstr ""
+"SolydXK Systeem Instellingen kan niet in een live omgeving gestart worden."
+
+#: ../usr/lib/solydxk/system/main.py:53
+msgid "Unexpected error"
+msgstr "Onverwachte fout"
+
+#: ../usr/lib/solydxk/system/main.py:54
+msgid ""
+"SolydXK System Settings has failed with the following unexpected error. "
+"Please submit a bug report!"
+msgstr ""
+"SolydXK Systeem Instellingen kan niet starten om de volgende fout. Gelieve "
+"een bug verslag in te dienen!"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:52
+msgid "Save mirrors"
+msgstr "Bewaar mirrors"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:53
+msgid "Check mirrors speed"
+msgstr "Controleer mirrors snelheid"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:54
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:55
+msgid "Blacklist"
+msgstr "Blacklist"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:56
+msgid "Repository mirrors"
+msgstr "Pakketbron mirrors"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:57
+#: ../usr/lib/solydxk/system/solydxk_system.py:59
+msgid "Blacklisted packages"
+msgstr "Genegeerde pakketten"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:58
+msgid "Select the fastest repository"
+msgstr "Selecteer de snelste repository"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:60
+msgid "Available packages"
+msgstr "Beschikbare pakketten"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:225
+msgid "There are no repositories to save."
+msgstr "Er is geen repository om te bewaren."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:229
+msgid "Current"
+msgstr "Huidige"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:229
+msgid "Country"
+msgstr "Land"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:229
+msgid "Repository"
+msgstr "Repository"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:229
+msgid "URL"
+msgstr "URL"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:229
+msgid "Speed"
+msgstr "Snelheid"
+
+#: ../usr/share/applications/solydxk-system.desktop.in.h:2
+msgid "Change system settings for SolydXK"
+msgstr "Verander systeem instellingen voor SolydXK"

@@ -5,17 +5,35 @@ Maintainer: Arjen Balfoort <arjenbalfoort@solydxk.com>
 Build-Depends: debhelper (>= 9)
   , python3 (>= 3.2)
   , intltool
+  , transifex-client
+  , translate-toolkit
 X-Python3-Version: >= 3.2
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
+Vcs-Git: git@github.com:SolydXK/solydxk-system.git
+Vcs-Browser: https://github.com/SolydXK/solydxk-system
 
 Package: solydxk-system
 Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends}
   , python3
+  , python3-gi
+  , gir1.2-gtk-3.0
   , aptitude
   , util-linux
   , parted
-Conflicts: solydkbo-grub2-theme, solydkbe-grub2-theme, solydxbe-grub2-theme, solydk-grub2-theme
-Replaces: solydkbo-grub2-theme, solydkbe-grub2-theme, solydxbe-grub2-theme, solydk-grub2-theme
+  , curl
+  , dpkg
+  , procps
+  , sysvinit-utils
+Conflicts: solydkbo-grub2-theme,
+  solydkbe-grub2-theme,
+  solydxbe-grub2-theme,
+  solydk-grub2-theme,
+  xksudo
+Replaces: solydkbo-grub2-theme,
+  solydkbe-grub2-theme,
+  solydxbe-grub2-theme,
+  solydk-grub2-theme,
+  xksudo
 Description: SolidXK System Base Package
  Used by the desktop and other SolydXK tools to gather information and process common system tasks.

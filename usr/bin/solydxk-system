@@ -1,0 +1,17 @@
+#!/bin/bash
+
+PYTHON=$(which python3)
+if [ "$PYTHON" == '' ]; then
+  echo "Cannot find python3 executable - exiting"
+  exit
+fi
+
+optimize='OO'; case "$*" in *--debug*) unset optimize; esac
+
+CMD="$PYTHON -tt${optimize} /usr/lib/solydxk/system/main.py $@"
+if [ -e "/usr/bin/kdesudo" ]; then
+  ICON=$(get-app-theme-icon "solydxk")
+  kdesudo -d -i "$ICON" -c "$CMD"
+else
+  gksudo "$CMD"
+fi

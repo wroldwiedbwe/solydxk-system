@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SolydXK System Settings
+Comment=Change system settings for SolydXK
+Exec=solydxk-system
+Icon=solydxk
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings;
+StartupNotify=false

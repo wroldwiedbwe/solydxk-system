@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+  echo "Pass the following parameters:"
+  echo "  Icon name"
+  echo "  Icon resolution (optional, default: 32)"
+  echo "Example: get-app-theme-icon terminal 64"
+  echo
+  exit 1
+fi
+
+APP=$1
+RES="32"
+if [ ! -z $2 ]; then
+  RES=$2
+fi
+
+# Use python to find the appropriate theme icon
+if [ "$(which python3)" ]; then
+  ICON=$(python3 -c 'import gi; gi.require_version("Gtk", "3.0"); from gi.repository import Gtk; import sys; theme = Gtk.IconTheme.get_default(); icon = theme.lookup_icon(sys.argv[1], int(sys.argv[2]), 0); print((icon.get_filename())) if icon else ""' $APP $RES)
+elif [ "$(which python)" ]; then
+  ICON=$(python -c 'import gtk, sys; theme = gtk.icon_theme_get_default(); icon = theme.lookup_icon(sys.argv[1], int(sys.argv[2]), ()); print icon.get_filename() if icon else ""' $APP $RES)
+fi
+
+if [ "$ICON" == "" ]; then
+  exit 2
+fi
+
+echo "$ICON"
+exit 0
