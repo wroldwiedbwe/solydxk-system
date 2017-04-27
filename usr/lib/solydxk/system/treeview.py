@@ -15,6 +15,7 @@ from gi.repository import Gtk, GObject, GdkPixbuf
 #self.myTreeView = TreeViewHandler(self.myTreeView, self.myLogObject)
 #self.myTreeView.connect('checkbox-toggled', self.myCallback)
 
+
 class TreeViewHandler(GObject.GObject):
 
     __gsignals__ = {
@@ -233,6 +234,7 @@ class TreeViewHandler(GObject.GObject):
                     self.log.write(msg, 'self.treeview.fillTreeview', 'debug')
 
     def tvchk_on_toggle(self, cell, path, liststore, colNr, *ignore):
+        #print((">> tvchk_on_toggle: path={0}, colNr={1}".format(path, colNr)))
         if path is not None:
             itr = liststore.get_iter(path)
             toggled = liststore[itr][colNr]
@@ -367,6 +369,23 @@ class TreeViewHandler(GObject.GObject):
 
     def isListOfLists(self, lst):
         return len(lst) == len([x for x in lst if isinstance(x, list)])
+
+    # Convert treeview model to list
+    def model_to_list(self):
+        lst = []
+        model = self.treeview.get_model()
+        if model is not None:
+            col_nr = self.getColumnCount()
+            itr = model.get_iter_first()
+            while itr is not None:
+                row = []
+                i = 0
+                while i < col_nr:
+                    row.append(model.get_value(itr, i))
+                    i += 1
+                lst.append(row)
+                itr = model.iter_next(itr)
+        return lst
 
 # Register the class
 GObject.type_register(TreeViewHandler)

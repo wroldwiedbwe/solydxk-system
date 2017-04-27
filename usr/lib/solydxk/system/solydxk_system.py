@@ -10,10 +10,12 @@ from gi.repository import Gtk, GObject
 from os.path import join, abspath, dirname
 from utils import getoutput, ExecuteThreadedCommands
 from treeview import TreeViewHandler
+from combobox import ComboBoxHandler
 from dialogs import MessageDialog
 from mirror import MirrorGetSpeed, Mirror, getMirrorData, getLocalRepos
 from queue import Queue
 from os import system
+from localize import LocaleInfo, Localize
 
 # i18n: http://docs.python.org/3/library/gettext.html
 import gettext
@@ -41,31 +43,50 @@ class SolydXKSystemSettings(object):
         self.btnCheckMirrorsSpeed = go("btnCheckMirrorsSpeed")
         self.lblMirrors = go('lblMirrors')
         self.tvMirrors = go("tvMirrors")
-        self.btnRemoveBlackList = go("btnRemoveBlacklist")
-        self.btnAddBlackList = go("btnAddBlacklist")
-        self.tvBlacklist = go("tvBlacklist")
+        self.btnRemoveHoldback = go("btnRemoveHoldback")
+        self.btnHoldback = go("btnHoldback")
+        self.tvHoldback = go("tvHoldback")
         self.tvAvailable = go("tvAvailable")
+        self.tvLocale = go("tvLocale")
+        self.lblLocaleUserInfo = go("lblLocaleUserInfo")
+        self.cmbTimezoneContinent = go("cmbTimezoneContinent")
+        self.cmbTimezone = go("cmbTimezone")
+        self.btnSaveLocale = go("btnSaveLocale")
         self.progressbar = go("progressbar")
 
         # GUI translations
         self.window.set_title(_("SolydXK System Settings"))
         self.btnSaveMirrors.set_label(_("Save mirrors"))
         self.btnCheckMirrorsSpeed.set_label(_("Check mirrors speed"))
-        self.btnRemoveBlackList.set_label(_("Remove"))
-        self.btnAddBlackList.set_label(_("Blacklist"))
+        self.btnRemoveHoldback.set_label(_("Remove"))
+        self.btnHoldback.set_label(_("Hold back"))
         self.lblMirrors.set_label(_("Repository mirrors"))
-        go("lblBlacklist").set_label(_("Blacklisted packages"))
-        go("lblMirrorsText").set_label(_("Select the fastest repository"))
-        go("lblBlacklistText").set_label(_("Blacklisted packages"))
+        go("lblLocaleInfo").set_label(_("Configure your locales (one as default) and time zone.\n"
+                                        "Make sure you have an internet connection to localize your software."))
+        go("lblMirrorsInfo").set_label(_("Select the fastest repository for your updates.\n"
+                                         "Make sure you have an internet connection."))
+        go("lblHoldback").set_label(_("Hold back packages"))
+        go("lblHoldbackText").set_label(_("Held back packages"))
         go("lblAvailableText").set_label(_("Available packages"))
-
+        go("lblHoldbackInfo").set_label(_("Here you can hold back individual packages.\n"
+                                          "This will prevent these packages from being upgraded."))
+        self.btnSaveLocale.set_label(_("Save locale"))
+        self.installed_title = _('Installed')
+        self.locale_title = _('Locale')
+        self.language_title = _('Language')
+        self.default_title = _('Default')
 
         # Initiate the treeview handler and connect the custom toggle event with on_tvMirrors_toggle
         self.tvMirrorsHandler = TreeViewHandler(self.tvMirrors)
         self.tvMirrorsHandler.connect('checkbox-toggled', self.on_tvMirrors_toggle)
 
-        self.tvBlacklistHandler = TreeViewHandler(self.tvBlacklist)
+        self.tvHoldbackHandler = TreeViewHandler(self.tvHoldback)
         self.tvAvailableHandler = TreeViewHandler(self.tvAvailable)
+        self.tvLocaleHandler = TreeViewHandler(self.tvLocale)
+        self.tvLocaleHandler.connect('checkbox-toggled', self.on_tvLocale_toggle)
+
+        self.cmbTimezoneContinentHandler = ComboBoxHandler(self.cmbTimezoneContinent)
+        self.cmbTimezoneHandler = ComboBoxHandler(self.cmbTimezone)
 
         # Initialize
         self.queue = Queue(-1)
@@ -74,12 +95,17 @@ class SolydXKSystemSettings(object):
         self.activeMirrors = getMirrorData(excludeMirrors=self.excludeMirrors)
         self.deadMirrors = getMirrorData(getDeadMirrors=True)
         self.mirrors = self.getMirrors()
-        self.blacklist = []
+        self.holdback = []
         self.available = []
+        self.locales = []
+        self.new_default_locale = ''
 
+        self.locale_info = LocaleInfo()
         self.fillTreeViewMirrors()
-        self.fillTreeViewBlackList()
+        self.fillTreeViewHoldback()
         self.fillTreeViewAvailable()
+        self.fillTreeViewLocale()
+        self.fillComboboxTimezoneContinent()
 
         # Connect the signals and show the window
         self.builder.connect_signals(self)
@@ -98,52 +124,123 @@ class SolydXKSystemSettings(object):
     def on_btnCancel_clicked(self, widget):
         self.window.destroy()
 
-    def on_btnRemoveBlacklist_clicked(self, widget):
-        self.removeBlacklist()
+    def on_btnRemoveHoldback_clicked(self, widget):
+        self.removeHoldback()
 
-    def on_btnAddBlacklist_clicked(self, widget):
-        self.addBlacklist()
+    def on_btnHoldback_clicked(self, widget):
+        self.addHoldback()
+
+    def on_cmbTimezoneContinent_changed(self, widget):
+        self.fillComboboxTimezone(self.cmbTimezoneContinentHandler.getValue())
+
+    def on_btnSaveLocale_clicked(self, widget):
+        # Collect information
+        locales = self.tvLocaleHandler.model_to_list()
+        timezone = join(self.cmbTimezoneContinentHandler.getValue(),
+                        self.cmbTimezoneHandler.getValue())
+
+        # Start localizing
+        loc = Localize(locales, timezone)
+        loc.set_progress_hook(self.progressbar)
+        loc.start()
+
+        # Done: show message to reboot
+        msg = _("You need to reboot your system for the new settings to take affect.")
+        MessageDialog(self.btnSaveLocale.get_label(), msg)
 
     # ===============================================
-    # Blacklist functions
+    # Localization functions
     # ===============================================
 
-    def fillTreeViewBlackList(self):
-        self.blacklist = []
-        cmd = "env LANG=C dpkg --get-selections | grep hold$ | awk '{print $1}'"
-        lst = getoutput(cmd)
+    def fillTreeViewLocale(self):
+        self.locales = [[self.installed_title, self.locale_title, self.language_title, self.default_title]]
+        select_row = 0
+        i = 0
+        for loc in self.locale_info.locales:
+            lan = self.locale_info.get_readable_language(loc)
+            select = False
+            default = False
+            if loc in self.locale_info.available_locales:
+                select = True
+            if loc == self.locale_info.default_locale:
+                default = True
+                select_row = i
+            self.locales.append([select, loc, lan, default])
+            i += 1
+
+        # Fill treeview
+        columnTypesList = ['bool', 'str', 'str', 'bool']
+        self.tvLocaleHandler.fillTreeview(self.locales, columnTypesList, select_row, 400, True)
+
+    def fillComboboxTimezoneContinent(self):
+        self.cmbTimezoneContinentHandler.fillComboBox(self.locale_info.timezone_continents,
+                                                      self.locale_info.current_timezone_continent)
+        self.fillComboboxTimezone(self.cmbTimezoneContinentHandler.getValue())
+
+    def fillComboboxTimezone(self, timezone_continent):
+        timezones = self.locale_info.list_timezones(timezone_continent)
+        self.cmbTimezoneHandler.fillComboBox(timezones,
+                                             self.locale_info.current_timezone)
+
+    def on_tvLocale_toggle(self, obj, path, colNr, toggleValue):
+        path = int(path)
+        model = self.tvLocale.get_model()
+        selectedIter = model.get_iter(path)
+
+        # Check that only one default locale can be selected
+        # and that the locale should be selected for installation
+        if colNr == 3:
+            installed = model.get_value(selectedIter, 0)
+            if not installed:
+                model[selectedIter][3] = False
+                return False
+            self.new_default_locale = model.get_value(selectedIter, 1)
+            # Deselect any other default locale
+            rowCnt = 0
+            itr = model.get_iter_first()
+            while itr is not None:
+                if rowCnt != path:
+                    model[itr][3] = False
+                itr = model.iter_next(itr)
+                rowCnt += 1
+
+    # ===============================================
+    # Hold back functions
+    # ===============================================
+
+    def fillTreeViewHoldback(self):
+        self.holdback = []
+        lst = getoutput("env LANG=C dpkg --get-selections | grep hold$ | awk '{print $1}'")
         for pck in lst:
-            self.blacklist.append([False, pck.strip()])
+            if pck != '':
+                self.holdback.append([False, pck.strip()])
         # Fill treeview
         columnTypesList = ['bool', 'str']
-        self.tvBlacklistHandler.fillTreeview(self.blacklist, columnTypesList, 0, 400, False)
+        self.tvHoldbackHandler.fillTreeview(self.holdback, columnTypesList, 0, 400, False)
 
     def fillTreeViewAvailable(self):
         self.available = []
-        cmd = "env LANG=C dpkg --get-selections | grep install$ | awk '{print $1}'"
-        lst = getoutput(cmd)
+        lst = getoutput("env LANG=C dpkg --get-selections | grep install$ | awk '{print $1}'")
         for pck in lst:
             self.available.append([False, pck.strip()])
         # Fill treeview
         columnTypesList = ['bool', 'str']
         self.tvAvailableHandler.fillTreeview(self.available, columnTypesList, 0, 400, False)
 
-    def addBlacklist(self):
+    def addHoldback(self):
         packages = self.tvAvailableHandler.getToggledValues()
         for pck in packages:
-            print(("Blacklist package: %s" % pck))
-            cmd = "echo '%s hold' | dpkg --set-selections" % pck
-            system(cmd)
-        self.fillTreeViewBlackList()
+            print(("Hold back package: %s" % pck))
+            system("echo '%s hold' | dpkg --set-selections" % pck)
+        self.fillTreeViewHoldback()
         self.fillTreeViewAvailable()
 
-    def removeBlacklist(self):
-        packages = self.tvBlacklistHandler.getToggledValues()
+    def removeHoldback(self):
+        packages = self.tvHoldbackHandler.getToggledValues()
         for pck in packages:
-            print(("Remove package from blacklist: %s" % pck))
-            cmd = "echo '%s install' | dpkg --set-selections" % pck
-            system(cmd)
-        self.fillTreeViewBlackList()
+            print(("Remove hold back from: %s" % pck))
+            system("echo '%s install' | dpkg --set-selections" % pck)
+        self.fillTreeViewHoldback()
         self.fillTreeViewAvailable()
 
     # ===============================================

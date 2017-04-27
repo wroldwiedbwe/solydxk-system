@@ -1,6 +1,10 @@
 [Desktop Entry]
 Name=SolydXK System Settings
+Name[fr]=SolydXK System Settings
+Name[nl]=SolydXK Systeem Instellingen
 Comment=Change system settings for SolydXK
+Comment[fr]=Changer les paramètres système de SolydXK
+Comment[nl]=Verander systeem instellingen voor SolydXK
 Exec=solydxk-system
 Icon=solydxk
 Terminal=false

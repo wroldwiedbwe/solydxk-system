@@ -1,0 +1,5 @@
+all = libthai0 fonts-thai-tlwg xfonts-thai im-config fcitx-table-thai fcitx-sunpinyin
+solydk32 = libthai0 fonts-thai-tlwg xfonts-thai im-config fcitx-table-thai fcitx-sunpinyin
+solydk64 = libthai0 fonts-thai-tlwg xfonts-thai im-config fcitx-table-thai fcitx-sunpinyin
+solydx32 = libthai0 fonts-thai-tlwg xfonts-thai im-config fcitx-table-thai fcitx-sunpinyin
+solydx64 = libthai0 fonts-thai-tlwg xfonts-thai im-config fcitx-table-thai fcitx-sunpinyin

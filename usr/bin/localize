@@ -109,8 +109,8 @@ if [ "$CURLANG" != "$LANG" ]; then
   LANGEXT=${LANGEXT,,}
   sed -i "s/Language=.*/Language=$LANGSHORT\.$LANGEXT/" ~/.dmrc 2>/dev/null
   printf $LANGSHORT > ~/.config/user-dirs.locale 2>/dev/null
-  find ~/ -type f -name "*prefs.js" -exec sed -i "s/\"$CURLANG\"/\"$LANG\"/g" {} \;
-  find ~/ -type f -name "*prefs.js" -exec sed -i "s/\"$CURLANGSHORT\"/\"$LANGSHORT\"/g" {} \;
+  find ~/ -type f -name "prefs.js" -not -path "*/extensions/*" -exec sed -i "s/\"$CURLANG\"/\"$LANG\"/g" {} \;
+  find ~/ -type f -name "prefs.js" -not -path "*/extensions/*" -exec sed -i "s/\"$CURLANGSHORT\"/\"$LANGSHORT\"/g" {} \;
 fi
 
 echo

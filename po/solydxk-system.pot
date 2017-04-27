@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-24 21:23+0200\n"
+"POT-Creation-Date: 2017-04-27 09:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../usr/lib/solydxk/system/main.py:25
-#: ../usr/lib/solydxk/system/solydxk_system.py:51
+#: ../usr/lib/solydxk/system/solydxk_system.py:58
 #: ../usr/share/applications/solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr ""
@@ -37,61 +37,112 @@ msgid ""
 "Please submit a bug report!"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:52
+#: ../usr/lib/solydxk/system/solydxk_system.py:59
 msgid "Save mirrors"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:53
+#: ../usr/lib/solydxk/system/solydxk_system.py:60
 msgid "Check mirrors speed"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:54
+#: ../usr/lib/solydxk/system/solydxk_system.py:61
 msgid "Remove"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:55
-msgid "Blacklist"
+#: ../usr/lib/solydxk/system/solydxk_system.py:62
+msgid "Hold back"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:56
+#: ../usr/lib/solydxk/system/solydxk_system.py:63
 msgid "Repository mirrors"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:57
-#: ../usr/lib/solydxk/system/solydxk_system.py:59
-msgid "Blacklisted packages"
+#: ../usr/lib/solydxk/system/solydxk_system.py:64
+msgid ""
+"Configure your locales (one as default) and time zone.\n"
+"Make sure you have an internet connection to localize your software."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:58
-msgid "Select the fastest repository"
+#: ../usr/lib/solydxk/system/solydxk_system.py:66
+msgid ""
+"Select the fastest repository for your updates.\n"
+"Make sure you have an internet connection."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:60
+#: ../usr/lib/solydxk/system/solydxk_system.py:68
+msgid "Hold back packages"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:69
+msgid "Held back packages"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:70
 msgid "Available packages"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:225
+#: ../usr/lib/solydxk/system/solydxk_system.py:71
+msgid ""
+"Here you can hold back individual packages.\n"
+"This will prevent these packages from being upgraded."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:73
+msgid "Save locale"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:74
+msgid "Installed"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:75
+msgid "Locale"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:76
+msgid "Language"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:77
+msgid "Default"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:148
+msgid "You need to reboot your system for the new settings to take affect."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:322
 msgid "There are no repositories to save."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:229
+#: ../usr/lib/solydxk/system/solydxk_system.py:326
 msgid "Current"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:229
+#: ../usr/lib/solydxk/system/solydxk_system.py:326
 msgid "Country"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:229
+#: ../usr/lib/solydxk/system/solydxk_system.py:326
 msgid "Repository"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:229
+#: ../usr/lib/solydxk/system/solydxk_system.py:326
 msgid "URL"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:229
+#: ../usr/lib/solydxk/system/solydxk_system.py:326
 msgid "Speed"
+msgstr ""
+
+#: ../usr/bin/solydxk-system:22
+#, sh-format
+msgid "needs administrative privileges."
+msgstr ""
+
+#: ../usr/bin/solydxk-system:23
+#, sh-format
+msgid "Please enter your password."
 msgstr ""
 
 #: ../usr/share/applications/solydxk-system.desktop.in.h:2

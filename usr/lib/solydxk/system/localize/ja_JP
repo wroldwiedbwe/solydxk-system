@@ -1,0 +1,5 @@
+all = fonts-vlgothic fonts-takao xfonts-intl-japanese im-config fcitx-mozc
+solydk32 = fonts-vlgothic fonts-takao xfonts-intl-japanese im-config fcitx-mozc
+solydk64 = fonts-vlgothic fonts-takao xfonts-intl-japanese im-config fcitx-mozc
+solydx32 = fonts-vlgothic fonts-takao xfonts-intl-japanese im-config fcitx-mozc
+solydx64 = fonts-vlgothic fonts-takao xfonts-intl-japanese im-config fcitx-mozc

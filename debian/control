@@ -25,6 +25,9 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , dpkg
   , procps
   , sysvinit-utils
+  , console-data
+  , python3-dateutil
+  , libc-bin
 Conflicts: solydkbo-grub2-theme,
   solydkbe-grub2-theme,
   solydxbe-grub2-theme,

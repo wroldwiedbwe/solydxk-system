@@ -1,0 +1,5 @@
+all = fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy im-config fcitx-sunpinyin
+solydk32 = fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy im-config fcitx-sunpinyin
+solydk64 = fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy im-config fcitx-sunpinyin
+solydx32 = fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy im-config fcitx-sunpinyin
+solydx64 = fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy im-config fcitx-sunpinyin

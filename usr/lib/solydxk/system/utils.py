@@ -23,7 +23,7 @@ def shell_exec(command):
 
 def getoutput(command):
     #return shell_exec(command).stdout.read().strip()
-    print(('Executing:', command))
+    #print(('Executing:', command))
     try:
         output = subprocess.check_output(command, shell=True).decode('utf-8').strip().split('\n')
     except:
@@ -234,6 +234,18 @@ def isPackageInstalled(packageName, alsoCheckVersion=True):
     except:
         pass
     return isInstalled
+
+
+# Check if a package exists
+def doesPackageExist(packageName):
+    exists = False
+    try:
+        cache = apt.Cache()
+        cache[packageName]
+        exists = True
+    except:
+        pass
+    return exists
 
 
 def isRunningLive():

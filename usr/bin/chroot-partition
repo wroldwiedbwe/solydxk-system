@@ -1,0 +1,74 @@
+#!/bin/bash
+
+partition=$1
+target='/target'
+if [ -z $partition ] || [ ! -e $partition ]; then
+  echo "An existing partition path is needed"
+  echo "E.g.: live-chroot /dev/sda1"
+  echo "List all partitions with: sudo fdisk -l"
+  exit
+fi
+
+# Check if partition is mounted or target is used as mount point
+MOUNTCHK=$(mount | grep -E "$partition|$target")
+if [ "$MOUNTCHK" != "" ]; then
+  echo "$partition and/or $target in use - exiting"
+  exit
+fi
+
+# Be root to run this script
+if [ $UID -ne 0 ]; then
+  sudo $0 $@
+  exit
+fi
+
+
+conf='/etc/live-installer-3/live-installer-3.conf'
+if [ -e $conf ]; then
+  . $conf
+  echo "Use configured target: $target"
+fi
+
+# Create temporary dir
+target_created=false
+if [ ! -d $target ]; then
+  echo "Create directory $target"
+  mkdir $target
+  target_created=true
+fi
+
+# Mounting
+echo "Mounting $partition on $target"
+mount $partition $target
+
+if [ ! -e $target/dev ] || [ ! -e $target/sys ]; then
+  echo "dev en sys not found on $partition - exiting"
+  umount $target
+  rmdir $target
+  exit
+fi
+
+mount --bind /dev/ $target/dev
+mount --bind /dev/shm $target/dev/shm
+mount --bind /dev/pts $target/dev/pts
+mount --bind /sys/ $target/sys
+mount --bind /sys/fs/fuse/connections $target/sys/fs/fuse/connections
+mount --bind /proc/ $target/proc
+
+# Chroot into dir
+echo "Chrooting into $target"
+chroot $target
+
+if $target_created; then
+  echo "Unmounting $target"
+  # Unmount when done
+  umount --force $target/dev/shm
+  umount --force $target/dev/pts
+  umount --force $target/dev
+  umount --force $target/sys/fs/fuse/connections 2>/dev/null
+  umount --force $target/sys
+  umount --force $target/proc
+  umount --force $target
+  # Remove temporary dir
+  rmdir $target
+fi

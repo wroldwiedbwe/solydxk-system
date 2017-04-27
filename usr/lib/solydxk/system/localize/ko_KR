@@ -1,0 +1,5 @@
+all = fonts-unfonts* im-config fcitx-hangul
+solydk32 = fonts-unfonts* im-config fcitx-hangul
+solydk64 = fonts-unfonts* im-config fcitx-hangul
+solydx32 = fonts-unfonts* im-config fcitx-hangul
+solydx64 = fonts-unfonts* im-config fcitx-hangul
