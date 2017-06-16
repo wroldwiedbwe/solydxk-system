@@ -7,33 +7,35 @@ import re
 import threading
 import operator
 import apt
-from os.path import exists
+import filecmp
+from os import makedirs
+from os.path import exists, isdir, expanduser,  splitext,  dirname
 
-
+    
 def shell_exec_popen(command, kwargs={}):
-    print(('Executing:', command))
-    return subprocess.Popen(command, shell=True,
-                            stdout=subprocess.PIPE, **kwargs)
+    print(("Executing: %s" % command))
+    #return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, **kwargs)
+    return subprocess.Popen(command, shell=True, bufsize=0, stdout=subprocess.PIPE, universal_newlines=True, **kwargs)
 
 
 def shell_exec(command):
-    print(('Executing:', command))
+    print(("Executing: %s" % command))
     return subprocess.call(command, shell=True)
 
 
 def getoutput(command):
     #return shell_exec(command).stdout.read().strip()
-    #print(('Executing:', command))
+    #print(("Executing: %s" % command))
     try:
         output = subprocess.check_output(command, shell=True).decode('utf-8').strip().split('\n')
     except:
-        output = []
+        output = ['']
     return output
 
 
-def chroot_exec(command):
+def chroot_exec(command, target):
     command = command.replace('"', "'").strip()  # FIXME
-    return shell_exec('chroot /target/ /bin/sh -c "%s"' % command)
+    return shell_exec('chroot %s/ /bin/sh -c "%s"' % (target, command))
 
 
 def memoize(func):
@@ -78,7 +80,7 @@ def get_config_dict(file, key_value=re.compile(r'^\s*(\w+)\s*=\s*["\']?(.*?)["\'
 
 
 # Check for internet connection
-def hasInternetConnection(testUrl='http://google.com'):
+def has_internet_connection(testUrl='http://google.com'):
     try:
         urllib.request.urlopen(testUrl, timeout=1)
         return True
@@ -88,24 +90,24 @@ def hasInternetConnection(testUrl='http://google.com'):
 
 
 # Check if running in VB
-def runningInVirtualBox():
-    dmiBIOSVersion = getoutput("dmidecode -t0 | grep 'Version:' | awk -F ': ' '{print $2}'")
-    dmiSystemProduct = getoutput("dmidecode -t1 | grep 'Product Name:' | awk -F ': ' '{print $2}'")
-    dmiBoardProduct = getoutput("dmidecode -t2 | grep 'Product Name:' | awk -F ': ' '{print $2}'")
+def in_virtualbox():
+    dmiBIOSVersion = getoutput("dmidecode -t0 | grep 'Version:' | awk -F ': ' '{print $2}'")[0]
+    dmiSystemProduct = getoutput("dmidecode -t1 | grep 'Product Name:' | awk -F ': ' '{print $2}'")[0]
+    dmiBoardProduct = getoutput("dmidecode -t2 | grep 'Product Name:' | awk -F ': ' '{print $2}'")[0]
     if dmiBIOSVersion != "VirtualBox" and dmiSystemProduct != "VirtualBox" and dmiBoardProduct != "VirtualBox":
         return False
     return True
 
 
 # Check if is 64-bit system
-def isAmd64():
-    machine = getoutput("uname -m")
+def is_amd64():
+    machine = getoutput("uname -m")[0]
     if machine == "x86_64":
         return True
     return False
 
 
-def getPackageVersion(package, candidate=False):
+def get_package_version(package, candidate=False):
     version = ''
     cmd = "env LANG=C bash -c 'apt-cache policy %s | grep \"Installed:\"'" % package
     if candidate:
@@ -117,7 +119,7 @@ def getPackageVersion(package, candidate=False):
 
 
 # Get system version information
-def getSystemVersionInfo():
+def get_system_version_info():
     info = ''
     try:
         infoList = getoutput('cat /proc/version')
@@ -129,7 +131,7 @@ def getSystemVersionInfo():
 
 
 # Get valid screen resolutions
-def getResolutions(minRes='', maxRes='', reverseOrder=False, getVesaResolutions=False):
+def get_resolutions(minRes='', maxRes='', reverseOrder=False, getVesaResolutions=False):
     cmd = None
     cmdList = ['640x480', '800x600', '1024x768', '1280x1024', '1600x1200']
 
@@ -137,7 +139,7 @@ def getResolutions(minRes='', maxRes='', reverseOrder=False, getVesaResolutions=
         vbeModes = '/sys/bus/platform/drivers/uvesafb/uvesafb.0/vbe_modes'
         if exists(vbeModes):
             cmd = "cat %s | cut -d'-' -f1" % vbeModes
-        elif isPackageInstalled('v86d') and isPackageInstalled('hwinfo'):
+        elif is_package_installed('v86d') and is_package_installed('hwinfo'):
             cmd = "sudo hwinfo --framebuffer | grep '0x0' | cut -d' ' -f5 | uniq"
     else:
         cmd = "xrandr | grep '^\s' | cut -d' ' -f4"
@@ -157,12 +159,12 @@ def getResolutions(minRes='', maxRes='', reverseOrder=False, getVesaResolutions=
     # Split the minimum and maximum resolutions
     if 'x' in minRes:
         minResList = minRes.split('x')
-        minW = strToNumber(minResList[0], True)
-        minH = strToNumber(minResList[1], True)
+        minW = str_to_nr(minResList[0], True)
+        minH = str_to_nr(minResList[1], True)
     if 'x' in maxRes:
         maxResList = maxRes.split('x')
-        maxW = strToNumber(maxResList[0], True)
-        maxH = strToNumber(maxResList[1], True)
+        maxW = str_to_nr(maxResList[0], True)
+        maxH = str_to_nr(maxResList[1], True)
 
     # Fill the list with screen resolutions
     for line in resList:
@@ -170,8 +172,8 @@ def getResolutions(minRes='', maxRes='', reverseOrder=False, getVesaResolutions=
             itemChk = re.search('\d+x\d+', line)
             if itemChk:
                 itemList = item.split('x')
-                itemW = strToNumber(itemList[0], True)
-                itemH = strToNumber(itemList[1], True)
+                itemW = str_to_nr(itemList[0], True)
+                itemH = str_to_nr(itemList[1], True)
                 # Check if it can be added
                 if itemW >= minW and itemH >= minH and (maxW == 0 or itemW <= maxW) and (maxH == 0 or itemH <= maxH):
                     print(("Resolution added: %(res)s" % { "res": item }))
@@ -184,8 +186,35 @@ def getResolutions(minRes='', maxRes='', reverseOrder=False, getVesaResolutions=
     return avlRes
 
 
+# Return human readable string from number of kilobytes
+def human_size(nkbytes):
+    suffixes = ['KB', 'MB', 'GB', 'TB', 'PB']
+    nkbytes = float(nkbytes)
+    if nkbytes == 0:
+        return '0 B'
+    i = 0
+    while nkbytes >= 1024 and i < len(suffixes) - 1:
+        nkbytes /= 1024.
+        i += 1
+    f = ('%.2f' % nkbytes).rstrip('0').rstrip('.')
+    return '%s %s' % (f, suffixes[i])
+
+
+def can_copy(file1, file2):
+    ret = False
+    if exists(file1):
+        if exists(file2):
+            if not filecmp.cmp(file1, file2):
+                ret = True
+        else:
+            if "desktop" not in splitext(file2)[1]:
+                if exists(dirname(file2)):
+                    ret = True
+    return ret
+
+
 # Convert string to number
-def strToNumber(stringnr, toInt=False):
+def str_to_nr(stringnr, toInt=False):
     nr = 0
     stringnr = stringnr.strip()
     try:
@@ -199,7 +228,7 @@ def strToNumber(stringnr, toInt=False):
 
 
 # Check for string in file
-def hasStringInFile(searchString, filePath):
+def has_string_in_file(searchString, filePath):
     if exists(filePath):
         with open(filePath) as f:
             for line in f:
@@ -209,7 +238,7 @@ def hasStringInFile(searchString, filePath):
 
 
 # Check if a package is installed
-def isPackageInstalled(packageName, alsoCheckVersion=True):
+def is_package_installed(packageName, alsoCheckVersion=False):
     isInstalled = False
     try:
         cmd = 'dpkg-query -l %s | grep ^i' % packageName
@@ -217,18 +246,18 @@ def isPackageInstalled(packageName, alsoCheckVersion=True):
             cmd = 'aptitude search -w 150 %s | grep ^i' % packageName
         pckList = getoutput(cmd)
         for line in pckList:
-            matchObj = re.search('([a-z]+)\s+([a-z0-9\-_\.]*)', line)
+            expr = "^i[a-z] +(%s[a-z0-9\-_\.]*)" % packageName
+            matchObj = re.search(expr, line)
             if matchObj:
-                if matchObj.group(1)[:1] == 'i':
-                    if alsoCheckVersion:
-                        cache = apt.Cache()
-                        pkg = cache[matchObj.group(2)]
-                        if pkg.installed.version == pkg.candidate.version:
-                            isInstalled = True
-                            break
-                    else:
+                if alsoCheckVersion:
+                    cache = apt.Cache()
+                    pkg = cache[matchObj.group(1)]
+                    if pkg.installed.version == pkg.candidate.version:
                         isInstalled = True
                         break
+                else:
+                    isInstalled = True
+                    break
             if isInstalled:
                 break
     except:
@@ -237,7 +266,7 @@ def isPackageInstalled(packageName, alsoCheckVersion=True):
 
 
 # Check if a package exists
-def doesPackageExist(packageName):
+def does_package_exist(packageName):
     exists = False
     try:
         cache = apt.Cache()
@@ -248,7 +277,7 @@ def doesPackageExist(packageName):
     return exists
 
 
-def isRunningLive():
+def is_running_live():
     liveDirs = ['/live', '/lib/live/mount', '/rofs']
     for ld in liveDirs:
         if exists(ld):
@@ -256,7 +285,7 @@ def isRunningLive():
     return False
 
 
-def getProcessPids(processName, fuzzy=True):
+def get_process_pids(processName, fuzzy=True):
     if fuzzy:
         pids = getoutput("ps -ef | grep -v sudo | grep -v grep | grep '%s' | awk '{print $2}'" % processName)
     else:
@@ -264,8 +293,8 @@ def getProcessPids(processName, fuzzy=True):
     return pids
 
 
-def isProcessRunning(processName, fuzzy=True, excludeSelf=True):
-    pids = getProcessPids(processName, fuzzy)
+def is_process_running(processName, fuzzy=True, excludeSelf=True):
+    pids = get_process_pids(processName, fuzzy)
     if pids[0] != '':
         return True
     return False
@@ -274,32 +303,157 @@ def isProcessRunning(processName, fuzzy=True, excludeSelf=True):
 def get_apt_force():
     # --force-yes is deprecated in stretch
     force = '--force-yes'
-    ver = strToNumber(getoutput("head -n 1 /etc/debian_version | sed 's/[a-zA-Z]/0/' 2>/dev/null || echo 0")[0])
+    ver = get_debian_version()
     if ver == 0 or ver >= 9:
         force = '--allow-downgrades --allow-remove-essential --allow-change-held-packages'
+    force += ' --yes -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold'
     return force
+    
+    
+def get_apt_cache_locked_program():
+    aptPackages = ["dpkg", "apt-get", "synaptic", "adept", "adept-notifier"]
+    procLst = getoutput("ps -U root -u root -o comm=")
+    for aptProc in aptPackages:
+        if aptProc in procLst:
+            return aptProc
+    return ''
+
+
+def get_debian_name():
+    deb_name = {}
+    deb_name[10] = "buster"
+    deb_name[9] = "stretch"
+    deb_name[8] = "jessie"
+    deb_name[7] = "wheezy"
+    try:
+        ver = get_debian_version()
+        return deb_name[ver]
+    except:
+        return ''
+
+
+# Get Debian's version number (float)
+def get_debian_version():
+    out = getoutput("head -n 1 /etc/debian_version | sed 's/[a-zA-Z]/0/' | cut -d'.' -f 1 2>/dev/null || echo 0")
+    return str_to_nr(out[0], True)
+
+
+def is_mounted(device):
+    ret = getoutput("grep '%s ' /proc/mounts" % device)[0]
+    if device in ret:
+        return True
+    return False
+
+
+def mount_device(device, mount_point, filesystem=None, options=None):
+    # Mount the device
+    if not exists(mount_point):
+        makedirs(mount_point, exist_ok=True)
+    if exists(mount_point):
+        if options:
+            if options[0:1] != '-':
+                options = '-o ' + options
+        else:
+            options = ''
+        filesystem = '-t ' + filesystem if filesystem else ''
+        cmd = "mount {options} {filesystem} {device} {mount_point}".format(**locals())
+        shell_exec(cmd)
+    return is_mounted(device)
+
+
+# Check for backports
+def get_backports(exclude_disabled=True):
+    opt = ''
+    if exclude_disabled:
+        opt = '| grep -v ^#'
+    try:
+        bp = getoutput("grep backports /etc/apt/sources.list %s" % opt)
+    except:
+        bp = ['']
+    if not bp[0]:
+        try:
+            bp = getoutput("grep backports /etc/apt/sources.list.d/*.list %s" % opt)
+        except:
+            bp = ['']
+    return bp
+
+
+def has_newer_in_backports(package_name, backports_repository):
+    try:
+        out = getoutput("apt-cache madison %s | grep %s" % (package_name, backports_repository))[0]
+        if out != '':
+            return True
+    except:
+        return False
+
+
+# Comment or uncomment a line with given pattern in a file
+def comment_line(file_path, pattern, comment=True):
+    if exists(file_path):
+        pattern = pattern.replace("/", "\/")
+        cmd = "sed -i '/{p}/s/^/#/' {f}".format(p=pattern, f=file_path)
+        if not comment:
+            cmd = "sed -i '/^#.*{p}/s/^#//' {f}".format(p=pattern, f=file_path)
+        shell_exec(cmd)
+
+
+def get_nr_files_in_dir(path):
+    if isdir(path):
+        return str_to_nr(getoutput("find %s -type f | wc -l" % path)[0], True)
+    return 0
+
+
+def get_logged_user():
+    return getoutput("logname")[0]
+
+
+def get_user_home():
+    return expanduser("~%s" % get_logged_user())
+    
+    
+def has_grub(path):
+    cmd = "dd bs=512 count=1 if=%s 2>/dev/null | strings" % path
+    out = ' '.join(getoutput(cmd)).upper()
+    if "GRUB" in out:
+        print(("Grub installed on %s" % path))
+        return True
+    return False
 
 
 # Class to run commands in a thread and return the output in a queue
 class ExecuteThreadedCommands(threading.Thread):
-
-    def __init__(self, commandList, theQueue=None, returnOutput=False):
+    def __init__(self, commandList, queue=None, return_output=False):
         super(ExecuteThreadedCommands, self).__init__()
-        self.commands = commandList
-        self.queue = theQueue
-        self.returnOutput = returnOutput
+        self._commands = commandList
+        self._queue = queue
+        self._return_output = return_output
 
     def run(self):
-        if isinstance(self.commands, (list, tuple)):
-            for cmd in self.commands:
+        if isinstance(self._commands, (list, tuple)):
+            for cmd in self._commands:
                 self.exec_cmd(cmd)
         else:
-            self.exec_cmd(self.commands)
+            self.exec_cmd(self._commands)
 
     def exec_cmd(self, cmd):
-        if self.returnOutput:
+        if self._return_output:
             ret = getoutput(cmd)
         else:
             ret = shell_exec(cmd)
-        if self.queue is not None:
-            self.queue.put(ret)
+        if self._queue is not None:
+            self._queue.put(ret)
+
+
+# Class to run a function in a thread and return the output in a queue
+class ExecuteThreadedFunction(threading.Thread):
+    def __init__(self, target, queue=None, *args):
+        super(ExecuteThreadedFunction, self).__init__()
+        self._target = target
+        self._args = args
+        self._queue = queue
+        #threading.Thread.__init__(self)
+ 
+    def run(self):
+        out = self._target(*self._args)
+        if self._queue is not None:
+            self._queue.put(out)

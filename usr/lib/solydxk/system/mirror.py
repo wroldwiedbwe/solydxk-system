@@ -11,7 +11,7 @@ from os.path import join, abspath, dirname, exists, basename
 from urllib.request import urlopen
 
 
-def getLocalRepos():
+def get_local_repos():
     # Get configured repos
     repos = []
     skip_repos = ['backports', 'security', 'updates']
@@ -29,7 +29,7 @@ def getLocalRepos():
     return repos
 
 
-def getMirrorData(excludeMirrors=[], getDeadMirrors=False):
+def get_mirror_data(excludeMirrors=[], getDeadMirrors=False):
     mirrorData = []
     scriptDir = abspath(dirname(__file__))
     config = get_config_dict(join(scriptDir, "solydxk-system.conf"))
@@ -60,7 +60,7 @@ def getMirrorData(excludeMirrors=[], getDeadMirrors=False):
             if len(data) > 2:
                 if getDeadMirrors:
                     blnAdd = False
-                    for repo in getLocalRepos():
+                    for repo in get_local_repos():
                         if data[2] in repo:
                             blnAdd = True
                             break
@@ -77,7 +77,7 @@ def getMirrorData(excludeMirrors=[], getDeadMirrors=False):
 
 class MirrorGetSpeed(threading.Thread):
     def __init__(self, mirrors, queue):
-        threading.Thread.__init__(self)
+        super(MirrorGetSpeed, self).__init__()
         self.mirrors = mirrors
         self.queue = queue
         self.scriptDir = abspath(dirname(__file__))
@@ -99,7 +99,7 @@ class MirrorGetSpeed(threading.Thread):
                 httpCode = -1
                 dlSpeed = 0
                 config = get_config_dict(join(self.scriptDir, "solydxk-system.conf"))
-                dl_file = config.get('DLTEST', 'extrafiles')
+                dl_file = config.get('DLTEST', 'dltest')
                 url = os.path.join(mirror, dl_file)
                 http = "http://"
                 if url[0:4] == "http":
@@ -107,7 +107,7 @@ class MirrorGetSpeed(threading.Thread):
                 cmd = "curl --connect-timeout 5 -m 5 -w '%%{http_code}\n%%{speed_download}\n' -o /dev/null -s --location %s%s" % (http, url)
 
                 lst = getoutput(cmd)
-                if lst:
+                if len(lst) == 2:
                     httpCode = int(lst[0])
                     dlSpeed = lst[1]
                     # Download speed returns as string with decimal separator
@@ -120,13 +120,13 @@ class MirrorGetSpeed(threading.Thread):
                     dlSpeed = int(dlSpeed) / 1024
 
                     self.queue.put([mirror, "%d kb/s" % dlSpeed, mirror_index, len(self.mirrors)])
-                    print(("Server {0} - {1} kb/s ({2})".format(mirror, dlSpeed, self.getHumanReadableHttpCode(httpCode))))
+                    print(("Server {0} - {1} kb/s ({2})".format(mirror, dlSpeed, self.get_human_readable_http_code(httpCode))))
 
             except Exception as detail:
                 # This is a best-effort attempt, fail graciously
-                print(("Error: http code = {} / error = {}".format(self.getHumanReadableHttpCode(httpCode), detail)))
+                print(("Error: http code = {} / error = {}".format(self.get_human_readable_http_code(httpCode), detail)))
 
-    def getHumanReadableHttpCode(self, httpCode):
+    def get_human_readable_http_code(self, httpCode):
         if httpCode == 200:
             return "OK"
         elif httpCode == 302:

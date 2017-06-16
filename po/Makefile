@@ -16,6 +16,9 @@ build: update $(patsubst %.po,%.mo,$(wildcard *.po))
 
 clean:
 	rm -rf mo
+	# html
+	(po4a --rm-translations po4a.cfg)
+	rm -rf html/translated
 
 # update *.pot and merge updates into *.po files
 update:
@@ -60,3 +63,19 @@ update:
 		intltool-merge --quiet --desktop-style . $$LAUNCHER.in $$LAUNCHER ; \
 		rm $$LAUNCHER.in.h $$LAUNCHER.in ; \
 	done && echo OK
+	# fix charset
+	@ find . -type f -name "*.po*" -exec sed -i 's/charset=CHARSET/charset=UTF-8/' {} \;
+	# html
+	@ touch pot/dummy.pot
+	@ rm pot/*.pot
+	@ html2po -P en pot && echo "HTML pot files created"
+	@ msgcat pot/*.pot >> solydxk-system.pot
+	@ head -n50 solydxk-system.pot > .tmp && tail -n+51 solydxk-system.pot | sed '/fuzzy/,/X-/d' >> .tmp && mv -f .tmp solydxk-system.pot && echo "Pot files merged"
+	@ po4a po4a.cfg && echo "Po files and translations updated"
+	# don't ship incomplete translations
+	@ n_required=`ls en | wc -l`; \
+	for dir in `echo translated/*`; do \
+	    n_slides=`ls $$dir | wc -l`; \
+	    [ $$n_slides != $$n_required ] && rm -rf $$dir; \
+	done >/dev/null || true
+	@ echo "Shipped solydxk-system translations (`ls translated | wc -l`):" `ls translated`

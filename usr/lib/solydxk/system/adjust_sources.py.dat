@@ -1,23 +1,24 @@
-1,0,replace,/home.solydxk.com/production,deb http://repository.solydxk.com/ solydxk main upstream import
-1,0,replace,/packages.solydxk.com/production,deb http://repository.solydxk.com/ solydxk main upstream import
-1,0,replace,/debian.solydxk.com/security,deb http://security.debian.org/ jessie/updates main contrib non-free
-1,0,replace,/debian.solydxk.com/production,deb http://ftp.debian.org/debian jessie main contrib non-free
-1,0,replace,/business.solydxk.com/production,deb http://repository.solydxk.com/ solydxk main upstream import
-1,0,replace,/business-debian.solydxk.com/security,deb http://security.debian.org/ wheezy/updates main contrib non-free
-1,0,replace,/business-debian.solydxk.com/production,deb http://ftp.debian.org/debian wheezy main contrib non-free
-1,0,replace,/packages.solydxk.com/business,deb http://ftp.debian.org/debian wheezy main contrib non-free
-1,0,replace,/packages.solydxk.com/business,deb http://business.solydxk.com/production/ solydxk main upstream import
-1,0,remove, kdenext,
-1,0,remove, community,
-1,0,replace,ftp.nluug.nl/os/Linux/distr/solydxk/debian,deb http://ftp.nl.debian.org/debian jessie main contrib non-free
-1,0,replace,ftp.nluug.nl/os/Linux/distr/solydxk/packages,deb http://repository.solydxk.com/ solydxk main upstream import
-1,0,replace,solydxk.ogun.org/debian,deb http://ftp.debian.org/debian jessie main contrib non-free
-1,0,replace,solydxk.ogun.org/packages,deb http://repository.solydxk.com/ solydxk main upstream import
-1,0,replace,mirror.internode.on.net/pub/solydxk/debian,deb http://ftp.au.debian.org/debian jessie main contrib non-free
-1,0,replace,mirror.internode.on.net/pub/solydxk/packages,deb http://repository.solydxk.com/ solydxk main upstream import
+1,0,replaceline,/home.solydxk.com/production,deb http://repository.solydxk.com/ solydxk main upstream import
+1,0,replaceline,/packages.solydxk.com/production,deb http://repository.solydxk.com/ solydxk main upstream import
+1,0,replaceline,/debian.solydxk.com/security,deb http://security.debian.org/ jessie/updates main contrib non-free
+1,0,replaceline,/debian.solydxk.com/production,deb http://ftp.debian.org/debian jessie main contrib non-free
+1,0,replaceline,/business.solydxk.com/production,deb http://repository.solydxk.com/ solydxk main upstream import
+1,0,replaceline,/business-debian.solydxk.com/security,deb http://security.debian.org/ wheezy/updates main contrib non-free
+1,0,replaceline,/business-debian.solydxk.com/production,deb http://ftp.debian.org/debian wheezy main contrib non-free
+1,0,replaceline,/packages.solydxk.com/business,deb http://ftp.debian.org/debian wheezy main contrib non-free
+1,0,replaceline,/packages.solydxk.com/business,deb http://business.solydxk.com/production/ solydxk main upstream import
+1,0,replace, kdenext
+1,0,replace, community
+1,0,replaceline,ftp.nluug.nl/os/Linux/distr/solydxk/debian,deb http://ftp.nl.debian.org/debian jessie main contrib non-free
+1,0,replaceline,ftp.nluug.nl/os/Linux/distr/solydxk/packages,deb http://repository.solydxk.com/ solydxk main upstream import
+1,0,replaceline,solydxk.ogun.org/debian,deb http://ftp.debian.org/debian jessie main contrib non-free
+1,0,replaceline,solydxk.ogun.org/packages,deb http://repository.solydxk.com/ solydxk main upstream import
+1,0,replaceline,mirror.internode.on.net/pub/solydxk/debian,deb http://ftp.au.debian.org/debian jessie main contrib non-free
+1,0,replaceline,mirror.internode.on.net/pub/solydxk/packages,deb http://repository.solydxk.com/ solydxk main upstream import
 1,0,removeline,community.solydxk.com
 1,7,append,backports,deb http://ftp.debian.org/debian/ wheezy-backports main contrib non-free
 1,8,append,backports,deb http://ftp.debian.org/debian/ jessie-backports main contrib non-free
-1,8,replace, solydxk main,deb http://repository.solydxk.com/ solydxk-8 main upstream import
+1,8,replaceline, solydxk main,deb http://repository.solydxk.com/ solydxk-8 main upstream import
 1,9,append,backports,deb http://ftp.debian.org/debian/ stretch-backports main contrib non-free
-1,9,replace, solydxk main,deb http://repository.solydxk.com/ solydxk-9 main upstream import
+1,9,replaceline, solydxk main,deb http://repository.solydxk.com/ solydxk-9 main upstream import
+1,0,replace,httpredir,deb

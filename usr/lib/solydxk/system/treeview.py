@@ -37,7 +37,7 @@ class TreeViewHandler(GObject.GObject):
 
     # General function to fill a treeview
     # Set setCursorWeight to 400 if you don't want bold font
-    def fillTreeview(self, contentList, columnTypesList, setCursor=0, setCursorWeight=400, firstItemIsColName=False, appendToExisting=False, appendToTop=False, fontSize=10000, fixedImgHeight=None):
+    def fillTreeview(self, contentList, columnTypesList, setCursor=0, setCursorWeight=400, firstItemIsColName=False, appendToExisting=False, appendToTop=False, fontSize=10000, fixedImgHeight=None, multipleSelection=False):
         # Check if this is a multi-dimensional array
         multiCols = self.isListOfLists(contentList)
         colNameList = []
@@ -232,6 +232,9 @@ class TreeViewHandler(GObject.GObject):
                 #print(msg)
                 if self.log:
                     self.log.write(msg, 'self.treeview.fillTreeview', 'debug')
+            # Make multiple selections in the treeview possible
+            if multipleSelection:
+                selection.set_mode(Gtk.SelectionMode.MULTIPLE)
 
     def tvchk_on_toggle(self, cell, path, liststore, colNr, *ignore):
         #print((">> tvchk_on_toggle: path={0}, colNr={1}".format(path, colNr)))

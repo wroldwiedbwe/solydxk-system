@@ -1,0 +1,11 @@
+[Desktop Entry]
+X-KDE-Solid-Predicate=[ StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem' ]
+Type=Service
+Actions=open;
+
+[Desktop Action open]
+# %f gives StorageAccess.filePath, %d gives Block.device, %i gives UDI
+Exec=solydxk-system
+Icon=solydxk
+Name=Encrypt or decrypt this USB device with SolydXK System.
+

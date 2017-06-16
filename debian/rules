@@ -9,4 +9,11 @@
 export DH_OPTIONS
 
 %:
-	dh $@ --with=python3
+	dh $@ --with systemd,python3
+
+override_dh_pysupport:
+	echo "Not running dh_pysupport: deprecated"
+
+#override_dh_installinit:
+#	dh_installinit --name=solydxk-system-adjust
+#	dh_installinit --name=solydxk-system-aptupdate

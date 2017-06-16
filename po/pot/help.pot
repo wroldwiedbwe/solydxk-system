@@ -1,0 +1,186 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-16 19:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 2.0.0\n"
+
+#: en/help.html+html.body.h1:8
+msgid "SolydXK System Settings Encryption Help"
+msgstr ""
+
+#: en/help.html+html.body.div.h2:10
+msgid "Description"
+msgstr ""
+
+#: en/help.html+html.body.div.p:11
+msgid "Encrypt partitions of your system with LUKS."
+msgstr ""
+
+#: en/help.html+html.body.div.h2:13
+msgid "Important"
+msgstr ""
+
+#: en/help.html+html.body.div.p:14
+msgid ""
+"SolydXK System Settings will create and restore a backup of the data of the "
+"partition you are going to encrypt or decrypt. Mount a partition or external "
+"drive for this purpose before you start."
+msgstr ""
+
+#: en/help.html+html.body.div.p:15
+msgid ""
+"You cannot encrypt a booted root or home partition with SolydXK System "
+"Settings. If you wish to do so you can download the latest ISO from our main "
+"site and run SolydXK System Settings in a live session. Note that you need "
+"an unencrypted boot partition if you want to encrypt your root partition and "
+"that Grub2 will be installed on the disk where the root partition is."
+msgstr ""
+
+#: en/help.html+html.body.div.p:16
+msgid ""
+"Only those partitions that are mounted in fstab are saved to fstab. If you "
+"wish to include new partitions in fstab you need to manually add them before "
+"you run SolydXK System Settings."
+msgstr ""
+
+#: en/help.html+html.body.div.h2:18
+msgid "Examples"
+msgstr ""
+
+#: en/help.html+html.body.div.p:19
+msgid ""
+"When you start SolydXK System Settings you will see a list of partitions "
+"that you can either encrypt or decrypt. An encrypted partition shows this "
+"icon: <img src=\"/usr/share/solydxk/system/icons/encrypted.png\" /> and an "
+"unencrypted partition shows this icon: <img src=\""
+"/usr/share/solydxk/system/icons/unencrypted.png\" />. Your selection will "
+"decide which actions can be taken on that partition. Removable media will "
+"show these icons: <img src=\"/usr/share/solydxk/system/icons/unencrypted-usb."
+"png\" /> and <img src=\"/usr/share/solydxk/system/icons/encrypted-usb.png\" "
+"/>"
+msgstr ""
+
+#: en/help.html+html.body.div.p:20
+msgid "Following are some examples on how to use SolydXK System Settings:"
+msgstr ""
+
+#: en/help.html+html.body.div.h3:22
+msgid "Encrypt a USB pen drive"
+msgstr ""
+
+#: en/help.html+html.body.div.p:23
+msgid ""
+"Insert a USB pen drive and mount it. Hit the refresh button to list the pen "
+"drive and select the partition of that drive drive you whish to encrypt. "
+"Fill in your passphrase twice and hit the \"Encrypt\" button."
+msgstr ""
+
+#: en/help.html+html.body.div.h3:25
+msgid "Encrypt the root (and swap) partition"
+msgstr ""
+
+#: en/help.html+html.body.div.p:26
+msgid ""
+"You will need an unecrypted /boot partition. If you do not have a /boot "
+"partition, here's how to create one. In a live session you start GParted and "
+"create a partition of at least 200 MB of free space. This partition can be "
+"created from existing unallocated space, or by shrinking another partition "
+"and using the newly-created free space. In this example I've created a new "
+"partition: /dev/sda1 which I want to mount as /boot into the root partition "
+"/dev/sda2. Change the partition paths accordingly to your situation."
+msgstr ""
+
+#: en/help.html+html.body.div.p:27
+msgid "Open a terminal, and run these commands as root:"
+msgstr ""
+
+#: en/help.html+html.body.div.pre:28
+msgid ""
+"# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 "
+"/mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value "
+"-s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/fstab"
+msgstr ""
+
+#: en/help.html+html.body.div.p:33
+msgid ""
+"You can now reboot your system and check if the boot partition is properly "
+"mounted:"
+msgstr ""
+
+#: en/help.html+html.body.div.pre:34
+msgid "$ mount | grep sda2"
+msgstr ""
+
+#: en/help.html+html.body.div.p:35
+msgid ""
+"To encrypt the root (and swap) partition, you need to start a live session "
+"again, start SolydXK System Settings and select the root partition (and any "
+"other partition you'd like to encrypt)."
+msgstr ""
+
+#: en/help.html+html.body.div.h3:37
+msgid "Change the passphrase of an encrypted partition"
+msgstr ""
+
+#: en/help.html+html.body.div.p:38
+msgid ""
+"Select an encrypted partition from the list, fill in your passphrase twice "
+"and hit the \"Change Passphrase\" button."
+msgstr ""
+
+#: en/help.html+html.body.div.h3:40
+msgid "Create a key file for a selection of encrypted partitions"
+msgstr ""
+
+#: en/help.html+html.body.div.p:41
+msgid ""
+"Select several encrypted partitions from the list, fill in your passphrase "
+"twice and hit the \"Manually create key file\" button. The first encrypted "
+"partition will hold the key file while the other partitions are "
+"automatically opened with that key file."
+msgstr ""
+
+#: en/help.html+html.body.div.h3:43
+msgid "Decrypt a partition"
+msgstr ""
+
+#: en/help.html+html.body.div.p:44
+msgid ""
+"Select an encrypted partition from the list, fill in your passphrase twice "
+"and hit the \"Decrypt\" button. SolydXK System Settings will search for a "
+"partition with enough free space to create a temporary backup of the "
+"partition you want to decrypt. You will be asked for a backup medium if it "
+"cannot find enough free space to continue."
+msgstr ""
+
+#: en/help.html+html.body.div.h2:47
+msgid "Troubleshooting"
+msgstr ""
+
+#: en/help.html+html.body.div.p:48
+msgid ""
+"Please help improve this application. You can find the source on our <a href="
+"\"https://github.com/SolydXK/solydxk-system\" target=\"_blank\">GitHub</a> "
+"page."
+msgstr ""
+
+#: en/help.html+html.body.div.p:49
+msgid ""
+"If for some reason your system does not mount the newly encrypted partition, "
+"please visit our <a href=\"http://forums.solydxk.com\" target=\"_blank\""
+">forum</a> and post your issue there."
+msgstr ""
+
+#: en/help.html+html.body.div.p:50
+msgid ""
+"Don't forget to attach the log file when you post an issue on our forum: "
+"/var/log/solydxk-system.log"
+msgstr ""

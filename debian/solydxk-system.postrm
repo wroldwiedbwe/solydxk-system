@@ -1,0 +1,37 @@
+#!/bin/sh
+
+set -e
+
+# Automatically added by dh_systemd_enable
+if [ "$1" = "remove" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper mask solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
+	fi
+fi
+
+if [ "$1" = "purge" ]; then
+	if [ -x "/usr/bin/deb-systemd-helper" ]; then
+		deb-systemd-helper purge solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
+		deb-systemd-helper unmask solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_systemd_start
+if [ -d /run/systemd/system ]; then
+	systemctl --system daemon-reload >/dev/null || true
+fi
+# End automatically added section
+
+
+case "$1" in
+    remove|abort-install|disappear|purge)
+    # Remove divert
+    FLE=/usr/bin/apt
+    if [ -f $FLE ]; then
+      dpkg-divert --remove --rename $FLE
+    fi
+    
+    # Remove any symlings to the SolydXK logos
+    find /usr/share/icons -type l -iname "*solyd*" ! -path "*evolvere-additional*" -exec rm {} \;
+    ;;
+esac

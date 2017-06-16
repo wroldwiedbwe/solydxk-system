@@ -21,13 +21,17 @@ export TEXTDOMAINDIR
 # Create pot: xgettext -o $APP.pot -L Shell --keyword=eval_gettext $APP
 MSG_ADM=$(eval_gettext "needs administrative privileges.")
 MSG_PWD=$(eval_gettext "Please enter your password.")
-MSG="\"<b>$APP</b> $MSG_ADM $MSG_PWD\""
+MSG="<b>$APP</b> $MSG_ADM $MSG_PWD"
 
 optimize='OO'; case "$*" in *--debug*) unset optimize; esac
 CMD="$PYTHON -tt${optimize} /usr/lib/solydxk/system/main.py $@"
-if [ -e "/usr/bin/kdesudo" ]; then
-  ICON=$(get-app-theme-icon "solydxk")
-  kdesudo -d -i "$ICON" --comment "$MSG" -c "$CMD"
+if [ $UID -ne 0 ]; then
+  if [ -e "/usr/bin/kdesudo" ]; then
+    ICON=$(get-app-theme-icon "solydxk")
+    kdesudo -d -i "$ICON" --comment "$MSG" -c "$CMD"
+  else
+    gksudo --message "$MSG" "$CMD"
+  fi
 else
-  gksudo --message "$MSG" "$CMD"
+  eval $CMD
 fi

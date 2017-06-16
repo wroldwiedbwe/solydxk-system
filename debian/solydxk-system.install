@@ -1,0 +1,7 @@
+etc
+lib
+usr
+po/mo/*          usr/share/locale/
+po/link          usr/share/solydxk/system/html/
+po/en            usr/share/solydxk/system/html/
+po/translated/*  usr/share/solydxk/system/html/

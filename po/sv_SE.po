@@ -1,87 +1,93 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# root <arjenbalfoort@solydxk.com>, 2017.
-# Arjen, 2017.
+#
+# Translators:
+# Arjen Balfoort <schoelje@solydxk.com>, 2016
+# Magnus Johansson <johanssongreppet@yahoo.se>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: updatemanager\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-16 19:42+0200\n"
-"PO-Revision-Date: 2017-06-12 19:49+0200\n"
-"Last-Translator: Arjen <>\n"
-"Language-Team: Dutch (https://www.transifex.com/solydxk/teams/54212/nl/)\n"
-"Language: nl\n"
+"PO-Revision-Date: 2016-06-02 07:15+0000\n"
+"Last-Translator: Arjen Balfoort <schoelje@solydxk.com>\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/solydxk/"
+"updatemanager/language/sv_SE/)\n"
+"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #: ../usr/lib/solydxk/system/main.py:44
 msgid "Unexpected error"
-msgstr "Onverwachte fout"
+msgstr "Oväntat fel"
 
 #: ../usr/lib/solydxk/system/main.py:45
+#, fuzzy
 msgid ""
 "SolydXK System Settings has failed with the following unexpected error. "
 "Please submit a bug report!"
 msgstr ""
-"SolydXK Systeeminstellingen kan niet starten om de volgende fout. Gelieve "
-"een bug verslag in te dienen!"
+"Uppdateringshanteraren har misslyckats och givit följande oväntade fel. Var "
+"vänlig och skicka en en felanmälan!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:90
 #: ../usr/share/applications/solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
-msgstr "SolydXK Systeeminstellingen"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:91
+#, fuzzy
 msgid "Save backports"
-msgstr "Bewaar backports"
+msgstr "Spara speglar"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:92
 msgid "Save mirrors"
-msgstr "Bewaar mirrors"
+msgstr "Spara speglar"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:93
 msgid "Check mirrors speed"
-msgstr "Controleer mirrors snelheid"
+msgstr "Kontrollera speglars hastighet"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:94
 msgid "Remove"
-msgstr "Verwijderen"
+msgstr "Ta bort"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:95
+#, fuzzy
 msgid "Hold back"
-msgstr "Tegenhouden"
+msgstr "Svartlistade paket"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:96
+#, fuzzy
 msgid "Repositories"
-msgstr "Pakketbronnen"
+msgstr "Programförråd"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:97
 msgid "Encryption"
-msgstr "Versleuteling"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:98
 msgid "Passphrase (6-20 chr)"
-msgstr "Wachtwoord (6-20 tekens)"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:99
 msgid "Encrypt"
-msgstr "Versleutelen"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:100
 msgid "Decrypt"
-msgstr "Decoderen"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:101
 msgid "Change passphrase"
-msgstr "Wijzig wachtwoord"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:102
 msgid "Manually create key file"
-msgstr "Handmatig sleutelbestand maken"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid ""
@@ -89,18 +95,12 @@ msgid ""
 "Warning: backup your data before you continue!\n"
 "Note: you can Ctrl-left click to select multiple partitions."
 msgstr ""
-"Versleutel partities en beveilig uw gegevens.\n"
-"Waarschuwing: maak een backup van uw gegevens voordat u verder gaat.\n"
-"Opmerking: gebruik Ctrl-linker muis om meerdere partities te selecteren."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:106
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
 msgstr ""
-"Configureer uw taal (één als standaard) en tijdzone.\n"
-"Zorg ervoor dat u een internetverbinding hebt om uw vertaalsoftware te "
-"installeren."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:108
 msgid ""
@@ -109,63 +109,56 @@ msgid ""
 "your system.\n"
 "Use at your own risk!"
 msgstr ""
-"Activeer de Backports pakketbron als u een nieuwere software versie nodig "
-"hebt.\n"
-"Waarschuwing: het installeren van software uit de backports pakketbron kan "
-"uw systeem destabiliseren.\n"
-"Gebruik op eigen risico!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:111
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
 msgstr ""
-"Selecteer de snelste pakketbron voor uw updates.\n"
-"Zorg ervoor dat u een internetverbinding hebt."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:113
+#, fuzzy
 msgid "Hold back packages"
-msgstr "Houd pakketten tegen"
+msgstr "Svartlistade paket"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:114
+#, fuzzy
 msgid "Held back packages"
-msgstr "Tegengehouden pakketten"
+msgstr "Svartlistade paket"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:115
 msgid "Available packages"
-msgstr "Beschikbare pakketten"
+msgstr "Tillgängliga paket"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:116
 msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
 msgstr ""
-"Hier kunt u individuele pakketten tegenhouden.\n"
-"Dit zal een upgrade voor dit pakket tegenhouden."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:118
 msgid "Save locale"
-msgstr "Bewaar standaardtaal"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:119
 msgid "Installed"
-msgstr "Geïnstalleerd"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:120
 msgid "Locale"
-msgstr "Standaardtaal"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:121
 msgid "Language"
-msgstr "Taal"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:122
 msgid "Default"
-msgstr "Standaard"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:123
 msgid "Please provide a passphrase (6-20 characters)."
-msgstr "Geef een wachtwoord (6-20 tekens)."
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:124
 #, python-brace-format
@@ -173,8 +166,6 @@ msgid ""
 "Could not mount {0}\n"
 "Please mount {0} and refresh when done."
 msgstr ""
-"Kon {0} niet koppelen.\n"
-"Ververs wanneer u {0} gekoppeld heeft."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:125
 msgid ""
@@ -182,18 +173,15 @@ msgid ""
 "Pre-selected packages are safe to remove (autoremove).\n"
 "Other packages are orphaned packages. Remove with caution!"
 msgstr ""
-"Verwijder onnodige pakketten.\n"
-"Voorgeselecteerde pakketten zijn veilig om te verwijderen (autoremove).\n"
-"Andere pakketten zijn verweesde (orphaned) pakketten. Wees voorzichtig met "
-"het verwijderen!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:128
+#, fuzzy
 msgid "Unneeded packages"
-msgstr "Onnodige pakketten"
+msgstr "Svartlistade paket"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:307
 msgid "Encrypted partition"
-msgstr "Versleutelde partitie"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:308
 #, python-brace-format
@@ -203,18 +191,12 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
-"De partitie {0} is reeds versleuteld.\n"
-"Door verder te gaan verandert u de encryptiesleutel van deze partitie.\n"
-"\n"
-"Wil u verder gaan?"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:327
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
 msgstr ""
-"De partitie is niet versleuteld.\n"
-"Kies een andere partitie om te ontsleutelen."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:376
 #, python-format
@@ -222,13 +204,11 @@ msgid ""
 "%s is not encrypted.\n"
 "Please choose an encrypted partition."
 msgstr ""
-"%s is niet versleuteld.\n"
-"Kiest u a.u.b. een versleutelde partitie."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:410
 #, python-brace-format
 msgid "Passphrase changed for {0}."
-msgstr "Wachtwoord gewijzigd voor {0}."
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:413
 #, python-brace-format
@@ -236,36 +216,34 @@ msgid ""
 "Could not change the passphrase for {0}\n"
 "Please, provide the current and new passphrase."
 msgstr ""
-"Kon het wachtwoord voor {0} niet wijzigen.\n"
-"Geef alstublieft het huidige en nieuwe wachtwoord aan."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:492
 msgid "Partition"
-msgstr "Partitie"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:492
 msgid "Label"
-msgstr "Label"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:492
 msgid "File system"
-msgstr "Bestandssysteem"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:492
 msgid "Total size"
-msgstr "Totale grootte"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:492
 msgid "Free size"
-msgstr "Beschikbare grootte"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:492
 msgid "Mount point"
-msgstr "Koppelpunt"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:532
 msgid "Backup"
-msgstr "Backup"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:564
 #, python-format
@@ -273,8 +251,6 @@ msgid ""
 "You need a backup partition with at least %s free.\n"
 "Mount a backup drive and hit the refresh button."
 msgstr ""
-"U heeft een backup partitie nodig met ten minste %s vrije ruimte.\n"
-"Koppel een backup schijf en klik op de verversen knop."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:998
 #: ../usr/lib/solydxk/system/solydxk_system.py:1075
@@ -282,20 +258,18 @@ msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
 msgstr ""
-"Kon de apt cache niet updaten.\n"
-"Update de apt cache handmatig met: apt-get update"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1002
 msgid "Nothing to do."
-msgstr "Er is niets te doen."
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1082
 msgid "There are no repositories to save."
-msgstr "Er is geen pakketbron om te bewaren."
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1086
 msgid "Current"
-msgstr "Huidige"
+msgstr "Nuvarande"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1086
 msgid "Country"
@@ -303,7 +277,7 @@ msgstr "Land"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1086
 msgid "Repository"
-msgstr "Pakketbron"
+msgstr "Programförråd"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1086
 msgid "URL"
@@ -311,15 +285,15 @@ msgstr "URL"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1086
 msgid "Speed"
-msgstr "Snelheid"
+msgstr "Hastighet"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1271
 msgid "You need to reboot your system for the new settings to take affect."
-msgstr "Herstart uw systeem om de nieuwe instellingen te gebruiken."
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1293
 msgid "Encryption done"
-msgstr "Versleuteling klaar"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1294
 msgid ""
@@ -327,13 +301,10 @@ msgid ""
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
-"Versleuteling is afgerond.\n"
-"\n"
-"Wilt u de computer herstarten?"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1297
 msgid "Decryption done"
-msgstr "Ontsleuteling klaar"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1298
 msgid ""
@@ -341,19 +312,16 @@ msgid ""
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
-"Ontsleuteling is afgerond.\n"
-"\n"
-"Wilt u de computer herstarten?"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1352
 msgid "Partition passphrase"
-msgstr "Partitie wachtwoord"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1353
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
-msgstr "Geef het huidige wachtwoord van de versleutelde partitie."
+msgstr ""
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:53
 #, python-brace-format
@@ -361,8 +329,6 @@ msgid ""
 "Could not create a backup on {backup_dir} (rsync code: {rsync_code}).\n"
 "Please, select another backup medium before you try again."
 msgstr ""
-"Kon geen backup maken op {backup_dir} (rsync code: {rsync_code}).\n"
-"Selecteer een ander backup medium voordat u het weer probeert."
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:87
 #, python-brace-format
@@ -371,9 +337,6 @@ msgid ""
 "You need to manually format the device and restore your data from: "
 "{backup_dir}"
 msgstr ""
-"Kon het apparaat {device} niet formatteren.\n"
-"U moet uw apparaat handmatig formatteren en de gegevens terugzetten van: "
-"{backup_dir}"
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:125
 #, python-brace-format
@@ -381,8 +344,6 @@ msgid ""
 "Could not restore the backup (rsync code: {rsync_code}).\n"
 "You need to manually restore your data from: {backup_dir}"
 msgstr ""
-"Kon de backup niet terugzetten (rsync code: {rsync_code}).\n"
-"U moet uw data handmatig terugzetten van: {backup_dir}"
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:151
 #, python-brace-format
@@ -390,8 +351,6 @@ msgid ""
 "Error formatting partition {0}:\n"
 "It has no file system type."
 msgstr ""
-"Fout bij formatteren van partitie {0}\n"
-"Het heeft geen bestandssysteem type."
 
 #: ../usr/lib/solydxk/system/localize.py:121
 msgid ""
@@ -399,43 +358,40 @@ msgid ""
 "localization packages\n"
 "Please repeat this process when you established an internet connection."
 msgstr ""
-"SolydXK Systeem kan de software lokalisatiepakketten niet downloaden en "
-"installeren\n"
-"Herhaal dit proces als u een internetverbinding hebt ingesteld."
 
 #: ../usr/lib/solydxk/system/localize.py:123
 msgid "No internet connection"
-msgstr "Geen internetverbinding"
+msgstr ""
 
 #: ../usr/bin/solydxk-system:22
 #, sh-format
 msgid "needs administrative privileges."
-msgstr "heeft beheerdersrechten nodig."
+msgstr ""
 
 #: ../usr/bin/solydxk-system:23
 #, sh-format
 msgid "Please enter your password."
-msgstr "Vul hier uw wachtwoord in."
+msgstr ""
 
 #: ../usr/share/applications/solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
-msgstr "Verander systeem instellingen voor SolydXK"
+msgstr ""
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
-msgstr "SolydXK Systeeminstellingen Versleuteling Hulp"
+msgstr ""
 
 #: en/help.html+html.body.div.h2:10
 msgid "Description"
-msgstr "Beschrijving"
+msgstr ""
 
 #: en/help.html+html.body.div.p:11
 msgid "Encrypt partitions of your system with LUKS."
-msgstr "Versleutel partities van uw systeem met LUKS."
+msgstr ""
 
 #: en/help.html+html.body.div.h2:13
 msgid "Important"
-msgstr "Belangrijk"
+msgstr ""
 
 #: en/help.html+html.body.div.p:14
 msgid ""
@@ -443,9 +399,6 @@ msgid ""
 "partition you are going to encrypt or decrypt. Mount a partition or external "
 "drive for this purpose before you start."
 msgstr ""
-"SolydXK System Settings creëert en herstelt een backup van de gegevens van "
-"de partitie die u gaat versleutelen. Koppel een partitie of externe schijf "
-"voordat u begint."
 
 #: en/help.html+html.body.div.p:15
 msgid ""
@@ -455,11 +408,6 @@ msgid ""
 "an unencrypted boot partition if you want to encrypt your root partition and "
 "that Grub2 will be installed on the disk where the root partition is."
 msgstr ""
-"U kunt een opgestartte rootpartitie niet versleutelen met SolydXK "
-"Systeeminstellingen. Als u dat wenst, dient u een ISO te starten en deze "
-"partitie handmatig te versleutelen. U heeft een onversleutelde bootpartitie "
-"nodig wanneer u uw rootpartitie wilt versleutelen. Grub2 zal op de schijf "
-"worden geïnstalleerd waar de rootpartitie is."
 
 #: en/help.html+html.body.div.p:16
 msgid ""
@@ -467,13 +415,10 @@ msgid ""
 "wish to include new partitions in fstab you need to manually add them before "
 "you run SolydXK System Settings."
 msgstr ""
-"Alleen die partities die in fstab zijn gekoppeld, worden opgeslagen in "
-"fstab. Als u nieuwe partities wilt toevoegen in fstab, moet u deze handmatig "
-"toevoegen voordat u SolydXK Systeeminstellingen uitvoert."
 
 #: en/help.html+html.body.div.h2:18
 msgid "Examples"
-msgstr "Voorbeelden"
+msgstr ""
 
 #: en/help.html+html.body.div.p:19
 msgid ""
@@ -486,24 +431,14 @@ msgid ""
 "usr/share/solydxk/system/icons/unencrypted-usb.png\" /> and <img src=\"/usr/"
 "share/solydxk/system/icons/encrypted-usb.png\" />"
 msgstr ""
-"Wanneer u SolydXK Systeeminstellingen start, ziet u een lijst met partities "
-"die u kunt versleutelen of ontsleutelen. Een versleutelde partitie toont dit "
-"icoon: <img src=\"/usr/share/solydxk/system/icons/encrypted.png\" /> en een "
-"onversleutelde partitie laat dit icoon zien: <img src=\"/usr/share/solydxk/"
-"system/icons/unencrypted.png\" />. Uw selectie bepaalt welke acties op die "
-"partitie kunnen worden uitgevoerd. Verwijderbare media tonen deze iconen: "
-"<img src=\"/usr/share/solydxk/system/icons/unencrypted-usb.png\" /> en <img "
-"src=\"/usr/share/solydxk/system/icons/encrypted-usb.png\" />"
 
 #: en/help.html+html.body.div.p:20
 msgid "Following are some examples on how to use SolydXK System Settings:"
 msgstr ""
-"Hieronder volgen enkele voorbeelden hoe u SolydXK Systeeminstellingen kunt "
-"gebruiken:"
 
 #: en/help.html+html.body.div.h3:22
 msgid "Encrypt a USB pen drive"
-msgstr "Versleutel een USB stick"
+msgstr ""
 
 #: en/help.html+html.body.div.p:23
 msgid ""
@@ -511,14 +446,10 @@ msgid ""
 "drive and select the partition of that drive drive you whish to encrypt. "
 "Fill in your passphrase twice and hit the \"Encrypt\" button."
 msgstr ""
-"Plaats een USB stick en koppel het. Klik op de knop Vernieuwen om de USB "
-"stick in de lijst te tonen en selecteer de partitie van die drive drive die "
-"u wilt versleutelen. Vul uw wachtwoord twee keer in en klik op de knop "
-"\"Versleutel\"."
 
 #: en/help.html+html.body.div.h3:25
 msgid "Encrypt the root (and swap) partition"
-msgstr "Versleutel de rootpartitie (en swappartitie)"
+msgstr ""
 
 #: en/help.html+html.body.div.p:26
 msgid ""
@@ -530,18 +461,10 @@ msgid ""
 "partition: /dev/sda1 which I want to mount as /boot into the root partition /"
 "dev/sda2. Change the partition paths accordingly to your situation."
 msgstr ""
-"U hebt een onversleutelde /boot partitie nodig. Als u geen /boot partitie "
-"hebt, kunt u deze op de volgende wijze maken. In een live sessie start u "
-"GParted en maakt u een partitie met minstens 200 MB vrije ruimte. Deze "
-"partitie kan worden gemaakt van bestaande niet-toegewezen ruimte, of door "
-"een andere partitie te verkleinen en de nieuw aangemaakte vrije ruimte te "
-"gebruiken. In dit voorbeeld heb ik een nieuwe partitie gemaakt: /dev/sda1 "
-"die ik wil koppelen als /boot in de rootpartitie /dev/sda2. Verander de "
-"partitiepaden dienovereenkomstig naar uw situatie."
 
 #: en/help.html+html.body.div.p:27
 msgid "Open a terminal, and run these commands as root:"
-msgstr "Open een terminal en voor de volgende commando's uit:"
+msgstr ""
 
 #: en/help.html+html.body.div.pre:28
 msgid ""
@@ -555,8 +478,6 @@ msgid ""
 "You can now reboot your system and check if the boot partition is properly "
 "mounted:"
 msgstr ""
-"U kunt uw systeem nu herstarten en contoleren of de boot partitie correct is "
-"gekoppeld:"
 
 #: en/help.html+html.body.div.pre:34
 msgid "$ mount | grep sda2"
@@ -568,25 +489,20 @@ msgid ""
 "again, start SolydXK System Settings and select the root partition (and any "
 "other partition you'd like to encrypt)."
 msgstr ""
-"Om de rootpartitie (en swappartitie) te versleutelen, moet u opnieuw een "
-"live-sessie starten. Start SolydXK Systeeminstellingen en selecteer de "
-"rootpartitie (en elke andere partitie die u wilt versleutelen)."
 
 #: en/help.html+html.body.div.h3:37
 msgid "Change the passphrase of an encrypted partition"
-msgstr "Verander het wachtwoord van een versleutelde partitie"
+msgstr ""
 
 #: en/help.html+html.body.div.p:38
 msgid ""
 "Select an encrypted partition from the list, fill in your passphrase twice "
 "and hit the \"Change Passphrase\" button."
 msgstr ""
-"Selecteer een versleutelde partitie van de lijst, vul uw wachtwoord twee "
-"maal in en druk op de \"Verander wachtwoord\" knop."
 
 #: en/help.html+html.body.div.h3:40
 msgid "Create a key file for a selection of encrypted partitions"
-msgstr "Maak een sleutelbestand voor een selectie van versleutelde partities"
+msgstr ""
 
 #: en/help.html+html.body.div.p:41
 msgid ""
@@ -595,14 +511,10 @@ msgid ""
 "partition will hold the key file while the other partitions are "
 "automatically opened with that key file."
 msgstr ""
-"Selecteer meerdere versleutelde partities uit de lijst, vul uw wachtwoord "
-"twee keer in en klik op de knop \"Handmatig maken sleutelbestand\". Op de "
-"eerste versleutelde partitie zal het sleutelbestand bewaard worden terwijl "
-"de andere partities automatisch worden geopend met dat sleutelbestand."
 
 #: en/help.html+html.body.div.h3:43
 msgid "Decrypt a partition"
-msgstr "Ontsleutel een partitie"
+msgstr ""
 
 #: en/help.html+html.body.div.p:44
 msgid ""
@@ -612,15 +524,10 @@ msgid ""
 "partition you want to decrypt. You will be asked for a backup medium if it "
 "cannot find enough free space to continue."
 msgstr ""
-"Selecteer uw versleutelde home partitie uit de lijst, vul uw wachtwoord twee "
-"keer in en klik op de knop \"Ontsleutel\". SolydXK Systeeminstellingen zoekt "
-"naar een partitie met voldoende vrije ruimte om een tijdelijke backup te "
-"maken van de partitie die u wilt versleutelen. U wordt gevraagd om een "
-"backupmedium als er niet genoeg vrije ruimte gevonden is om door te gaan."
 
 #: en/help.html+html.body.div.h2:47
 msgid "Troubleshooting"
-msgstr "Probleemoplossen"
+msgstr ""
 
 #: en/help.html+html.body.div.p:48
 msgid ""
@@ -628,9 +535,6 @@ msgid ""
 "\"https://github.com/SolydXK/solydxk-system\" target=\"_blank\">GitHub</a> "
 "page."
 msgstr ""
-"Help deze applicatie te verbeteren. U kunt de bron vinden op onze <a href="
-"\"https://github.com/SolydXK/solydxk-system\" target=\"_blank\">GitHub</a> "
-"pagina."
 
 #: en/help.html+html.body.div.p:49
 msgid ""
@@ -638,102 +542,18 @@ msgid ""
 "please visit our <a href=\"http://forums.solydxk.com\" target=\"_blank"
 "\">forum</a> and post your issue there."
 msgstr ""
-"Als uw systeem om een bepaalde reden de nieuwe versleutelde partitie niet "
-"koppelt, bezoek dan ons <a href=\"http://forums.solydxk.com\" target=\"_blank"
-"\">forum</a> en post uw probleem daar."
 
 #: en/help.html+html.body.div.p:50
 msgid ""
 "Don't forget to attach the log file when you post an issue on our forum: /"
 "var/log/solydxk-system.log"
 msgstr ""
-"Vergeet niet het log bestand aan uw bericht te koppelen wanneer u een "
-"probleem op ons forum post: /var/log/solydxk-system.log"
-
-#, fuzzy
-#~ msgid "{action} done"
-#~ msgstr "Versleuteling klaar"
-
-#, fuzzy
-#~ msgid ""
-#~ "{action} has finished.\n"
-#~ "\n"
-#~ "Do you want to restart your computer?"
-#~ msgstr ""
-#~ "Versleuteling is afgerond.\n"
-#~ "\n"
-#~ "Wilt u de computer herstarten?"
-
-#~ msgid "SolydXK System Settings cannot be started in a live environment."
-#~ msgstr ""
-#~ "SolydXK Systeeminstellingen kan niet in een live omgeving gestart worden."
-
-#~ msgid "Unable to create %s"
-#~ msgstr "Kan %s niet creëren"
-
-#~ msgid "Encrypt your home partition"
-#~ msgstr "Versleutel uw home partitie"
-
-#~ msgid ""
-#~ "Select your unencrypted home partition from the list, fill in your "
-#~ "passphrase twice and hit the \"Encrypt\" button. SolydXK System Settings "
-#~ "will search for a partition with enough free space to create a temporary "
-#~ "backup of the partition you want to encrypt. You will be asked for a "
-#~ "backup medium if it cannot find enough free space to continue."
-#~ msgstr ""
-#~ "Selecteer uw onversleutelde home partitie uit de lijst, vul uw wachtwoord "
-#~ "twee keer in en klik op de knop \"Versleutel\". SolydXK "
-#~ "Systeeminstellingen zoekt naar een partitie met voldoende vrije ruimte om "
-#~ "een tijdelijke backup te maken van de partitie die u wilt versleutelen. U "
-#~ "wordt gevraagd om een backupmedium als er niet genoeg vrije ruimte "
-#~ "gevonden is om door te gaan."
-
-#, fuzzy
-#~ msgid "Passphrase for the encrypted partition"
-#~ msgstr "Verander het wachtwoord van een versleutelde partitie"
-
-#~ msgid "Current passphrase"
-#~ msgstr "Huidig wachtwoord"
-
-#, fuzzy
-#~ msgid ""
-#~ "The encrypted partition is not mounted.\n"
-#~ "After the encryption you will need to manually mount {0}.\n"
-#~ "Please mount {0} and refresh when done."
-#~ msgstr ""
-#~ "De versleutelde partitie is niet gekoppeld.\n"
-#~ "Koppel de partitie en ververs hierna."
-
-#, fuzzy
-#~ msgid "Mount partition"
-#~ msgstr "Formatteer partitie"
-
-#, fuzzy
-#~ msgid ""
-#~ "The encrypted partition is not mounted.\n"
-#~ "Please mount {0} and refresh when done."
-#~ msgstr ""
-#~ "De versleutelde partitie is niet gekoppeld.\n"
-#~ "Koppel de partitie en ververs hierna."
 
 #~ msgid "Repository mirrors"
-#~ msgstr "Pakketbron mirrors"
-
-#~ msgid ""
-#~ "System copy ended abruptly.\n"
-#~ "Your system might not function properly (rsync code: %s)."
-#~ msgstr ""
-#~ "Kopiëren van het systeem abrupt geëindigd.\n"
-#~ "Uw systeem zal mogelijk niet goed functioneren (rsync code: % s)."
-
-#~ msgid "System copy error"
-#~ msgstr "Systeemkopie fout"
-
-#~ msgid "Copying"
-#~ msgstr "Kopiëren"
+#~ msgstr "Programförrådsspeglar"
 
 #~ msgid "Select the fastest repository"
-#~ msgstr "Selecteer de snelste repository"
+#~ msgstr "Välj det snabbaste programförrådet"
 
 #~ msgid "Blacklist"
-#~ msgstr "Blacklist"
+#~ msgstr "Svartlista"

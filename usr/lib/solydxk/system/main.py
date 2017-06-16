@@ -5,11 +5,10 @@ import gi
 gi.require_version('Gtk', '3.0')
 
 import sys
-import os
 import gettext
-from os.path import join, abspath, dirname
-from utils import isRunningLive, isProcessRunning
-from dialogs import WarningDialog, ErrorDialog
+from os.path import abspath, dirname
+from utils import is_process_running
+from dialogs import ErrorDialog
 from solydxk_system import SolydXKSystemSettings
 from gi.repository import Gtk, GObject
 
@@ -18,14 +17,6 @@ gettext.install("solydxk-system", "/usr/share/locale")
 _ = gettext.gettext
 
 scriptDir = abspath(dirname(__file__))
-
-
-# Do not run in live environment
-if isRunningLive():
-    title = _("SolydXK System Settings")
-    msg = _("SolydXK System Settings cannot be started in a live environment.")
-    WarningDialog(title, msg, None, None, True, 'solydxk')
-    sys.exit()
 
 
 def uncaught_excepthook(*args):
@@ -62,7 +53,12 @@ sys.excepthook = uncaught_excepthook
 if __name__ == '__main__':
     # Create an instance of our GTK application
     try:
-        if isProcessRunning("solydxk_system.py"):
+        # Calling GObject.threads_init() is not needed for PyGObject 3.10.2+
+        # Check with print (sys.version)
+        # Debian Jessie: 3.4.2
+        GObject.threads_init()
+
+        if is_process_running("solydxk_system.py"):
             print(("solydxk_system.py already running - exiting"))
         else:
             SolydXKSystemSettings()

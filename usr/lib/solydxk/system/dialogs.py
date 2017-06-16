@@ -21,12 +21,9 @@ DIALOG_TYPES = {
 # MessageDialog(_("My Title"), "Your message here")
 # Use safe=False when calling from a thread
 class Dialog(Gtk.MessageDialog):
-    def __init__(self, style, buttons,
-                 title, text, text2=None, parent=None, safe=True, icon=None):
+    def __init__(self, style, buttons, title, text, text2=None, parent=None, safe=True, icon=None):
         parent = parent or next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
-        Gtk.MessageDialog.__init__(self, parent,
-                                   Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                   style, buttons, text)
+        Gtk.MessageDialog.__init__(self, parent, Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT, style, buttons, text)
         self.set_position(Gtk.WindowPosition.CENTER)
         if parent is not None:
             self.set_icon(parent.get_icon())

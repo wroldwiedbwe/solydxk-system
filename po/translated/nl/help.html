@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="../link/general.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="background"></div>
+	<h1>SolydXK Systeeminstellingen Versleuteling Hulp</h1>
+	<div class="main">
+		<h2>Beschrijving</h2>
+		<p>Versleutel partities van uw systeem met LUKS.</p>
+
+		<h2>Belangrijk</h2>
+		<p>SolydXK System Settings creëert en herstelt een backup van de gegevens van
+de partitie die u gaat versleutelen. Koppel een partitie of externe schijf
+voordat u begint.</p>
+		<p>U kunt een opgestartte rootpartitie niet versleutelen met SolydXK
+Systeeminstellingen. Als u dat wenst, dient u een ISO te starten en deze
+partitie handmatig te versleutelen. U heeft een onversleutelde bootpartitie
+nodig wanneer u uw rootpartitie wilt versleutelen. Grub2 zal op de schijf
+worden geïnstalleerd waar de rootpartitie is.</p>
+		<p>Alleen die partities die in fstab zijn gekoppeld, worden opgeslagen in
+fstab. Als u nieuwe partities wilt toevoegen in fstab, moet u deze handmatig
+toevoegen voordat u SolydXK Systeeminstellingen uitvoert.</p>
+
+		<h2>Voorbeelden</h2>
+		<p>When you start SolydXK System Settings you will see a list of partitions
+that you can either encrypt or decrypt. An encrypted partition shows this
+icon: <img src="/usr/share/solydxk/system/icons/encrypted.png" /> and an unencrypted partition shows this icon: <img src="/usr/share/solydxk/system/icons/unencrypted.png" />. Your selection will decide which actions can be taken on that
+partition. Removable media will show these icons:  <img src="/usr/share/solydxk/system/icons/unencrypted-usb.png" /> and  <img src="/usr/share/solydxk/system/icons/encrypted-usb.png" /></p>
+		<p>Hieronder volgen enkele voorbeelden hoe u SolydXK Systeeminstellingen kunt
+gebruiken:</p>
+
+		<h3>Versleutel een USB stick</h3>
+		<p>Plaats een USB stick en koppel het. Klik op de knop Vernieuwen om de USB
+stick in de lijst te tonen en selecteer de partitie van die drive drive die
+u wilt versleutelen. Vul uw wachtwoord twee keer in en klik op de knop
+"Versleutel".</p>
+		
+		<h3>Versleutel de rootpartitie (en swappartitie)</h3>
+		<p>U hebt een onversleutelde /boot partitie nodig. Als u geen /boot partitie
+hebt, kunt u deze op de volgende wijze maken. In een live sessie start u
+GParted en maakt u een partitie met minstens 200 MB vrije ruimte. Deze
+partitie kan worden gemaakt van bestaande niet-toegewezen ruimte, of door
+een andere partitie te verkleinen en de nieuw aangemaakte vrije ruimte te
+gebruiken. In dit voorbeeld heb ik een nieuwe partitie gemaakt: /dev/sda1
+die ik wil koppelen als /boot in de rootpartitie /dev/sda2. Verander de
+partitiepaden dienovereenkomstig naar uw situatie.</p>
+		<p>Open een terminal en voor de volgende commando's uit:</p>
+		<pre># mkdir /mnt/boot /mnt/root
+# mount /dev/sda1 /mnt/boot
+# mount /dev/sda2 /mnt/root
+# cp -a /mnt/root/boot/* /mnt/boot/
+# echo "UUID=$(blkid -o value -s UUID /dev/sda1)    /boot   ext4    defaults    0   0" >> /mnt/root/etc/fstab</pre>
+		<p>U kunt uw systeem nu herstarten en contoleren of de boot partitie correct is
+gekoppeld:</p>
+		<pre>$ mount | grep sda2</pre>
+		<p>Om de rootpartitie (en swappartitie) te versleutelen, moet u opnieuw een
+live-sessie starten. Start SolydXK Systeeminstellingen en selecteer de
+rootpartitie (en elke andere partitie die u wilt versleutelen).</p>
+		
+		<h3>Verander het wachtwoord van een versleutelde partitie</h3>
+		<p>Selecteer een versleutelde partitie van de lijst, vul uw wachtwoord twee
+maal in en druk op de "Verander wachtwoord" knop.</p>
+		
+		<h3>Maak een sleutelbestand voor een selectie van versleutelde partities</h3>
+		<p>Selecteer meerdere versleutelde partities uit de lijst, vul uw wachtwoord
+twee keer in en klik op de knop "Handmatig maken sleutelbestand". Op de
+eerste versleutelde partitie zal het sleutelbestand bewaard worden terwijl
+de andere partities automatisch worden geopend met dat sleutelbestand.</p>
+		
+		<h3>Ontsleutel een partitie</h3>
+		<p>Selecteer uw versleutelde home partitie uit de lijst, vul uw wachtwoord twee
+keer in en klik op de knop "Ontsleutel". SolydXK Systeeminstellingen zoekt
+naar een partitie met voldoende vrije ruimte om een tijdelijke backup te
+maken van de partitie die u wilt versleutelen. U wordt gevraagd om een
+backupmedium als er niet genoeg vrije ruimte gevonden is om door te gaan.</p>
+		
+
+		<h2>Probleemoplossen</h2>
+		<p>Help deze applicatie te verbeteren. U kunt de bron vinden op onze <a
+href="https://github.com/SolydXK/solydxk-system" target="_blank">GitHub</a>
+pagina.</p>
+		<p>Als uw systeem om een bepaalde reden de nieuwe versleutelde partitie niet
+koppelt, bezoek dan ons <a href="http://forums.solydxk.com"
+target="_blank">forum</a> en post uw probleem daar.</p>
+		<p>Vergeet niet het log bestand aan uw bericht te koppelen wanneer u een
+probleem op ons forum post: /var/log/solydxk-system.log</p>
+    </div>
+  </body>
+</html>

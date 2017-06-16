@@ -7,6 +7,7 @@ Build-Depends: debhelper (>= 9)
   , intltool
   , transifex-client
   , translate-toolkit
+  , dh-systemd
 X-Python3-Version: >= 3.2
 Standards-Version: 3.9.6
 Vcs-Git: git@github.com:SolydXK/solydxk-system.git
@@ -28,6 +29,10 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , console-data
   , python3-dateutil
   , libc-bin
+  , rsync
+  , cryptsetup
+  , udisks2
+  , haveged
 Conflicts: solydkbo-grub2-theme,
   solydkbe-grub2-theme,
   solydxbe-grub2-theme,
