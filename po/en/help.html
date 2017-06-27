@@ -20,9 +20,10 @@
 		<p>Following are some examples on how to use SolydXK System Settings:</p>
 
 		<h3>Encrypt a USB pen drive</h3>
-		<p>Insert a USB pen drive and mount it. Hit the refresh button to list the pen drive and select the partition of that drive drive you whish to encrypt. Fill in your passphrase twice and hit the "Encrypt" button.</p>
+		<p>Insert a USB pen drive and mount it. Hit the refresh button to list the pen drive and select the partition of that drive drive you wish to encrypt. Fill in your passphrase twice and hit the "Encrypt" button.</p>
 		
 		<h3>Encrypt the root (and swap) partition</h3>
+		<strong><p>WARNING: do this at your own risk!</p></strong>
 		<p>You will need an unecrypted /boot partition. If you do not have a /boot partition, here's how to create one. In a live session you start GParted and create a partition of at least 200 MB of free space. This partition can be created from existing unallocated space, or by shrinking another partition and using the newly-created free space. In this example I've created a new partition: /dev/sda1 which I want to mount as /boot into the root partition /dev/sda2. Change the partition paths accordingly to your situation.</p>
 		<p>Open a terminal, and run these commands as root:</p>
 		<pre># mkdir /mnt/boot /mnt/root

@@ -4,12 +4,12 @@ import threading
 import time
 from shutil import rmtree
 import os
+import math
 from os.path import exists, join, basename, isdir
 from udisks2 import Udisks2
-from utils import shell_exec, get_logged_user, is_mounted, \
+from utils import shell_exec, get_logged_user, get_uuid, \
                     get_nr_files_in_dir, shell_exec_popen
-from encryption import encrypt_partition, mount_partition, \
-                        get_filesystem, get_uuid
+from encryption import encrypt_partition
 
 # i18n: http://docs.python.org/3/library/gettext.html
 import gettext
@@ -45,7 +45,7 @@ class EnDecryptPartitions(threading.Thread):
             os.makedirs(backup_dir, exist_ok=True)
             
             # Rsync partition content to backup medium
-            if (is_mounted(partition['mount_point']) and isdir(backup_dir)) or is_swap:
+            if (self.udisks2.is_mounted(partition['mount_point']) and isdir(backup_dir)) or is_swap:
                 rsync_code = 0
                 if not is_swap:
                     rsync_code = self.backup_partition(partition['mount_point'], backup_dir)
@@ -60,29 +60,34 @@ class EnDecryptPartitions(threading.Thread):
                     if self.encrypt:
                         # Encrypt
                         self.log.write("Start encryption of %s" % partition['device'], 'endecrypt', 'info')
-                        partition['device'] = encrypt_partition(partition['device'], self.passphrase)
-                        partition['encrypted'] = True
+                        mapped_device = encrypt_partition(partition['device'], self.passphrase)
+                        print((">>>> mapped_device=%s" % mapped_device))
+                        if mapped_device:
+                            partition['device'] = mapped_device
+                            partition['encrypted'] = True
+                            partition['passphrase'] = self.passphrase
+                            if partition['fstab_path'] and not partition['crypttab_path']:
+                                partition['crypttab_path'] = partition['fstab_path'].replace('fstab', 'crypttab')
+                            print((">>>> partition=%s" % str(partition)))
                         step = (i + 1) * 2
-                        self.queue.put([1 / (total_steps / step), 0, None, None, None])
+                        self.queue.put([1 / (total_steps / step), 0, i, partition, None])
                     else:
                         # Decrypt
-                        fs_type = self.udisks2.get_filesystem(partition['device'])
-                        partition_path = partition['device'].replace('/mapper', '')
                         self.log.write("Unmount %s" % partition['device'], 'endecrypt', 'info')
                         self.udisks2.unmount_device(partition['device'])
-                        partition['fs_type'] = fs_type
+                        partition_path = partition['device'].replace('/mapper', '')
                         partition['device'] = partition_path
                         partition['encrypted'] = False
-                        self.log.write("Save fs_type %s and partition_path %s of encrypted partition" % (partition['fs_type'], partition['device']), 'endecrypt', 'info')
+                        self.log.write("Save partition_path %s of encrypted partition" % (partition['device']), 'endecrypt', 'info')
                         step = (i + 1) * 3
-                        self.queue.put([1 / (total_steps / step), 0, None, None, None])
+                        self.queue.put([1 / (total_steps / step), 0, i, partition, None])
 
                     #Format
                     self.log.write("Start formatting %s" % partition['device'], 'endecrypt', 'info')
                     if self.format_partition(partition):
                         partition['uuid'] = get_uuid(partition['device'])
                         step = (i + 1) * 4
-                        self.queue.put([1 / (total_steps / step), 0, None, None, None])
+                        self.queue.put([1 / (total_steps / step), 0, i, partition, None])
                     else:
                         msg = _("Could not format the device {device}.\n"
                                 "You need to manually format the device and restore your data from: {backup_dir}".format(device=partition['device'], backup_dir=backup_dir))
@@ -93,24 +98,23 @@ class EnDecryptPartitions(threading.Thread):
                     mount = ''
                     if not is_swap:
                         self.log.write("Mount (for restoring backup) %s to %s" % (partition['device'], partition['mount_point']), 'endecrypt', 'info')
-                        device, mount, filesystem = mount_partition(partition['device'], partition['mount_point'], self.passphrase, partition['fs_type'])
+                        device, mount, filesystem = self.udisks2.mount_device(partition['device'], partition['mount_point'], None, None, self.passphrase)
                         step = (i + 1) * 5
                         self.queue.put([1 / (total_steps / step), 0, None, None, None])
 
                     restore_failed = False
                     if mount:
-                        # Make sure the user owns the pen drive
-                        if partition['removable']:
-                            user = get_logged_user()
-                            if user:
-                                shell_exec("chown -R {0}:{0} {1}".format(user, mount))
-                                step = (i + 1) * 6
-                                self.queue.put([1 / (total_steps / step), 0, None, None, None])
-
                         # Rsync backup to the encrytped/decrypted partition
                         self.log.write("Restore backup %s to %s" % (backup_dir, partition['mount_point']), 'endecrypt', 'info')
                         rsync_code = self.backup_partition(backup_dir, partition['mount_point'])
                         if rsync_code == 0:
+                            # Make sure the user owns the pen drive
+                            if partition['removable']:
+                                user = get_logged_user()
+                                if user:
+                                    shell_exec("chown -R {0}:{0} {1}".format(user, mount))
+                                    step = (i + 1) * 6
+                                    self.queue.put([1 / (total_steps / step), 0, None, None, None])
                             step = (i + 1) * 7
                             self.queue.put([1 / (total_steps / step), rsync_code, None, None, None])
                         else:
@@ -136,16 +140,14 @@ class EnDecryptPartitions(threading.Thread):
                             os.rmdir(luks_bak)
                         step = (i + 1) * 8
                         self.queue.put([1 / (total_steps / step), 0, None, None, None])
-                        
-            # Partition finished: pass the partition object back to the caller
-            step = (i + 1) * 9
-            self.queue.put([1 / (total_steps / step), 0, i, partition, None])
+
         # Done
         self.queue.put([1, 0, None, None, None])
             
     def format_partition(self, partition):
         device = partition['device']
         fs_type = partition['fs_type']
+        label = partition['label']
 
         if not fs_type:
             msg = _("Error formatting partition {0}:\n"
@@ -168,12 +170,32 @@ class EnDecryptPartitions(threading.Thread):
             cmd = "mkfs.%s %s" % (fs_type, device)  # works with bfs, btrfs, minix, msdos, ntfs
 
         self.log.write(cmd, 'format_partition')
-        shell_exec(cmd)
-        fs = get_filesystem(device)
-        if fs == fs_type:
+        ret = shell_exec(cmd)
+        if ret == 0:
+            self.set_label(device, fs_type, label)
+            # Always return True, even if setting the label didn't go right
             return True
+        self.log.write("Could not format the partition {} to {}".format(device, fs_type), 'format_partition', 'error')
         return False
         
+    def set_label(self, device, fs_type, label):
+        if label:
+            cmd = "e2label {} \"{}\"".format(device, label)
+            if fs_type == 'vfat':
+                cmd = "fatlabel {} \"{}\"".format(device, label)
+            elif fs_type == 'btrfs':
+                cmd = "btrfs filesystem label {} \"{}\"".format(device, label)
+            elif fs_type == 'ntfs':
+                cmd = "ntfslabel {} \"{}\"".format(device, label)
+            elif fs_type == 'swap':
+                cmd = "mkswap -L \"{}\" {}".format(label, device)
+            elif 'exfat' in fs_type:
+                cmd = "exfatlabel {} \"{}\"".format(device, label)
+
+            ret = shell_exec(cmd)
+            if ret > 0:
+                self.log.write("Could not write label \"{}\" to partition {}".format(label, device), 'set_label', 'warning')
+
     def backup_partition(self, source, destination):
         self.log.write("Backup %s to %s" % (source, destination), 'backup_partition', 'info')
         prev_sec = -1
@@ -184,8 +206,7 @@ class EnDecryptPartitions(threading.Thread):
         if destination[-1] != '/':
             destination += '/'
 
-        # assume: #(files to copy) ~= #(used inodes on /)
-        #cmd = "df --inodes {src} | awk '/^.+?\{src_esc}$/{{ print $3 }}'".format(src=source, src_esc=source.strip('/').replace('/', '\/'))
+        # Start syncing the files
         total_files = get_nr_files_in_dir(source)
         if total_files > 0:
             self.log.write("Copying {} files".format(total_files), "backup_partition", 'info')
@@ -205,13 +226,17 @@ class EnDecryptPartitions(threading.Thread):
                 if not line:
                     time.sleep(0.1)
                 else:
-                    current = min(current + 1, total_files)
-                    # Check if localtime is on the second to prevent flooding the queue
-                    sec = time.localtime()[5]
-                    if sec != prev_sec:
-                        val = round(1 / (total_files / current), 1)
-                        self.queue.put([val, 0, None, None, None])
-                        prev_sec = sec
+                    # Lazy check for a path in this line
+                    if '/' in line:
+                        current = min(current + 1, total_files)
+                        # Check if localtime is on the second to prevent flooding the queue
+                        sec = time.localtime()[5]
+                        if sec != prev_sec:
+                            # Truncate to two decimals (= round down to two decimals)
+                            val = math.floor((1 / (total_files / current) * 100)) / 100.0
+                            print(("%s - %s" % (str(val), line)))
+                            self.queue.put([val, 0, None, None, None])
+                            prev_sec = sec
 
             return rsync.poll()
         return 0

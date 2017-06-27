@@ -16,9 +16,6 @@
 1,0,replaceline,mirror.internode.on.net/pub/solydxk/debian,deb http://ftp.au.debian.org/debian jessie main contrib non-free
 1,0,replaceline,mirror.internode.on.net/pub/solydxk/packages,deb http://repository.solydxk.com/ solydxk main upstream import
 1,0,removeline,community.solydxk.com
-1,7,append,backports,deb http://ftp.debian.org/debian/ wheezy-backports main contrib non-free
-1,8,append,backports,deb http://ftp.debian.org/debian/ jessie-backports main contrib non-free
 1,8,replaceline, solydxk main,deb http://repository.solydxk.com/ solydxk-8 main upstream import
-1,9,append,backports,deb http://ftp.debian.org/debian/ stretch-backports main contrib non-free
 1,9,replaceline, solydxk main,deb http://repository.solydxk.com/ solydxk-9 main upstream import
 1,0,replace,httpredir,deb

@@ -8,7 +8,7 @@ import threading
 import operator
 import apt
 import filecmp
-from os import makedirs
+from os import walk, listdir
 from os.path import exists, isdir, expanduser,  splitext,  dirname
 
     
@@ -20,6 +20,7 @@ def shell_exec_popen(command, kwargs={}):
 
 def shell_exec(command):
     print(("Executing: %s" % command))
+    # Returns the returncode attribute
     return subprocess.call(command, shell=True)
 
 
@@ -338,29 +339,6 @@ def get_debian_version():
     return str_to_nr(out[0], True)
 
 
-def is_mounted(device):
-    ret = getoutput("grep '%s ' /proc/mounts" % device)[0]
-    if device in ret:
-        return True
-    return False
-
-
-def mount_device(device, mount_point, filesystem=None, options=None):
-    # Mount the device
-    if not exists(mount_point):
-        makedirs(mount_point, exist_ok=True)
-    if exists(mount_point):
-        if options:
-            if options[0:1] != '-':
-                options = '-o ' + options
-        else:
-            options = ''
-        filesystem = '-t ' + filesystem if filesystem else ''
-        cmd = "mount {options} {filesystem} {device} {mount_point}".format(**locals())
-        shell_exec(cmd)
-    return is_mounted(device)
-
-
 # Check for backports
 def get_backports(exclude_disabled=True):
     opt = ''
@@ -397,10 +375,16 @@ def comment_line(file_path, pattern, comment=True):
         shell_exec(cmd)
 
 
-def get_nr_files_in_dir(path):
+def get_nr_files_in_dir(path, recursive=True):
+    total = 0
     if isdir(path):
-        return str_to_nr(getoutput("find %s -type f | wc -l" % path)[0], True)
-    return 0
+        #return str_to_nr(getoutput("find %s -type f | wc -l" % path)[0], True)
+        if recursive:
+            for root, directories, filenames in walk(path):
+                total += len(filenames)
+        else:
+            total = len(listdir(path))
+    return total
 
 
 def get_logged_user():
@@ -418,6 +402,27 @@ def has_grub(path):
         print(("Grub installed on %s" % path))
         return True
     return False
+    
+    
+def get_uuid(partition_path):
+    return getoutput("blkid -o value -s UUID {}".format(partition_path))[0]
+
+
+def get_mount_point(partition_path):
+    return getoutput("lsblk -o MOUNTPOINT -n %s | grep -v '^$'" % partition_path)[0]
+
+
+def get_filesystem(partition_path):
+    return getoutput("blkid -o value -s TYPE %s" % partition_path)[0]
+
+
+def get_device_from_uuid(uuid):
+    uuid = uuid.replace('UUID=', '')
+    return getoutput("blkid -U {}".format(uuid))[0]
+
+
+def get_label(partition_path):
+    return getoutput("sudo blkid -o value -s LABEL %s" % partition_path)[0]
 
 
 # Class to run commands in a thread and return the output in a queue

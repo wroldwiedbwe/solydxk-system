@@ -10,8 +10,11 @@ from gi.repository import UDisks, GLib
 from os.path import exists, join, basename
 import os
 import time
-from utils import getoutput, shell_exec, has_grub
-from encryption import get_status, is_encrypted, unmount_partition
+from os import makedirs
+from utils import getoutput, shell_exec, has_grub, get_uuid, \
+                  get_mount_point, get_filesystem, get_label
+from encryption import get_status, is_encrypted, \
+                       is_connected, connect_block_device
 
 
 # Subclass dict class to overwrite the __missing__() method
@@ -70,12 +73,12 @@ class Udisks2():
                 mapper_path, luks_mount = self.get_luks_info(device_path)
                 if mapper_path:
                     device_path = mapper_path
-                    fs_type = self.get_filesystem(device_path)
+                    fs_type = get_filesystem(device_path)
                 else:
                     # Block object doesn't refresh correctly after decrypting
                     # block.call_rescan_sync doesn't do anything
                     # Fix with workaround:
-                    fs_type = self.get_filesystem(device_path)
+                    fs_type = get_filesystem(device_path)
 
             drive_path = self.get_drive_from_device_path(device_path)
 
@@ -98,7 +101,7 @@ class Udisks2():
                             mount_point = mount_points[0]
                         else:
                             # It can be manually mounted (with mount command)
-                            mount_point = self.get_mount_point(device_path)
+                            mount_point = get_mount_point(device_path)
                             if not mount_point:
                                 # If not mounted, temporally mount it to get needed info
                                 mount_point = self._mount_filesystem(fs)
@@ -130,8 +133,8 @@ class Udisks2():
                     add_device = True
 
                 if add_device:
-                    uuid = self.get_uuid(device_path)
-                    label = self.get_label(device_path)
+                    uuid = get_uuid(device_path)
+                    label = get_label(device_path)
                     grub = has_grub(device_path)
                     debug_title = "Device Info of: %s" % device_path
                     print(('========== %s ==========' % debug_title))
@@ -245,27 +248,80 @@ class Udisks2():
                     devices.append(d)
         return devices
 
-    def mount_device(self, device_path):
-        fs = self._get_filesystem(device_path)
-        if fs is not None:
-            mount = self._mount_filesystem(fs)
-            if mount != '':
-                # Set mount point and free space for this device
-                total, free, used = self.get_mount_size(mount)
-                self.devices[device_path]['mount_point'] = mount
-                self.devices[device_path]['free_size'] = free
-            return mount
-        return ''
-
-    def unmount_device(self, device_path):
-        if is_encrypted(device_path):
-            unmount_partition(device_path)
-        else:
+    def is_mounted(self, device_path):
+        ret = getoutput("grep '%s ' /proc/mounts" % device_path)[0]
+        if device_path in ret:
+            return True
+        return False
+    
+    def mount_device(self, device_path, mount_point=None, filesystem=None, options=None, passphrase=None):
+        if mount_point is None:
+            mount_point = ''
+        if filesystem is None:
+            filesystem = ''
+        if options is None:
+            options = ''
+        if passphrase is None:
+            passphrase = ''
+            
+        # Connect encrypted partition
+        connected = False
+        if passphrase:
+            if is_encrypted(device_path) and not is_connected(device_path):
+                device_path, filesystem = connect_block_device(device_path, passphrase)
+                
+        # Do not mount swap partition
+        if filesystem == 'swap':
+            print((">>>> swap partition: return device_path=%s, filesystem=%s" % (device_path, filesystem)))
+            return (device_path, '', filesystem)
+        
+        # Try udisks way if no mount point has been given
+        if not mount_point:
             fs = self._get_filesystem(device_path)
             if fs is not None:
-                return self._unmount_filesystem(fs)
+                mount = self._mount_filesystem(fs)
+                if mount != '':
+                    # Set mount point and free space for this device
+                    total, free, used = self.get_mount_size(mount)
+                    self.devices[device_path]['mount_point'] = mount
+                    self.devices[device_path]['free_size'] = free
+                    filesystem = get_filesystem(device_path)
+                    return (device_path, mount, filesystem)
+            # Try a temporary mount point on uuid
+            uuid = get_uuid(device_path)
+            if uuid:
+                mount_point = join('/media', uuid)
             else:
-                shell_exec("umount --force {}".format(device_path))
+                return (device_path, mount_point, filesystem)
+        
+        # Mount the device to the given mount point
+        if not exists(mount_point):
+            makedirs(mount_point, exist_ok=True)
+        if exists(mount_point):
+            if options:
+                if options[0:1] != '-':
+                    options = '-o ' + options
+            else:
+                options = ''
+            fs = '-t ' + filesystem if filesystem else ''
+            cmd = "mount {options} {fs} {device_path} {mount_point}".format(**locals())
+            shell_exec(cmd)
+        if self.is_mounted(device_path):
+            filesystem = get_filesystem(device_path)
+            return (device_path, mount_point, filesystem)
+        return (device_path, '', filesystem)
+
+    def unmount_device(self, device_path):
+        fs = self._get_filesystem(device_path)
+        if fs is not None:
+            self._unmount_filesystem(fs)
+        if self.is_mounted(device_path):
+            shell_exec("umount -f {}".format(device_path))
+        if is_encrypted(device_path):
+            shell_exec("cryptsetup close {} 2>/dev/null".format(device_path))
+        if not self.is_mounted(device_path):
+            return True
+        return False
 
     def unmount_drive(self, drive_path):
         for device_path in self.get_drive_device_paths(drive_path):
@@ -336,33 +392,17 @@ class Udisks2():
         used = ((st.f_blocks - st.f_bfree) * st.f_frsize) / 1024
         return (total, free, used)
 
-    def get_uuid(self, partition_path):
-        return getoutput("blkid -o value -s UUID {}".format(partition_path))[0]
-
-    def get_mount_point(self, partition_path):
-        return getoutput("lsblk -o MOUNTPOINT -n %s | grep -v '^$'" % partition_path)[0]
-
-    def get_filesystem(self, partition_path):
-        return getoutput("blkid -o value -s TYPE %s" % partition_path)[0]
-
-    def get_device_from_uuid(self, uuid):
-        uuid = uuid.replace('UUID=', '')
-        return getoutput("blkid -U {}".format(uuid))[0]
-
-    def get_label(self, partition_path):
-        return getoutput("sudo blkid -o value -s LABEL %s" % partition_path)[0]
-
     def get_luks_info(self, partition_path):
         mapper_path = ''
         mount_point = ''
         mapper = '/dev/mapper'
         mapper_name = getoutput("ls %s | grep %s$" % (mapper, basename(partition_path)))[0]
         if not mapper_name:
-            uuid = self.get_uuid(partition_path)
+            uuid = get_uuid(partition_path)
             if uuid:
                 mapper_name = getoutput("ls %s | grep %s$" % (mapper, uuid))[0]
         if mapper_name:
             mapper_path = join(mapper, mapper_name)
         if mapper_path:
-            mount_point = self.get_mount_point(mapper_path)
+            mount_point = get_mount_point(mapper_path)
         return (mapper_path, mount_point)

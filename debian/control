@@ -18,6 +18,7 @@ Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends}
   , python3
   , python3-gi
+  , python3-apt
   , gir1.2-gtk-3.0
   , aptitude
   , util-linux
@@ -33,6 +34,11 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , cryptsetup
   , udisks2
   , haveged
+  , ntfs-3g
+  , e2fsprogs
+  , btrfs-progs
+  , exfat-utils
+  , dosfstools
 Conflicts: solydkbo-grub2-theme,
   solydkbe-grub2-theme,
   solydxbe-grub2-theme,

@@ -1,8 +1,8 @@
-solydxk-system (3.0.0) solydxk; urgency=low
+solydxk-system (3.0.0b1.2) solydxk; urgency=low
 
-  * Include GUI to change SolydXK system settings (repositories, black listed packages)
+  * Include GUI to change SolydXK system settings
 
- -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 24 Apr 2017 11:02:40 +0200
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 19 Jun 2017 11:02:40 +0200
 
 solydxk-system (2.6.1) solydxk; urgency=low
 

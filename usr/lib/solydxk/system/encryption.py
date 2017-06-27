@@ -2,46 +2,43 @@
 
 import re
 from os.path import basename, exists, join
-from utils import shell_exec, getoutput, mount_device, is_mounted
+from utils import shell_exec, getoutput, get_uuid, \
+                  get_filesystem, get_device_from_uuid
+
+
+def unmount_device(device):
+    shell_exec("umount -f {}".format(device))
+    if is_connected(device):
+        shell_exec("cryptsetup close {} 2>/dev/null".format(device))
+    ret = getoutput("grep '%s ' /proc/mounts" % device)[0]
+    if not device in ret:
+        return True
+    return False
 
 
 def clear_partition(device):
-    if is_mounted(device):
-        unmount_partition(device)
-    shell_exec("openssl enc -aes-256-ctr -pass pass:\"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)\" -nosalt < /dev/zero > %s 2>/dev/null" % device)
+    if unmount_device(device):
+        shell_exec("openssl enc -aes-256-ctr -pass pass:\"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)\" -nosalt < /dev/zero > %s 2>/dev/null" % device)
 
 
 def encrypt_partition(device, passphrase):
-    if is_mounted(device):
-        unmount_partition(device)
-    # Cannot use echo to pass the passphrase to cryptsetup because that adds a carriadge return
-    shell_exec("printf \"%s\" | cryptsetup luksFormat --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random %s" % (passphrase, device))
-    return connect_block_device(device, passphrase)
+    if unmount_device(device):
+        # Cannot use echo to pass the passphrase to cryptsetup because that adds a carriadge return
+        shell_exec("printf \"%s\" | cryptsetup luksFormat --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random %s" % (passphrase, device))
+        mapped_device, filesystem = connect_block_device(device, passphrase)
+        return mapped_device
+    return ''
 
 
 def connect_block_device(device, passphrase):
     mapped_name = basename(device)
     shell_exec("printf \"{}\" | cryptsetup open --type luks {} {}".format(passphrase, device, mapped_name))
-    cur_status = get_status(device)
-    return (cur_status['active'], cur_status['filesystem'])
-
-
-def unmount_partition(device):
-    shell_exec("umount -lf {}".format(device))
-    if is_encrypted(device):
-        shell_exec("cryptsetup close {} 2>/dev/null".format(device))
-
-
-# Mount a (encrypted) partition - returns tuple (device, mount)
-def mount_partition(device, mount_point, passphrase, filesystem=None, options=None):
-    # Open the device if it is encrypted
-    if is_encrypted(device) and not is_connected(device):
-        device, filesystem = connect_block_device(device, passphrase)
-    if filesystem != 'swap':
-        if mount_device(device, mount_point, filesystem, options):
-            return (device, mount_point, filesystem)
-    return (device, '', filesystem)
-
+    # Collect info to return
+    mapped_device = join('/dev/mapper', mapped_name)
+    if exists(mapped_device):
+        filesystem = get_filesystem(mapped_device)
+        return (mapped_device, filesystem)
+    return ('', '')
 
 def is_connected(device):
     mapped_name = basename(device)
@@ -79,29 +76,20 @@ def get_status(device):
     return status_dict
 
 
-def get_filesystem(device):
-    return getoutput("blkid -o value -s TYPE {}".format(device))[0]
-
-
-def get_uuid(device):
-    return getoutput("blkid -o value -s UUID {}".format(device))[0]
-    
-
-def get_device_from_uuid(uuid):
-    uuid = uuid.replace('UUID=', '')
-    return getoutput("blkid -U {}".format(uuid))[0]
-    
-
 def create_keyfile(keyfile_path, device, passphrase):
     # Note: do this outside the chroot.
     # https://www.martineve.com/2012/11/02/luks-encrypting-multiple-partitions-on-debianubuntu-with-a-single-passphrase/
     if not exists(keyfile_path):
         shell_exec("dd if=/dev/urandom of=%s bs=1024 count=4" % keyfile_path)
         shell_exec("chmod 0400 %s" % keyfile_path)
+    # Remove any keys for this device first
+    shell_exec("printf \"%s\" | cryptsetup luksRemoveKey %s %s" % (passphrase, device, keyfile_path))
+    # Now add the new key for this device
     shell_exec("printf \"%s\" | cryptsetup luksAddKey %s %s" % (passphrase, device, keyfile_path))
 
 
 def write_crypttab(device, fs_type, crypttab_path=None, keyfile_path=None, remove_device=False):
+    #print(("++++ device=%s, fs_type=%s, crypttab_path=%s, keyfile_path=%s, remove_device=%s" % (device, fs_type, str(crypttab_path), str(keyfile_path), str(remove_device))))
     if crypttab_path is None or not '/' in crypttab_path:
         crypttab_path = '/etc/crypttab'
     device = device.replace('/mapper', '')
@@ -119,6 +107,8 @@ def write_crypttab(device, fs_type, crypttab_path=None, keyfile_path=None, remov
         if fs_type == 'swap':
             swap = 'swap,'
         new_line = "%s %s %s %sluks,timeout=60\n" % (basename(device), crypttab_uuid, keyfile_path, swap)
+        
+    #print(("++++ new_line=%s" % new_line))
 
     # Create new crypttab contents
     cont = ''
@@ -131,10 +121,14 @@ def write_crypttab(device, fs_type, crypttab_path=None, keyfile_path=None, remov
     else:
         if not remove_device:
             cont += new_line
+            
+    #print(("++++ cont=%s" % cont))
 
-    # Save the new fstab
+    # Save the new crypttab
     with open(crypttab_path, 'w') as f:
         f.write(cont)
+        
+    #print(("++++ write_crypttab done"))
 
 
 # Returns dictionary {device: {target_name, uuid, key_file}}

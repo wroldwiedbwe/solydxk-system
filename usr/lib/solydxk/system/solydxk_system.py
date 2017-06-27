@@ -17,14 +17,14 @@ from combobox import ComboBoxHandler
 # abspath, dirname, join, expanduser, exists, basename
 from os.path import join, abspath, dirname, isdir, exists, basename
 from utils import getoutput, ExecuteThreadedCommands, \
-                 shell_exec, human_size, has_internet_connection, \
-                 get_backports, get_debian_name, comment_line, \
-                 in_virtualbox, get_apt_force, is_running_live
+                  shell_exec, human_size, has_internet_connection, \
+                  get_backports, get_debian_name, comment_line, \
+                  in_virtualbox, get_apt_force, is_running_live, \
+                  get_device_from_uuid, get_label
 from dialogs import MessageDialog, QuestionDialog, InputDialog, \
                     WarningDialog
 from mirror import MirrorGetSpeed, Mirror, get_mirror_data, get_local_repos
-from encryption import is_encrypted, mount_partition, create_keyfile, \
-                       write_crypttab
+from encryption import is_encrypted, create_keyfile, write_crypttab
 from endecrypt_partitions import EnDecryptPartitions
 
 # i18n: http://docs.python.org/3/library/gettext.html
@@ -105,7 +105,7 @@ class SolydXKSystemSettings(object):
                                             "Note: you can Ctrl-left click to select multiple partitions."))
         go("lblLocaleInfo").set_label(_("Configure your locales (one as default) and time zone.\n"
                                         "Note: make sure you have an internet connection to localize your software."))
-        go("lblBackportsInfo").set_label(_("Enable the Backports repostiroy if you need a newer software version.\n"
+        go("lblBackportsInfo").set_label(_("Enable the Backports repository if you need a newer software version.\n"
                                            "Warning: installing software from the backports repository may de-stabalize your system.\n"
                                            "Use at your own risk!"))
         go("lblMirrorsInfo").set_label(_("Select the fastest repository for your updates.\n"
@@ -165,6 +165,7 @@ class SolydXKSystemSettings(object):
         self.endecrypt_success = True
         self.encrypt = False
         self.failed_mount_devices = []
+        self.boot_partition = None
 
         if self.backports[0]:
             self.chkEnableBackports.set_active(True)
@@ -184,6 +185,9 @@ class SolydXKSystemSettings(object):
             self.nbPref.get_nth_page(1).set_visible(False)
             self.nbPref.get_nth_page(3).set_visible(False)
             self.nbPref.get_nth_page(4).set_visible(False)
+        
+        # Disable this for later implementation
+        self.btnCreateKeyfile.set_visible(False)
 
         # Connect the signals and show the window
         self.builder.connect_signals(self)
@@ -315,6 +319,7 @@ class SolydXKSystemSettings(object):
                             if current_passphrase:
                                 device, mount, filesystem = self.temp_mount(p, current_passphrase)
                                 if mount:
+                                    p['passphrase'] = current_passphrase
                                     p['device'] = device
                                     p['mount_point'] = mount
                                     p['fs_type'] = filesystem
@@ -335,6 +340,7 @@ class SolydXKSystemSettings(object):
                         if current_passphrase:
                             device, mount, filesystem = self.temp_mount(p, current_passphrase)
                             if mount:
+                                p['passphrase'] = current_passphrase
                                 p['device'] = device
                                 p['mount_point'] = mount
                                 p['fs_type'] = filesystem
@@ -364,12 +370,22 @@ class SolydXKSystemSettings(object):
             GObject.timeout_add(5, self.check_thread, name)
 
     def change_passphrase(self):
+        
+        # TODO: Thread this to update the progress bar
+        
+        changed_devices = []
+        nr_devices = len(self.my_partitions)
+        cnt = 0
+        
+        if nr_devices == 0:
+            return
+        
         # Check passphrase first
         if not self.my_passphrase:
             # Message user for passphrase
             MessageDialog(self.btnChangePassphrase.get_label(), self.no_passphrase_msg)
             return
-
+            
         for p in self.my_partitions:
             if not p['encrypted']:
                 # Message the user that the partition is not encrypted
@@ -378,42 +394,60 @@ class SolydXKSystemSettings(object):
                 MessageDialog(self.btnChangePassphrase.get_label(), msg)
                 return
 
+        for p in self.my_partitions:
+            # Update progress
+            cnt += 1
+            self.update_progress(1 / (nr_devices / cnt))
+            
             # Unmount first
-            self.udisks2.unmount_device(p['device'])
+            if self.udisks2.unmount_device(p['device']):
+                device = p['device'].replace('/mapper', '')
+                # Create key file
+                with open('/KEY', 'w') as f:
+                    f.write(self.my_passphrase)
 
-            # Create key file
-            with open('/KEY', 'w') as f:
-                f.write(self.my_passphrase)
+                # Get the current passphrase from the user
+                pf_changed = False
+                current_passphrase = p['passphrase']
+                if not current_passphrase:
+                    current_passphrase = self.get_passphrase_dialog(device)
+                if current_passphrase:
+                    # Change passphrase
+                    cmd = "echo '%s' | cryptsetup luksChangeKey %s %s" % (current_passphrase, device, '/KEY')
+                    if shell_exec(cmd) == 0:
+                        # Save the passphrase
+                        p['passphrase'] = self.my_passphrase
+                        pf_changed = True
 
-            # Get the current passphrase from the user
-            pf_changed = False
-            current_passphrase = self.get_passphrase_dialog(p['device'])
-            if current_passphrase:
-                # Change passphrase
-                cmd = "echo '%s' | cryptsetup luksChangeKey %s %s" % (current_passphrase, p['device'], '/KEY')
-                shell_exec(cmd)
-                pf_changed = True
+                # Remove the key file
+                os.remove('/KEY')
 
-            # Remove the key file
-            os.remove('/KEY')
-
-            # Check for key file
-            if pf_changed:
-                if p['crypttab_keyfile_path']:
-                    keyfile_path = join(p['mount_point'], p['crypttab_keyfile_path'].lstrip('/'))
-                    print((">> keyfile_path = %s" % keyfile_path))
-                    if exists(keyfile_path):
-                        self.log.write("Keyfile_path = %s" % keyfile_path, 'change_passphrase')
-                        create_keyfile(keyfile_path, p['device'], self.my_passphrase)
-                    else:
-                        self.log.write("Keyfile not changed: %s - path not found" % keyfile_path, 'change_passphrase', 'error')
-                msg = _("Passphrase changed for {0}.".format(p['device']))
-                MessageDialog(self.btnChangePassphrase.get_label(), msg)
-            else:
-                msg = _("Could not change the passphrase for {0}\n"
-                        "Please, provide the current and new passphrase.".format(p['device']))
-                self.log.write(msg, 'change_passphrase', 'error')
-
+                # Check for key file
+                if pf_changed:
+                    if 'lukskey' in p['keyfile_path']:
+                        if exists(p['keyfile_path']):
+                            self.log.write("Keyfile_path = %s" % p['keyfile_path'], 'change_passphrase')
+                            create_keyfile(p['keyfile_path'], device, p['passphrase'])
+                        else:
+                            self.log.write("Keyfile not changed: %s - path not found" % p['keyfile_path'], 'change_passphrase', 'error')
+                    changed_devices.append(device)
+                    
+                else:
+                    msg = _("Could not change the passphrase for {0}\n"
+                            "Please, provide the current and new passphrase.".format(device))
+                    self.log.write(msg, 'change_passphrase', 'error')
+            
+                # Re-mount the partition
+                if p['mount_point']:
+                    device, mount, filesystem = self.udisks2.mount_device(device, p['mount_point'], None, None, p['passphrase'])
+                    if not mount:
+                        p['mount_point'] = ''
+                        self.log.write(self.mount_error.format(device), 'change_passphrase', 'error')
+                        
+        if changed_devices:
+            msg = _("Passphrase changed for {0}.".format(', '.join(changed_devices)))
+            MessageDialog(self.btnChangePassphrase.get_label(), msg)
+            
     def is_active_swap_partition(self, device):
         out = getoutput('grep "{}" /proc/swaps'.format(device))[0]
         if out:
@@ -448,6 +482,7 @@ class SolydXKSystemSettings(object):
                                                 'free_size': device['free_size'],
                                                 'used_size': device['used_size'],
                                                 'encrypted': is_encrypted(device_path),
+                                                'passphrase': '',
                                                 'mount_point': device['mount_point'],
                                                 'old_mount_point': device['mount_point'],
                                                 'uuid': device['uuid'],
@@ -458,15 +493,13 @@ class SolydXKSystemSettings(object):
         self.failed_mount_devices = []
         for partition in tmp_partitions:
             # Get fstab information
-            fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, crypttab_target_name, crypttab_uuid, crypttab_keyfile_path = self.get_partition_configuration_info(partition, tmp_partitions)
+            fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, keyfile_path = self.get_partition_configuration_info(partition, tmp_partitions)
             partition['fstab_path'] = fstab_path
             partition['fstab_device'] = fstab_device
             partition['fstab_mount'] = fstab_mount
             partition['fstab_cont'] = fstab_cont
             partition['crypttab_path'] = crypttab_path
-            partition['crypttab_target_name'] = crypttab_target_name
-            partition['crypttab_uuid'] = crypttab_uuid
-            partition['crypttab_keyfile_path'] = crypttab_keyfile_path
+            partition['keyfile_path'] = keyfile_path
 
             # Only add swap and root if /boot is configured in fstab
             can_encrypt = False
@@ -478,11 +511,13 @@ class SolydXKSystemSettings(object):
                     if line[:1] != '#':
                         can_encrypt = True
                         break
+            elif fstab_mount == '/boot':
+                    self.boot_partition = partition
             elif not '/boot' in fstab_mount:
                 can_encrypt = True
 
             if can_encrypt:
-                print("---- partition = %s" % str(partition))
+                print(">>> partition = %s" % str(partition))
                 self.partitions.append(partition)
 
         # Sort the list with dictionaries
@@ -528,6 +563,9 @@ class SolydXKSystemSettings(object):
             self.my_passphrase = pf1
 
     def get_backup_partition(self):
+        # Set a safe margin to have extra available on the backup partition
+        safe_margin_kb = 10240
+        
         # Search for mounted partition with enough space to backup the selected partition
         bak_str = _("Backup")
         system_partitions = ['/home', '/']
@@ -538,6 +576,9 @@ class SolydXKSystemSettings(object):
         for my_p in self.my_partitions:
             if my_p['fs_type'] != 'swap':
                 used_size += my_p['used_size']
+                
+        # Add the safe margin
+        used_size += safe_margin_kb
 
         # First check booted system partitions
         for my_p in self.my_partitions:
@@ -618,79 +659,118 @@ class SolydXKSystemSettings(object):
         
     def get_partition_configuration_info(self, partition, partitions):
         fstab_paths = ['/etc/fstab']
-        if is_running_live():
-            # Search for fstab file if you're in a live session
-            for p in partitions:
-                if not p['mount_point'] \
-                   and p['fs_type'] != 'swap' \
-                   and p['device'] not in self.failed_mount_devices:
-                    print(("++++ p = %s" % str(p)))
-                    current_passphrase = ''
-                    if p['encrypted']:
-                        # This is an encrypted, not mounted partition.
-                        # Ask the user for the passphrase
-                        current_passphrase = self.get_passphrase_dialog(p['device'])
-                    device, mount, filesystem = self.temp_mount(p, current_passphrase)
-                    if mount:
-                        p['mount_point'] = mount
-                        p['fs_type'] = filesystem
-                    else:
-                        show_error = True
-                        if p['fs_type'] == 'swap':
-                            show_error = False
-                        self.log.write(self.mount_error.format(p['device']), 'get_partition_configuration_info', 'error', show_error)
-                        if p['device'] not in self.failed_mount_devices:
-                            self.failed_mount_devices.append(p['device'])
-                if p['mount_point']:
-                    # Add fstab path
-                    fstab_paths.append(join(p['mount_point'], 'etc/fstab'))
+
+        # Search for fstab file if you're in a live session
+        for p in partitions:
+            if not p['mount_point'] \
+               and p['fs_type'] != 'swap' \
+               and p['device'] not in self.failed_mount_devices:
+                current_passphrase = ''
+                if p['encrypted']:
+                    # This is an encrypted, not mounted partition.
+                    # Ask the user for the passphrase
+                    current_passphrase = self.get_passphrase_dialog(p['device'])
+                device, mount, filesystem = self.temp_mount(p, current_passphrase)
+                
+                # Save necessary information
+                p['fs_type'] = filesystem
+                p['passphrase'] = current_passphrase
+                p['device'] = device
+                
+                if mount:
+                    #print((">> Save %s: mount=%s, fs_type=%s" % (device, mount, filesystem)))
+                    p['mount_point'] = mount
+
+                    # Get free_size from mapped path
+                    total, free, used = self.udisks2.get_mount_size(mount)
+                    p['free_size'] = free
+                    p['used_size'] = used
+                    
+                    # Get label
+                    p['label'] = get_label(device)
+                    
+                #print(("++++ p = %s" % str(p)))
+                if not mount:
+                    show_error = True
+                    print((">>>> Could not mount %s (%s)" % (p['device'], p['fs_type'])))
+                    if 'crypt' in p['fs_type'] or p['fs_type'] == 'swap' or p['fs_type'] == '':
+                        # Don't show error
+                        show_error = False
+                    self.log.write(self.mount_error.format(p['device']), 'get_partition_configuration_info', 'error', show_error)
+                    if p['device'] not in self.failed_mount_devices:
+                        self.failed_mount_devices.append(p['device'])
+            if p['mount_point']:
+                # Add fstab path
+                fstab_path = join(p['mount_point'], 'etc/fstab')
+                if exists(fstab_path) and not fstab_path in fstab_paths:
+                    fstab_paths.append(fstab_path)
             
         # Check if given partition is listed in /etc/fstab
         for fstab_path in fstab_paths:
-            if exists(fstab_path):
-                fstab_cont = self.sort_fstab(fstab_path)
-                fstab_mount = ''
-                
-                fstab_device = partition['old_device'].replace('/dev/mapper', '/dev')
-                if not 'mapper' in fstab_device:
-                    fstab_device = fstab_device.replace('/dev', '/dev/mapper')
+            fstab_cont = self.sort_fstab(fstab_path)
+            fstab_mount = ''
+            
+            fstab_device = partition['old_device'].replace('/dev/mapper', '/dev')
+            if not 'mapper' in fstab_device:
+                fstab_device = fstab_device.replace('/dev', '/dev/mapper')
 
-                regexp = "(%s|%s|%s)\s+(\S+)" % ("UUID=%s" % partition['old_uuid'], partition['old_device'], fstab_device)
-                matchObj = re.search(regexp, fstab_cont)
-                if matchObj:
-                    fstab_device = matchObj.group(1)
-                    fstab_mount = matchObj.group(2)
-                if fstab_mount:
-                    crypttab_path = ''
-                    crypttab_target_name = ''
-                    crypttab_uuid = ''
-                    crypttab_keyfile_path = ''
-                    if p['encrypted']:
-                        crypttab_path = fstab_path.replace('fstab', 'crypttab')
-                        if exists(crypttab_path):
-                            lines = []
-                            with open(crypttab_path, 'r') as f:
-                                lines = f.readlines()
-                            for line in lines:
-                                line = line.strip()
-                                lineData = line.split()
-                                print(("++++ lineData=%s" % str(lineData)))
-                                matchObj = re.search('[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', lineData[1])
-                                if matchObj:
-                                    crypttab_uuid = matchObj.group(0)
-                                    print(("++++ crypttab_uuid=%s" % crypttab_uuid))
-                                    device = self.udisks2.get_device_from_uuid(crypttab_uuid)
-                                    print(("++++ device=%s, partition['device']=%s" % (device, partition['device'])))
-                                    if basename(device) == basename(partition['device']):
-                                        crypttab_target_name = lineData[0]
-                                        crypttab_keyfile_path = lineData[2]
-                                        if crypttab_keyfile_path == 'none':
-                                            crypttab_keyfile_path = ''
-                                        break
-                    return (fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, crypttab_target_name, crypttab_uuid, crypttab_keyfile_path)
+            regexp = "(%s|%s|%s)\s+(\S+)" % ("UUID=%s" % partition['old_uuid'], partition['old_device'], fstab_device)
+            #print(("++++ regexp = %s" % regexp))
+            matchObj = re.search(regexp, fstab_cont)
+            if matchObj:
+                fstab_device = matchObj.group(1)
+                fstab_mount = matchObj.group(2)
+            if fstab_mount:
+                # Set fs_type for swap partitions
+                if fstab_mount == 'swap':
+                    partition['fs_type'] = 'swap'
+                    
+                # Get encryption information
+                crypttab_path = ''
+                keyfile_path = ''
+                #print(("**** crypttab partition: %s" % str(partition)))
+                if partition['encrypted']:
+                    crypttab_path = fstab_path.replace('fstab', 'crypttab')
+                    #print(("++++ crypttab_path=%s" % crypttab_path))
+                    if exists(crypttab_path):
+                        lines = []
+                        with open(crypttab_path, 'r') as f:
+                            lines = f.readlines()
+                        for line in lines:
+                            line = line.strip()
+                            lineData = line.split()
+                            #print(("++++ lineData=%s" % str(lineData)))
+                            matchObj = re.search('[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', lineData[1])
+                            if matchObj:
+                                crypttab_uuid = matchObj.group(0)
+                                #print(("++++ crypttab_uuid=%s" % crypttab_uuid))
+                                device = get_device_from_uuid(crypttab_uuid)
+                                #print(("++++ device=%s, partition['device']=%s" % (device, partition['device'])))
+                                if basename(device) == basename(partition['device']):
+                                    # Get crypttab data
+                                    crypttab_keyfile_path = lineData[2]
+                                    if crypttab_keyfile_path == 'none':
+                                        crypttab_keyfile_path = ''
+                                    if crypttab_keyfile_path:
+                                        # Search the keyfile path
+                                        crypttab_keyfile_dir = dirname(crypttab_keyfile_path)
+                                        regexp = "([0-9a-z-/]+)\s+{0}\s+".format(crypttab_keyfile_dir.replace('/', '\/'))
+                                        #print((">>> regexp = %s" % regexp))
+                                        matchObj = re.search(regexp, fstab_cont)
+                                        if matchObj:
+                                            keyfile_device = matchObj.group(1)
+                                            if keyfile_device[:1] != '/':
+                                                keyfile_device = get_device_from_uuid(keyfile_device)
+                                            #print((">>> keyfile_device = %s" % keyfile_device))
+                                            for p in self.partitions:
+                                                if basename(p['device']) == basename(keyfile_device):
+                                                    keyfile_path = join(p['mount_point'], crypttab_keyfile_path.lstrip('/'))
+                                                    break
+                                    break
+                return (fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, keyfile_path)
                 
         # Nothing found
-        return ('', '', '', '', '', '', '', '')
+        return ('', '', '', '', '', '')
 
     def write_partition_configuration(self, keyfile_only=False):
         keyfile_path = ''
@@ -699,7 +779,7 @@ class SolydXKSystemSettings(object):
         saved_fstabs = {}
         grub_partitions = []
         root_devices = []
-
+        
         # Make sure to only write those partitions that are already in fstab
         for p in self.my_partitions:
             # Get fstab path for this partition
@@ -736,9 +816,8 @@ class SolydXKSystemSettings(object):
                 if not keyfile_path and p['fs_type'] != 'swap':
                     skip_keyfile_config = True
                     keyfile_path = join(p['mount_point'], '.lukskey')
-                    self.log.write("Path to luks key file: %s" % keyfile_path, 'write_partition_configuration', 'info')
                     crypttab_keyfile_path = join(p['fstab_mount'], '.lukskey')
-                    self.log.write("Crypttab luks key file path: %s" % crypttab_keyfile_path, 'write_partition_configuration', 'info')
+                    
             # Create a dictionary with the info
             info_dict = {}
             info_dict['device'] = p['device']
@@ -746,7 +825,10 @@ class SolydXKSystemSettings(object):
             info_dict['fstab_path'] = p['fstab_path']
             info_dict['keyfile_path'] = ''
             info_dict['crypttab_keyfile_path'] = ''
+            info_dict['passphrase'] = p['passphrase']
             if not skip_keyfile_config:
+                self.log.write("Path to luks key file: %s" % keyfile_path, 'write_partition_configuration', 'info')
+                self.log.write("Crypttab luks key file path: %s" % crypttab_keyfile_path, 'write_partition_configuration', 'info')
                 info_dict['keyfile_path'] = keyfile_path
                 info_dict['crypttab_keyfile_path'] = crypttab_keyfile_path
             
@@ -754,7 +836,7 @@ class SolydXKSystemSettings(object):
             encrypt_info.append(info_dict)
 
             # Crypttab
-            if not p['encrypted']:
+            if not p['encrypted'] and not keyfile_only:
                 # Remove device from crypttab
                 bn = basename(p['device'])
                 self.log.write("Remove %s from %s" % (bn, p['crypttab_path']), 'write_partition_configuration', 'info')
@@ -785,21 +867,19 @@ class SolydXKSystemSettings(object):
                 # Fstab
                 with open(enc_dict['fstab_path'], 'w') as f:
                     f.write(saved_fstabs[enc_dict['fstab_path']])
-                    
-                #Fix grub in VirtualBox by disabling Plymouth
-                if in_virtualbox() and self.encrypt:
-                    grub_path = enc_dict['fstab_path'].replace('fstab', 'default/grub')
-                    grubcfg_path = enc_dict['fstab_path'].replace('etc/fstab', 'boot/grub/grub.cfg')
-                    self.log.write("Fix Grub in VirtualBox: %s and %s" % (grub_path, grubcfg_path), 'write_partition_configuration', 'info')
-                    shell_exec("sed -i 's/ *splash *//g' %s" % grub_path)
-                    shell_exec("sed -i 's/ *splash *//g' %s" % grubcfg_path)
-            
+
             # Key file
             if enc_dict['keyfile_path']:
-                create_keyfile(enc_dict['keyfile_path'], enc_dict['device'].replace('/mapper', ''), self.my_passphrase)
+                pf = self.my_passphrase
+                if keyfile_only and enc_dict['passphrase']:
+                    pf = enc_dict['passphrase']
+                if pf:
+                    create_keyfile(enc_dict['keyfile_path'], enc_dict['device'].replace('/mapper', ''), pf)
 
+            #print(("++++ keyfile_only=%s" % str(keyfile_only)))
             if not keyfile_only:
                 # Crypttab
+                #print(("++++ Start write_crypttab"))
                 write_crypttab(enc_dict['device'].replace('/mapper', ''), enc_dict['fs_type'], p['crypttab_path'], enc_dict['crypttab_keyfile_path'], not self.encrypt)
 
                 # Log crypttab
@@ -808,17 +888,44 @@ class SolydXKSystemSettings(object):
                     with open(p['crypttab_path'], 'r') as f:
                         self.log.write(f.read(), 'write_partition_configuration', 'info')
                     self.log.write('=' * 25, 'write_partition_configuration', 'info')
+                    
+        # Get the grub path to fix VirtualBox by disabling Plymouth
+        if in_virtualbox() and self.encrypt:
+            grub_path = ''
+            grubcfg_path = ''
+            for p in self.partitions:
+                #print(("---- %s" % str(p)))
+                if p['fstab_mount'] == '/':
+                    grub_path = join(p['mount_point'], 'etc/default/grub')
+                    grubcfg_path = join(p['mount_point'], 'boot/grub/grub.cfg')
+                    break
+            if not self.boot_partition is None:
+                mount = self.boot_partition['mount_point']
+                if not mount:
+                    self.log.write("Mount /boot partition %s" % self.boot_partition['device'], 'write_partition_configuration', 'info')
+                    device, mount, filesystem = self.temp_mount(p, self.my_passphrase)
+                if mount:
+                    grubcfg_path = join(self.boot_partition['mount_point'], 'grub/grub.cfg')
+
+            #print((">>> grub_path=%s, grubcfg_path=%s" % (grub_path, grubcfg_path)))
+            if grub_path and grubcfg_path:
+                self.log.write("Fix Grub in VirtualBox: %s and %s" % (grub_path, grubcfg_path), 'write_partition_configuration', 'info')
+                shell_exec("sed -i 's/ *splash *//g' %s" % grub_path)
+                shell_exec("sed -i 's/ *splash *//g' %s" % grubcfg_path)
 
         if not keyfile_only:
+            pf = ''
+            if self.encrypt:
+                pf = self.my_passphrase
             # Restore Grub when encrypting a root device
             for grub_partition in grub_partitions:
                 cmd = "grub-install --force %s;exit" % grub_partition
-                shell_exec("chroot-partition %s \"%s\" \"%s\"" % (grub_partition, self.my_passphrase, cmd))
+                shell_exec("chroot-partition %s \"%s\" \"%s\"" % (grub_partition, pf, cmd))
             for root_device in root_devices:
                 if not grub_partitions:
                     cmd = "grub-install --force %s;" % root_device.rstrip('0123456789')
                 cmd += "update-initramfs -u;update-grub;exit"
-                shell_exec("chroot-partition %s \"%s\" \"%s\"" % (root_device, self.my_passphrase, cmd))
+                shell_exec("chroot-partition %s \"%s\" \"%s\"" % (root_device, pf, cmd))
 
     # ===============================================
     # Localization functions
@@ -1234,11 +1341,15 @@ class SolydXKSystemSettings(object):
                             self.endecrypt_success = False
                         if ret[2] is not None and ret[3] is not None:
                             # Replace old partition with new partition in my_partitions
+#                            print(("**** Replace %s" % self.my_partitions[ret[2]]))
+#                            print(("**** with %s" % ret[3]))
+#                            print(("**** Result: %s" % self.my_partitions[ret[2]]))
                             self.my_partitions[ret[2]] = ret[3]
                 self.queue.task_done()
             return True
 
         # Thread is done
+        print(("Thread %s ended" % name))
         if not self.queue.empty():
             ret = self.queue.get()
             if ret:
@@ -1254,6 +1365,9 @@ class SolydXKSystemSettings(object):
                         self.endecrypt_success = False
                     if ret[2] is not None and ret[3] is not None:
                         # Replace old partition with new partition in my_partitions
+#                        print(("**** Replace %s" % self.my_partitions[ret[2]]))
+#                        print(("**** with %s" % ret[3]))
+#                        print(("**** Result: %s" % self.my_partitions[ret[2]]))
                         self.my_partitions[ret[2]] = ret[3]
             self.queue.task_done()
         del self.threads[name]
@@ -1276,16 +1390,6 @@ class SolydXKSystemSettings(object):
             if self.endecrypt_success:
                 # Write all needed configuration
                 self.write_partition_configuration()
-                
-                # Unmount temp mounts and remove 
-                for p in self.partitions:
-                    if TMPMOUNT in p['mount_point']:
-                        try:
-                            self.udisks2.unmount_device(p['device'])
-                            self.log.write("Remove temporary mount point: %s" % p['mount_point'], 'check_thread', 'info')
-                            os.rmdir(p['mount_point'])
-                        except Exception as e:
-                            self.log.write("ERROR: %s" %e, 'check_thread')
                 
                 # Ask to reboot
                 answer = False
@@ -1353,7 +1457,7 @@ class SolydXKSystemSettings(object):
         passphrase_text = _("Please, provide the current passphrase\n"
                             "for the encrypted partition")
         pf_dialog = InputDialog(title=passphrase_title,
-                    text="%s:\n%s" % (passphrase_text, device_path),
+                    text="%s:\n\n<b>%s</b>" % (passphrase_text, device_path),
                     is_password=True)
         return pf_dialog.show().strip()
         
@@ -1371,8 +1475,26 @@ class SolydXKSystemSettings(object):
             
     def temp_mount(self, partition, passphrase=''):
         mount_point =  join(TMPMOUNT, basename(partition['device']))
-        return mount_partition(partition['old_device'], mount_point, passphrase, partition['fs_type'])
+        return self.udisks2.mount_device(partition['old_device'], mount_point, None, None, passphrase)
+        
+    def temp_unmount_all(self):
+        # Unmount temp mounts and remove
+        tmp_mounts = getoutput("grep '%s' /proc/mounts | awk '{print $1,$2}'" % TMPMOUNT)
+        for tmp_mount in tmp_mounts:
+            try:
+                device, mount = tmp_mount.split()
+                try:
+                    if self.udisks2.unmount_device(device):
+                        self.log.write("Remove temporary mount point: %s" % mount, 'temp_unmount_all', 'info')
+                        os.rmdir(mount)
+                    else:
+                        self.log.write("Unable to remove temporary mount point: %s" % mount, 'temp_unmount_all', 'warning')
+                except Exception as e:
+                    self.log.write("ERROR: %s" %e, 'temp_unmount_all')
+            except:
+                pass
 
     # Close the gui
     def on_windowPref_destroy(self, widget):
+        self.temp_unmount_all()
         Gtk.main_quit()

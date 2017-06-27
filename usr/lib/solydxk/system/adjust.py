@@ -111,13 +111,13 @@ try:
                         log.write("link %s created to %s" % (link,  destination),  'link')
 
     # Restore LSB information
-    distribid = getoutput("grep DISTRIB_ID /usr/share/solydxk/info")[0].strip()
-    if not has_string_in_file(distribid, "/etc/lsb-release"):
+    codename = getoutput("grep CODENAME /usr/share/solydxk/info")[0].strip()
+    if not has_string_in_file(codename, "/etc/lsb-release"):
         with open("/etc/lsb-release", "w") as f:
-            f.writelines(distribid + "\n")
-            f.writelines("DISTRIB_" + getoutput("grep \"RELEASE=\" /usr/share/solydxk/info")[0] + "\n")
-            f.writelines("DISTRIB_" + getoutput("grep CODENAME /usr/share/solydxk/info")[0] + "\n")
-            f.writelines("DISTRIB_" + getoutput("grep DESCRIPTION /usr/share/solydxk/info")[0] + "\n")
+            f.writelines(getoutput("grep DISTRIB_ID /usr/share/solydxk/info")[0].strip() + "\n")
+            f.writelines("DISTRIB_" + getoutput("grep \"RELEASE=\" /usr/share/solydxk/info")[0].strip() + "\n")
+            f.writelines("DISTRIB_" + codename + "\n")
+            f.writelines("DISTRIB_" + getoutput("grep DESCRIPTION /usr/share/solydxk/info")[0].strip() + "\n")
         log.write("/etc/lsb-release overwritten",  'lsb-release')
 
     # Restore /etc/issue and /etc/issue.net
