@@ -1,3 +1,9 @@
+solydxk-system (3.0.0b1.3) solydxk; urgency=low
+
+  * Include /etc/initramfs-tools/conf.d/resume
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 29 Jun 2017 14:10:59 +0200
+
 solydxk-system (3.0.0b1.2) solydxk; urgency=low
 
   * Include GUI to change SolydXK system settings

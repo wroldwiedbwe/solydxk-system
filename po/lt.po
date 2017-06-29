@@ -1,18 +1,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
-# Moo, 2016
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: updatemanager\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-27 12:24+0200\n"
-"PO-Revision-Date: 2016-07-06 10:07+0000\n"
-"Last-Translator: Moo\n"
-"Language-Team: Lithuanian (http://www.transifex.com/solydxk/updatemanager/"
-"language/lt/)\n"
+"POT-Creation-Date: 2017-06-29 14:11+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Moo <moose@mail.ru>, 2017\n"
+"Language-Team: Lithuanian (https://www.transifex.com/solydxk/teams/54212/"
+"lt/)\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,23 +25,21 @@ msgid "Unexpected error"
 msgstr "Netikėta klaida"
 
 #: ../usr/lib/solydxk/system/main.py:45
-#, fuzzy
 msgid ""
 "SolydXK System Settings has failed with the following unexpected error. "
 "Please submit a bug report!"
 msgstr ""
-"Atnaujinimų tvarkytuvė patyrė nesėkmę su šia netikėta klaida. Prašome "
+"SolydXK sistemos nustatymai patyrė nesėkmę su šia netikėta klaida. Prašome "
 "pranešti apie klaidą!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:90
 #: ../usr/share/applications/solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
-msgstr ""
+msgstr "SolydXK sistemos nustatymai"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:91
-#, fuzzy
 msgid "Save backports"
-msgstr "Įrašyti tinklavietes"
+msgstr "Įrašyti naujų versijų paketus"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:92
 msgid "Save mirrors"
@@ -49,45 +47,43 @@ msgstr "Įrašyti tinklavietes"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:93
 msgid "Check mirrors speed"
-msgstr "Tikrinti tinklaviečių greitį"
+msgstr "Tikrinti tinklaviečių spartą"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:94
 msgid "Remove"
 msgstr "Šalinti"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:95
-#, fuzzy
 msgid "Hold back"
-msgstr "Paketai juodajame sąraše"
+msgstr "Sulaikyti"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:96
-#, fuzzy
 msgid "Repositories"
-msgstr "Saugykla"
+msgstr "Saugyklos"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:97
 msgid "Encryption"
-msgstr ""
+msgstr "Šifravimas"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:98
 msgid "Passphrase (6-20 chr)"
-msgstr ""
+msgstr "Slaptafrazė (6-20 simb.)"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:99
 msgid "Encrypt"
-msgstr ""
+msgstr "Šifruoti"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:100
 msgid "Decrypt"
-msgstr ""
+msgstr "Iššifruoti"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:101
 msgid "Change passphrase"
-msgstr ""
+msgstr "Keisti slaptafrazę"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:102
 msgid "Manually create key file"
-msgstr ""
+msgstr "Rankiniu būdu sukurti rakto failą"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid ""
@@ -95,12 +91,19 @@ msgid ""
 "Warning: backup your data before you continue!\n"
 "Note: you can Ctrl-left click to select multiple partitions."
 msgstr ""
+"Šifruokite skaidinius ir išlaikykite savo duomenis saugius.\n"
+"Įspėjimas: prieš tęsdami, sukurkite atsarginę savo duomenų kopiją!\n"
+"Pastaba: norėdami pasirinkti kelis skaidinius, galite naudoti Ctrl-kairįjį "
+"spustelėjimą."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:106
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
 msgstr ""
+"Konfigūruokite savo lokales (vieną kaip numatytąją) ir laiko juostą.\n"
+"Pastaba: norėdami lokalizuoti savo programinę įrangą, įsitikinkite, kad "
+"esate prisijungę prie interneto."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:108
 msgid ""
@@ -109,22 +112,27 @@ msgid ""
 "your system.\n"
 "Use at your own risk!"
 msgstr ""
+"Įjunkite naujų versijų paketų saugyklą, jeigu jums reikia naujesnių "
+"programinės įrangos versijų.\n"
+"Įspėjimas: programinės įrangos įdiegimas iš naujų versijų paketų saugyklos "
+"gali destabilizuoti jūsų sistemą.\n"
+"Naudokite savo pačių rizika!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:111
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
 msgstr ""
+"Pasirinkite savo atnaujinimams greičiausią saugyklą.\n"
+"Pastaba: įsitikinkite, kad esate prisijungę prie interneto."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:113
-#, fuzzy
 msgid "Hold back packages"
-msgstr "Paketai juodajame sąraše"
+msgstr "Sulaikyti paketus"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:114
-#, fuzzy
 msgid "Held back packages"
-msgstr "Paketai juodajame sąraše"
+msgstr "Sulaikyti paketai"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:115
 msgid "Available packages"
@@ -135,30 +143,32 @@ msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
 msgstr ""
+"Sulaikykite atskirus paketus.\n"
+"Paketų sulaikymas neleis šiems paketams būti atnaujintiems."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:118
 msgid "Save locale"
-msgstr ""
+msgstr "Įrašyti lokalę"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:119
 msgid "Installed"
-msgstr ""
+msgstr "Įdiegta"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:120
 msgid "Locale"
-msgstr ""
+msgstr "Lokalė"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:121
 msgid "Language"
-msgstr ""
+msgstr "Kalba"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:122
 msgid "Default"
-msgstr ""
+msgstr "Numatytoji"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:123
 msgid "Please provide a passphrase (6-20 characters)."
-msgstr ""
+msgstr "Prašome pateikti slaptafrazę (6-20 simbolių)."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:124
 #, python-brace-format
@@ -166,6 +176,8 @@ msgid ""
 "Could not mount {0}\n"
 "Please mount {0} and refresh when done."
 msgstr ""
+"Nepavyko prijungti {0}\n"
+"Prašome prijungti {0} ir tai padarius, įkelti iš naujo."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:125
 msgid ""
@@ -173,15 +185,17 @@ msgid ""
 "Pre-selected packages are safe to remove (autoremove).\n"
 "Other packages are orphaned packages. Remove with caution!"
 msgstr ""
+"Šalinkite nebereikalingus paketus.\n"
+"Iš anksto pažymėti paketai gali būti saugiai pašalinti (autoremove).\n"
+"Kiti paketai yra liekamieji paketai. Šalinkite apdairiai!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:128
-#, fuzzy
 msgid "Unneeded packages"
-msgstr "Paketai juodajame sąraše"
+msgstr "Nebereikalingi paketai"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:311
 msgid "Encrypted partition"
-msgstr ""
+msgstr "Šifruotas skaidinys"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:312
 #, python-brace-format
@@ -191,12 +205,18 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"Skaidinys {0} jau yra užšifruotas.\n"
+"Tęsiant, bus pakeistas šio skaidinio šifravimo raktas.\n"
+"\n"
+"Ar norite tęsti?"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:332
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
 msgstr ""
+"Skaidinys nėra užšifruotas.\n"
+"Prašome iššifravimui pasirinkti kitą skaidinį."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:392
 #, python-format
@@ -204,6 +224,8 @@ msgid ""
 "%s is not encrypted.\n"
 "Please choose an encrypted partition."
 msgstr ""
+"%s nėra užšifruotas.\n"
+"Prašome pasirinkti užšifruotą skaidinį."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:436
 #, python-brace-format
@@ -211,39 +233,41 @@ msgid ""
 "Could not change the passphrase for {0}\n"
 "Please, provide the current and new passphrase."
 msgstr ""
+"Nepavyko pakeisti {0} slaptafrazės\n"
+"Prašome pateikti esamą ir naują slaptafrazę."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:448
 #, python-brace-format
 msgid "Passphrase changed for {0}."
-msgstr ""
+msgstr "{0} slaptafrazė pakeista."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:527
 msgid "Partition"
-msgstr ""
+msgstr "Skaidinys"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:527
 msgid "Label"
-msgstr ""
+msgstr "Etiketė"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:527
 msgid "File system"
-msgstr ""
+msgstr "Failų sistema"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:527
 msgid "Total size"
-msgstr ""
+msgstr "Bendras dydis"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:527
 msgid "Free size"
-msgstr ""
+msgstr "Laisvos vietos dydis"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:527
 msgid "Mount point"
-msgstr ""
+msgstr "Prijungimo taškas"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:570
 msgid "Backup"
-msgstr ""
+msgstr "Atsarginė kopija"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:605
 #, python-format
@@ -251,6 +275,9 @@ msgid ""
 "You need a backup partition with at least %s free.\n"
 "Mount a backup drive and hit the refresh button."
 msgstr ""
+"Jums reikia atsarginės kopijos skaidnio, kuriame būtų bent %s laisvos "
+"vietos.\n"
+"Prijunkite atsarginės kopijos diską ir spustelėkite įkėlimo iš naujo mygtuką."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1105
 #: ../usr/lib/solydxk/system/solydxk_system.py:1182
@@ -258,14 +285,16 @@ msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
 msgstr ""
+"Nepavyko atnaujinti apt podėlio.\n"
+"Prašome rankiniu būdu atnaujinti apt podėlį, naudojant: apt-get update"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1109
 msgid "Nothing to do."
-msgstr ""
+msgstr "Nėra ką atlikti."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1189
 msgid "There are no repositories to save."
-msgstr "Nėra saugyklų, kurias įrašyti."
+msgstr "Nėra saugyklų kurias įrašyti."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1193
 msgid "Current"
@@ -285,15 +314,17 @@ msgstr "URL"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1193
 msgid "Speed"
-msgstr "Greitis"
+msgstr "Sparta"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1385
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
+"Tam, kad įsigaliotų naujieji nustatymai jums reikia iš naujo paleisti "
+"sistemą."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1397
 msgid "Encryption done"
-msgstr ""
+msgstr "Šifravimas atliktas"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1398
 msgid ""
@@ -301,10 +332,13 @@ msgid ""
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
+"Šifravimas užbaigtas.\n"
+"\n"
+"Ar norite paleisti savo kompiuterį iš naujo?"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1401
 msgid "Decryption done"
-msgstr ""
+msgstr "Iššifravimas atliktas"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1402
 msgid ""
@@ -312,16 +346,21 @@ msgid ""
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
+"Iššifravimas užbaigtas.\n"
+"\n"
+"Ar norite paleisti savo kompiuterį iš naujo?"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1456
 msgid "Partition passphrase"
-msgstr ""
+msgstr "Skaidinio slaptafrazė"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1457
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
 msgstr ""
+"Prašome pateikti esamą šifruoto\n"
+"skaidinio slaptafrazę"
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:53
 #, python-brace-format
@@ -329,6 +368,9 @@ msgid ""
 "Could not create a backup on {backup_dir} (rsync code: {rsync_code}).\n"
 "Please, select another backup medium before you try again."
 msgstr ""
+"Nepavyko sukurti atsarginės kopijos ties {backup_dir} (rsync kodas: "
+"{rsync_code}).\n"
+"Prieš bandant dar kartą, prašome pasirinkti kitą atsarginės kopijos laikmeną."
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:92
 #, python-brace-format
@@ -337,6 +379,9 @@ msgid ""
 "You need to manually format the device and restore your data from: "
 "{backup_dir}"
 msgstr ""
+"Nepavyko formatuoti įrenginio {device}.\n"
+"Jums reikia rankiniu būdu formatuoti įrenginį ir atkurti savo duomenis iš: "
+"{backup_dir}"
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:129
 #, python-brace-format
@@ -344,6 +389,8 @@ msgid ""
 "Could not restore the backup (rsync code: {rsync_code}).\n"
 "You need to manually restore your data from: {backup_dir}"
 msgstr ""
+"Nepavyko atkurti atsarginės kopijos (rsync kodas: {rsync_code}).\n"
+"Jums reikia rankiniu būdu atkurti savo duomenis iš: {backup_dir}"
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:153
 #, python-brace-format
@@ -351,6 +398,8 @@ msgid ""
 "Error formatting partition {0}:\n"
 "It has no file system type."
 msgstr ""
+"Klaida, formatuojant skaidinį {0}:\n"
+"Jis neturi failų sistemos."
 
 #: ../usr/lib/solydxk/system/localize.py:121
 msgid ""
@@ -358,40 +407,43 @@ msgid ""
 "localization packages\n"
 "Please repeat this process when you established an internet connection."
 msgstr ""
+"SolydXK sistemos nustatymams nepavyko atsisiųsti ir įdiegti programinės "
+"įrangos lokalizavimo paketus\n"
+"Prašome pakartoti šį procesą, kai užmegsite interneto ryšį."
 
 #: ../usr/lib/solydxk/system/localize.py:123
 msgid "No internet connection"
-msgstr ""
+msgstr "Nėra interneto ryšio"
 
 #: ../usr/bin/solydxk-system:22
 #, sh-format
 msgid "needs administrative privileges."
-msgstr ""
+msgstr "reikalauja administratoriaus teisių."
 
 #: ../usr/bin/solydxk-system:23
 #, sh-format
 msgid "Please enter your password."
-msgstr ""
+msgstr "Prašome įvesti savo slaptažodį."
 
 #: ../usr/share/applications/solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
-msgstr ""
+msgstr "Keisti SolydXK sistemos nustatymus"
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
-msgstr ""
+msgstr "SolydXK sistemos nustatymų šifravimo žinynas"
 
 #: en/help.html+html.body.div.h2:10
 msgid "Description"
-msgstr ""
+msgstr "Aprašas"
 
 #: en/help.html+html.body.div.p:11
 msgid "Encrypt partitions of your system with LUKS."
-msgstr ""
+msgstr "Šifruoti sistemos skaidinius, naudojant LUKS."
 
 #: en/help.html+html.body.div.h2:13
 msgid "Important"
-msgstr ""
+msgstr "Svarbu"
 
 #: en/help.html+html.body.div.p:14
 msgid ""
@@ -399,6 +451,9 @@ msgid ""
 "partition you are going to encrypt or decrypt. Mount a partition or external "
 "drive for this purpose before you start."
 msgstr ""
+"SolydXK sistemos nustatymai sukurs ir atkurs skaidinio, kurį šifruosite ir "
+"iššifruosite, duomenų atsarginę kopiją. Prieš pradedant, prijunkite šiam "
+"tikslui skaidinį ar išorinį diską."
 
 #: en/help.html+html.body.div.p:15
 msgid ""
@@ -408,6 +463,12 @@ msgid ""
 "an unencrypted boot partition if you want to encrypt your root partition and "
 "that Grub2 will be installed on the disk where the root partition is."
 msgstr ""
+"Naudodami SolydXK sistemos nustatymus, negalite šifruoti paleisto šaknies ar "
+"namų skaidinio. Jeigu norite tai padaryti, galite atsisiųsti iš mūsų "
+"pagrindinės svetainės naujausią ISO failą ir paleisti SolydXK sistemos "
+"nustatymus tiesioginiame seanse. Turėkite omenyje, kad norint šifruoti savo "
+"šaknies skaidinį, jums reikės nešifruoto paleidimo skaidinio ir, kad Grub2 "
+"bus įdiegta diske, kuriame bus šaknies skaidinys."
 
 #: en/help.html+html.body.div.p:16
 msgid ""
@@ -415,10 +476,13 @@ msgid ""
 "wish to include new partitions in fstab you need to manually add them before "
 "you run SolydXK System Settings."
 msgstr ""
+"Į fstab yra įrašomi tik tie skaidiniai, kurie yra prijungti į fstab. Jeigu į "
+"fstab norite įtraukti naujus skaidinius, turite, prieš paleisdami SolydXK "
+"sistemos nustatymus, rankiniu būdu juos pridėti."
 
 #: en/help.html+html.body.div.h2:18
 msgid "Examples"
-msgstr ""
+msgstr "Pavyzdžiai"
 
 #: en/help.html+html.body.div.p:19
 msgid ""
@@ -431,14 +495,24 @@ msgid ""
 "usr/share/solydxk/system/icons/unencrypted-usb.png\" /> and <img src=\"/usr/"
 "share/solydxk/system/icons/encrypted-usb.png\" />"
 msgstr ""
+"Paleidę SolydXK sistemos nustatymus, matysite skaidinių, kuriuos galite "
+"šifruoti arba iššifruoti, sąrašą. Šalia šifruoto skaidinio yra rodoma ši "
+"piktograma: <img src=\"/usr/share/solydxk/system/icons/encrypted.png\" />, o "
+"šalia nešifruoto skaidinio ši piktograma: <img src=\"/usr/share/solydxk/"
+"system/icons/unencrypted.png\" />. Jūsų pasirinkimas apspręs kokie veiksmai "
+"galės būti taikomi tam tikram skaidiniui. Šalia keičiamųjų laikmenų bus "
+"rodomos šios piktogramos: <img src=\"/usr/share/solydxk/system/icons/"
+"unencrypted-usb.png\" /> ir <img src=\"/usr/share/solydxk/system/icons/"
+"encrypted-usb.png\" />"
 
 #: en/help.html+html.body.div.p:20
 msgid "Following are some examples on how to use SolydXK System Settings:"
 msgstr ""
+"Toliau yra pateikti keli pavyzdžiai kaip naudoti SolydXK sistemos nustatymus:"
 
 #: en/help.html+html.body.div.h3:22
 msgid "Encrypt a USB pen drive"
-msgstr ""
+msgstr "Šifruoti USB atmintuką"
 
 #: en/help.html+html.body.div.p:23
 msgid ""
@@ -446,14 +520,18 @@ msgid ""
 "drive and select the partition of that drive drive you wish to encrypt. Fill "
 "in your passphrase twice and hit the \"Encrypt\" button."
 msgstr ""
+"Įdėkite USB atmintuką ir prijunkite jį. Tam, kad būtų išvardytas atmintukas, "
+"spustelėkite įkėlimo iš naujo mygtuką ir pasirinkite disko, kurį norite "
+"šifruoti, skaidinį. Du kartus užpildykite slaptafrazes ir spustelėkite "
+"mygtuką \"Šifruoti\"."
 
 #: en/help.html+html.body.div.h3:25
 msgid "Encrypt the root (and swap) partition"
-msgstr ""
+msgstr "Šifruoti šaknies (ir sukeitimų) skaidinį"
 
 #: en/help.html+html.body.div.strong.p:26
 msgid "WARNING: do this at your own risk!"
-msgstr ""
+msgstr "ĮSPĖJIMAS: darykite tai savo pačių rizika!"
 
 #: en/help.html+html.body.div.p:27
 msgid ""
@@ -465,10 +543,19 @@ msgid ""
 "partition: /dev/sda1 which I want to mount as /boot into the root partition /"
 "dev/sda2. Change the partition paths accordingly to your situation."
 msgstr ""
+"Jums reikės nešifruoto /boot skaidinio. Jeigu neturite /boot skaidinio, štai "
+"kaip galite jį sukurti. Tiesioginiame seanse paleiskite programą GParted ir "
+"sukurkite skaidinį, kuriame būtų bent 200 MB laisvos vietos. Šis skaidinys "
+"gali būti sukurtas iš esamos nepaskirstytos vietos arba sumažinant kitą "
+"skaidinį ir panaudojant naujai sukurtą laisvą vietą. Šiame pavyzdyje aš "
+"sukūriau naują skaidinį: /dev/sda1, kurį noriu prijungti kaip /boot į "
+"šaknies skaidinį /dev/sda2. Pakeiskite skaidinių kelius atitinkamai pagal "
+"savo situaciją."
 
 #: en/help.html+html.body.div.p:28
 msgid "Open a terminal, and run these commands as root:"
 msgstr ""
+"Atverkite terminalą, ir vykdykite šias komandas kaip supernaudotojas (root):"
 
 #: en/help.html+html.body.div.pre:29
 msgid ""
@@ -476,16 +563,21 @@ msgid ""
 "mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
 "s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/fstab"
 msgstr ""
+"# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 /"
+"mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
+"s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/fstab"
 
 #: en/help.html+html.body.div.p:34
 msgid ""
 "You can now reboot your system and check if the boot partition is properly "
 "mounted:"
 msgstr ""
+"Dabar, galite paleisti savo sistemą iš naujo ir patikrinti ar paleidimo "
+"skaidinys yra tinkamai prijungtas:"
 
 #: en/help.html+html.body.div.pre:35
 msgid "$ mount | grep sda2"
-msgstr ""
+msgstr "$ mount | grep sda2"
 
 #: en/help.html+html.body.div.p:36
 msgid ""
@@ -493,20 +585,25 @@ msgid ""
 "again, start SolydXK System Settings and select the root partition (and any "
 "other partition you'd like to encrypt)."
 msgstr ""
+"Norint šifruoti šaknies (ir sukeitimų) skaidinį, jums ir vėl reikės paleisti "
+"tiesioginį seansą, paleisti SolydXK sistemos nustatymus ir pasirinkti "
+"šaknies skaidinį (ir bet kurį kitą skaidinį, kurį norėtumėte šifruoti)."
 
 #: en/help.html+html.body.div.h3:38
 msgid "Change the passphrase of an encrypted partition"
-msgstr ""
+msgstr "Keisti šifruoto skaidinio slaptafrazę"
 
 #: en/help.html+html.body.div.p:39
 msgid ""
 "Select an encrypted partition from the list, fill in your passphrase twice "
 "and hit the \"Change Passphrase\" button."
 msgstr ""
+"Pasirinkite iš sąrašo šifruotą skaidinį, du kartus užpildykite slaptafrazę "
+"ir spustelėkite mygtuką \"Keisti slaptafrazę\"."
 
 #: en/help.html+html.body.div.h3:41
 msgid "Create a key file for a selection of encrypted partitions"
-msgstr ""
+msgstr "Sukurti pasirinktiems šifruotiems skaidiniams rakto failą"
 
 #: en/help.html+html.body.div.p:42
 msgid ""
@@ -515,10 +612,14 @@ msgid ""
 "partition will hold the key file while the other partitions are "
 "automatically opened with that key file."
 msgstr ""
+"Pasirinkite iš sąrašo kelis šifruotus skaidinius, du kartus užpildykite "
+"slaptafrazę ir spustelėkite mygtuką \"Rankiniu būdu sukurti rakto failą\". "
+"Pirmame užšifruotame skaidinyje bus laikomas rakto failas, tuo tarpu kiti "
+"skaidiniai bus automatiškai atveriami tuo rakto failu."
 
 #: en/help.html+html.body.div.h3:44
 msgid "Decrypt a partition"
-msgstr ""
+msgstr "Iššifruoti skaidinį"
 
 #: en/help.html+html.body.div.p:45
 msgid ""
@@ -528,10 +629,16 @@ msgid ""
 "partition you want to decrypt. You will be asked for a backup medium if it "
 "cannot find enough free space to continue."
 msgstr ""
+"Pasirinkite iš sąrašo užšifruotą skaidinį, du kartus užpildykite slaptafrazę "
+"ir spustelėkite mygtuką \"Iššifruoti\". SolydXK sistemos nustatymai atliks "
+"paiešką skaidinio, kuriame būtų pakankamai laisvos vietos jūsų norimo "
+"iššifruoti skaidinio laikinajai atsarginei kopijai. Jeigu norint tęsti, "
+"nepavyks rasti skaidinio su pakankamai laisvos vietos, jūsų bus paprašyta "
+"nurodyti atsarginės kopijos laikmeną."
 
 #: en/help.html+html.body.div.h2:48
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Nesklandumų šalinimas"
 
 #: en/help.html+html.body.div.p:49
 msgid ""
@@ -539,6 +646,9 @@ msgid ""
 "\"https://github.com/SolydXK/solydxk-system\" target=\"_blank\">GitHub</a> "
 "page."
 msgstr ""
+"Prašome padėti tobulinti šią programą. Jūs galite rasti pradinį kodą mūsų <a "
+"href=\"https://github.com/SolydXK/solydxk-system\" target=\"_blank\">GitHub</"
+"a> puslapyje."
 
 #: en/help.html+html.body.div.p:50
 msgid ""
@@ -546,18 +656,14 @@ msgid ""
 "please visit our <a href=\"http://forums.solydxk.com\" target=\"_blank"
 "\">forum</a> and post your issue there."
 msgstr ""
+"Jeigu dėl kažkokių priežasčių jūsų sistema neprijungia naujai šifruoto "
+"skaidinio, prašome apsilankyti mūsų <a href=\"http://forums.solydxk.com\" "
+"target=\"_blank\">forumuose</a> ir ten pranešti apie savo problemą."
 
 #: en/help.html+html.body.div.p:51
 msgid ""
 "Don't forget to attach the log file when you post an issue on our forum: /"
 "var/log/solydxk-system.log"
 msgstr ""
-
-#~ msgid "Repository mirrors"
-#~ msgstr "Saugyklų tinklavietės"
-
-#~ msgid "Select the fastest repository"
-#~ msgstr "Pasirinkite greičiausią saugyklą"
-
-#~ msgid "Blacklist"
-#~ msgstr "Į juodajį sąrašą"
+"Pranešdami apie problemą mūsų forume, nepamirškite pridėti žurnalo failą: /"
+"var/log/solydxk-system.log"

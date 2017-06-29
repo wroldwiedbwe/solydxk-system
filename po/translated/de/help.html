@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="../link/general.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="background"></div>
+	<h1>SolydXK System Einstellungen Veschlüsselungshilfe</h1>
+	<div class="main">
+		<h2>Beschreibung</h2>
+		<p>Verschlüsseln Sie Systempartitionen mit LUKS.</p>
+
+		<h2>Wichtig</h2>
+		<p>SolydXK System Einstellungen wird eine Datensicherung der zur
+verschlüssenden oder zu entschlüsselden Partition erstellen. Hängen Sie zu
+diesem Zweck eine Partition oder eine externes Sicherungsmedium ein, bevor
+Sie den Prozess starten.</p>
+		<p>Sie können eine hochgefahrene root oder home Partition mit SolydXK System
+Einstellung nicht verschlüsseln. Zur Durchführung können Sie die aktuellste
+ISO Datei von unsere Homepage herunterladen und SolydXK System Einstellungen
+in a Live- Session ausführen. Beachten Sie, dass Sie eine unverschlüsselte
+boot Partition benötigen, wenn Sie Ihre root Partition verschlüsseln
+wollen. Grub2 wird auf der Festplatte installiert, wo sich die root Partion
+befindet.</p>
+		<p>Nur die Partitionen, die in fstab eingehängt sind, werden in fstab
+gesichert. Sollen neue Partition in fstab berücksicht werden, müssen diese
+vor dem Ausführen von SolydXK System Einstellungen manuell hinzugefügt
+werden.</p>
+
+		<h2>Beispiele</h2>
+		<p>When you start SolydXK System Settings you will see a list of partitions
+that you can either encrypt or decrypt. An encrypted partition shows this
+icon: <img src="/usr/share/solydxk/system/icons/encrypted.png" /> and an unencrypted partition shows this icon: <img src="/usr/share/solydxk/system/icons/unencrypted.png" />. Your selection will decide which actions can be taken on that
+partition. Removable media will show these icons:  <img src="/usr/share/solydxk/system/icons/unencrypted-usb.png" /> and  <img src="/usr/share/solydxk/system/icons/encrypted-usb.png" /></p>
+		<p>Nachfolgend einige Beispiele, wie SolydXK System Einstellungen genutzt
+werden kann:</p>
+
+		<h3>Veschlüsselung eines USB Stick</h3>
+		<p>Insert a USB pen drive and mount it. Hit the refresh button to list the pen
+drive and select the partition of that drive drive you wish to encrypt. Fill
+in your passphrase twice and hit the "Encrypt" button.</p>
+		
+		<h3>Verschlüsselung der root (und swap) Partition.</h3>
+		<strong><p>WARNING: do this at your own risk!</p></strong>
+		<p>Sie benötigen einen unverschlüsselte /boot Partition. Sollten Sie keine
+/boot Partition haben, gehen Sie wie folgt vor. Starten Sie GParted in einer
+live Sitzung und erstellen Sie eine Partition von mindesten 200 MB. Diese
+Partition kann aus einem nicht zugewiesenen Speicher oder durch das
+Schrumpfen einer vorhanden Partition erstellt werden.  In diesem Beispiel
+wurde einen neue Partition /dev/sda1 erstellt, die als /boot in die root
+Partition  /dev/sda2 eingehängt werden soll. Ändern Sie die Partitionspfade
+entsprechend Ihrem Setup.</p>
+		<p>Open a terminal, and run these commands as root:</p>
+		<pre># mkdir /mnt/boot /mnt/root
+# mount /dev/sda1 /mnt/boot
+# mount /dev/sda2 /mnt/root
+# cp -a /mnt/root/boot/* /mnt/boot/
+# echo "UUID=$(blkid -o value -s UUID /dev/sda1)    /boot   ext4    defaults    0   0" >> /mnt/root/etc/fstab</pre>
+		<p>Sie können Ihr System jetzt neu starten und prüfen, ob Ihre Partition
+korrekt eingehängt wurden.</p>
+		<pre>$ mount | grep sda2</pre>
+		<p>Um die Verschlüsselung der root (und swap) Partition durchzuführen, wird
+erneut eine Live Sitzung benötigt. Starten Sie dann SolydXK System
+Einstellungen und wählen Sie die root Partition (und jede andere Partition,
+die veschlüsselt werden soll) aus.</p>
+		
+		<h3>Änderung des Verschlüsselungskennwortes einer verschlüsselten Partition</h3>
+		<p>Wählen Sie die veschlüsselte Partition aus der Liste, geben Sie zweimal Ihr
+Passwort ein und betätigen Sie die "Kennwortänderung" Schaltfläche.</p>
+		
+		<h3>Erstellung eine Schlüsseldatei für eine Auswahl verschlüsselter Partitionen</h3>
+		<p>Wählen Sie mehrere verschlüsselte Partitionen aus der Liste, geben Sie
+zweimal Ihr Passwort ein und betätigen die "Manuelles Erstellen einer
+Schlüsseldatei" Schaltfläche. Die erste verschlüsselte Partition wird die
+Schlüsseldatei beinhalten, während die anderen Partition automatisch mit
+dieser Schlüsseldatei entsperrt werden.</p>
+		
+		<h3>Entschlüsselung einer Partition</h3>
+		<p>Wählen Sie eine verschlüsselte Partition aus der Liste, geben Sie zweimal
+Ihr Passwort ein und betätigen Sie die
+"Entschlüsselungs"-Schaltfläche. SoldydXK Sytem Einstellungen wird darauf
+hin eine Partition suchen, die genügend Platz für die Erstellung einer
+temporären Sicherung der zu entschlüsselnden Partition bietet. Sollte keine
+geeignete Partition gefunden werden, wird Sie das System nach einem
+Sicherungsmedium fragen.</p>
+		
+
+		<h2>Fehlersuche</h2>
+		<p>Bitte helfen Sie, dieses Programm zu verbessern. Der Quellcode kann auf
+unserer <a href="https://github.com/SolydXK/solydxk-system"
+target="_blank">GitHub</a> Seite gefunden werden.</p>
+		<p>Sollte Ihr System aus irgendeinem Grund die neu verschlüsselte Partition
+nicht einhängen, besuchen Sie bitte unser <a
+href="http://forums.solydxk.com" target="_blank">Forum</a> und stellen Sie
+Ihre damit zusammenhängenden Fragen dort.</p>
+		<p>Vergessen Sie nicht, eine Logdatei anzufügen, wenn Sie in unserem Forum
+Fragen stellen: /var/log/solydxk-system.log</p>
+    </div>
+  </body>
+</html>

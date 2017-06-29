@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="../link/general.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="background"></div>
+	<h1>SolydXK sistemos nustatymų šifravimo žinynas</h1>
+	<div class="main">
+		<h2>Aprašas</h2>
+		<p>Šifruoti sistemos skaidinius, naudojant LUKS.</p>
+
+		<h2>Svarbu</h2>
+		<p>SolydXK sistemos nustatymai sukurs ir atkurs skaidinio, kurį šifruosite ir
+iššifruosite, duomenų atsarginę kopiją. Prieš pradedant, prijunkite šiam
+tikslui skaidinį ar išorinį diską.</p>
+		<p>Naudodami SolydXK sistemos nustatymus, negalite šifruoti paleisto šaknies ar
+namų skaidinio. Jeigu norite tai padaryti, galite atsisiųsti iš mūsų
+pagrindinės svetainės naujausią ISO failą ir paleisti SolydXK sistemos
+nustatymus tiesioginiame seanse. Turėkite omenyje, kad norint šifruoti savo
+šaknies skaidinį, jums reikės nešifruoto paleidimo skaidinio ir, kad Grub2
+bus įdiegta diske, kuriame bus šaknies skaidinys.</p>
+		<p>Į fstab yra įrašomi tik tie skaidiniai, kurie yra prijungti į fstab. Jeigu į
+fstab norite įtraukti naujus skaidinius, turite, prieš paleisdami SolydXK
+sistemos nustatymus, rankiniu būdu juos pridėti.</p>
+
+		<h2>Pavyzdžiai</h2>
+		<p>When you start SolydXK System Settings you will see a list of partitions
+that you can either encrypt or decrypt. An encrypted partition shows this
+icon: <img src="/usr/share/solydxk/system/icons/encrypted.png" /> and an unencrypted partition shows this icon: <img src="/usr/share/solydxk/system/icons/unencrypted.png" />. Your selection will decide which actions can be taken on that
+partition. Removable media will show these icons:  <img src="/usr/share/solydxk/system/icons/unencrypted-usb.png" /> and  <img src="/usr/share/solydxk/system/icons/encrypted-usb.png" /></p>
+		<p>Toliau yra pateikti keli pavyzdžiai kaip naudoti SolydXK sistemos
+nustatymus:</p>
+
+		<h3>Šifruoti USB atmintuką</h3>
+		<p>Įdėkite USB atmintuką ir prijunkite jį. Tam, kad būtų išvardytas atmintukas,
+spustelėkite įkėlimo iš naujo mygtuką ir pasirinkite disko, kurį norite
+šifruoti, skaidinį. Du kartus užpildykite slaptafrazes ir spustelėkite
+mygtuką "Šifruoti".</p>
+		
+		<h3>Šifruoti šaknies (ir sukeitimų) skaidinį</h3>
+		<strong><p>ĮSPĖJIMAS: darykite tai savo pačių rizika!</p></strong>
+		<p>Jums reikės nešifruoto /boot skaidinio. Jeigu neturite /boot skaidinio, štai
+kaip galite jį sukurti. Tiesioginiame seanse paleiskite programą GParted ir
+sukurkite skaidinį, kuriame būtų bent 200 MB laisvos vietos. Šis skaidinys
+gali būti sukurtas iš esamos nepaskirstytos vietos arba sumažinant kitą
+skaidinį ir panaudojant naujai sukurtą laisvą vietą. Šiame pavyzdyje aš
+sukūriau naują skaidinį: /dev/sda1, kurį noriu prijungti kaip /boot į
+šaknies skaidinį /dev/sda2. Pakeiskite skaidinių kelius atitinkamai pagal
+savo situaciją.</p>
+		<p>Atverkite terminalą, ir vykdykite šias komandas kaip supernaudotojas (root):</p>
+		<pre># mkdir /mnt/boot /mnt/root
+# mount /dev/sda1 /mnt/boot
+# mount /dev/sda2 /mnt/root
+# cp -a /mnt/root/boot/* /mnt/boot/
+# echo "UUID=$(blkid -o value -s UUID /dev/sda1)    /boot   ext4    defaults    0   0" >> /mnt/root/etc/fstab</pre>
+		<p>Dabar, galite paleisti savo sistemą iš naujo ir patikrinti ar paleidimo
+skaidinys yra tinkamai prijungtas:</p>
+		<pre>$ mount | grep sda2</pre>
+		<p>Norint šifruoti šaknies (ir sukeitimų) skaidinį, jums ir vėl reikės paleisti
+tiesioginį seansą, paleisti SolydXK sistemos nustatymus ir pasirinkti
+šaknies skaidinį (ir bet kurį kitą skaidinį, kurį norėtumėte šifruoti).</p>
+		
+		<h3>Keisti šifruoto skaidinio slaptafrazę</h3>
+		<p>Pasirinkite iš sąrašo šifruotą skaidinį, du kartus užpildykite slaptafrazę
+ir spustelėkite mygtuką "Keisti slaptafrazę".</p>
+		
+		<h3>Sukurti pasirinktiems šifruotiems skaidiniams rakto failą</h3>
+		<p>Pasirinkite iš sąrašo kelis šifruotus skaidinius, du kartus užpildykite
+slaptafrazę ir spustelėkite mygtuką "Rankiniu būdu sukurti rakto
+failą". Pirmame užšifruotame skaidinyje bus laikomas rakto failas, tuo tarpu
+kiti skaidiniai bus automatiškai atveriami tuo rakto failu.</p>
+		
+		<h3>Iššifruoti skaidinį</h3>
+		<p>Pasirinkite iš sąrašo užšifruotą skaidinį, du kartus užpildykite slaptafrazę
+ir spustelėkite mygtuką "Iššifruoti". SolydXK sistemos nustatymai atliks
+paiešką skaidinio, kuriame būtų pakankamai laisvos vietos jūsų norimo
+iššifruoti skaidinio laikinajai atsarginei kopijai. Jeigu norint tęsti,
+nepavyks rasti skaidinio su pakankamai laisvos vietos, jūsų bus paprašyta
+nurodyti atsarginės kopijos laikmeną.</p>
+		
+
+		<h2>Nesklandumų šalinimas</h2>
+		<p>Prašome padėti tobulinti šią programą. Jūs galite rasti pradinį kodą mūsų <a
+href="https://github.com/SolydXK/solydxk-system" target="_blank">GitHub</a>
+puslapyje.</p>
+		<p>Jeigu dėl kažkokių priežasčių jūsų sistema neprijungia naujai šifruoto
+skaidinio, prašome apsilankyti mūsų <a href="http://forums.solydxk.com"
+target="_blank">forumuose</a> ir ten pranešti apie savo problemą.</p>
+		<p>Pranešdami apie problemą mūsų forume, nepamirškite pridėti žurnalo failą:
+/var/log/solydxk-system.log</p>
+    </div>
+  </body>
+</html>
