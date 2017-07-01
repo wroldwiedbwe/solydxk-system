@@ -33,6 +33,12 @@ fix_progs = [['apache2', '/var/log/apache2', 'root:adm', 0],
              ['solydk-system-adjustments-9', 'solydk-system-adjustments', 'purge', 0],
              ['solydx-system-adjustments-9', 'solydx-system-adjustments', 'purge', 0],
              ['firefox-solydxk-adjustments', 'firefox-esr-solydxk-adjustments', 'purge', 0]]
+             
+gtk_deprecated_properties = ['child-displacement', 
+                             'scrollbars-within-bevel', 
+                             'indicator-size', 
+                             'GtkExpander-expander-size', 
+                             'shadow-type']
 
 ver = get_debian_version()
 for prog in fix_progs:
@@ -207,6 +213,16 @@ try:
         with open(raspi_config, 'r') as f:
             if not '/boot/firmware' in f.read():
                 os.system("sed -i 's/\/boot/\/boot\/firmware/g' %s" % raspi_config)
+                
+    # Fix Breeze themes by deleting lines with deprecated style properties from the gtk.css files
+    gtk_files = ['/usr/share/themes/Breeze/gtk-3.0/gtk.css',
+                 '/usr/share/themes/Breeze-Dark/gtk-3.0/gtk.css',
+                 '/usr/share/themes/Breeze-X/gtk-3.0/gtk.css',
+                 '/usr/share/themes/Breeze-Dark-X/gtk-3.0/gtk.css']
+    for gtk in gtk_files:
+        if exists(gtk):
+            for property in gtk_deprecated_properties:
+                os.system("sed -i '/%s/d' %s" % (property, gtk))
 
 except Exception as detail:
     print(detail)

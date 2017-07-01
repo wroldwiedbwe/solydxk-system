@@ -1,3 +1,9 @@
+solydxk-system (3.0.0b1.4) solydxk; urgency=low
+
+  * Fix Gtk warnings of deprecated style properties in Breeze themes
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 01 Jul 2017 13:46:11 +0200
+
 solydxk-system (3.0.0b1.3) solydxk; urgency=low
 
   * Include /etc/initramfs-tools/conf.d/resume

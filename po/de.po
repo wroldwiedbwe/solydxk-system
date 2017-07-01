@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-29 14:11+0200\n"
+"POT-Creation-Date: 2017-07-01 13:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: pitfd <pitfd@openmailbox.org>, 2017\n"
 "Language-Team: German (https://www.transifex.com/solydxk/teams/54212/de/)\n"
@@ -111,6 +111,11 @@ msgid ""
 "your system.\n"
 "Use at your own risk!"
 msgstr ""
+"Aktivieren Sie das Backport Repository, wenn Sie einen neuere "
+"Softwareversion benötigen.\n"
+"Warnung: Die Softwareinstallation aus einem Backport-Repository kann Ihr "
+"System destabilisieren.\n"
+"Diese Vorgehensweise erfolgt auf Ihr eigenes Risiko!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:111
 msgid ""
@@ -524,6 +529,11 @@ msgid ""
 "drive and select the partition of that drive drive you wish to encrypt. Fill "
 "in your passphrase twice and hit the \"Encrypt\" button."
 msgstr ""
+"Nach den Anstecken des USB Sticks hängen Sie diesen ein. Betätigen Sie die "
+"Aktualisieren Schaltfläche, um den USB Stick anzeigen zu lassen und wählen "
+"Sie die Partition des Sticks aus, die verschlüsselt werden soll. Geben Sie "
+"Ihr Veschlüsselungskennwort zweimal ein und betätigen Sie die "
+"\"Verschlüsselungs\"-Schaltfläche."
 
 #: en/help.html+html.body.div.h3:25
 msgid "Encrypt the root (and swap) partition"
@@ -531,7 +541,7 @@ msgstr "Verschlüsselung der root (und swap) Partition."
 
 #: en/help.html+html.body.div.strong.p:26
 msgid "WARNING: do this at your own risk!"
-msgstr ""
+msgstr "Warnung: Die Vorhensweise erfolgt auf eigenes Risiko!"
 
 #: en/help.html+html.body.div.p:27
 msgid ""
