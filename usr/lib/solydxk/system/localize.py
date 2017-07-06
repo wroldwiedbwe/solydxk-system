@@ -101,14 +101,6 @@ class Localize(threading.Thread):
         self.max_steps = 10
         self.current_step = 0
 
-    def queue_progress(self):
-        self.current_step += 1
-        print((">> step %d of %d" % (self.current_step, self.max_steps)))
-        if self.current_step > self.max_steps:
-            self.current_step = self.max_steps
-        if self.queue is not None:
-            self.queue.put([self.max_steps, self.current_step])
-
     def run(self):
         self.set_locale()
         self.set_timezone()
@@ -251,6 +243,14 @@ class Localize(threading.Thread):
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s thunderbird %s" % (self.debian_frontend, self.apt_options, package))
+
+    def queue_progress(self):
+        self.current_step += 1
+        print((">> step %d of %d" % (self.current_step, self.max_steps)))
+        if self.current_step > self.max_steps:
+            self.current_step = self.max_steps
+        if self.queue is not None:
+            self.queue.put([self.max_steps, self.current_step])
 
     def get_localized_package(self, package):
         language_list = self.default_locale.lower().split("_")

@@ -1,6 +1,7 @@
 solydxk-system (3.0.0b1.6) solydxk; urgency=low
 
   * Show in XFCE System Settings
+  * Debug localization
 
  -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 06 Jul 2017 08:34:40 +0200
 

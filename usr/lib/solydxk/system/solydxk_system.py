@@ -100,6 +100,9 @@ class SolydXKSystemSettings(object):
         self.btnDecrypt.set_label(_("Decrypt"))
         self.btnChangePassphrase.set_label(_("Change passphrase"))
         self.btnCreateKeyfile.set_label(_("Manually create key file"))
+        go("lblLocalization").set_label(_("Localization"))
+        go("lblTimezone").set_label(_("Timezone"))
+        go("lblLocale").set_label(_("Locale"))
         go("lblEncryptionInfo").set_label(_("Encrypt partitions and keep your data safe.\n"
                                             "Warning: backup your data before you continue!\n"
                                             "Note: you can Ctrl-left click to select multiple partitions."))
@@ -944,8 +947,7 @@ class SolydXKSystemSettings(object):
         self.threads[name] = t
         t.daemon = True
         t.start()
-        #TODO: why is queue.join blocking the thread?
-        #self.queue.join()
+        self.queue.join()
         GObject.timeout_add(250, self.check_thread, name)
 
     def fill_treeview_locale(self):
@@ -1328,10 +1330,10 @@ class SolydXKSystemSettings(object):
                 if ret:
                     self.log.write("Queue returns: {}".format(ret), 'check_thread')
                     if name == 'mirrorspeed':
-                        self.update_progress(round(1 / (ret[3] / ret[2], 1)))
+                        self.update_progress(1 / (ret[3] / ret[2]))
                         self.write_speed(ret[0], ret[1])
                     elif name == 'localize':
-                        self.update_progress(round(1 / (ret[0] / ret[1])))
+                        self.update_progress(1 / (ret[0] / ret[1]))
                     elif name == 'endecrypt':
                         # Queue returns list: [fraction, error_code, partition_index, partition, message]
                         self.endecrypt_success = True
@@ -1341,9 +1343,6 @@ class SolydXKSystemSettings(object):
                             self.endecrypt_success = False
                         if ret[2] is not None and ret[3] is not None:
                             # Replace old partition with new partition in my_partitions
-#                            print(("**** Replace %s" % self.my_partitions[ret[2]]))
-#                            print(("**** with %s" % ret[3]))
-#                            print(("**** Result: %s" % self.my_partitions[ret[2]]))
                             self.my_partitions[ret[2]] = ret[3]
                 self.queue.task_done()
             return True
@@ -1365,9 +1364,6 @@ class SolydXKSystemSettings(object):
                         self.endecrypt_success = False
                     if ret[2] is not None and ret[3] is not None:
                         # Replace old partition with new partition in my_partitions
-#                        print(("**** Replace %s" % self.my_partitions[ret[2]]))
-#                        print(("**** with %s" % ret[3]))
-#                        print(("**** Result: %s" % self.my_partitions[ret[2]]))
                         self.my_partitions[ret[2]] = ret[3]
             self.queue.task_done()
         del self.threads[name]
