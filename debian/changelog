@@ -1,3 +1,15 @@
+solydxk-system (3.0.0b1.6) solydxk; urgency=low
+
+  * Show in XFCE System Settings
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 06 Jul 2017 08:34:40 +0200
+
+solydxk-system (3.0.0b1.5) solydxk; urgency=low
+
+  * Updated translations
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 05 Jul 2017 18:09:49 +0200
+
 solydxk-system (3.0.0b1.4) solydxk; urgency=low
 
   * Fix Gtk warnings of deprecated style properties in Breeze themes

@@ -216,9 +216,7 @@ try:
                 
     # Fix Breeze themes by deleting lines with deprecated style properties from the gtk.css files
     gtk_files = ['/usr/share/themes/Breeze/gtk-3.0/gtk.css',
-                 '/usr/share/themes/Breeze-Dark/gtk-3.0/gtk.css',
-                 '/usr/share/themes/Breeze-X/gtk-3.0/gtk.css',
-                 '/usr/share/themes/Breeze-Dark-X/gtk-3.0/gtk.css']
+                 '/usr/share/themes/Breeze-Dark/gtk-3.0/gtk.css']
     for gtk in gtk_files:
         if exists(gtk):
             for property in gtk_deprecated_properties:
