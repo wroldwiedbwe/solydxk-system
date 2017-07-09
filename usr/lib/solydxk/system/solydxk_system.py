@@ -25,7 +25,7 @@ from dialogs import MessageDialog, QuestionDialog, InputDialog, \
                     WarningDialog
 from mirror import MirrorGetSpeed, Mirror, get_mirror_data, get_local_repos
 from encryption import is_encrypted, create_keyfile, write_crypttab
-from endecrypt_partitions import EnDecryptPartitions
+from endecrypt_partitions import EnDecryptPartitions, ChangePassphrase
 
 # i18n: http://docs.python.org/3/library/gettext.html
 import gettext
@@ -169,6 +169,7 @@ class SolydXKSystemSettings(object):
         self.encrypt = False
         self.failed_mount_devices = []
         self.boot_partition = None
+        self.changed_devices = []
 
         if self.backports[0]:
             self.chkEnableBackports.set_active(True)
@@ -373,14 +374,7 @@ class SolydXKSystemSettings(object):
             GObject.timeout_add(5, self.check_thread, name)
 
     def change_passphrase(self):
-        
-        # TODO: Thread this to update the progress bar
-        
-        changed_devices = []
-        nr_devices = len(self.my_partitions)
-        cnt = 0
-        
-        if nr_devices == 0:
+        if len(self.my_partitions) == 0:
             return
         
         # Check passphrase first
@@ -397,60 +391,17 @@ class SolydXKSystemSettings(object):
                 MessageDialog(self.btnChangePassphrase.get_label(), msg)
                 return
 
-        for p in self.my_partitions:
-            # Update progress
-            cnt += 1
-            self.update_progress(1 / (nr_devices / cnt))
-            
-            # Unmount first
-            if self.udisks2.unmount_device(p['device']):
-                device = p['device'].replace('/mapper', '')
-                # Create key file
-                with open('/KEY', 'w') as f:
-                    f.write(self.my_passphrase)
+        # Run encrypt/decrypt in separate thread
+        self.changed_devices = []
+        name = 'changepassphrase'
+        self.set_buttons_state(False)
+        t = ChangePassphrase(self.my_partitions, self.my_passphrase, self.queue, self.log)
+        self.threads[name] = t
+        t.daemon = True
+        t.start()
+        self.queue.join()
+        GObject.timeout_add(250, self.check_thread, name)
 
-                # Get the current passphrase from the user
-                pf_changed = False
-                current_passphrase = p['passphrase']
-                if not current_passphrase:
-                    current_passphrase = self.get_passphrase_dialog(device)
-                if current_passphrase:
-                    # Change passphrase
-                    cmd = "echo '%s' | cryptsetup luksChangeKey %s %s" % (current_passphrase, device, '/KEY')
-                    if shell_exec(cmd) == 0:
-                        # Save the passphrase
-                        p['passphrase'] = self.my_passphrase
-                        pf_changed = True
-
-                # Remove the key file
-                os.remove('/KEY')
-
-                # Check for key file
-                if pf_changed:
-                    if 'lukskey' in p['keyfile_path']:
-                        if exists(p['keyfile_path']):
-                            self.log.write("Keyfile_path = %s" % p['keyfile_path'], 'change_passphrase')
-                            create_keyfile(p['keyfile_path'], device, p['passphrase'])
-                        else:
-                            self.log.write("Keyfile not changed: %s - path not found" % p['keyfile_path'], 'change_passphrase', 'error')
-                    changed_devices.append(device)
-                    
-                else:
-                    msg = _("Could not change the passphrase for {0}\n"
-                            "Please, provide the current and new passphrase.".format(device))
-                    self.log.write(msg, 'change_passphrase', 'error')
-            
-                # Re-mount the partition
-                if p['mount_point']:
-                    device, mount, filesystem = self.udisks2.mount_device(device, p['mount_point'], None, None, p['passphrase'])
-                    if not mount:
-                        p['mount_point'] = ''
-                        self.log.write(self.mount_error.format(device), 'change_passphrase', 'error')
-                        
-        if changed_devices:
-            msg = _("Passphrase changed for {0}.".format(', '.join(changed_devices)))
-            MessageDialog(self.btnChangePassphrase.get_label(), msg)
-            
     def is_active_swap_partition(self, device):
         out = getoutput('grep "{}" /proc/swaps'.format(device))[0]
         if out:
@@ -695,7 +646,7 @@ class SolydXKSystemSettings(object):
                 #print(("++++ p = %s" % str(p)))
                 if not mount:
                     show_error = True
-                    print((">>>> Could not mount %s (%s)" % (p['device'], p['fs_type'])))
+                    #print((">>>> Could not mount %s (%s)" % (p['device'], p['fs_type'])))
                     if 'crypt' in p['fs_type'] or p['fs_type'] == 'swap' or p['fs_type'] == '':
                         # Don't show error
                         show_error = False
@@ -758,16 +709,19 @@ class SolydXKSystemSettings(object):
                                         # Search the keyfile path
                                         crypttab_keyfile_dir = dirname(crypttab_keyfile_path)
                                         regexp = "([0-9a-z-/]+)\s+{0}\s+".format(crypttab_keyfile_dir.replace('/', '\/'))
-                                        #print((">>> regexp = %s" % regexp))
+                                        #print(("++++ regexp = %s" % regexp))
                                         matchObj = re.search(regexp, fstab_cont)
                                         if matchObj:
                                             keyfile_device = matchObj.group(1)
                                             if keyfile_device[:1] != '/':
                                                 keyfile_device = get_device_from_uuid(keyfile_device)
-                                            #print((">>> keyfile_device = %s" % keyfile_device))
+                                            #print(("++++ keyfile_device = %s" % keyfile_device))
+                                            #print(self.partitions)
                                             for p in self.partitions:
+                                                #print(("    ++++ bn_device = %s, bn_keyfile_device = %s" % (basename(p['device']), basename(keyfile_device))))
                                                 if basename(p['device']) == basename(keyfile_device):
                                                     keyfile_path = join(p['mount_point'], crypttab_keyfile_path.lstrip('/'))
+                                                    #print(("        ++++ keyfile_path = %s" % keyfile_path))
                                                     break
                                     break
                 return (fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, keyfile_path)
@@ -1344,6 +1298,15 @@ class SolydXKSystemSettings(object):
                         if ret[2] is not None and ret[3] is not None:
                             # Replace old partition with new partition in my_partitions
                             self.my_partitions[ret[2]] = ret[3]
+                    elif name == 'changepassphrase':
+                        # Queue returns list: [fraction, error_code, partition_index, partition, message]
+                        self.update_progress(ret[0])
+                        if ret[1] > 0:
+                            self.log.write(str(ret[4]), name, 'error')
+                        if ret[2] is not None and ret[3] is not None:
+                            # Replace old partition with new partition in my_partitions
+                            self.my_partitions[ret[2]] = ret[3]
+                            self.changed_devices.append(ret[3]['device'].replace('/mapper', ''))
                 self.queue.task_done()
             return True
 
@@ -1365,6 +1328,15 @@ class SolydXKSystemSettings(object):
                     if ret[2] is not None and ret[3] is not None:
                         # Replace old partition with new partition in my_partitions
                         self.my_partitions[ret[2]] = ret[3]
+                elif name == 'changepassphrase':
+                    # Queue returns list: [fraction, error_code, partition_index, partition, message]
+                    self.update_progress(ret[0])
+                    if ret[1] > 0:
+                        self.log.write(str(ret[4]), name, 'error')
+                    if ret[2] is not None and ret[3] is not None:
+                        # Replace old partition with new partition in my_partitions
+                        self.my_partitions[ret[2]] = ret[3]
+                        self.changed_devices.append(ret[3]['device'].replace('/mapper', ''))
             self.queue.task_done()
         del self.threads[name]
 
@@ -1404,6 +1376,12 @@ class SolydXKSystemSettings(object):
             # Refresh
             self.update_progress(0)
             self.on_btnRefresh_clicked(None)
+            self.set_buttons_state(True)
+        elif name == 'changepassphrase':
+            if self.changed_devices:
+                msg = _("Passphrase changed for {0}.".format(', '.join(self.changed_devices)))
+                MessageDialog(self.btnChangePassphrase.get_label(), msg)
+            self.update_progress(0)
             self.set_buttons_state(True)
         else:
             self.update_progress(0)

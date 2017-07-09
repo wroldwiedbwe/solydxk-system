@@ -1,3 +1,9 @@
+solydxk-system (3.0.0b1.7) solydxk; urgency=low
+
+  * Run change passphrase in separate thread
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 06 Jul 2017 17:03:23 +0200
+
 solydxk-system (3.0.0b1.6) solydxk; urgency=low
 
   * Show in XFCE System Settings

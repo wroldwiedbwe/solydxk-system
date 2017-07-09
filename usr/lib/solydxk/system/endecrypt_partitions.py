@@ -9,7 +9,7 @@ from os.path import exists, join, basename, isdir
 from udisks2 import Udisks2
 from utils import shell_exec, get_logged_user, get_uuid, \
                     get_nr_files_in_dir, shell_exec_popen
-from encryption import encrypt_partition
+from encryption import encrypt_partition, create_keyfile
 
 # i18n: http://docs.python.org/3/library/gettext.html
 import gettext
@@ -61,14 +61,14 @@ class EnDecryptPartitions(threading.Thread):
                         # Encrypt
                         self.log.write("Start encryption of %s" % partition['device'], 'endecrypt', 'info')
                         mapped_device = encrypt_partition(partition['device'], self.passphrase)
-                        print((">>>> mapped_device=%s" % mapped_device))
+                        #print((">>>> mapped_device=%s" % mapped_device))
                         if mapped_device:
                             partition['device'] = mapped_device
                             partition['encrypted'] = True
                             partition['passphrase'] = self.passphrase
                             if partition['fstab_path'] and not partition['crypttab_path']:
                                 partition['crypttab_path'] = partition['fstab_path'].replace('fstab', 'crypttab')
-                            print((">>>> partition=%s" % str(partition)))
+                            #print((">>>> partition=%s" % str(partition)))
                         step = (i + 1) * 2
                         self.queue.put([1 / (total_steps / step), 0, i, partition, None])
                     else:
@@ -175,7 +175,8 @@ class EnDecryptPartitions(threading.Thread):
             self.set_label(device, fs_type, label)
             # Always return True, even if setting the label didn't go right
             return True
-        self.log.write("Could not format the partition {} to {}".format(device, fs_type), 'format_partition', 'error')
+        msg = "Could not format the partition {} to {}".format(device, fs_type)
+        self.queue.put([1, 115, None, None, msg])
         return False
         
     def set_label(self, device, fs_type, label):
@@ -240,3 +241,76 @@ class EnDecryptPartitions(threading.Thread):
 
             return rsync.poll()
         return 0
+
+class ChangePassphrase(threading.Thread):
+    def __init__(self, my_partitions, my_passphrase, queue, log):
+        super(ChangePassphrase, self).__init__()
+        
+        self.udisks2 = Udisks2()
+        self.my_partitions = my_partitions
+        self.my_passphrase = my_passphrase
+        self.log = log
+        # Queue returns list: [fraction, error_code, partition_index, partition, message]
+        self.queue = queue
+
+    def run(self):
+        steps = 4
+        nr_partitions = len(self.my_partitions)
+        total_steps = nr_partitions * steps
+        
+        for i in range(nr_partitions):
+            partition = self.my_partitions[i]
+            
+            # Unmount first
+            if self.udisks2.unmount_device(partition['device']):
+                device = partition['device'].replace('/mapper', '')
+                # Create key file
+                with open('/KEY', 'w') as f:
+                    f.write(self.my_passphrase)
+
+                # Get the current passphrase from the user
+                pf_changed = False
+                current_passphrase = partition['passphrase']
+                if not current_passphrase:
+                    current_passphrase = self.get_passphrase_dialog(device)
+                if current_passphrase:
+                    step = (i + 1) * 1
+                    self.queue.put([1 / (total_steps / step), 0, None, None, None])
+                    # Change passphrase
+                    cmd = "echo '%s' | cryptsetup luksChangeKey %s %s" % (current_passphrase, device, '/KEY')
+                    if shell_exec(cmd) == 0:
+                        # Save the passphrase
+                        partition['passphrase'] = self.my_passphrase
+                        pf_changed = True
+                    
+
+                # Remove the key file
+                os.remove('/KEY')
+                
+                step = (i + 1) * 2
+                self.queue.put([1 / (total_steps / step), 0, None, None, None])
+
+                # Check for key file
+                if pf_changed:
+                    if 'lukskey' in partition['keyfile_path']:
+                        if exists(partition['keyfile_path']):
+                            self.log.write("Keyfile_path = %s" % partition['keyfile_path'], 'change_passphrase')
+                            create_keyfile(partition['keyfile_path'], device, partition['passphrase'])
+                        else:
+                            msg = "Keyfile not changed: %s - path not found" % partition['keyfile_path']
+                            self.queue.put([1, 120, None, None, msg])
+                    step = (i + 1) * 3
+                    self.queue.put([1 / (total_steps / step), 0, i, partition, None])
+                else:
+                    msg = _("Could not change the passphrase for {0}\n"
+                            "Please, provide the current and new passphrase.".format(device))
+                    self.queue.put([1, 125, None, None, msg])
+                    return
+            
+                # Re-mount the partition
+                if partition['mount_point']:
+                    device, mount, filesystem = self.udisks2.mount_device(device, partition['mount_point'], None, None, partition['passphrase'])
+                    if not mount:
+                        partition['mount_point'] = ''
+                        step = (i + 1) * 4
+                        self.queue.put([1 / (total_steps / step), 130, i, partition, self.mount_error.format(device)])
