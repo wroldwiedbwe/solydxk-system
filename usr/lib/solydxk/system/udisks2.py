@@ -272,7 +272,7 @@ class Udisks2():
                 
         # Do not mount swap partition
         if filesystem == 'swap':
-            print((">>>> swap partition: return device_path=%s, filesystem=%s" % (device_path, filesystem)))
+            #print((">>>> swap partition: return device_path=%s, filesystem=%s" % (device_path, filesystem)))
             return (device_path, '', filesystem)
         
         # Try udisks way if no mount point has been given

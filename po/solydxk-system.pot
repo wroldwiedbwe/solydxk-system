@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-06 14:33+0200\n"
+"POT-Creation-Date: 2017-07-07 17:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -176,11 +176,11 @@ msgstr ""
 msgid "Unneeded packages"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:314
+#: ../usr/lib/solydxk/system/solydxk_system.py:315
 msgid "Encrypted partition"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:315
+#: ../usr/lib/solydxk/system/solydxk_system.py:316
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -189,132 +189,125 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:335
+#: ../usr/lib/solydxk/system/solydxk_system.py:336
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:395
+#: ../usr/lib/solydxk/system/solydxk_system.py:389
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
 "Please choose an encrypted partition."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:439
-#, python-brace-format
-msgid ""
-"Could not change the passphrase for {0}\n"
-"Please, provide the current and new passphrase."
-msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:451
-#, python-brace-format
-msgid "Passphrase changed for {0}."
-msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:530
+#: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Partition"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:530
+#: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Label"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:530
+#: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "File system"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:530
+#: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Total size"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:530
+#: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Free size"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:530
+#: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Mount point"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:573
+#: ../usr/lib/solydxk/system/solydxk_system.py:524
 msgid "Backup"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:608
+#: ../usr/lib/solydxk/system/solydxk_system.py:559
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
 "Mount a backup drive and hit the refresh button."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1107
-#: ../usr/lib/solydxk/system/solydxk_system.py:1184
+#: ../usr/lib/solydxk/system/solydxk_system.py:1061
+#: ../usr/lib/solydxk/system/solydxk_system.py:1138
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1111
+#: ../usr/lib/solydxk/system/solydxk_system.py:1065
 msgid "Nothing to do."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1191
+#: ../usr/lib/solydxk/system/solydxk_system.py:1145
 msgid "There are no repositories to save."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1195
+#: ../usr/lib/solydxk/system/solydxk_system.py:1149
 msgid "Current"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1195
+#: ../usr/lib/solydxk/system/solydxk_system.py:1149
 msgid "Country"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1195
+#: ../usr/lib/solydxk/system/solydxk_system.py:1149
 msgid "Repository"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1195
+#: ../usr/lib/solydxk/system/solydxk_system.py:1149
 msgid "URL"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1195
+#: ../usr/lib/solydxk/system/solydxk_system.py:1149
 msgid "Speed"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1381
+#: ../usr/lib/solydxk/system/solydxk_system.py:1353
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1393
+#: ../usr/lib/solydxk/system/solydxk_system.py:1365
 msgid "Encryption done"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1394
+#: ../usr/lib/solydxk/system/solydxk_system.py:1366
 msgid ""
 "Encryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1397
+#: ../usr/lib/solydxk/system/solydxk_system.py:1369
 msgid "Decryption done"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1398
+#: ../usr/lib/solydxk/system/solydxk_system.py:1370
 msgid ""
 "Decryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1452
+#: ../usr/lib/solydxk/system/solydxk_system.py:1382
+#, python-brace-format
+msgid "Passphrase changed for {0}."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:1430
 msgid "Partition passphrase"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1453
+#: ../usr/lib/solydxk/system/solydxk_system.py:1431
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -347,6 +340,13 @@ msgstr ""
 msgid ""
 "Error formatting partition {0}:\n"
 "It has no file system type."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/endecrypt_partitions.py:305
+#, python-brace-format
+msgid ""
+"Could not change the passphrase for {0}\n"
+"Please, provide the current and new passphrase."
 msgstr ""
 
 #: ../usr/lib/solydxk/system/localize.py:113
