@@ -1,3 +1,9 @@
+solydxk-system (3.0.0b1.8) solydxk; urgency=low
+
+  * Update SolydXK.info to include solydxk-ee suite
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 10 Jul 2017 12:29:03 +0200
+
 solydxk-system (3.0.0b1.7) solydxk; urgency=low
 
   * Run change passphrase in separate thread
