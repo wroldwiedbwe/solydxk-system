@@ -189,6 +189,7 @@ class Localize(threading.Thread):
 
     def applications(self):
         if self.default_locale != "en_US":
+            spellchecker = False
             # Localize KDE
             if is_package_installed("kde-runtime"):
                 print((" --> Localizing KDE"))
@@ -208,10 +209,14 @@ class Localize(threading.Thread):
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
-                package = self.get_localized_package("myspell")
-                if package != "":
-                    self.queue_progress()
-                    shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
+                if not spellchecker:
+                    package = self.get_localized_package("hunspell")
+                    if package == '':
+                        package = self.get_localized_package("myspell")
+                    if package != "":
+                        spellchecker = True
+                        self.queue_progress()
+                        shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
 
             # Localize AbiWord
             if is_package_installed("abiword"):
@@ -235,6 +240,14 @@ class Localize(threading.Thread):
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s %s %s" % (self.debian_frontend, self.apt_options, ff, package))
+                if not spellchecker:
+                    package = self.get_localized_package("hunspell")
+                    if package == '':
+                        package = self.get_localized_package("myspell")
+                    if package != "":
+                        spellchecker = True
+                        self.queue_progress()
+                        shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
 
             # Localize Thunderbird
             if is_package_installed("thunderbird"):
@@ -243,6 +256,14 @@ class Localize(threading.Thread):
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s thunderbird %s" % (self.debian_frontend, self.apt_options, package))
+                if not spellchecker:
+                    package = self.get_localized_package("hunspell")
+                    if package == '':
+                        package = self.get_localized_package("myspell")
+                    if package != "":
+                        spellchecker = True
+                        self.queue_progress()
+                        shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
 
     def queue_progress(self):
         self.current_step += 1

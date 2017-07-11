@@ -1,3 +1,9 @@
+solydxk-system (3.0.0b1.9) solydxk; urgency=low
+
+  * Prefer hunspell instead of myspell if locale for package exists
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 11 Jul 2017 14:21:06 +0200
+
 solydxk-system (3.0.0b1.8) solydxk; urgency=low
 
   * Update SolydXK.info to include solydxk-ee suite
