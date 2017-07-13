@@ -68,7 +68,7 @@ class LocaleInfo():
 class Localize(threading.Thread):
     # locales = [[install_bool, locale_string, language_string, default_bool]]
     def __init__(self, locales, timezone, queue=None):
-        super(Localize, self).__init__()
+        threading.Thread.__init__(self)
         
         self.locales = locales
         self.default_locale = ''

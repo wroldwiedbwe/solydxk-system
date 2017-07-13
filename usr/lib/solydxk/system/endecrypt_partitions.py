@@ -19,7 +19,7 @@ gettext.textdomain('solydxk-system')
 
 class EnDecryptPartitions(threading.Thread):
     def __init__(self, my_partitions, backup_dir, encrypt, passphrase, queue, log):
-        super(EnDecryptPartitions, self).__init__()
+        threading.Thread.__init__(self)
         
         self.udisks2 = Udisks2()
         self.my_partitions = my_partitions
@@ -244,7 +244,7 @@ class EnDecryptPartitions(threading.Thread):
 
 class ChangePassphrase(threading.Thread):
     def __init__(self, my_partitions, my_passphrase, queue, log):
-        super(ChangePassphrase, self).__init__()
+        threading.Thread.__init__(self)
         
         self.udisks2 = Udisks2()
         self.my_partitions = my_partitions

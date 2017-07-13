@@ -77,7 +77,8 @@ def get_mirror_data(excludeMirrors=[], getDeadMirrors=False):
 
 class MirrorGetSpeed(threading.Thread):
     def __init__(self, mirrors, queue):
-        super(MirrorGetSpeed, self).__init__()
+        threading.Thread.__init__(self)
+        
         self.mirrors = mirrors
         self.queue = queue
         self.scriptDir = abspath(dirname(__file__))

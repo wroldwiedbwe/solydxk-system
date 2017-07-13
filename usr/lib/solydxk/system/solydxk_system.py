@@ -901,8 +901,7 @@ class SolydXKSystemSettings(object):
         self.threads[name] = t
         t.daemon = True
         t.start()
-        # TODO: why is queue.join blocking the thread?
-        #self.queue.join()
+        self.queue.join()
         GObject.timeout_add(250, self.check_thread, name)
 
     def fill_treeview_locale(self):
@@ -1282,6 +1281,7 @@ class SolydXKSystemSettings(object):
                 self.update_progress(0.1, True)
             if not self.queue.empty():
                 ret = self.queue.get()
+                self.queue.task_done()
                 if ret:
                     self.log.write("Queue returns: {}".format(ret), 'check_thread')
                     if name == 'mirrorspeed':
@@ -1308,13 +1308,13 @@ class SolydXKSystemSettings(object):
                             # Replace old partition with new partition in my_partitions
                             self.my_partitions[ret[2]] = ret[3]
                             self.changed_devices.append(ret[3]['device'].replace('/mapper', ''))
-                self.queue.task_done()
             return True
 
         # Thread is done
         print(("Thread %s ended" % name))
         if not self.queue.empty():
             ret = self.queue.get()
+            self.queue.task_done()
             if ret:
                 self.log.write("Queue returns: {}".format(ret), 'check_thread')
                 if name == 'mirrorspeed':
@@ -1338,7 +1338,6 @@ class SolydXKSystemSettings(object):
                         # Replace old partition with new partition in my_partitions
                         self.my_partitions[ret[2]] = ret[3]
                         self.changed_devices.append(ret[3]['device'].replace('/mapper', ''))
-            self.queue.task_done()
         del self.threads[name]
 
         if name == 'update':

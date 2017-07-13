@@ -428,7 +428,8 @@ def get_label(partition_path):
 # Class to run commands in a thread and return the output in a queue
 class ExecuteThreadedCommands(threading.Thread):
     def __init__(self, commandList, queue=None, return_output=False):
-        super(ExecuteThreadedCommands, self).__init__()
+        threading.Thread.__init__(self)
+        
         self._commands = commandList
         self._queue = queue
         self._return_output = return_output
@@ -452,7 +453,8 @@ class ExecuteThreadedCommands(threading.Thread):
 # Class to run a function in a thread and return the output in a queue
 class ExecuteThreadedFunction(threading.Thread):
     def __init__(self, target, queue=None, *args):
-        super(ExecuteThreadedFunction, self).__init__()
+        threading.Thread.__init__(self)
+        
         self._target = target
         self._args = args
         self._queue = queue
