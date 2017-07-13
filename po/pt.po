@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 17:51+0200\n"
+"POT-Creation-Date: 2017-07-13 12:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Luis Filipe Teixeira <lufilte@gmail.com>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/solydxk/teams/54212/"
@@ -28,13 +28,13 @@ msgid ""
 "SolydXK System Settings has failed with the following unexpected error. "
 "Please submit a bug report!"
 msgstr ""
-"As configurações do sistema SolydXK falharam com o seguinte erro. Por favor "
+"As Configurações do Sistema SolydXK falharam com o seguinte erro. Por favor "
 "envie um relatório de bug!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:90
 #: ../usr/share/applications/solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
-msgstr "Configurações do sistema SolydXK"
+msgstr "Configurações do Sistema SolydXK"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:91
 msgid "Save backports"
@@ -46,7 +46,7 @@ msgstr "Salvar os espelhos"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:93
 msgid "Check mirrors speed"
-msgstr "Verificar a velocidade aos espelhos"
+msgstr "Verificar a velocidade dos espelhos"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:94
 msgid "Remove"
@@ -62,11 +62,11 @@ msgstr "Repositórios"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:97
 msgid "Encryption"
-msgstr "Encriptação"
+msgstr "Cifragem"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:98
 msgid "Passphrase (6-20 chr)"
-msgstr "Senha (6-20 chr)"
+msgstr "Frase-senha (6-20 chr)"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:99
 msgid "Encrypt"
@@ -78,7 +78,7 @@ msgstr "Decifrar"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:101
 msgid "Change passphrase"
-msgstr "Alterar senha"
+msgstr "Alterar frase-senha"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:102
 msgid "Manually create key file"
@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Cifrar partições e manter os seus dados seguros.\n"
 "Aviso: faça uma cópia de segurança dos seus dados antes de continuar!\n"
-"Nota: você pode pressionar Ctrl+ botão esquerdo do rato para selecionar "
+"Nota: você pode pressionar Ctrl+ botão esquerdo do rato para seleccionar "
 "múltiplas partições."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:109
@@ -124,7 +124,7 @@ msgid ""
 "your system.\n"
 "Use at your own risk!"
 msgstr ""
-"Ative o repositório Backports se precisar de uma versão de software mais "
+"Active o repositório Backports se precisar de uma versão de software mais "
 "recente.\n"
 "Aviso: Ao instalar o software a partir do repositório de Backports pode "
 "desestabilizar o seu sistema.\n"
@@ -135,7 +135,7 @@ msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
 msgstr ""
-"Selecione o repositório mais rápido para as suas atualizações.\n"
+"Seleccione o repositório mais rápido para as suas actualizações.\n"
 "Nota: Certifique-se de que tem uma ligação à Internet."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:116
@@ -156,7 +156,7 @@ msgid ""
 "Holding back a package will prevent this package from being updated."
 msgstr ""
 "Reter pacotes individuais.\n"
-"Ao reter um pacote, impedirá que este pacote seja atualizado."
+"Ao reter um pacote, impedirá que este pacote seja actualizado."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:121
 msgid "Save locale"
@@ -185,7 +185,7 @@ msgid ""
 "Please mount {0} and refresh when done."
 msgstr ""
 "Não é possível montar {0}\n"
-"Por favor, montar {0} e atualizar quando terminar."
+"Por favor, montar {0} e actualizar quando terminar."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:128
 msgid ""
@@ -194,7 +194,7 @@ msgid ""
 "Other packages are orphaned packages. Remove with caution!"
 msgstr ""
 "Remova pacotes desnecessários\n"
-"Os pacotes pré-selecionados são seguros para remover (autoremove).\n"
+"Os pacotes pré-seleccionados são seguros para remover (autoremove).\n"
 "Outros pacotes são pacotes órfãos. Remova com precaução!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:131
@@ -224,7 +224,7 @@ msgid ""
 "Please choose another partition to decrypt."
 msgstr ""
 "A partição não está cifrada.\n"
-"Por favor, escolher outra partição para cifrar."
+"Por favor, escolha outra partição para cifrar."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:389
 #, python-format
@@ -232,7 +232,7 @@ msgid ""
 "%s is not encrypted.\n"
 "Please choose an encrypted partition."
 msgstr ""
-"%s não está cifrada.\n"
+"%s não é cifrada.\n"
 "Por favor, de escolher uma partição cifrada."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
@@ -272,8 +272,8 @@ msgstr ""
 "Você precisa de uma partição de backup com pelo menos %s livre.\n"
 "Monte uma unidade de backup e aperte o botão de atualização."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1061
-#: ../usr/lib/solydxk/system/solydxk_system.py:1138
+#: ../usr/lib/solydxk/system/solydxk_system.py:1062
+#: ../usr/lib/solydxk/system/solydxk_system.py:1139
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -281,45 +281,45 @@ msgstr ""
 "Não foi possível atualizar a cache do apt.\n"
 "Por favor, atualize a cache apt manualmente com: apt-get update"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1065
+#: ../usr/lib/solydxk/system/solydxk_system.py:1066
 msgid "Nothing to do."
 msgstr "Nada a fazer."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1145
+#: ../usr/lib/solydxk/system/solydxk_system.py:1146
 msgid "There are no repositories to save."
 msgstr "Não há nenhum repositórios para salvar."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Current"
 msgstr "Actual"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Country"
 msgstr "País"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Repository"
 msgstr "Repositório"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Speed"
 msgstr "Velocidade"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1353
+#: ../usr/lib/solydxk/system/solydxk_system.py:1354
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "É necessário reiniciar o sistema para que as novas configurações sejam "
 "afetadas."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1365
+#: ../usr/lib/solydxk/system/solydxk_system.py:1366
 msgid "Encryption done"
 msgstr "Criptografia concluída."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1366
+#: ../usr/lib/solydxk/system/solydxk_system.py:1367
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -329,11 +329,11 @@ msgstr ""
 "\n"
 "Você deseja reiniciar o computador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1369
+#: ../usr/lib/solydxk/system/solydxk_system.py:1370
 msgid "Decryption done"
 msgstr "Decifração concluída"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1370
+#: ../usr/lib/solydxk/system/solydxk_system.py:1371
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -343,16 +343,16 @@ msgstr ""
 "\n"
 "Você deseja reiniciar o computador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1382
+#: ../usr/lib/solydxk/system/solydxk_system.py:1383
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Frase de senha alterada para {0}."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1430
+#: ../usr/lib/solydxk/system/solydxk_system.py:1431
 msgid "Partition passphrase"
 msgstr "Frase de senha da partição"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1431
+#: ../usr/lib/solydxk/system/solydxk_system.py:1432
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -388,7 +388,7 @@ msgid ""
 "You need to manually restore your data from: {backup_dir}"
 msgstr ""
 "Não foi possível restaurar o backup (rsync code: {rsync_code}).\n"
-"Você precisa de restaurar os seus dados manualmente de: {backup_dir}"
+"Você precisa de restaurar os seus dados manualmente de: {backup_dir} "
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:153
 #, python-brace-format
@@ -405,10 +405,10 @@ msgid ""
 "Could not change the passphrase for {0}\n"
 "Please, provide the current and new passphrase."
 msgstr ""
-"Não foi possível alterar a frase de senha para {0}\n"
-"Por favor, forneça a atual e nova frase de senha."
+"Não foi possível alterar a frase-senha para {0}\n"
+"Por favor, forneça a actual e nova frase de senha."
 
-#: ../usr/lib/solydxk/system/localize.py:113
+#: ../usr/lib/solydxk/system/localize.py:114
 msgid ""
 "SolydXK System Settings cannot download and install the software "
 "localization packages\n"
@@ -419,7 +419,7 @@ msgstr ""
 "Por favor, repita este processo quando você estabelecer uma conexão com a "
 "Internet."
 
-#: ../usr/lib/solydxk/system/localize.py:115
+#: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr "Sem ligação à Internet"
 
@@ -439,7 +439,7 @@ msgstr "A alterar as configurações do sistema para SolydXK"
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
-msgstr "Ajuda de Criptografia das Configurações do Sistema SolydXK"
+msgstr "Ajuda da Cifração das Configurações do Sistema SolydXK"
 
 #: en/help.html+html.body.div.h2:10
 msgid "Description"
@@ -460,8 +460,8 @@ msgid ""
 "drive for this purpose before you start."
 msgstr ""
 "As configurações do sistema SolydXK irá criar ou restaurar um backup dos "
-"dados da partição que você irá criptografar ou descriptografar. Monte uma "
-"partição ou unidade externa para esse propósito antes de começar."
+"dados da partição que você irá cifrar ou decifrar. Monte uma partição ou "
+"unidade externa para esse propósito antes de começar."
 
 #: en/help.html+html.body.div.p:15
 msgid ""
@@ -471,12 +471,12 @@ msgid ""
 "an unencrypted boot partition if you want to encrypt your root partition and "
 "that Grub2 will be installed on the disk where the root partition is."
 msgstr ""
-"Você não pode criptografar uma partição inicial ou raiz inicializada com as "
-"configurações do sistema SolydXK. Se você deseja fazê-lo, você pode baixar o "
-"ISO mais recente do nosso site principal e executar Configurações do sistema "
-"SolydXK em uma sessão ao vivo. Observe que você precisa de uma partição de "
-"inicialização não criptografada se desejar criptografar sua partição raiz e "
-"que Grub2 será instalado no disco onde a partição raiz é."
+"Você não pode cifrar uma partição root ou home inicializada com as "
+"Configurações do Sistema SolydXK. Se desejar fazê-lo, você pode descarregar "
+"o ISO mais recente do nosso site principal e executar Configurações do "
+"Sistema SolydXK em uma sessão live. Observe que você precisa de uma partição "
+"de inicialização não cifrada se desejar cifrar sua partição root e que Grub2 "
+"será instalado no disco de onde a partição root é."
 
 #: en/help.html+html.body.div.p:16
 msgid ""
@@ -485,8 +485,8 @@ msgid ""
 "you run SolydXK System Settings."
 msgstr ""
 "Somente as partições que são montadas no fstab são salvas no fstab. Se você "
-"desejar incluir novas partições em fstab que você precisa para adicioná-los "
-"manualmente antes de executar Configurações do Sistema SolydXK."
+"desejar incluir novas partições em fstab que você precisa deve adicionar-las "
+"manualmente antes de executar as Configurações do Sistema SolydXK."
 
 #: en/help.html+html.body.div.h2:18
 msgid "Examples"
@@ -503,15 +503,14 @@ msgid ""
 "usr/share/solydxk/system/icons/unencrypted-usb.png\" /> and <img src=\"/usr/"
 "share/solydxk/system/icons/encrypted-usb.png\" />"
 msgstr ""
-"Quando você começar Configurações do Sistema SolydXK você verá uma lista de "
-"partições que você pode criptografar ou descriptografar. Uma partição "
-"criptografada mostra este ícone:  <img src=\"/usr/share/solydxk/system/icons/"
-"encrypted.png\" /> e uma partição não criptografada mostra esse ícone: <img "
-"src=\"/usr/share/solydxk/system/icons/unencrypted.png\" />. Sua selecção irá "
-"decidir quais acções podem ser tomadas nessa partição. Os meios removíveis "
-"mostrarão esses ícones: <img src=\"/usr/share/solydxk/system/icons/"
-"unencrypted-usb.png\" /> e <img src=\"/usr/share/solydxk/system/icons/"
-"encrypted-usb.png\" />"
+"Quando você iniciar as Configurações do Sistema SolydXK, você verá uma lista "
+"de partições que pode cifrar ou decifrar. Uma partição cifrada mostra este "
+"ícone:  <img src=\"/usr/share/solydxk/system/icons/encrypted.png\" /> e uma "
+"partição não cifrada mostra este ícone: <img src=\"/usr/share/solydxk/system/"
+"icons/unencrypted.png\" />. A sua selecção irá decidir quais as acções que "
+"podem ser tomadas nessa partição. Os meios removíveis mostrarão estes "
+"ícones: <img src=\"/usr/share/solydxk/system/icons/unencrypted-usb.png\" /> "
+"e <img src=\"/usr/share/solydxk/system/icons/encrypted-usb.png\" />"
 
 #: en/help.html+html.body.div.p:20
 msgid "Following are some examples on how to use SolydXK System Settings:"
@@ -521,7 +520,7 @@ msgstr ""
 
 #: en/help.html+html.body.div.h3:22
 msgid "Encrypt a USB pen drive"
-msgstr "Cifrar uma pen USB"
+msgstr "Cifrar uma Pen USB"
 
 #: en/help.html+html.body.div.p:23
 msgid ""
@@ -529,14 +528,13 @@ msgid ""
 "drive and select the partition of that drive drive you wish to encrypt. Fill "
 "in your passphrase twice and hit the \"Encrypt\" button."
 msgstr ""
-"Insira uma pen drive USB e monte-a. Pressione o botão de atualização para "
-"listar o pen drive e selecione a partição da unidade que você deseja "
-"criptografar. Preencha sua frase secreta duas vezes e pressione o botão "
-"\"Criptografar\"."
+"Insira uma Pen USB e monte-a. Pressione o botão de actualizar para listar o "
+"pen USB e seleccione a partição da unidade que deseja cifrar. Preencha sua "
+"frase-senha duas vezes e pressione o botão \"Cifrar\"."
 
 #: en/help.html+html.body.div.h3:25
 msgid "Encrypt the root (and swap) partition"
-msgstr "Cifrar a partição root (e swap) "
+msgstr "Cifrar a partição root (e swap)"
 
 #: en/help.html+html.body.div.strong.p:26
 msgid "WARNING: do this at your own risk!"
@@ -552,6 +550,13 @@ msgid ""
 "partition: /dev/sda1 which I want to mount as /boot into the root partition /"
 "dev/sda2. Change the partition paths accordingly to your situation."
 msgstr ""
+"Você precisará de uma partição /boot decifrada. Se você não possui uma "
+"partição /boot, veja como criar uma. Em uma sessão live, você inicia GParted "
+"e cria uma partição de pelo menos 200 MB de espaço livre. Esta partição pode "
+"ser criada a partir de espaço não alocado existente ou encolhendo outra "
+"partição e usando o espaço livre recém-criado. Neste exemplo, criei uma nova "
+"partição: /dev/sda1 que eu quero montar como /boot na partição raiz /dev/"
+"sda2. Altere os caminhos da partição de acordo com sua situação."
 
 #: en/help.html+html.body.div.p:28
 msgid "Open a terminal, and run these commands as root:"
@@ -563,12 +568,17 @@ msgid ""
 "mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
 "s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/fstab"
 msgstr ""
+"# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 /"
+"mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
+"s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/fstab"
 
 #: en/help.html+html.body.div.p:34
 msgid ""
 "You can now reboot your system and check if the boot partition is properly "
 "mounted:"
 msgstr ""
+"Agora você pode reiniciar seu sistema e verificar se a partição de "
+"inicialização está corretamente montada:"
 
 #: en/help.html+html.body.div.pre:35
 msgid "$ mount | grep sda2"
@@ -580,32 +590,25 @@ msgid ""
 "again, start SolydXK System Settings and select the root partition (and any "
 "other partition you'd like to encrypt)."
 msgstr ""
+"Para cifrar a partição root (e swap), você precisa iniciar uma sessão live "
+"novamente, iniciar Configurações do Sistema SolydXK e seleccionar a partição "
+"root (e qualquer outra partição que você deseja cifrar)."
 
 #: en/help.html+html.body.div.h3:38
-#, fuzzy
-#| msgid ""
-#| "Please, provide the current passphrase\n"
-#| "for the encrypted partition"
 msgid "Change the passphrase of an encrypted partition"
-msgstr ""
-"Por favor, forneça a senha atual\n"
-"para a partição cifrada"
+msgstr "Alterar a frase-senha de uma partição cifrada"
 
 #: en/help.html+html.body.div.p:39
 msgid ""
 "Select an encrypted partition from the list, fill in your passphrase twice "
 "and hit the \"Change Passphrase\" button."
 msgstr ""
+"Seleccione uma partição cifrada da lista, preencha a sua frase-senha duas "
+"vezes e pressione o botão \"Alterar senha\"."
 
 #: en/help.html+html.body.div.h3:41
-#, fuzzy
-#| msgid ""
-#| "Please, provide the current passphrase\n"
-#| "for the encrypted partition"
 msgid "Create a key file for a selection of encrypted partitions"
-msgstr ""
-"Por favor, forneça a senha atual\n"
-"para a partição cifrada"
+msgstr "Criar um ficheiro de chave para uma selecção de partições cifradas"
 
 #: en/help.html+html.body.div.p:42
 msgid ""
@@ -614,12 +617,14 @@ msgid ""
 "partition will hold the key file while the other partitions are "
 "automatically opened with that key file."
 msgstr ""
+"Seleccione várias partições cifradas da lista, digite a sua senha duas vezes "
+"e clique no botão \"Criar manualmente o ficheiro de chave\". A primeira "
+"partição cifrada irá manter o ficheiro de chave enquanto as outras partições "
+"serão abertas automaticamente com esse ficheiro de chave."
 
 #: en/help.html+html.body.div.h3:44
-#, fuzzy
-#| msgid "Encrypted partition"
 msgid "Decrypt a partition"
-msgstr "Partição cifrada"
+msgstr "Decifrar a partição"
 
 #: en/help.html+html.body.div.p:45
 msgid ""
@@ -629,10 +634,16 @@ msgid ""
 "partition you want to decrypt. You will be asked for a backup medium if it "
 "cannot find enough free space to continue."
 msgstr ""
+"Seleccione uma partição cifrada da lista, preencha sua frase-senha duas "
+"vezes e pressione o botão \"Decifrar\". As Configurações do Sistema SolydXK "
+"procurarão uma partição com espaço livre suficiente para criar um backup "
+"temporário da partição que você deseja decifrar. Você será solicitado por um "
+"média de backup se não conseguir encontrar espaço livre suficiente para "
+"continuar."
 
 #: en/help.html+html.body.div.h2:48
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Solução de problemas"
 
 #: en/help.html+html.body.div.p:49
 msgid ""
@@ -640,6 +651,9 @@ msgid ""
 "\"https://github.com/SolydXK/solydxk-system\" target=\"_blank\">GitHub</a> "
 "page."
 msgstr ""
+"Por favor ajude a melhorar esta aplicação. Poderá encontrar o código fonte "
+"no nossa página do  <a href=\"https://github.com/SolydXK/solydxk-system\" "
+"target=\"_blank\">GitHub</a> ."
 
 #: en/help.html+html.body.div.p:50
 msgid ""
@@ -647,9 +661,14 @@ msgid ""
 "please visit our <a href=\"http://forums.solydxk.com\" target=\"_blank"
 "\">forum</a> and post your issue there."
 msgstr ""
+"Se, por algum motivo, o seu sistema não montar a nova partição cifrada, por "
+"favor visite o nosso <a href=\"http://forums.solydxk.com\" target=\"_blank"
+"\">forum</a> e publique seu problema lá."
 
 #: en/help.html+html.body.div.p:51
 msgid ""
 "Don't forget to attach the log file when you post an issue on our forum: /"
 "var/log/solydxk-system.log"
 msgstr ""
+"Não se esqueça de anexar o ficheiro de log quando você publicar um problema "
+"no nosso fórum: /var/log/solydxk-system.log"
