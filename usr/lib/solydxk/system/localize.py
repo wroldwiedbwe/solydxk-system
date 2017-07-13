@@ -69,10 +69,11 @@ class Localize(threading.Thread):
     # locales = [[install_bool, locale_string, language_string, default_bool]]
     def __init__(self, locales, timezone, queue=None):
         super(Localize, self).__init__()
+        
         self.locales = locales
         self.default_locale = ''
         for loc in locales:
-            if loc[2]:
+            if loc[3]:
                 self.default_locale = loc[1]
                 break
         if self.default_locale == '':
@@ -146,6 +147,31 @@ class Localize(threading.Thread):
         shell_exec("echo \"\" > /etc/default/locale")
         shell_exec("update-locale LANG=\"%s.UTF-8\"" % self.default_locale)
         #shell_exec("update-locale LANG=%s.UTF-8" % self.default_locale)
+        
+        # Localize Grub2
+        default_grub = '/etc/default/grub'
+        if self.default_locale != 'en_US' and exists(default_grub):
+            # Copy mo files if needed
+            cmd = 'mkdir -p /boot/grub/locale; for F in $(find /usr/share/locale -name "grub.mo"); do MO="/boot/grub/locale/$(echo $F | cut -d\'/\' -f 5).mo"; if [ ! -e $MO ]; then cp -v $F $MO; fi; done'
+            shell_exec(cmd)
+            # Configure Grub2
+            sed_cmd = ''
+            grub_lang_str = ''
+            if not has_string_in_file("LANG=", default_grub):
+                grub_lang_str = "\n# Set locale\nLANG=%s\n" % self.default_locale
+            else:
+                sed_cmd = "sed -i -e \'/LANG=/ c LANG=%s\' %s;" % (self.default_locale, default_grub)
+            if not has_string_in_file("LANGUAGE=", default_grub):
+                grub_lang_str += "LANGUAGE=%s\n" % self.default_locale
+            else:
+                sed_cmd += "sed -i -e \'/LANGUAGE=/ c LANGUAGE=%s\' %s;" % (self.default_locale, default_grub)
+            if grub_lang_str:
+                with open(default_grub, 'a') as f:
+                    f.write(grub_lang_str)
+            if sed_cmd:
+                shell_exec(sed_cmd)
+            if grub_lang_str or sed_cmd:
+                shell_exec('update-grub')
 
         # Change user settings
         if exists(self.user_dir):
@@ -171,7 +197,7 @@ class Localize(threading.Thread):
             print((" --> Set time zone %s" % self.timezone))
             self.queue_progress()
             shell_exec("echo \"%s\" > /etc/timezone" % self.timezone)
-            shell_exec("cp /usr/share/zoneinfo/%s /etc/localtime" % self.timezone)
+            shell_exec("rm /etc/localtime; ln -sf /usr/share/zoneinfo/%s /etc/localtime" % self.timezone)
 
     def language_specific(self):
         localizeConf = join(self.scriptDir, "localize/%s" % self.default_locale)
@@ -267,10 +293,10 @@ class Localize(threading.Thread):
 
     def queue_progress(self):
         self.current_step += 1
-        print((">> step %d of %d" % (self.current_step, self.max_steps)))
         if self.current_step > self.max_steps:
             self.current_step = self.max_steps
         if self.queue is not None:
+            print((">> step %d of %d" % (self.current_step, self.max_steps)))
             self.queue.put([self.max_steps, self.current_step])
 
     def get_localized_package(self, package):

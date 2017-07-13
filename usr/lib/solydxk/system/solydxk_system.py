@@ -901,7 +901,8 @@ class SolydXKSystemSettings(object):
         self.threads[name] = t
         t.daemon = True
         t.start()
-        self.queue.join()
+        # TODO: why is queue.join blocking the thread?
+        #self.queue.join()
         GObject.timeout_add(250, self.check_thread, name)
 
     def fill_treeview_locale(self):

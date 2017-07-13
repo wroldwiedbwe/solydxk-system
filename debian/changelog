@@ -1,3 +1,15 @@
+solydxk-system (3.0.0b2.1) solydxk; urgency=low
+
+  * Copy missing Grub2 translation files
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 13 Jul 2017 08:52:29 +0200
+
+solydxk-system (3.0.0b2.0) solydxk; urgency=low
+
+  * Localize Grub2 when needed
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 12 Jul 2017 17:04:09 +0200
+
 solydxk-system (3.0.0b1.9) solydxk; urgency=low
 
   * Prefer hunspell instead of myspell if locale for package exists
