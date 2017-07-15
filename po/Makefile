@@ -42,7 +42,7 @@ update:
 		--from-code=UTF-8 \
 		../usr/bin/$(package) && echo OK
 	# get strings from the desktop file
-	@ for LAUNCHER in `find .. -name '*solydxk-system.desktop'`; do \
+	@ for LAUNCHER in `find ../usr/share/k* -name '*.desktop'`; do \
 		sed -r \
 			-e '/^(Name|Comment|GenericName|Keywords)\[/d' \
 			-e 's/^(Comment=|Name=|GenericName=|Keywords=)/_\1/' \
@@ -59,7 +59,7 @@ update:
 		msgmerge --quiet --backup=none --update $$POFILE $(package).pot ; \
 	done && echo OK
 	# apply desktop file modifications
-	@ for LAUNCHER in `find .. -name '*solydxk-system.desktop'`; do \
+	@ for LAUNCHER in `find ../usr/share/k* -name '*.desktop'`; do \
 		intltool-merge --quiet --desktop-style . $$LAUNCHER.in $$LAUNCHER ; \
 		rm $$LAUNCHER.in.h $$LAUNCHER.in ; \
 	done && echo OK
@@ -69,8 +69,8 @@ update:
 	@ touch pot/dummy.pot
 	@ rm pot/*.pot
 	@ html2po -P en pot && echo "HTML pot files created"
-	@ msgcat pot/*.pot >> solydxk-system.pot
-	@ head -n50 solydxk-system.pot > .tmp && tail -n+51 solydxk-system.pot | sed '/fuzzy/,/X-/d' >> .tmp && mv -f .tmp solydxk-system.pot && echo "Pot files merged"
+	@ msgcat pot/*.pot >> $(package).pot
+	@ head -n50 $(package).pot > .tmp && tail -n+51 $(package).pot | sed '/fuzzy/,/X-/d' >> .tmp && mv -f .tmp $(package).pot && echo "Pot files merged"
 	@ po4a po4a.cfg && echo "Po files and translations updated"
 	# don't ship incomplete translations
 	@ n_required=`ls en | wc -l`; \
@@ -78,4 +78,4 @@ update:
 	    n_slides=`ls $$dir | wc -l`; \
 	    [ $$n_slides != $$n_required ] && rm -rf $$dir; \
 	done >/dev/null || true
-	@ echo "Shipped solydxk-system translations (`ls translated | wc -l`):" `ls translated`
+	@ echo "Shipped $(package) translations (`ls translated | wc -l`):" `ls translated`
