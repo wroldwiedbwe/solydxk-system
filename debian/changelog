@@ -1,3 +1,9 @@
+solydxk-system (3.0.0b2.3) solydxk; urgency=low
+
+  * Added entry for KCM (systemsettings)
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 15 Jul 2017 10:44:57 +0200
+
 solydxk-system (3.0.0b2.2) solydxk; urgency=low
 
   * Debugging threading

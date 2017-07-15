@@ -1,0 +1,26 @@
+[Desktop Entry]
+Type=Service
+Icon=solydxk
+Exec=solydxk-system
+
+X-KDE-ServiceTypes=SystemSettingsExternalApp
+X-KDE-System-Settings-Parent-Category=system-administration
+X-KDE-System-Settings-Parent-Category-V2=system-administration
+X-KDE-ParentApp=solydxk-system
+Categories=Qt;KDE;X-KDE-settings-system-administration;
+
+Name=SolydXK System Settings
+Name[de]=SolydXK Systemeinstellungen
+Name[fr]=SolydXK System Settings
+Name[lt]=SolydXK sistemos nustatymai
+Name[nl]=SolydXK Systeeminstellingen
+Name[pt]=Configurações do Sistema SolydXK
+Comment=Change system settings for SolydXK
+Comment[ca]=Canvia els parmetres de Sistema de SolydXK
+Comment[de]=Ändere Systemeinstellungen für SolydXK
+Comment[fr]=Changer les paramètres système de SolydXK
+Comment[it]=Cambia le impostazioni di sistema per SolydXK
+Comment[lt]=Keisti SolydXK sistemos nustatymus
+Comment[nl]=Verander systeem instellingen voor SolydXK
+Comment[pt]=A alterar as configurações do sistema para SolydXK
+Comment[sr]=    
