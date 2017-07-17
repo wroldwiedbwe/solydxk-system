@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: updatemanager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 17:51+0200\n"
+"POT-Creation-Date: 2017-07-17 17:55+0200\n"
 "PO-Revision-Date: 2016-06-02 07:12+0000\n"
 "Last-Translator: Arjen Balfoort <schoelje@solydxk.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/solydxk/"
@@ -34,7 +34,8 @@ msgstr ""
 "sende en feilrapport!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:90
-#: ../usr/share/applications/solydxk-system.desktop.in.h:1
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr ""
 
@@ -249,77 +250,77 @@ msgid ""
 "Mount a backup drive and hit the refresh button."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1061
-#: ../usr/lib/solydxk/system/solydxk_system.py:1138
+#: ../usr/lib/solydxk/system/solydxk_system.py:1062
+#: ../usr/lib/solydxk/system/solydxk_system.py:1139
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1065
+#: ../usr/lib/solydxk/system/solydxk_system.py:1066
 msgid "Nothing to do."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1145
+#: ../usr/lib/solydxk/system/solydxk_system.py:1146
 msgid "There are no repositories to save."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Current"
 msgstr "Gjeldende"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Country"
 msgstr "Land"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Repository"
 msgstr "Pakkebrønn"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Speed"
 msgstr "Hastighet"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1353
+#: ../usr/lib/solydxk/system/solydxk_system.py:1354
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1365
+#: ../usr/lib/solydxk/system/solydxk_system.py:1366
 msgid "Encryption done"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1366
+#: ../usr/lib/solydxk/system/solydxk_system.py:1367
 msgid ""
 "Encryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1369
+#: ../usr/lib/solydxk/system/solydxk_system.py:1370
 msgid "Decryption done"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1370
+#: ../usr/lib/solydxk/system/solydxk_system.py:1371
 msgid ""
 "Decryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1382
+#: ../usr/lib/solydxk/system/solydxk_system.py:1383
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1430
+#: ../usr/lib/solydxk/system/solydxk_system.py:1431
 msgid "Partition passphrase"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1431
+#: ../usr/lib/solydxk/system/solydxk_system.py:1432
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -361,14 +362,14 @@ msgid ""
 "Please, provide the current and new passphrase."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/localize.py:113
+#: ../usr/lib/solydxk/system/localize.py:114
 msgid ""
 "SolydXK System Settings cannot download and install the software "
 "localization packages\n"
 "Please repeat this process when you established an internet connection."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/localize.py:115
+#: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr ""
 
@@ -382,8 +383,13 @@ msgstr ""
 msgid "Please enter your password."
 msgstr ""
 
-#: ../usr/share/applications/solydxk-system.desktop.in.h:2
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
+msgstr ""
+
+#: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
+msgid "System"
 msgstr ""
 
 #: en/help.html+html.body.h1:8

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-13 12:19+0200\n"
+"POT-Creation-Date: 2017-07-17 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Luis Filipe Teixeira <lufilte@gmail.com>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/solydxk/teams/54212/"
@@ -32,7 +32,8 @@ msgstr ""
 "envie um relatório de bug!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:90
-#: ../usr/share/applications/solydxk-system.desktop.in.h:1
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr "Configurações do Sistema SolydXK"
 
@@ -433,9 +434,14 @@ msgstr "Precisa de privilégios administrativos."
 msgid "Please enter your password."
 msgstr "Por favor introduza a sua palavra passe"
 
-#: ../usr/share/applications/solydxk-system.desktop.in.h:2
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
 msgstr "A alterar as configurações do sistema para SolydXK"
+
+#: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
+msgid "System"
+msgstr ""
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"

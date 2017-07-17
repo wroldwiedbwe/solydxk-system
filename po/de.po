@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 17:51+0200\n"
+"POT-Creation-Date: 2017-07-17 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: pitfd <pitfd@openmailbox.org>, 2017\n"
 "Language-Team: German (https://www.transifex.com/solydxk/teams/54212/de/)\n"
@@ -31,7 +31,8 @@ msgstr ""
 "Fehler beendet worden. Bitte erstelle einen Fehlerbericht!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:90
-#: ../usr/share/applications/solydxk-system.desktop.in.h:1
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr "SolydXK Systemeinstellungen"
 
@@ -85,11 +86,11 @@ msgstr "Erzeugen Sie die Verschlüsselungsdatei von Hand"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid "Localization"
-msgstr ""
+msgstr "Lokalisierung"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:104
 msgid "Timezone"
-msgstr ""
+msgstr "Zeitzone"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:105
 #: ../usr/lib/solydxk/system/solydxk_system.py:123
@@ -276,8 +277,8 @@ msgstr ""
 "Hängen Sie einen Sicherungslaufwerk ein und betätigen Sie die Aktualsieren "
 "Schaltfläche."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1061
-#: ../usr/lib/solydxk/system/solydxk_system.py:1138
+#: ../usr/lib/solydxk/system/solydxk_system.py:1062
+#: ../usr/lib/solydxk/system/solydxk_system.py:1139
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -286,45 +287,45 @@ msgstr ""
 "Bitte führen Sie eine händische Aktualisierung mit dem Befehl \"apt-get "
 "update\" durch"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1065
+#: ../usr/lib/solydxk/system/solydxk_system.py:1066
 msgid "Nothing to do."
 msgstr "Nichts untenehmen"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1145
+#: ../usr/lib/solydxk/system/solydxk_system.py:1146
 msgid "There are no repositories to save."
 msgstr "Es sind keine Paketquellen zur Sicherung vorhanden. "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Current"
 msgstr "Aktuell"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Country"
 msgstr "Land"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Repository"
 msgstr "Paketquelle"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Speed"
 msgstr "Geschwindigkeit"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1353
+#: ../usr/lib/solydxk/system/solydxk_system.py:1354
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Sie müssen Ihr System neu starten, damit die neuen Einstellungen wirksam "
 "werden können."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1365
+#: ../usr/lib/solydxk/system/solydxk_system.py:1366
 msgid "Encryption done"
 msgstr "Veschlüsselung wurde durchgeführt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1366
+#: ../usr/lib/solydxk/system/solydxk_system.py:1367
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -334,11 +335,11 @@ msgstr ""
 "\n"
 "Wollen Sie Ihren Computer neu starten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1369
+#: ../usr/lib/solydxk/system/solydxk_system.py:1370
 msgid "Decryption done"
 msgstr "Entschlüsselung wurde durchgeführt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1370
+#: ../usr/lib/solydxk/system/solydxk_system.py:1371
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -348,16 +349,16 @@ msgstr ""
 "\n"
 "Wollen Sie Ihren Computer neu starten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1382
+#: ../usr/lib/solydxk/system/solydxk_system.py:1383
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Verschlüsselungskenntwort für{0} geändert."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1430
+#: ../usr/lib/solydxk/system/solydxk_system.py:1431
 msgid "Partition passphrase"
 msgstr "Partitionskennwort"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1431
+#: ../usr/lib/solydxk/system/solydxk_system.py:1432
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -415,7 +416,7 @@ msgstr ""
 "Konnte das Verschlüsselungskennwort für {0} nicht ändern.\n"
 "Bitte geben Sie das gegenwärtige und ein neues Verschlüsselungskennwort an."
 
-#: ../usr/lib/solydxk/system/localize.py:113
+#: ../usr/lib/solydxk/system/localize.py:114
 msgid ""
 "SolydXK System Settings cannot download and install the software "
 "localization packages\n"
@@ -425,7 +426,7 @@ msgstr ""
 "Sprachumgebung nicht downloaden und installieren.\n"
 "Bitte wiederholen Sie den Schritt, wenn eine Internetverbindung besteht."
 
-#: ../usr/lib/solydxk/system/localize.py:115
+#: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr "Keine Internetverbindung"
 
@@ -439,9 +440,14 @@ msgstr "Benötigt Administratorrechte."
 msgid "Please enter your password."
 msgstr "Bitte geben Sie Ihr Kennwort ein."
 
-#: ../usr/share/applications/solydxk-system.desktop.in.h:2
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
 msgstr "Ändere Systemeinstellungen für SolydXK"
+
+#: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
+msgid "System"
+msgstr "System"
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"

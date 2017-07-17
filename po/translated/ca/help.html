@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="../link/general.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="background"></div>
+	<h1>Ajuda de l'encriptatge a SolysXK System Settings</h1>
+	<div class="main">
+		<h2>Descripció</h2>
+		<p>Encripta les particions del sistema amb LUKS.</p>
+
+		<h2>Important</h2>
+		<p>SolydXK System Settings crearà i restaurarà una còpia de les dades que aneu
+a encriptar o desencriptar. Munteu una partició o disc extern amb aquesta
+finalitat abans de començar.</p>
+		<p>No podeu encriptar una partició muntada (d'arrel o d'usuari) amb SolydXK
+System Settings. Si voleu fer-ho, baixeu la darrera ISO del nostre lloc web
+i executeu SolydXK System Settings des del disc autònom. Recordeu que
+necessiteu una partició d'arrencada (boot) sense encriptar si voleu
+encriptar la partició arrel, i que GRUB2 s'instal·larà al disc on hi hagi
+aquesta partició.</p>
+		<p>Només es desen a fstab les particions muntades a fstab.Si voleu incloure
+noves particions a fstab cal afegir-les manualment abans d'executar SolydXK
+System Settings.</p>
+
+		<h2>Exemples</h2>
+		<p>When you start SolydXK System Settings you will see a list of partitions
+that you can either encrypt or decrypt. An encrypted partition shows this
+icon: <img src="/usr/share/solydxk/system/icons/encrypted.png" /> and an unencrypted partition shows this icon: <img src="/usr/share/solydxk/system/icons/unencrypted.png" />. Your selection will decide which actions can be taken on that
+partition. Removable media will show these icons:  <img src="/usr/share/solydxk/system/icons/unencrypted-usb.png" /> and  <img src="/usr/share/solydxk/system/icons/encrypted-usb.png" /></p>
+		<p>Tot seguit hi ha alguns exemples de com usar SolydXK System Settings:</p>
+
+		<h3>Encriptar un llapis USB</h3>
+		<p>Inseriu un llapis USB i munteu-lo. Premeu el botó de Refresca per muntar el
+llapis i triar la partició que voleu encriptar. Entreu la contrasenya dues
+vegades i premeu el botó "Encripta".</p>
+		
+		<h3>Encriptar la partició arrel (i la d'intercanvi)</h3>
+		<strong><p>ATENCIÓ: Feu això sota la vostra responsabilitat!</p></strong>
+		<p>Us cal una partició /boot no encriptada. Si no la teniu, podeu crear-la des
+del disc autònom. Engegueu GParted i creeu una partició amb 200 MB d'espai
+lliure com a mínim. Aquesta partició es pot crear a partir de l'espai
+lliure, o bé encongint una partició actual i usant el nou espai
+alliberat. En aquest exemple, he creat una nova partició, /dev/sda1 que
+muntaré com a /boot a la partició arrel /dev/sda2. canvieu els camins de les
+particions d'acord amb la vostra situació.</p>
+		<p>Obriu un terminal, i entreu aquestes ordres com a root: </p>
+		<pre># mkdir /mnt/boot /mnt/root
+# mount /dev/sda1 /mnt/boot
+# mount /dev/sda2 /mnt/root
+# cp -a /mnt/root/boot/* /mnt/boot/
+# echo "UUID=$(blkid -o value -s UUID /dev/sda1)    /boot   ext4    defaults    0   0" >> /mnt/root/etc/fstab</pre>
+		<p>Ara podeu tornar a arrencar el vostre sistema i comprovar si la partició
+d'arrencada s'ha muntat com cal.</p>
+		<pre>$ mount | grep sda2</pre>
+		<p>Per encriptar les particions arrel (i d'intercanvi) us cal tornar a arrencar
+una altra sessió autònoma. Engegueu SolydXK System Settings i trieu la
+partició arrel (i qualsevol altra que vulgueu encriptar).</p>
+		
+		<h3>Canviar la contrasenya d'una partició encriptada</h3>
+		<p>Trieu una partició encriptada de la llista, entreu la contrasenya dues
+vegades i premeu el botó de "Canvia la Contrasenya".</p>
+		
+		<h3>Crear un fitxer clau per a una selecció de particions encriptades</h3>
+		<p>Trieu diverses particions encriptades de la llista, entreu la contrasenya
+dues vegades i premeu el botó "Crea fitxer clau manualment". La primera
+partició encriptada contindrà el fitxer clau, mentre que les altres
+particions s'obriran automàticament amb aquest fitxer clau.</p>
+		
+		<h3>Desencriptar una partició</h3>
+		<p>Trieu una partició encriptada de la llista, entreu la contrasenya dues
+vegades,i premeu el botó "Desencripta". SolydXK System Settings cercarà una
+partició amb prou espai lliure per crear una còpia temporal de la partició
+que voleu desencriptar. Per continuar, se us demanarà un dispositiu de còpia
+de seguretat si ni hi ha prou espai lliure. </p>
+		
+
+		<h2>Solució de problemes</h2>
+		<p>Si us plau, ajudeu-nos a millorar aquesta aplicació. Trobareu els fitxers
+font a la nostra pàgina de <a
+href="https://github.com/SolydXK/solydxk-system" target="_blank">GitHub</a>.</p>
+		<p>Si per alguna raó el vostre sistema no munta la partició que acabeu
+d'encriptar, si us plau visiteu el nostre<a href="http://forums.solydxk.com"
+target="_blank">fòrum</a> i expliqueu el vostre problema allí.</p>
+		<p>No us oblideu d'adjuntar el fitxer de registre (/var/log/solydxk-system.log)
+quan exposeu el vostre problema al fòrum.</p>
+    </div>
+  </body>
+</html>

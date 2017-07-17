@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 17:51+0200\n"
+"POT-Creation-Date: 2017-07-17 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Moo <moose@mail.ru>, 2017\n"
 "Language-Team: Lithuanian (https://www.transifex.com/solydxk/teams/54212/"
@@ -33,7 +33,8 @@ msgstr ""
 "pranešti apie klaidą!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:90
-#: ../usr/share/applications/solydxk-system.desktop.in.h:1
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr "SolydXK sistemos nustatymai"
 
@@ -274,8 +275,8 @@ msgstr ""
 "vietos.\n"
 "Prijunkite atsarginės kopijos diską ir spustelėkite įkėlimo iš naujo mygtuką."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1061
-#: ../usr/lib/solydxk/system/solydxk_system.py:1138
+#: ../usr/lib/solydxk/system/solydxk_system.py:1062
+#: ../usr/lib/solydxk/system/solydxk_system.py:1139
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -283,45 +284,45 @@ msgstr ""
 "Nepavyko atnaujinti apt podėlio.\n"
 "Prašome rankiniu būdu atnaujinti apt podėlį, naudojant: apt-get update"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1065
+#: ../usr/lib/solydxk/system/solydxk_system.py:1066
 msgid "Nothing to do."
 msgstr "Nėra ką atlikti."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1145
+#: ../usr/lib/solydxk/system/solydxk_system.py:1146
 msgid "There are no repositories to save."
 msgstr "Nėra saugyklų kurias įrašyti."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Current"
 msgstr "Dabartinė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Country"
 msgstr "Šalis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Repository"
 msgstr "Saugykla"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Speed"
 msgstr "Sparta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1353
+#: ../usr/lib/solydxk/system/solydxk_system.py:1354
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Tam, kad įsigaliotų naujieji nustatymai jums reikia iš naujo paleisti "
 "sistemą."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1365
+#: ../usr/lib/solydxk/system/solydxk_system.py:1366
 msgid "Encryption done"
 msgstr "Šifravimas atliktas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1366
+#: ../usr/lib/solydxk/system/solydxk_system.py:1367
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -331,11 +332,11 @@ msgstr ""
 "\n"
 "Ar norite paleisti savo kompiuterį iš naujo?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1369
+#: ../usr/lib/solydxk/system/solydxk_system.py:1370
 msgid "Decryption done"
 msgstr "Iššifravimas atliktas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1370
+#: ../usr/lib/solydxk/system/solydxk_system.py:1371
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -345,16 +346,16 @@ msgstr ""
 "\n"
 "Ar norite paleisti savo kompiuterį iš naujo?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1382
+#: ../usr/lib/solydxk/system/solydxk_system.py:1383
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "{0} slaptafrazė pakeista."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1430
+#: ../usr/lib/solydxk/system/solydxk_system.py:1431
 msgid "Partition passphrase"
 msgstr "Skaidinio slaptafrazė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1431
+#: ../usr/lib/solydxk/system/solydxk_system.py:1432
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -410,7 +411,7 @@ msgstr ""
 "Nepavyko pakeisti {0} slaptafrazės\n"
 "Prašome pateikti esamą ir naują slaptafrazę."
 
-#: ../usr/lib/solydxk/system/localize.py:113
+#: ../usr/lib/solydxk/system/localize.py:114
 msgid ""
 "SolydXK System Settings cannot download and install the software "
 "localization packages\n"
@@ -420,7 +421,7 @@ msgstr ""
 "įrangos lokalizavimo paketus\n"
 "Prašome pakartoti šį procesą, kai užmegsite interneto ryšį."
 
-#: ../usr/lib/solydxk/system/localize.py:115
+#: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr "Nėra interneto ryšio"
 
@@ -434,9 +435,14 @@ msgstr "reikalauja administratoriaus teisių."
 msgid "Please enter your password."
 msgstr "Prašome įvesti savo slaptažodį."
 
-#: ../usr/share/applications/solydxk-system.desktop.in.h:2
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
 msgstr "Keisti SolydXK sistemos nustatymus"
+
+#: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
+msgid "System"
+msgstr "Sistema"
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"

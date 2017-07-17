@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 17:51+0200\n"
+"POT-Creation-Date: 2017-07-17 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Eduard Selma <selma@tinet.cat>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/solydxk/teams/54212/ca/)\n"
@@ -27,78 +27,75 @@ msgid ""
 "SolydXK System Settings has failed with the following unexpected error. "
 "Please submit a bug report!"
 msgstr ""
-"SolydXK System Settings ha fallat amb el segent error inesperat. Si us plau, "
-"envieu un informe d'error!"
+"SolydXK System Settings ha fallat amb el següent error inesperat. Si us "
+"plau, envieu un informe d'error!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:90
-#: ../usr/share/applications/solydxk-system.desktop.in.h:1
-#, fuzzy
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr "SolydXK System Settings"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:91
-#, fuzzy
 msgid "Save backports"
-msgstr "Desa les rpliques "
+msgstr "Desa les retroversions"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:92
 msgid "Save mirrors"
-msgstr "Desa les rpliques "
+msgstr "Desa les rèpliques "
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:93
 msgid "Check mirrors speed"
-msgstr "Prova la velocitat de les rpliques "
+msgstr "Prova la velocitat de les rèpliques "
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:94
 msgid "Remove"
 msgstr "Elimina "
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:95
-#, fuzzy
 msgid "Hold back"
-msgstr "Paquets a la llista negra "
+msgstr "Retín"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:96
-#, fuzzy
 msgid "Repositories"
-msgstr "Dipsit "
+msgstr "Dipòsits"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:97
 msgid "Encryption"
-msgstr ""
+msgstr "Encriptatge"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:98
 msgid "Passphrase (6-20 chr)"
-msgstr ""
+msgstr "Contrasenya (6-20 caràct.)"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:99
 msgid "Encrypt"
-msgstr ""
+msgstr "Encripta"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:100
 msgid "Decrypt"
-msgstr ""
+msgstr "Desencripta"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:101
 msgid "Change passphrase"
-msgstr ""
+msgstr "Canvia la contrasenya"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:102
 msgid "Manually create key file"
-msgstr ""
+msgstr "Crea fitxer clau manualment"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid "Localization"
-msgstr ""
+msgstr "Localització"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:104
 msgid "Timezone"
-msgstr ""
+msgstr "Zona horària"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:105
 #: ../usr/lib/solydxk/system/solydxk_system.py:123
 msgid "Locale"
-msgstr ""
+msgstr "Configuració regional"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:106
 msgid ""
@@ -106,12 +103,17 @@ msgid ""
 "Warning: backup your data before you continue!\n"
 "Note: you can Ctrl-left click to select multiple partitions."
 msgstr ""
+"Encripteu les particions per tenir les dades segures.\n"
+"Atenció: feu còpia de seguritat abans de continuar!\n"
+"Nota: podeu fer Ctrl+Clic esquerre per triar diverses particions."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:109
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
 msgstr ""
+"Feu la vostra configuració regional (una per omissió) i zona horària.\n"
+"Nota: cal tenir connexió a internet per localitzar el programari."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:111
 msgid ""
@@ -120,22 +122,25 @@ msgid ""
 "your system.\n"
 "Use at your own risk!"
 msgstr ""
+"Activeu el dipòsit de retroversions si us calen versions de programari\n"
+"més noves. Atenció: instal·lar programari de retroversions pot \n"
+"desestabilitzar el sistema. Useu-lo sota la vostra responsabilitat!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:114
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
 msgstr ""
+"Trieu el dipòsit més ràpid per les actualitzacions.\n"
+"Nota: Assegureu-vos de tenir connexió a internet."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:116
-#, fuzzy
 msgid "Hold back packages"
-msgstr "Paquets a la llista negra "
+msgstr "Retín paquets"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:117
-#, fuzzy
 msgid "Held back packages"
-msgstr "Paquets a la llista negra "
+msgstr "Paquets retinguts."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:118
 msgid "Available packages"
@@ -146,26 +151,28 @@ msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
 msgstr ""
+"Retín paquets individuals.\n"
+"Retenir un paquet evita que aquest s'actualitzi."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:121
 msgid "Save locale"
-msgstr ""
+msgstr "Desa el Locale"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:122
 msgid "Installed"
-msgstr ""
+msgstr "Instal·lat"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:124
 msgid "Language"
-msgstr ""
+msgstr "Llengua"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:125
 msgid "Default"
-msgstr ""
+msgstr "Omissió"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:126
 msgid "Please provide a passphrase (6-20 characters)."
-msgstr ""
+msgstr "Si us plau, doneu una contrasenya (6-20 caràcters)."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:127
 #, python-brace-format
@@ -173,6 +180,8 @@ msgid ""
 "Could not mount {0}\n"
 "Please mount {0} and refresh when done."
 msgstr ""
+"No puc muntar {0}\n"
+"Si us plau, munteu {0} i refresqueu-ho un cop fet."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:128
 msgid ""
@@ -180,15 +189,17 @@ msgid ""
 "Pre-selected packages are safe to remove (autoremove).\n"
 "Other packages are orphaned packages. Remove with caution!"
 msgstr ""
+"Elimina paquets innecessaris\n"
+"És segur eliminar els paquets seleccionats (autoremove).\n"
+"Els altres paquets són orfes. Elimineu-los amb compte!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:131
-#, fuzzy
 msgid "Unneeded packages"
-msgstr "Paquets a la llista negra "
+msgstr "Paquets innecessaris"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:315
 msgid "Encrypted partition"
-msgstr ""
+msgstr "Partició encriptada"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:316
 #, python-brace-format
@@ -198,12 +209,18 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"La partició {0} ja està encriptada.\n"
+"En continuar, canviarà la seva clau d'encriptatge.\n"
+"\n"
+"Voleu continuar?"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:336
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
 msgstr ""
+"La partició no està encriptada.\n"
+"Si us plau, trieu-ne una altra per desencriptar."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:389
 #, python-format
@@ -211,34 +228,36 @@ msgid ""
 "%s is not encrypted.\n"
 "Please choose an encrypted partition."
 msgstr ""
+"%s no està encriptada.\n"
+"Si us plau, trieu una partició encriptada."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Partition"
-msgstr ""
+msgstr "Partició"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "File system"
-msgstr ""
+msgstr "Sistema de fitxers"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Total size"
-msgstr ""
+msgstr "Mida total"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Free size"
-msgstr ""
+msgstr "Espai lliure"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Mount point"
-msgstr ""
+msgstr "Punt de muntatge"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:524
 msgid "Backup"
-msgstr ""
+msgstr "Còpia de seguretat"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:559
 #, python-format
@@ -246,82 +265,94 @@ msgid ""
 "You need a backup partition with at least %s free.\n"
 "Mount a backup drive and hit the refresh button."
 msgstr ""
+"Cal una partició de còpia de seguretat amb un mínim de%s lliure.\n"
+"Munteu un disc de còpia de seguretat i premeu el botó Actualitza."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1061
-#: ../usr/lib/solydxk/system/solydxk_system.py:1138
+#: ../usr/lib/solydxk/system/solydxk_system.py:1062
+#: ../usr/lib/solydxk/system/solydxk_system.py:1139
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
 msgstr ""
+"No he pogut actualitzar la memòria cau d'APT.\n"
+"Si us plau, actualitzeu-la manualment amb apt-get update "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1065
+#: ../usr/lib/solydxk/system/solydxk_system.py:1066
 msgid "Nothing to do."
-msgstr ""
+msgstr "Res a fer."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1145
+#: ../usr/lib/solydxk/system/solydxk_system.py:1146
 msgid "There are no repositories to save."
-msgstr "No hi ha dipsits per desar."
+msgstr "No hi ha dipòsits per desar."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Current"
 msgstr "Actual "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Country"
-msgstr "Pas "
+msgstr "País "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Repository"
-msgstr "Dipsit "
+msgstr "Dipòsit "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "URL"
 msgstr "URL "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1149
+#: ../usr/lib/solydxk/system/solydxk_system.py:1150
 msgid "Speed"
 msgstr "Velocitat "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1353
+#: ../usr/lib/solydxk/system/solydxk_system.py:1354
 msgid "You need to reboot your system for the new settings to take affect."
-msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:1365
-msgid "Encryption done"
-msgstr ""
+msgstr "Us cal tornar a arrencar el sistema per activar la nova configuració."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1366
+msgid "Encryption done"
+msgstr "Fet l'encriptatge"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:1367
 msgid ""
 "Encryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:1369
-msgid "Decryption done"
-msgstr ""
+"Ha acabat l'encrptatge.\n"
+"\n"
+"Voleu tornar a arrencar l'ordinador?"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1370
+msgid "Decryption done"
+msgstr "Fet el desencriptatge"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:1371
 msgid ""
 "Decryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
+"Ha acabat el desencriptatge.\n"
+"\n"
+"Voleu tornar a arrencar l'ordinador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1382
+#: ../usr/lib/solydxk/system/solydxk_system.py:1383
 #, python-brace-format
 msgid "Passphrase changed for {0}."
-msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:1430
-msgid "Partition passphrase"
-msgstr ""
+msgstr "Canviada la contrasenya per {0}."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1431
+msgid "Partition passphrase"
+msgstr "Contrasenya de la partició"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:1432
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
 msgstr ""
+"Si us plau, doneu la contrasenya actual\n"
+"de la partició encrptada"
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:53
 #, python-brace-format
@@ -329,6 +360,9 @@ msgid ""
 "Could not create a backup on {backup_dir} (rsync code: {rsync_code}).\n"
 "Please, select another backup medium before you try again."
 msgstr ""
+"No puc crear una còpia de seguretat a {backup_dir} (rsync code: "
+"{rsync_code}).\n"
+"Trieu un altre dispositiu de còpia de seguretat abans de tornar a provar-ho."
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:92
 #, python-brace-format
@@ -337,6 +371,8 @@ msgid ""
 "You need to manually format the device and restore your data from: "
 "{backup_dir}"
 msgstr ""
+"No puc formatar el dispositiu {device}.\n"
+"Cal que el formateu manualment i restaureu les dades des de: {backup_dir}"
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:129
 #, python-brace-format
@@ -344,6 +380,8 @@ msgid ""
 "Could not restore the backup (rsync code: {rsync_code}).\n"
 "You need to manually restore your data from: {backup_dir}"
 msgstr ""
+"No puc restaurar la còpia de seguretat de (rsync code: {rsync_code}).\n"
+"Cal que restaureu manualment les vostres dades des de: {backup_dir}"
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:153
 #, python-brace-format
@@ -351,6 +389,8 @@ msgid ""
 "Error formatting partition {0}:\n"
 "It has no file system type."
 msgstr ""
+"Error formatant la partició {0}:\n"
+"No té tipus de sistema de fitxers."
 
 #: ../usr/lib/solydxk/system/endecrypt_partitions.py:305
 #, python-brace-format
@@ -358,48 +398,57 @@ msgid ""
 "Could not change the passphrase for {0}\n"
 "Please, provide the current and new passphrase."
 msgstr ""
+"No puc canviar canviar la contrasenya de {0}\n"
+"Si us plau, doneu la contrasenya actual i la nova."
 
-#: ../usr/lib/solydxk/system/localize.py:113
+#: ../usr/lib/solydxk/system/localize.py:114
 msgid ""
 "SolydXK System Settings cannot download and install the software "
 "localization packages\n"
 "Please repeat this process when you established an internet connection."
 msgstr ""
+"SolydXK System Settings no pot descarregar i instal·lar els paquets de "
+"localització de programari\n"
+"Si us plau, repetiu el procés quan tingueu connexió a internet."
 
-#: ../usr/lib/solydxk/system/localize.py:115
+#: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
-msgstr ""
+msgstr "No hi ha connexió a internet."
 
 #: ../usr/bin/solydxk-system:22
 #, sh-format
 msgid "needs administrative privileges."
-msgstr ""
+msgstr "necessita tenir privilegis d'administrador."
 
 #: ../usr/bin/solydxk-system:23
 #, sh-format
 msgid "Please enter your password."
-msgstr ""
+msgstr "Si us plau, entreu la vostra contrasenya."
 
-#: ../usr/share/applications/solydxk-system.desktop.in.h:2
+#: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
+#: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
-msgstr "Canvia els parmetres de Sistema de SolydXK"
+msgstr "Canvia els Paràmetres de Sistema de SolydXK"
+
+#: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
+msgid "System"
+msgstr "Sistema"
 
 #: en/help.html+html.body.h1:8
-#, fuzzy
 msgid "SolydXK System Settings Encryption Help"
-msgstr "SolydXK System Settings"
+msgstr "Ajuda de l'encriptatge a SolysXK System Settings"
 
 #: en/help.html+html.body.div.h2:10
 msgid "Description"
-msgstr ""
+msgstr "Descripció"
 
 #: en/help.html+html.body.div.p:11
 msgid "Encrypt partitions of your system with LUKS."
-msgstr ""
+msgstr "Encripta les particions del sistema amb LUKS."
 
 #: en/help.html+html.body.div.h2:13
 msgid "Important"
-msgstr ""
+msgstr "Important"
 
 #: en/help.html+html.body.div.p:14
 msgid ""
@@ -407,6 +456,9 @@ msgid ""
 "partition you are going to encrypt or decrypt. Mount a partition or external "
 "drive for this purpose before you start."
 msgstr ""
+"SolydXK System Settings crearà i restaurarà una còpia de les dades que aneu "
+"a encriptar o desencriptar. Munteu una partició o disc extern amb aquesta "
+"finalitat abans de començar."
 
 #: en/help.html+html.body.div.p:15
 msgid ""
@@ -416,6 +468,12 @@ msgid ""
 "an unencrypted boot partition if you want to encrypt your root partition and "
 "that Grub2 will be installed on the disk where the root partition is."
 msgstr ""
+"No podeu encriptar una partició muntada (d'arrel o d'usuari) amb SolydXK "
+"System Settings. Si voleu fer-ho, baixeu la darrera ISO del nostre lloc web "
+"i executeu SolydXK System Settings des del disc autònom. Recordeu que "
+"necessiteu una partició d'arrencada (boot) sense encriptar si voleu "
+"encriptar la partició arrel, i que GRUB2 s'instal·larà al disc on hi hagi "
+"aquesta partició."
 
 #: en/help.html+html.body.div.p:16
 msgid ""
@@ -423,10 +481,13 @@ msgid ""
 "wish to include new partitions in fstab you need to manually add them before "
 "you run SolydXK System Settings."
 msgstr ""
+"Només es desen a fstab les particions muntades a fstab.Si voleu incloure "
+"noves particions a fstab cal afegir-les manualment abans d'executar SolydXK "
+"System Settings."
 
 #: en/help.html+html.body.div.h2:18
 msgid "Examples"
-msgstr ""
+msgstr "Exemples"
 
 #: en/help.html+html.body.div.p:19
 msgid ""
@@ -439,14 +500,22 @@ msgid ""
 "usr/share/solydxk/system/icons/unencrypted-usb.png\" /> and <img src=\"/usr/"
 "share/solydxk/system/icons/encrypted-usb.png\" />"
 msgstr ""
+"Quan engegueu SolydXK System Settings veureu una llista de particions que "
+"podeu encriptar o desencriptar. Una partició encriptada mostra la icona: "
+"<img src=\"/usr/share/solydxk/system/icons/encrypted.png\" /> i una partició "
+"no encriptada mostra aquesta icona: <img src=\"/usr/share/solydxk/system/"
+"icons/unencrypted.png\" />. La vostra tria determinarà quines accions es "
+"poden fer en cada partició. Els dispositius extraïbles mostraran aquestes "
+"icones: <img src=\"/usr/share/solydxk/system/icons/unencrypted-usb.png\" /> "
+"i <img src=\"/usr/share/solydxk/system/icons/encrypted-usb.png\" />"
 
 #: en/help.html+html.body.div.p:20
 msgid "Following are some examples on how to use SolydXK System Settings:"
-msgstr ""
+msgstr "Tot seguit hi ha alguns exemples de com usar SolydXK System Settings:"
 
 #: en/help.html+html.body.div.h3:22
 msgid "Encrypt a USB pen drive"
-msgstr ""
+msgstr "Encriptar un llapis USB"
 
 #: en/help.html+html.body.div.p:23
 msgid ""
@@ -454,14 +523,17 @@ msgid ""
 "drive and select the partition of that drive drive you wish to encrypt. Fill "
 "in your passphrase twice and hit the \"Encrypt\" button."
 msgstr ""
+"Inseriu un llapis USB i munteu-lo. Premeu el botó de Refresca per muntar el "
+"llapis i triar la partició que voleu encriptar. Entreu la contrasenya dues "
+"vegades i premeu el botó \"Encripta\"."
 
 #: en/help.html+html.body.div.h3:25
 msgid "Encrypt the root (and swap) partition"
-msgstr ""
+msgstr "Encriptar la partició arrel (i la d'intercanvi)"
 
 #: en/help.html+html.body.div.strong.p:26
 msgid "WARNING: do this at your own risk!"
-msgstr ""
+msgstr "ATENCIÓ: Feu això sota la vostra responsabilitat!"
 
 #: en/help.html+html.body.div.p:27
 msgid ""
@@ -473,10 +545,17 @@ msgid ""
 "partition: /dev/sda1 which I want to mount as /boot into the root partition /"
 "dev/sda2. Change the partition paths accordingly to your situation."
 msgstr ""
+"Us cal una partició /boot no encriptada. Si no la teniu, podeu crear-la des "
+"del disc autònom. Engegueu GParted i creeu una partició amb 200 MB d'espai "
+"lliure com a mínim. Aquesta partició es pot crear a partir de l'espai "
+"lliure, o bé encongint una partició actual i usant el nou espai alliberat. "
+"En aquest exemple, he creat una nova partició, /dev/sda1 que muntaré com a /"
+"boot a la partició arrel /dev/sda2. canvieu els camins de les particions "
+"d'acord amb la vostra situació."
 
 #: en/help.html+html.body.div.p:28
 msgid "Open a terminal, and run these commands as root:"
-msgstr ""
+msgstr "Obriu un terminal, i entreu aquestes ordres com a root: "
 
 #: en/help.html+html.body.div.pre:29
 msgid ""
@@ -484,16 +563,21 @@ msgid ""
 "mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
 "s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/fstab"
 msgstr ""
+"# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 /"
+"mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
+"s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/fstab"
 
 #: en/help.html+html.body.div.p:34
 msgid ""
 "You can now reboot your system and check if the boot partition is properly "
 "mounted:"
 msgstr ""
+"Ara podeu tornar a arrencar el vostre sistema i comprovar si la partició "
+"d'arrencada s'ha muntat com cal."
 
 #: en/help.html+html.body.div.pre:35
 msgid "$ mount | grep sda2"
-msgstr ""
+msgstr "$ mount | grep sda2"
 
 #: en/help.html+html.body.div.p:36
 msgid ""
@@ -501,20 +585,25 @@ msgid ""
 "again, start SolydXK System Settings and select the root partition (and any "
 "other partition you'd like to encrypt)."
 msgstr ""
+"Per encriptar les particions arrel (i d'intercanvi) us cal tornar a arrencar "
+"una altra sessió autònoma. Engegueu SolydXK System Settings i trieu la "
+"partició arrel (i qualsevol altra que vulgueu encriptar)."
 
 #: en/help.html+html.body.div.h3:38
 msgid "Change the passphrase of an encrypted partition"
-msgstr ""
+msgstr "Canviar la contrasenya d'una partició encriptada"
 
 #: en/help.html+html.body.div.p:39
 msgid ""
 "Select an encrypted partition from the list, fill in your passphrase twice "
 "and hit the \"Change Passphrase\" button."
 msgstr ""
+"Trieu una partició encriptada de la llista, entreu la contrasenya dues "
+"vegades i premeu el botó de \"Canvia la Contrasenya\"."
 
 #: en/help.html+html.body.div.h3:41
 msgid "Create a key file for a selection of encrypted partitions"
-msgstr ""
+msgstr "Crear un fitxer clau per a una selecció de particions encriptades"
 
 #: en/help.html+html.body.div.p:42
 msgid ""
@@ -523,10 +612,14 @@ msgid ""
 "partition will hold the key file while the other partitions are "
 "automatically opened with that key file."
 msgstr ""
+"Trieu diverses particions encriptades de la llista, entreu la contrasenya "
+"dues vegades i premeu el botó \"Crea fitxer clau manualment\". La primera "
+"partició encriptada contindrà el fitxer clau, mentre que les altres "
+"particions s'obriran automàticament amb aquest fitxer clau."
 
 #: en/help.html+html.body.div.h3:44
 msgid "Decrypt a partition"
-msgstr ""
+msgstr "Desencriptar una partició"
 
 #: en/help.html+html.body.div.p:45
 msgid ""
@@ -536,10 +629,15 @@ msgid ""
 "partition you want to decrypt. You will be asked for a backup medium if it "
 "cannot find enough free space to continue."
 msgstr ""
+"Trieu una partició encriptada de la llista, entreu la contrasenya dues "
+"vegades,i premeu el botó \"Desencripta\". SolydXK System Settings cercarà "
+"una partició amb prou espai lliure per crear una còpia temporal de la "
+"partició que voleu desencriptar. Per continuar, se us demanarà un dispositiu "
+"de còpia de seguretat si ni hi ha prou espai lliure. "
 
 #: en/help.html+html.body.div.h2:48
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Solució de problemes"
 
 #: en/help.html+html.body.div.p:49
 msgid ""
@@ -547,6 +645,9 @@ msgid ""
 "\"https://github.com/SolydXK/solydxk-system\" target=\"_blank\">GitHub</a> "
 "page."
 msgstr ""
+"Si us plau, ajudeu-nos a millorar aquesta aplicació. Trobareu els fitxers "
+"font a la nostra pàgina de <a href=\"https://github.com/SolydXK/solydxk-"
+"system\" target=\"_blank\">GitHub</a>."
 
 #: en/help.html+html.body.div.p:50
 msgid ""
@@ -554,21 +655,14 @@ msgid ""
 "please visit our <a href=\"http://forums.solydxk.com\" target=\"_blank"
 "\">forum</a> and post your issue there."
 msgstr ""
+"Si per alguna raó el vostre sistema no munta la partició que acabeu "
+"d'encriptar, si us plau visiteu el nostre<a href=\"http://forums.solydxk.com"
+"\" target=\"_blank\">fòrum</a> i expliqueu el vostre problema allí."
 
 #: en/help.html+html.body.div.p:51
 msgid ""
 "Don't forget to attach the log file when you post an issue on our forum: /"
 "var/log/solydxk-system.log"
 msgstr ""
-
-#~ msgid "SolydXK System Settings cannot be started in a live environment."
-#~ msgstr "SolydXK System Settings no es pot engegar en un entorn autnom."
-
-#~ msgid "Repository mirrors"
-#~ msgstr "Rpliques de dipsit "
-
-#~ msgid "Select the fastest repository"
-#~ msgstr "Seleccioneu el dipsit ms rpid "
-
-#~ msgid "Blacklist"
-#~ msgstr "Llista negra "
+"No us oblideu d'adjuntar el fitxer de registre (/var/log/solydxk-system.log) "
+"quan exposeu el vostre problema al fòrum."
