@@ -157,21 +157,17 @@ class Localize(threading.Thread):
             # Configure Grub2
             sed_cmd = ''
             grub_lang_str = ''
-            if not has_string_in_file("LANG=", default_grub):
-                grub_lang_str = "\n# Set locale\nLANG=%s\n" % self.default_locale
+            if not has_string_in_file("^GRUB_LANG=", default_grub):
+                grub_lang_str = "\n# Set locale\nGRUB_LANG=%s\n" % self.default_locale
             else:
-                sed_cmd = "sed -i -e \'/LANG=/ c LANG=%s\' %s;" % (self.default_locale, default_grub)
-            if not has_string_in_file("LANGUAGE=", default_grub):
-                grub_lang_str += "LANGUAGE=%s\n" % self.default_locale
-            else:
-                sed_cmd += "sed -i -e \'/LANGUAGE=/ c LANGUAGE=%s\' %s;" % (self.default_locale, default_grub)
+                sed_cmd += "sed -i -e '/GRUB_LANG=/ c GRUB_LANG=%s' %s;" % (self.default_locale, default_grub)
             if grub_lang_str:
                 with open(default_grub, 'a') as f:
                     f.write(grub_lang_str)
-            if sed_cmd:
+            elif sed_cmd:
                 shell_exec(sed_cmd)
             if grub_lang_str or sed_cmd:
-                shell_exec('update-grub')
+                shell_exec('update-grub 2>/dev/null')
 
         # Change user settings
         if exists(self.user_dir):

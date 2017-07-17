@@ -1,3 +1,9 @@
+solydxk-system (3.0.0b2.4) solydxk; urgency=low
+
+  * Changed LANG= to GRUB_LANG= in /etc/default/grub
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 17 Jul 2017 14:53:31 +0200
+
 solydxk-system (3.0.0b2.3) solydxk; urgency=low
 
   * Added entry for KCM (systemsettings)
