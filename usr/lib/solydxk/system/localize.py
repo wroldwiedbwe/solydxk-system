@@ -36,14 +36,15 @@ class LocaleInfo():
         timezones = []
         for tz in self.timezones:
             tz_lst = tz.split('/')
-            if continent is None:
-                # return continent only
-                if tz_lst[0] not in timezones:
-                    timezones.append(tz_lst[0])
-            else:
-                # return timezones of given continent
-                if tz_lst[0] == continent:
-                    timezones.append('/'.join(tz_lst[1:]))
+            if tz_lst:
+                if continent is None:
+                    # return continent only
+                    if tz_lst[0] not in timezones:
+                        timezones.append(tz_lst[0])
+                else:
+                    # return timezones of given continent
+                    if tz_lst[0] == continent:
+                        timezones.append('/'.join(tz_lst[1:]))
         return timezones
 
     def get_readable_language(self, locale):
@@ -79,6 +80,7 @@ class Localize(threading.Thread):
         if self.default_locale == '':
             self.default_locale = DEFAULTLOCALE
         self.timezone = timezone.strip()
+        print((">>> timezone=%s" % self.timezone))
         self.queue = queue
         self.user = getoutput("logname")[0]
         self.user_dir = "/home/%s" % self.user
@@ -104,7 +106,6 @@ class Localize(threading.Thread):
 
     def run(self):
         self.set_locale()
-        self.set_timezone()
         if has_internet_connection():
             self.queue_progress()
             shell_exec("apt-get update")
@@ -141,34 +142,31 @@ class Localize(threading.Thread):
         locales = getoutput("awk -F'[@. ]' '{print $1}' < /etc/locale.gen | grep -v -E '^#|^$'")
         if locales[0] == '':
             shell_exec("echo \"%s.UTF-8 UTF-8\" >> /etc/locale.gen" % self.default_locale)
-        # Run locale-gen
-        shell_exec("locale-gen")
-        # Save default locale
-        shell_exec("echo \"\" > /etc/default/locale")
-        shell_exec("update-locale LANG=\"%s.UTF-8\"" % self.default_locale)
-        #shell_exec("update-locale LANG=%s.UTF-8" % self.default_locale)
+            
+        cmd = "echo '{0}' > /etc/timezone && " \
+              "rm /etc/localtime; ln -sf /usr/share/zoneinfo/{0} /etc/localtime && " \
+              "echo 'LANG={1}.UTF-8' > /etc/default/locale && " \
+              "dpkg-reconfigure --frontend=noninteractive locales && " \
+              "update-locale LANG={1}.UTF-8".format(self.timezone, self.default_locale)
+        shell_exec(cmd)
         
-        # Localize Grub2
+        # Copy mo files for Grub if needed
+        cmd = "mkdir -p /boot/grub/locale && " \
+              "for F in $(find /usr/share/locale -name 'grub.mo'); do " \
+              "MO=/boot/grub/locale/$(echo $F | cut -d'/' -f 5).mo; " \
+              "cp -afuv $F $MO; done"
+        shell_exec(cmd)
+        
+        # Cleanup old default grub settings
         default_grub = '/etc/default/grub'
-        if self.default_locale != 'en_US' and exists(default_grub):
-            # Copy mo files if needed
-            cmd = 'mkdir -p /boot/grub/locale; for F in $(find /usr/share/locale -name "grub.mo"); do MO="/boot/grub/locale/$(echo $F | cut -d\'/\' -f 5).mo"; if [ ! -e $MO ]; then cp -v $F $MO; fi; done'
-            shell_exec(cmd)
-            # Configure Grub2
-            sed_cmd = ''
-            grub_lang_str = ''
-            if not has_string_in_file("^GRUB_LANG=", default_grub):
-                grub_lang_str = "\n# Set locale\nGRUB_LANG=%s\n" % self.default_locale
-            else:
-                sed_cmd += "sed -i -e '/GRUB_LANG=/ c GRUB_LANG=%s' %s;" % (self.default_locale, default_grub)
-            if grub_lang_str:
-                with open(default_grub, 'a') as f:
-                    f.write(grub_lang_str)
-            elif sed_cmd:
-                shell_exec(sed_cmd)
-            if grub_lang_str or sed_cmd:
-                shell_exec('update-grub 2>/dev/null')
-
+        shell_exec("sed -i '/^# Set locale$/d' {0} && " \
+                   "sed -i '/^LANG=/d' {0} && " \
+                   "sed -i '/^LANGUAGE=/d' {0} && " \
+                   "sed -i '/^GRUB_LANG=/d' {0}".format(default_grub))
+        
+        # Update Grub and make sure it uses the new locale
+        shell_exec('LANG={0}.UTF-8 update-grub'.format(self.default_locale))
+            
         # Change user settings
         if exists(self.user_dir):
             cur_short = self.current_default.split('_')[0]
@@ -186,14 +184,6 @@ class Localize(threading.Thread):
                 os.system(cmd)
 
         self.current_default = self.default_locale
-
-    def set_timezone(self):
-        # set the timezone
-        if '/' in self.timezone and len(self.timezone) > 3:
-            print((" --> Set time zone %s" % self.timezone))
-            self.queue_progress()
-            shell_exec("echo \"%s\" > /etc/timezone" % self.timezone)
-            shell_exec("rm /etc/localtime; ln -sf /usr/share/zoneinfo/%s /etc/localtime" % self.timezone)
 
     def language_specific(self):
         localizeConf = join(self.scriptDir, "localize/%s" % self.default_locale)

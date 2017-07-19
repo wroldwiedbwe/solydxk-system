@@ -1,3 +1,9 @@
+solydxk-system (3.0.0b2.5) solydxk; urgency=low
+
+  * Complete rewrite of localization
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 18 Jul 2017 08:23:26 +0200
+
 solydxk-system (3.0.0b2.4) solydxk; urgency=low
 
   * Changed LANG= to GRUB_LANG= in /etc/default/grub

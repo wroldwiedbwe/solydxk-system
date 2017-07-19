@@ -178,16 +178,10 @@ try:
             escPath = livesh.replace('/', '\/')
             os.system("sed -i \"s/echo '}'/if [ -e %s ]; then \/bin\/bash %s; fi; echo '}'/\" %s" % (escPath, escPath, grubsh))
             log.write("%s adapted for live boot menu" % grubsh,  'boot-isos')
-            
-    # Fix localized grub if needed
-    default_grub = '/etc/default/grub'
-    if has_string_in_file("^LANG=", default_grub):
-        cmd = "sed -i '/^LANGUAGE=/d' {0}; sed -i 's/^LANG=/GRUB_LANG=/'; update-grub 2>/dev/null".format(default_grub)
-        os.system(cmd)
-        log.write("Fixed localization in %s" % default_grub,  'grub')
         
-    # Fix access
-    os.system('chmod 0600 /etc/apt/trusted.gpg 2>/dev/null')
+    # Fix gpg
+    if exists('/etc/apt/trusted.gpg'):
+        os.system('/bin/bash /usr/lib/solydxk/scripts/fix-gpg.sh')
 
     # Fix device notifiers for Plasma 5
     actions_k4 = '/usr/share/kde4/apps/solid/actions/'
