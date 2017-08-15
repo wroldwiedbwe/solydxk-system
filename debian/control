@@ -39,6 +39,7 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , btrfs-progs
   , exfat-utils
   , dosfstools
+  , gir1.2-udisks-2.0
 Conflicts: solydkbo-grub2-theme,
   solydkbe-grub2-theme,
   solydxbe-grub2-theme,
