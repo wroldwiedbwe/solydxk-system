@@ -182,6 +182,15 @@ try:
     # Fix gpg
     if exists('/etc/apt/trusted.gpg'):
         os.system('/bin/bash /usr/lib/solydxk/scripts/fix-gpg.sh')
+        
+    # Cleanup old default grub settings
+    default_grub = '/etc/default/grub'
+    if has_string_in_file('LANG=',  default_grub):
+        os.system("sed -i '/^# Set locale/d' {0} && " \
+                   "sed -i '/^LANG=/d' {0} && " \
+                   "sed -i '/^LANGUAGE=/d' {0} && " \
+                   "sed -i '/^GRUB_LANG=/d' {0} && " \
+                   "update-grub".format(default_grub))
 
     # Fix device notifiers for Plasma 5
     actions_k4 = '/usr/share/kde4/apps/solid/actions/'

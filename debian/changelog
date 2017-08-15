@@ -1,3 +1,16 @@
+solydxk-system (3.0.0b2.7) solydxk; urgency=low
+
+  * Add dependency: gir1.2-udisks-2.0
+  * Updated translations
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 15 Aug 2017 19:54:43 +0200
+
+solydxk-system (3.0.0b2.6) solydxk; urgency=low
+
+  * Cleanup /etc/default/grub in adjust.py
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 19 Jul 2017 13:28:33 +0200
+
 solydxk-system (3.0.0b2.5) solydxk; urgency=low
 
   * Complete rewrite of localization

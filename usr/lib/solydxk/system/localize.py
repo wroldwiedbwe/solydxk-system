@@ -80,7 +80,6 @@ class Localize(threading.Thread):
         if self.default_locale == '':
             self.default_locale = DEFAULTLOCALE
         self.timezone = timezone.strip()
-        print((">>> timezone=%s" % self.timezone))
         self.queue = queue
         self.user = getoutput("logname")[0]
         self.user_dir = "/home/%s" % self.user
