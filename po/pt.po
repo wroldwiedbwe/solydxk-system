@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-17 17:55+0200\n"
+"POT-Creation-Date: 2017-08-15 19:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Luis Filipe Teixeira <lufilte@gmail.com>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/solydxk/teams/54212/"
@@ -83,7 +83,7 @@ msgstr "Alterar frase-senha"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:102
 msgid "Manually create key file"
-msgstr "Criar manualmente um ficheiro chave."
+msgstr "Criar manualmente um ficheiro chave"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid "Localization"
@@ -242,7 +242,7 @@ msgstr "Partição"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "Label"
-msgstr "Rótulo"
+msgstr "Etiqueta"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:481
 msgid "File system"
@@ -441,7 +441,7 @@ msgstr "A alterar as configurações do sistema para SolydXK"
 
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
