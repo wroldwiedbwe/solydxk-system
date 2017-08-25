@@ -1,3 +1,9 @@
+solydxk-system (3.0.1) solydxk; urgency=low
+
+  * Fix pulse audio setting volume to 100%
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 25 Aug 2017 22:24:16 +0200
+
 solydxk-system (3.0.0b2.7) solydxk; urgency=low
 
   * Add dependency: gir1.2-udisks-2.0

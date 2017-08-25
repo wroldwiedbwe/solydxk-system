@@ -183,6 +183,12 @@ try:
     if exists('/etc/apt/trusted.gpg'):
         os.system('/bin/bash /usr/lib/solydxk/scripts/fix-gpg.sh')
         
+    # Fix pulse audio always set volume to 100%
+    pulse = '/etc/pulse/daemon.conf'
+    if not has_string_in_file('^flat-volumes = ', pulse):
+        with open(pulse, 'a') as f:
+            f.write("\n# Fix pulse\nflat-volumes = no")
+        
     # Cleanup old default grub settings
     default_grub = '/etc/default/grub'
     if has_string_in_file('LANG=',  default_grub):
