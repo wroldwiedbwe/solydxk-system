@@ -11,22 +11,360 @@ msgid ""
 msgstr ""
 "Project-Id-Version: device-driver-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-13 17:05+0200\n"
+"POT-Creation-Date: 2017-04-01 18:43+0200\n"
 "PO-Revision-Date: 2017-04-10 23:27+0000\n"
 "Last-Translator: Михаил Ильинский <mail@milinsky.com>\n"
 "Language-Team: Russian (http://www.transifex.com/solydxk/device-driver-"
 "manager/language/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../usr/lib/solydxk/system/main.py:44
+#: ../usr/lib/ddm/ddm.py:54 ../usr/lib/ddm/main.py:32
+#: ../usr/share/kde4/services/kcm_device_driver_manager.desktop.in.h:1
+#: ../usr/share/applications/ddm.desktop.in.h:1
+msgid "Device Driver Manager"
+msgstr "Менеджер драйверов устройств"
+
+#: ../usr/lib/ddm/ddm.py:55 ../usr/lib/ddm/ddm.py:221
+msgid "Install"
+msgstr "Установить"
+
+#: ../usr/lib/ddm/ddm.py:56
+msgid "Help"
+msgstr "Помощь"
+
+#: ../usr/lib/ddm/ddm.py:57
+msgid "Log"
+msgstr "Журнал"
+
+#: ../usr/lib/ddm/ddm.py:58
+msgid "Quit"
+msgstr "Выйти"
+
+#: ../usr/lib/ddm/ddm.py:59
+msgid "Use Backports"
+msgstr "Использовать бэкпорт"
+
+#: ../usr/lib/ddm/ddm.py:179
+msgid "No internet connection"
+msgstr "Нет подключения к интернету"
+
+#: ../usr/lib/ddm/ddm.py:180
+msgid ""
+"You need an internet connection to install the additional software.\n"
+"Please, connect to the internet and try again."
+msgstr ""
+"Вам нужно подключение к интернету для установки дополнительного программного "
+"обеспечения.\n"
+"Пожалуйста, подключитесь к Интернету и повторите попытку"
+
+#: ../usr/lib/ddm/ddm.py:187
+msgid ""
+"You have selected to install drivers from the backports repository whenever "
+"they are available.\n"
+"\n"
+"Although you can run more up to date software using the backports "
+"repository,\n"
+"you introduce a greater risk of breakage doing so.\n"
+"\n"
+"Are you sure you want to continue?"
+msgstr ""
+"Вами выбрана установка драйверов из репозитория бэкпортов, если они "
+"доступны.\n"
+"\n"
+"Хотя используя бэкпорт-репозитории Вы можете работать со свежими версиями "
+"программного обеспечения, Вы делаете это на свой страх и риск.\n"
+"\n"
+"Уверены, что хотите продолжить?"
+
+#: ../usr/lib/ddm/ddm.py:221
+msgid "Device"
+msgstr "Устройство"
+
+#: ../usr/lib/ddm/ddm.py:237
+msgid "Remove kernel"
+msgstr "Удалить ядра"
+
+#: ../usr/lib/ddm/ddm.py:238
+msgid ""
+"You cannot remove a booted kernel.\n"
+"Please, boot another kernel and try again."
+msgstr ""
+"Вы не можете удалить запущенные ядра.\n"
+"Пожалуйста, загрузитесь с другого ядра и попробуйте снова."
+
+#: ../usr/lib/ddm/ddm.py:259
+msgid "Hardware scan"
+msgstr "Сканирование оборудования"
+
+#: ../usr/lib/ddm/ddm.py:263
+msgid "There are no available drivers for your hardware:"
+msgstr "Нет подходящих драйверов для Вашего оборудования."
+
+#: ../usr/lib/ddm/ddm.py:269
+msgid "DDM did not find any supported hardware."
+msgstr "Менеджер драйверов не нашел поддерживаемого оборудования."
+
+#: ../usr/lib/ddm/ddm.py:363
+msgid "ATI FirePro/Gl card found"
+msgstr "Обнаружена карта ATI FirePro/Gl"
+
+#: ../usr/lib/ddm/ddm.py:364
+msgid ""
+"Installing the proprietary driver for an ATI FirePro/Gl card may render your "
+"system unbootable.\n"
+"\n"
+"Proceed at your own risk."
+msgstr ""
+"Установка несвободного драйвера для карты ATI FirePro/Gl, может сделать вашу "
+"систему не загружаемой.\n"
+"\n"
+"Действуйте на свой страх и риск."
+
+#: ../usr/lib/ddm/ddm.py:562
+msgid "PAE capable system"
+msgstr "Система с поддержкой PAE"
+
+#: ../usr/lib/ddm/ddm.py:676
+msgid "Run as root."
+msgstr "Запустите с правами администратора."
+
+#: ../usr/lib/ddm/ddm.py:678
+msgid "Wrong arguments passed to ddm."
+msgstr "Менеджеру драйверов заданы неправильные аргументы"
+
+#: ../usr/lib/ddm/ddm.py:680
+msgid "There are no driver available."
+msgstr "Нет доступных драйверов."
+
+#: ../usr/lib/ddm/ddm.py:682
+msgid "The driver cannot be found in repository."
+msgstr "Драйвер не найден в репозитории."
+
+#: ../usr/lib/ddm/ddm.py:684
+msgid ""
+"Download error.\n"
+"Check your internet connection."
+msgstr ""
+"Ошибка загрузки.\n"
+"Проверьте ваше интернет-соединение."
+
+#: ../usr/lib/ddm/ddm.py:686
+msgid "DDM cannot purge the driver."
+msgstr "Не удается удалить драйвер."
+
+#: ../usr/lib/ddm/ddm.py:688
+msgid "This card is not supported."
+msgstr "Эта карта не поддерживается."
+
+#: ../usr/lib/ddm/ddm.py:690
+msgid ""
+"Cannot get the Debian version from /etc/debian_version.\n"
+"Please install the base-files package."
+msgstr ""
+"Не удалось получить версию Debian из /etc/debian_version.\n"
+"Пожалуйста, установите базовый пакет файлов."
+
+#: ../usr/lib/ddm/ddm.py:692
+msgid "Could not configure Nvidia Bumblebee."
+msgstr "Не удалось настроить Nvidia Bumblebee."
+
+#: ../usr/lib/ddm/ddm.py:694
+msgid ""
+"There was an error during the installation.\n"
+"Please, run 'sudo apt-get -f install' in a terminal.\n"
+"Visit our forum for support: http://forums.solydxk.com"
+msgstr ""
+"Во время установки произошла ошибка.\n"
+"Пожалуйста, запустите 'sudo apt-get -f install' в терминале.\n"
+"Посетите наш форум поддержки: http://forums.solydxk.com"
+
+#: ../usr/lib/ddm/ddm.py:699
+msgid "The software has been successfully installed."
+msgstr "Программное обеспечение было успешно установлено."
+
+#: ../usr/lib/ddm/ddm.py:700
+msgid "You will need to restart your system."
+msgstr "Вам нужно будет перезагрузить систему."
+
+#: ../usr/lib/ddm/main.py:33
+msgid ""
+"Device Driver Manager helps to install proprietary drivers for your "
+"hardware.\n"
+"Only install proprietary drivers if you are sure you really need them.\n"
+"Usually open drivers are enough."
+msgstr ""
+"Менеджер драйверов устройств поможет установить несвободные драйверы для "
+"вашего оборудования.\n"
+"Устанавливайте несвободные драйверы, только если это необходимо.\n"
+"Обычно, свободных драйверов достаточно."
+
+#: ../usr/lib/ddm/main.py:55
+msgid ""
+"Device Driver Manager cannot be started in a live environment\n"
+"You can use the --force argument to start DDM in a live environment"
+msgstr ""
+"Менеджер драйверов не может быть запущена в live среде. \n"
+"Для принудительного запуска используйте --force."
+
+#: ../usr/lib/ddm/main.py:83
 msgid "Unexpected error"
 msgstr "Неожиданная ошибка"
+
+#: ../usr/lib/ddm/main.py:84
+msgid ""
+"DDM has failed with the following unexpected error. Please submit a bug "
+"report!"
+msgstr ""
+"Менеджер Драйверов остановлен из-за неожиданной ошибки. Пожалуйста, "
+"отправьте отчет об ошибке"
+
+#: en/help.html+html.body.h1:8
+msgid "Device Driver Manager Help"
+msgstr "Помощь по менеджеру драйверов"
+
+#: en/help.html+html.body.div.h2:10
+msgid "Description"
+msgstr "Описание"
+
+#: en/help.html+html.body.div.p:11
+msgid ""
+"The Device Driver Manager is a tool to help users installing third-party "
+"hardware drivers. Currently Nvidia, ATI and Broadcom drivers can be "
+"installed and allows to install the PAE kernel for multi-core 32-bit "
+"systems. The Device Driver Manager will only list those devices that are "
+"supported. It will not list any other devices then mentioned above."
+msgstr ""
+"Менеджер Драйверов Устройств является инструментом, помогающим пользователям "
+"устанавливать сторонние драйвера оборудования. На данный момент возможна "
+"установка NVIDIA,  ATI и Broadcom драйверов, а так же установка pae-ядра для "
+"многоядерных 32-разрядных систем. В Менеджере Драйверов будет только список "
+"тех устройств, которые поддерживаются Вашим оборудованием. "
+
+#: en/help.html+html.body.div.h2:13
+msgid "Important"
+msgstr "Важный"
+
+#: en/help.html+html.body.div.p:14
+msgid ""
+"The Device Driver Manager can only install drivers which are available in "
+"the repositories. Make sure you have an internet connection if you want to "
+"install the drivers."
+msgstr ""
+"Менеджер Драйверов может установить драйвера, только которые доступны в "
+"репозиториях. Убедитесь, что у вас есть интернет соединение если вы хотите "
+"установить драйверы."
+
+#: en/help.html+html.body.div.h2:16
+msgid "Commands"
+msgstr "Команды"
+
+#: en/help.html+html.body.div.p:17
+msgid ""
+"If you prefer to install the drivers by terminal, you can use the following "
+"commands:"
+msgstr ""
+"Если вы предпочитаете установить драйверы с помощью терминала, вы можете "
+"использовать следующие команды:"
+
+#: en/help.html+html.body.div.h3:21
+msgid "# ddm -i ati"
+msgstr "# ddm -i ati"
+
+#: en/help.html+html.body.div.p:22
+msgid ""
+"This will install the fglrx drivers for your ATI graphical card. ATI cards "
+"from version HD 5000 and up are supported by the fglrx drivers. Versions "
+"between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p ati\" to "
+"remove the drivers from your system."
+msgstr ""
+"Это установит fglrx драйверы для вашей графической карты ATI. ATI карты от "
+"версии HD 5000 и выше поддерживаются драйверами fglrx. Версии между 1000 и "
+"5000 будут использовать открытые драйверы Radeon. Используйте \"DDM -p ATI\" "
+"для удаления драйверов из системы."
+
+#: en/help.html+html.body.div.h3:24
+msgid "# ddm -i nvidia"
+msgstr "# ddm -i nvidia"
+
+#: en/help.html+html.body.div.p:25
+msgid ""
+"This will select the right drivers for your Nvidia graphical card. It will "
+"select the Bumblebee drivers in case you have a hybrid card (both Nvidia and "
+"Intel). Use \"ddm -p nvidia\" to remove the drivers from your system."
+msgstr ""
+"Это позволит выбрать правильные драйверы для видеокарты NVIDIA. Он подберет "
+"Bumblebee  в случае, если у вас гибридная карта (как NVIDIA и Intel). "
+"Используйте \"ddm -p nvidia\" чтобы удалить драйверы из системы."
+
+#: en/help.html+html.body.div.h3:27
+msgid "# ddm -i open"
+msgstr "# ddm -i open"
+
+#: en/help.html+html.body.div.p:28
+msgid ""
+"You can use this command if you want to revert back to the open Nouveau "
+"drivers. It will remove any proprietary drivers from your system."
+msgstr ""
+"Вы можете использовать эту команду, если вы хотите вернуться к открытым "
+"драйверам. Это удалит любые проприетарные драйверы из вашей системы"
+
+#: en/help.html+html.body.div.h3:30
+msgid "# ddm -i broadcom"
+msgstr "# ddm -i broadcom"
+
+#: en/help.html+html.body.div.p:31
+msgid ""
+"This command will install the right driver for your wireless Broadcom "
+"adapter. Use \"ddm -p broadcom\" to remove the drivers from your system."
+msgstr ""
+"Эта команда установит нужный драйвер для вашего беспроводного адаптера "
+"Broadcom. Используйте \"ddm -p broadcom\" для удаления драйвера из системы."
+
+#: en/help.html+html.body.div.h3:33
+msgid "# ddm -i pae"
+msgstr "# ddm -i pae"
+
+#: en/help.html+html.body.div.p:34
+msgid ""
+"This will install the PAE kernel on multi-processor systems running a 32-bit "
+"OS. Use \"ddm -p pae\" to remove the PAE kernel from your system. Note that "
+"you cannot remove the kernel when you are currently booted into that kernel."
+msgstr ""
+"Это позволит установить pae-ядро для многопроцессорных систем под "
+"управлением 32-разрядной ОС. Использовать \"ddm -p pae\", чтобы удалить ядро "
+"pae из вашей системы. Обратите внимание, что нельзя удалить ядро, когда вы "
+"находитесь в сессии запущенной в нем в текущий момент."
+
+#: en/help.html+html.body.div.h3:36
+msgid "# ddm -i fixbumblebee"
+msgstr "# ddm -i fixbumblebee"
+
+#: en/help.html+html.body.div.p:37
+msgid "This will try to fix a Bumblebee install."
+msgstr "Это может исправить Bumblebee."
+
+#: en/help.html+html.body.div.h2:39
+msgid "Logging"
+msgstr "Логирование"
+
+#: en/help.html+html.body.div.h3:40
+msgid "File: /var/log/ddm.log"
+msgstr "File: /var/log/ddm.log"
+
+#: en/help.html+html.body.div.p:41
+msgid ""
+"Please, attach your log file when you post an issue on our forum: <a href="
+"\"http://forums.solydxk.com\" target=\"_blank\">http://forums.solydxk.com</a>"
+msgstr ""
+"Пожалуйста, прикрепите файл журнала, когда вы отправляете вопрос на нашем "
+"форуме: <a href=\"http://forums.solydxk.com\" target=\"_blank\">http://"
+"forums.solydxk.com</a>"
 
 #: ../usr/lib/solydxk/system/main.py:45
 #, fuzzy
@@ -212,15 +550,6 @@ msgstr ""
 msgid "Save Fstab mounts"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:148
-#: ../usr/lib/solydxk/system/solydxk_system.py:595
-msgid "Install"
-msgstr "Установить"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:149
-msgid "Use Backports"
-msgstr "Использовать бэкпорт"
-
 #: ../usr/lib/solydxk/system/solydxk_system.py:150
 msgid ""
 "Install drivers for supported hardware.\n"
@@ -261,43 +590,6 @@ msgstr ""
 #: ../usr/lib/solydxk/system/solydxk_system.py:473
 msgid "No changes were made to fstab."
 msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:539
-#: ../usr/lib/solydxk/system/localize.py:116
-msgid "No internet connection"
-msgstr "Нет подключения к интернету"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:540
-msgid ""
-"You need an internet connection to install the additional software.\n"
-"Please, connect to the internet and try again."
-msgstr ""
-"Вам нужно подключение к интернету для установки дополнительного программного "
-"обеспечения.\n"
-"Пожалуйста, подключитесь к Интернету и повторите попытку"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:547
-msgid ""
-"You have selected to install drivers from the backports repository whenever "
-"they are available.\n"
-"\n"
-"Although you can run more up to date software using the backports "
-"repository,\n"
-"you introduce a greater risk of breakage doing so.\n"
-"\n"
-"Are you sure you want to continue?"
-msgstr ""
-"Вами выбрана установка драйверов из репозитория бэкпортов, если они "
-"доступны.\n"
-"\n"
-"Хотя используя бэкпорт-репозитории Вы можете работать со свежими версиями "
-"программного обеспечения, Вы делаете это на свой страх и риск.\n"
-"\n"
-"Уверены, что хотите продолжить?"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:595
-msgid "Device"
-msgstr "Устройство"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:671
 #, fuzzy
@@ -495,18 +787,9 @@ msgstr ""
 msgid "SolydXK System Settings Encryption Help"
 msgstr ""
 
-#: en/help.html+html.body.div.h2:10 en/helpdd.html+html.body.div.h2:10
-#, fuzzy
-msgid "Description"
-msgstr "Описание"
-
 #: en/help.html+html.body.div.p:11
 msgid "Encrypt partitions of your system with LUKS."
 msgstr ""
-
-#: en/help.html+html.body.div.h2:13 en/helpdd.html+html.body.div.h2:13
-msgid "Important"
-msgstr "Важный"
 
 #: en/help.html+html.body.div.p:14
 msgid ""
@@ -711,18 +994,6 @@ msgstr ""
 "репозиториях. Убедитесь, что у вас есть интернет соединение если вы хотите "
 "установить драйверы."
 
-#: en/helpdd.html+html.body.div.h2:16
-msgid "Commands"
-msgstr "Команды"
-
-#: en/helpdd.html+html.body.div.p:17
-msgid ""
-"If you prefer to install the drivers by terminal, you can use the following "
-"commands:"
-msgstr ""
-"Если вы предпочитаете установить драйверы с помощью терминала, вы можете "
-"использовать следующие команды:"
-
 #: en/helpdd.html+html.body.div.h3:21
 #, fuzzy
 #| msgid "# ddm -i ati"
@@ -747,63 +1018,6 @@ msgstr ""
 "5000 будут использовать открытые драйверы Radeon. Используйте \"DDM -p ATI\" "
 "для удаления драйверов из системы."
 
-#: en/helpdd.html+html.body.div.h3:24
-msgid "# ddm -i nvidia"
-msgstr "# ddm -i nvidia"
-
-#: en/helpdd.html+html.body.div.p:25
-msgid ""
-"This will select the right drivers for your Nvidia graphical card. It will "
-"select the Bumblebee drivers in case you have a hybrid card (both Nvidia and "
-"Intel). Use \"ddm -p nvidia\" to remove the drivers from your system."
-msgstr ""
-"Это позволит выбрать правильные драйверы для видеокарты NVIDIA. Он подберет "
-"Bumblebee  в случае, если у вас гибридная карта (как NVIDIA и Intel). "
-"Используйте \"ddm -p nvidia\" чтобы удалить драйверы из системы."
-
-#: en/helpdd.html+html.body.div.h3:27
-msgid "# ddm -i open"
-msgstr "# ddm -i open"
-
-#: en/helpdd.html+html.body.div.p:28
-msgid ""
-"You can use this command if you want to revert back to the open Nouveau "
-"drivers. It will remove any proprietary drivers from your system."
-msgstr ""
-"Вы можете использовать эту команду, если вы хотите вернуться к открытым "
-"драйверам. Это удалит любые проприетарные драйверы из вашей системы"
-
-#: en/helpdd.html+html.body.div.h3:30
-msgid "# ddm -i broadcom"
-msgstr "# ddm -i broadcom"
-
-#: en/helpdd.html+html.body.div.p:31
-msgid ""
-"This command will install the right driver for your wireless Broadcom "
-"adapter. Use \"ddm -p broadcom\" to remove the drivers from your system."
-msgstr ""
-"Эта команда установит нужный драйвер для вашего беспроводного адаптера "
-"Broadcom. Используйте \"ddm -p broadcom\" для удаления драйвера из системы."
-
-#: en/helpdd.html+html.body.div.h3:33
-msgid "# ddm -i pae"
-msgstr "# ddm -i pae"
-
-#: en/helpdd.html+html.body.div.p:34
-msgid ""
-"This will install the PAE kernel on multi-processor systems running a 32-bit "
-"OS. Use \"ddm -p pae\" to remove the PAE kernel from your system. Note that "
-"you cannot remove the kernel when you are currently booted into that kernel."
-msgstr ""
-"Это позволит установить pae-ядро для многопроцессорных систем под "
-"управлением 32-разрядной ОС. Использовать \"ddm -p pae\", чтобы удалить ядро "
-"pae из вашей системы. Обратите внимание, что нельзя удалить ядро, когда вы "
-"находитесь в сессии запущенной в нем в текущий момент."
-
-#: en/helpdd.html+html.body.div.h2:36
-msgid "Logging"
-msgstr "Логирование"
-
 #: en/helpdd.html+html.body.div.h3:37
 #, fuzzy
 #| msgid "File: /var/log/ddm.log"
@@ -825,141 +1039,9 @@ msgstr ""
 "форуме: <a href=\"http://forums.solydxk.com\" target=\"_blank\">http://"
 "forums.solydxk.com</a>"
 
-#~ msgid "Device Driver Manager"
-#~ msgstr "Менеджер драйверов устройств"
-
-#~ msgid "Help"
-#~ msgstr "Помощь"
-
-#~ msgid "Log"
-#~ msgstr "Журнал"
-
-#~ msgid "Quit"
-#~ msgstr "Выйти"
-
-#~ msgid "Remove kernel"
-#~ msgstr "Удалить ядра"
-
-#~ msgid ""
-#~ "You cannot remove a booted kernel.\n"
-#~ "Please, boot another kernel and try again."
-#~ msgstr ""
-#~ "Вы не можете удалить запущенные ядра.\n"
-#~ "Пожалуйста, загрузитесь с другого ядра и попробуйте снова."
-
-#~ msgid "Hardware scan"
-#~ msgstr "Сканирование оборудования"
-
-#~ msgid "There are no available drivers for your hardware:"
-#~ msgstr "Нет подходящих драйверов для Вашего оборудования."
-
-#~ msgid "DDM did not find any supported hardware."
-#~ msgstr "Менеджер драйверов не нашел поддерживаемого оборудования."
-
-#~ msgid "ATI FirePro/Gl card found"
-#~ msgstr "Обнаружена карта ATI FirePro/Gl"
-
-#~ msgid ""
-#~ "Installing the proprietary driver for an ATI FirePro/Gl card may render "
-#~ "your system unbootable.\n"
-#~ "\n"
-#~ "Proceed at your own risk."
-#~ msgstr ""
-#~ "Установка несвободного драйвера для карты ATI FirePro/Gl, может сделать "
-#~ "вашу систему не загружаемой.\n"
-#~ "\n"
-#~ "Действуйте на свой страх и риск."
-
-#~ msgid "PAE capable system"
-#~ msgstr "Система с поддержкой PAE"
-
-#~ msgid "Run as root."
-#~ msgstr "Запустите с правами администратора."
-
-#~ msgid "Wrong arguments passed to ddm."
-#~ msgstr "Менеджеру драйверов заданы неправильные аргументы"
-
-#~ msgid "There are no driver available."
-#~ msgstr "Нет доступных драйверов."
-
-#~ msgid "The driver cannot be found in repository."
-#~ msgstr "Драйвер не найден в репозитории."
-
-#~ msgid ""
-#~ "Download error.\n"
-#~ "Check your internet connection."
-#~ msgstr ""
-#~ "Ошибка загрузки.\n"
-#~ "Проверьте ваше интернет-соединение."
-
-#~ msgid "DDM cannot purge the driver."
-#~ msgstr "Не удается удалить драйвер."
-
-#~ msgid "This card is not supported."
-#~ msgstr "Эта карта не поддерживается."
-
-#~ msgid ""
-#~ "Cannot get the Debian version from /etc/debian_version.\n"
-#~ "Please install the base-files package."
-#~ msgstr ""
-#~ "Не удалось получить версию Debian из /etc/debian_version.\n"
-#~ "Пожалуйста, установите базовый пакет файлов."
-
-#~ msgid "Could not configure Nvidia Bumblebee."
-#~ msgstr "Не удалось настроить Nvidia Bumblebee."
-
-#~ msgid ""
-#~ "There was an error during the installation.\n"
-#~ "Please, run 'sudo apt-get -f install' in a terminal.\n"
-#~ "Visit our forum for support: http://forums.solydxk.com"
-#~ msgstr ""
-#~ "Во время установки произошла ошибка.\n"
-#~ "Пожалуйста, запустите 'sudo apt-get -f install' в терминале.\n"
-#~ "Посетите наш форум поддержки: http://forums.solydxk.com"
-
-#~ msgid "The software has been successfully installed."
-#~ msgstr "Программное обеспечение было успешно установлено."
-
-#~ msgid "You will need to restart your system."
-#~ msgstr "Вам нужно будет перезагрузить систему."
-
 #, fuzzy
 #~ msgid "Available partitions"
 #~ msgstr "Доступные пакеты"
-
-#~ msgid "Device Driver Manager Help"
-#~ msgstr "Помощь по менеджеру драйверов"
-
-#~ msgid "# ddm -i fixbumblebee"
-#~ msgstr "# ddm -i fixbumblebee"
-
-#~ msgid "This will try to fix a Bumblebee install."
-#~ msgstr "Это может исправить Bumblebee."
-
-#~ msgid ""
-#~ "Device Driver Manager helps to install proprietary drivers for your "
-#~ "hardware.\n"
-#~ "Only install proprietary drivers if you are sure you really need them.\n"
-#~ "Usually open drivers are enough."
-#~ msgstr ""
-#~ "Менеджер драйверов устройств поможет установить несвободные драйверы для "
-#~ "вашего оборудования.\n"
-#~ "Устанавливайте несвободные драйверы, только если это необходимо.\n"
-#~ "Обычно, свободных драйверов достаточно."
-
-#~ msgid ""
-#~ "Device Driver Manager cannot be started in a live environment\n"
-#~ "You can use the --force argument to start DDM in a live environment"
-#~ msgstr ""
-#~ "Менеджер драйверов не может быть запущена в live среде. \n"
-#~ "Для принудительного запуска используйте --force."
-
-#~ msgid ""
-#~ "DDM has failed with the following unexpected error. Please submit a bug "
-#~ "report!"
-#~ msgstr ""
-#~ "Менеджер Драйверов остановлен из-за неожиданной ошибки. Пожалуйста, "
-#~ "отправьте отчет об ошибке"
 
 #~ msgid "Repository mirrors"
 #~ msgstr "Зеркала репозиториев"
