@@ -40,15 +40,30 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , exfat-utils
   , dosfstools
   , gir1.2-udisks-2.0
-Conflicts: solydkbo-grub2-theme,
-  solydkbe-grub2-theme,
-  solydxbe-grub2-theme,
-  solydk-grub2-theme,
-  xksudo
-Replaces: solydkbo-grub2-theme,
-  solydkbe-grub2-theme,
-  solydxbe-grub2-theme,
-  solydk-grub2-theme,
-  xksudo
+  , pciutils
+  , sed
+  , passwd
+  , kmod
+  , debconf
+  , dpkg
+  , gawk
+  , grep
+  , kdesudo | gksu
+  , base-files
+  , bash
+  , apt
+  , apt-show-versions
+Conflicts: solydkbo-grub2-theme
+  , solydkbe-grub2-theme
+  , solydxbe-grub2-theme
+  , solydk-grub2-theme
+  , xksudo
+  , ddm
+Replaces: solydkbo-grub2-theme
+  , solydkbe-grub2-theme
+  , solydxbe-grub2-theme
+  , solydk-grub2-theme
+  , xksudo
+  , ddm
 Description: SolidXK System Base Package
  Used by the desktop and other SolydXK tools to gather information and process common system tasks.

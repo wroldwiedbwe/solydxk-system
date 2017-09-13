@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: updatemanager\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-17 17:55+0200\n"
-"PO-Revision-Date: 2015-10-22 05:34+0000\n"
-"Last-Translator: Arjen Balfoort <schoelje@solydxk.com>\n"
-"Language-Team: Northern Sami (http://www.transifex.com/solydxk/updatemanager/"
-"language/se/)\n"
-"Language: se\n"
+"POT-Creation-Date: 2017-09-13 17:05+0200\n"
+"PO-Revision-Date: 2014-08-23 12:32+0100\n"
+"Last-Translator: \n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../usr/lib/solydxk/system/main.py:44
 msgid "Unexpected error"
@@ -28,90 +27,93 @@ msgid ""
 "Please submit a bug report!"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:90
+#: ../usr/lib/solydxk/system/solydxk_system.py:101
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:91
+#: ../usr/lib/solydxk/system/solydxk_system.py:102
 #, fuzzy
 msgid "Save backports"
 msgstr "Spara spegel-servrar"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:92
+#: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid "Save mirrors"
 msgstr "Spara spegel-servrar"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:93
+#: ../usr/lib/solydxk/system/solydxk_system.py:104
 msgid "Check mirrors speed"
 msgstr "Testa spegel-servrarnas hastighet"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:94
+#: ../usr/lib/solydxk/system/solydxk_system.py:105
 msgid "Remove"
 msgstr "Ta bort"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:95
+#: ../usr/lib/solydxk/system/solydxk_system.py:106
 #, fuzzy
 msgid "Hold back"
 msgstr "Svartlistade paket"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:96
+#: ../usr/lib/solydxk/system/solydxk_system.py:107
 #, fuzzy
 msgid "Repositories"
 msgstr "Repository"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:97
+#: ../usr/lib/solydxk/system/solydxk_system.py:108
+#, fuzzy
 msgid "Encryption"
-msgstr ""
+msgstr "Beskrivning"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:98
+#: ../usr/lib/solydxk/system/solydxk_system.py:109
 msgid "Passphrase (6-20 chr)"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:99
+#: ../usr/lib/solydxk/system/solydxk_system.py:110
+#, fuzzy
 msgid "Encrypt"
-msgstr ""
+msgstr "Beskrivning"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:100
+#: ../usr/lib/solydxk/system/solydxk_system.py:111
+#, fuzzy
 msgid "Decrypt"
-msgstr ""
+msgstr "Beskrivning"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:101
+#: ../usr/lib/solydxk/system/solydxk_system.py:112
 msgid "Change passphrase"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:102
+#: ../usr/lib/solydxk/system/solydxk_system.py:113
 msgid "Manually create key file"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:103
+#: ../usr/lib/solydxk/system/solydxk_system.py:114
 msgid "Localization"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:104
+#: ../usr/lib/solydxk/system/solydxk_system.py:115
 msgid "Timezone"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:105
-#: ../usr/lib/solydxk/system/solydxk_system.py:123
+#: ../usr/lib/solydxk/system/solydxk_system.py:116
+#: ../usr/lib/solydxk/system/solydxk_system.py:134
 msgid "Locale"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:106
+#: ../usr/lib/solydxk/system/solydxk_system.py:117
 msgid ""
 "Encrypt partitions and keep your data safe.\n"
 "Warning: backup your data before you continue!\n"
 "Note: you can Ctrl-left click to select multiple partitions."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:109
+#: ../usr/lib/solydxk/system/solydxk_system.py:120
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:111
+#: ../usr/lib/solydxk/system/solydxk_system.py:122
 msgid ""
 "Enable the Backports repository if you need a newer software version.\n"
 "Warning: installing software from the backports repository may de-stabalize "
@@ -119,76 +121,172 @@ msgid ""
 "Use at your own risk!"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:114
+#: ../usr/lib/solydxk/system/solydxk_system.py:125
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:116
+#: ../usr/lib/solydxk/system/solydxk_system.py:127
 #, fuzzy
 msgid "Hold back packages"
 msgstr "Svartlistade paket"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:117
+#: ../usr/lib/solydxk/system/solydxk_system.py:128
 #, fuzzy
 msgid "Held back packages"
 msgstr "Svartlistade paket"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:118
+#: ../usr/lib/solydxk/system/solydxk_system.py:129
 msgid "Available packages"
 msgstr "Tillgängliga paket"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:119
+#: ../usr/lib/solydxk/system/solydxk_system.py:130
 msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:121
+#: ../usr/lib/solydxk/system/solydxk_system.py:132
 msgid "Save locale"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:122
+#: ../usr/lib/solydxk/system/solydxk_system.py:133
+#, fuzzy
 msgid "Installed"
-msgstr ""
+msgstr "Drivrutin installerad"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:124
+#: ../usr/lib/solydxk/system/solydxk_system.py:135
 msgid "Language"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:125
+#: ../usr/lib/solydxk/system/solydxk_system.py:136
 msgid "Default"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:126
+#: ../usr/lib/solydxk/system/solydxk_system.py:137
 msgid "Please provide a passphrase (6-20 characters)."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:127
+#: ../usr/lib/solydxk/system/solydxk_system.py:138
 #, python-brace-format
 msgid ""
 "Could not mount {0}\n"
 "Please mount {0} and refresh when done."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:128
+#: ../usr/lib/solydxk/system/solydxk_system.py:139
 msgid ""
 "Remove unneeded packages\n"
 "Pre-selected packages are safe to remove (autoremove).\n"
 "Other packages are orphaned packages. Remove with caution!"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:131
+#: ../usr/lib/solydxk/system/solydxk_system.py:142
 #, fuzzy
 msgid "Unneeded packages"
 msgstr "Svartlistade paket"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:315
-msgid "Encrypted partition"
+#: ../usr/lib/solydxk/system/solydxk_system.py:143
+#: ../usr/lib/solydxk/system/solydxk_system.py:144
+msgid "Fstab mounts"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:316
+#: ../usr/lib/solydxk/system/solydxk_system.py:145
+msgid ""
+"Mount additional partitions on boot with Fstab.\n"
+"When added to Fstab, the partition will be mounted in /media."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:147
+msgid "Save Fstab mounts"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:148
+#: ../usr/lib/solydxk/system/solydxk_system.py:595
+#, fuzzy
+msgid "Install"
+msgstr "Drivrutin installerad"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:149
+#, fuzzy
+msgid "Use Backports"
+msgstr "Spara spegel-servrar"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:150
+msgid ""
+"Install drivers for supported hardware.\n"
+"Note: do not install these drivers if your hardware functions correctly with "
+"the current open drivers."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+msgid "Add"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#, fuzzy
+msgid "Partition"
+msgstr "Beskrivning"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Mount point"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Label"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:413
+msgid "Could not add {} to {}: missing fs type."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:469
+msgid ""
+"Changes were made to fstab.\n"
+"Please reboot your computer for these changes to take effect."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:473
+msgid "No changes were made to fstab."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:539
+#: ../usr/lib/solydxk/system/localize.py:116
+msgid "No internet connection"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:540
+msgid ""
+"You need an internet connection to install the additional software.\n"
+"Please, connect to the internet and try again."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:547
+msgid ""
+"You have selected to install drivers from the backports repository whenever "
+"they are available.\n"
+"\n"
+"Although you can run more up to date software using the backports "
+"repository,\n"
+"you introduce a greater risk of breakage doing so.\n"
+"\n"
+"Are you sure you want to continue?"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:595
+msgid "Device"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:671
+#, fuzzy
+msgid "Encrypted partition"
+msgstr "Aktivera drivrutin"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:672
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -197,125 +295,117 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:336
+#: ../usr/lib/solydxk/system/solydxk_system.py:692
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:389
+#: ../usr/lib/solydxk/system/solydxk_system.py:745
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
 "Please choose an encrypted partition."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Partition"
-msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Label"
-msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#, fuzzy
 msgid "File system"
-msgstr ""
+msgstr "Systemet har stöd för PAE"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "Total size"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "Free size"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Mount point"
-msgstr ""
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:524
+#: ../usr/lib/solydxk/system/solydxk_system.py:883
 msgid "Backup"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:559
+#: ../usr/lib/solydxk/system/solydxk_system.py:918
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
 "Mount a backup drive and hit the refresh button."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1062
-#: ../usr/lib/solydxk/system/solydxk_system.py:1139
+#: ../usr/lib/solydxk/system/solydxk_system.py:1421
+#: ../usr/lib/solydxk/system/solydxk_system.py:1506
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1066
+#: ../usr/lib/solydxk/system/solydxk_system.py:1425
 msgid "Nothing to do."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1146
+#: ../usr/lib/solydxk/system/solydxk_system.py:1513
 msgid "There are no repositories to save."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Current"
 msgstr "Aktuell"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Country"
 msgstr "Land"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Repository"
 msgstr "Repository"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Speed"
 msgstr "Hastighet"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1354
+#: ../usr/lib/solydxk/system/solydxk_system.py:1721
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1366
+#: ../usr/lib/solydxk/system/solydxk_system.py:1733
+#, fuzzy
 msgid "Encryption done"
-msgstr ""
+msgstr "Beskrivning"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1367
+#: ../usr/lib/solydxk/system/solydxk_system.py:1734
 msgid ""
 "Encryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1370
+#: ../usr/lib/solydxk/system/solydxk_system.py:1737
+#, fuzzy
 msgid "Decryption done"
-msgstr ""
+msgstr "Beskrivning"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1371
+#: ../usr/lib/solydxk/system/solydxk_system.py:1738
 msgid ""
 "Decryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1383
+#: ../usr/lib/solydxk/system/solydxk_system.py:1750
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1431
+#: ../usr/lib/solydxk/system/solydxk_system.py:1800
+#, fuzzy
 msgid "Partition passphrase"
-msgstr ""
+msgstr "Beskrivning"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1432
+#: ../usr/lib/solydxk/system/solydxk_system.py:1801
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -364,19 +454,15 @@ msgid ""
 "Please repeat this process when you established an internet connection."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/localize.py:116
-msgid "No internet connection"
-msgstr ""
-
 #: ../usr/bin/solydxk-system:22
 #, sh-format
 msgid "needs administrative privileges."
 msgstr ""
 
 #: ../usr/bin/solydxk-system:23
-#, sh-format
+#, fuzzy, sh-format
 msgid "Please enter your password."
-msgstr ""
+msgstr "Ange ditt lösenord."
 
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
@@ -391,15 +477,16 @@ msgstr ""
 msgid "SolydXK System Settings Encryption Help"
 msgstr ""
 
-#: en/help.html+html.body.div.h2:10
+#: en/help.html+html.body.div.h2:10 en/helpdd.html+html.body.div.h2:10
+#, fuzzy
 msgid "Description"
-msgstr ""
+msgstr "Beskrivning"
 
 #: en/help.html+html.body.div.p:11
 msgid "Encrypt partitions of your system with LUKS."
 msgstr ""
 
-#: en/help.html+html.body.div.h2:13
+#: en/help.html+html.body.div.h2:13 en/helpdd.html+html.body.div.h2:13
 msgid "Important"
 msgstr ""
 
@@ -458,8 +545,10 @@ msgid ""
 msgstr ""
 
 #: en/help.html+html.body.div.h3:25
+#, fuzzy
+#| msgid "Driver activation"
 msgid "Encrypt the root (and swap) partition"
-msgstr ""
+msgstr "Aktivera drivrutin"
 
 #: en/help.html+html.body.div.strong.p:26
 msgid "WARNING: do this at your own risk!"
@@ -527,8 +616,9 @@ msgid ""
 msgstr ""
 
 #: en/help.html+html.body.div.h3:44
+#, fuzzy
 msgid "Decrypt a partition"
-msgstr ""
+msgstr "Aktivera drivrutin"
 
 #: en/help.html+html.body.div.p:45
 msgid ""
@@ -562,6 +652,498 @@ msgid ""
 "Don't forget to attach the log file when you post an issue on our forum: /"
 "var/log/solydxk-system.log"
 msgstr ""
+
+#: en/helpdd.html+html.body.h1:8
+msgid "SolydXK System Settings: Device Driver Help"
+msgstr ""
+
+#: en/helpdd.html+html.body.div.p:11
+msgid ""
+"The Device Driver is a tool to help users installing third-party hardware "
+"drivers. Currently Nvidia, AMD/ATI and Broadcom drivers can be installed and "
+"allows to install the PAE kernel for multi-core 32-bit systems. The Device "
+"Driver will only list those devices that are supported. It will not list any "
+"other devices then mentioned above."
+msgstr ""
+
+#: en/helpdd.html+html.body.div.p:14
+msgid ""
+"The Device Driver can only install drivers which are available in the "
+"repositories. Make sure you have an internet connection if you want to "
+"install the drivers."
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h2:16
+msgid "Commands"
+msgstr ""
+
+#: en/helpdd.html+html.body.div.p:17
+msgid ""
+"If you prefer to install the drivers by terminal, you can use the following "
+"commands:"
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h3:21
+#, fuzzy
+#| msgid "Install driver: %(drv)s"
+msgid "# ddm -i amd"
+msgstr "Installerar drivrutin: %(drv)s"
+
+#: en/helpdd.html+html.body.div.p:22
+msgid ""
+"This will install the fglrx drivers for your AMD/ATI graphical card. AMD/ATI "
+"cards from version HD 5000 and up are supported by the fglrx drivers. "
+"Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd"
+"\" to remove the drivers from your system."
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h3:24
+#, fuzzy
+#| msgid "Install driver: %(drv)s"
+msgid "# ddm -i nvidia"
+msgstr "Installerar drivrutin: %(drv)s"
+
+#: en/helpdd.html+html.body.div.p:25
+msgid ""
+"This will select the right drivers for your Nvidia graphical card. It will "
+"select the Bumblebee drivers in case you have a hybrid card (both Nvidia and "
+"Intel). Use \"ddm -p nvidia\" to remove the drivers from your system."
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h3:27
+#, fuzzy
+#| msgid "Install driver: %(drv)s"
+msgid "# ddm -i open"
+msgstr "Installerar drivrutin: %(drv)s"
+
+#: en/helpdd.html+html.body.div.p:28
+msgid ""
+"You can use this command if you want to revert back to the open Nouveau "
+"drivers. It will remove any proprietary drivers from your system."
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h3:30
+#, fuzzy
+#| msgid "Install driver: %(drv)s"
+msgid "# ddm -i broadcom"
+msgstr "Installerar drivrutin: %(drv)s"
+
+#: en/helpdd.html+html.body.div.p:31
+msgid ""
+"This command will install the right driver for your wireless Broadcom "
+"adapter. Use \"ddm -p broadcom\" to remove the drivers from your system."
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h3:33
+#, fuzzy
+#| msgid "Install driver: %(drv)s"
+msgid "# ddm -i pae"
+msgstr "Installerar drivrutin: %(drv)s"
+
+#: en/helpdd.html+html.body.div.p:34
+msgid ""
+"This will install the PAE kernel on multi-processor systems running a 32-bit "
+"OS. Use \"ddm -p pae\" to remove the PAE kernel from your system. Note that "
+"you cannot remove the kernel when you are currently booted into that kernel."
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h2:36
+msgid "Logging"
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h3:37
+msgid "File: /var/log/solydxk-system.log"
+msgstr ""
+
+#: en/helpdd.html+html.body.div.p:38
+msgid ""
+"Please, attach your log file when you post an issue on our forum: <a href="
+"\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
+"a>"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Remove kernel"
+#~ msgstr "Ta bort"
+
+#, fuzzy
+#~ msgid "Hardware scan"
+#~ msgstr "Hårdvara"
+
+#~ msgid "PAE capable system"
+#~ msgstr "Systemet har stöd för PAE"
+
+#, fuzzy
+#~ msgid "This card is not supported."
+#~ msgstr "ATI chip serie är stöds inte: %(serie)d"
+
+#, fuzzy
+#~ msgid "Available partitions"
+#~ msgstr "Tillgängliga paket"
+
+#, fuzzy
+#~| msgid "Install driver: %(drv)s"
+#~ msgid "# ddm -i fixbumblebee"
+#~ msgstr "Installerar drivrutin: %(drv)s"
+
+#, fuzzy
+#~ msgid ""
+#~ "Device Driver Manager cannot be started in a live environment\n"
+#~ "You can use the --force argument to start DDM in a live environment"
+#~ msgstr ""
+#~ "DDM kan inte köras i en live-miljö\n"
+#~ "\n"
+#~ "Du kan använda --force för att starta DDM i en live-miljö"
+
+#, fuzzy
+#~| msgid "Install driver: %(drv)s"
+#~ msgid "# install-driver ati"
+#~ msgstr "Installerar drivrutin: %(drv)s"
+
+#, fuzzy
+#~| msgid "Install driver: %(drv)s"
+#~ msgid "# install-driver nvidia"
+#~ msgstr "Installerar drivrutin: %(drv)s"
+
+#, fuzzy
+#~| msgid "Install driver: %(drv)s"
+#~ msgid "# install-driver open"
+#~ msgstr "Installerar drivrutin: %(drv)s"
+
+#, fuzzy
+#~| msgid "Install driver: %(drv)s"
+#~ msgid "# install-driver pae"
+#~ msgstr "Installerar drivrutin: %(drv)s"
+
+#, fuzzy
+#~ msgid "Driver"
+#~ msgstr "Drivrutin"
+
+#~ msgid "ATI card found: %(card)s"
+#~ msgstr "ATI kort hittat: %(card)s"
+
+#~ msgid "ATI chip serie found: %(serie)s"
+#~ msgstr "ATI chip hittat: %(serie)s"
+
+#~ msgid "ATI driver found: %(drv)s (%(status)s)"
+#~ msgstr "ATI drivrutin hittad: %(drv)s (%(status)s)"
+
+#~ msgid "Driver not installable: %(drv)s"
+#~ msgstr "Drivrutinen kan inte installeras: %(drv)s"
+
+#~ msgid "No driver found for: %(card)s (%(man)s:%(serie)s)"
+#~ msgstr "Ingen drivrutin funnen för: %(card)s (%(man)s:%(serie)s)"
+
+#~ msgid "Switch to module: %(module)s"
+#~ msgstr "Byter till modul: %(module)s"
+
+#~ msgid "Driver installed: %(drv)s"
+#~ msgstr "Drivrutinen installerad: %(drv)s"
+
+#~ msgid "Removing ATI drivers"
+#~ msgstr "Tar bort ATI drivrutiner"
+
+#~ msgid "Driver removed: %(drv)s"
+#~ msgstr "Drivrutin borttagen: %(drv)s"
+
+#~ msgid "ATI display driver"
+#~ msgstr "ATI bildskärmsdrivrutin"
+
+#~ msgid "Intel display driver"
+#~ msgstr "Intel bildskärmsdrivrutin"
+
+#~ msgid "Radeon display driver"
+#~ msgstr "Radeon bildskärmsdrivrutin"
+
+#~ msgid "Framebuffer display driver"
+#~ msgstr "Framebuffer bildskärmsdrivrutin"
+
+#~ msgid "Vesa display driver"
+#~ msgstr "Vesa bildskärmsdrivrutin"
+
+#~ msgid "Broadcom chip serie found: %(chip)s"
+#~ msgstr "Broadcom chip serie hittad: %(chip)s"
+
+#~ msgid "Used wireless driver: %(drv)s"
+#~ msgstr "Nuvarande drivrutin för det trådlösa nätverkskortet: %(drv)s"
+
+#~ msgid "Broadcom found: %(broadcom)s"
+#~ msgstr "Broadcom funnet: %(broadcom)s"
+
+#~ msgid "Broadcom chipset not supported or ethernet controller: %(broadcom)s"
+#~ msgstr ""
+#~ "Broadcom chipsetet eller ethernetkontrollen stöds inte: %(broadcom)s"
+
+#~ msgid "Broadcom chipset not found: %(chip)s"
+#~ msgstr "Broadcom chipset kunde inte hittas: %(chip)s"
+
+#~ msgid "Broadcom pci ID not found: %(id)s"
+#~ msgstr "Broadcom pci ID hittades inte: %(id)s"
+
+#~ msgid "Download package: %(package)s"
+#~ msgstr "Hämtar paket: %(package)s"
+
+#~ msgid "Download package: %(drv)s"
+#~ msgstr "Hämtar paket: %(drv)s"
+
+#~ msgid "Install downloaded packages"
+#~ msgstr "Installerar hämtade paket"
+
+#~ msgid "Reconfigure package: %(package)s"
+#~ msgstr "Rekonfigurerar paket: %(package)s"
+
+#~ msgid "Purge driver: %(drv)s"
+#~ msgstr "Rensar drivrutin: %(drv)s"
+
+#~ msgid "Done removing Broadcom drivers"
+#~ msgstr "Avinstallation av Broadcom drivrutiner slutförd"
+
+#~ msgid "Used graphics driver: %(module)s"
+#~ msgstr "Nuvarande grafikdrivrutin: %(module)s"
+
+#~ msgid "No xorg.conf - create minimal xorg.conf"
+#~ msgstr "Ingen xorg.conf - skapar xorg.conf"
+
+#~ msgid "New xorg.conf written"
+#~ msgstr "En ny xorg.conf har skapats"
+
+#~ msgid "New section appended to xorg.conf"
+#~ msgstr "Ny sektion tillagd i xorg.conf"
+
+#~ msgid "Via card found: %(card)s"
+#~ msgstr "Via kort hittat: %(card)s"
+
+#~ msgid "Via driver found: %(drv)s (%(status)s)"
+#~ msgstr "Via drivrutin hittad: %(drv)s (%(status)s)"
+
+#~ msgid "Chrome display driver"
+#~ msgstr "Chrome bildkärmsdrivrutin"
+
+#~ msgid "Intel card found: %(card)s"
+#~ msgstr "Intel kort hittat: %(card)s"
+
+#~ msgid "Intel driver found: %(drv)s (%(status)s)"
+#~ msgstr "Intel drivrutin hittad: %(drv)s (%(status)s)"
+
+#, fuzzy
+#~ msgid "Graphics"
+#~ msgstr "Grafik"
+
+#, fuzzy
+#~ msgid "Wireless"
+#~ msgstr "Trådlös"
+
+#~ msgid "Kernel"
+#~ msgstr "Kärna"
+
+#, fuzzy
+#~ msgid "Hardware"
+#~ msgstr "Hårdvara"
+
+#~ msgid "Activated driver"
+#~ msgstr "Aktiverad drivrutin"
+
+#~ msgid "Alternative drivers"
+#~ msgstr "Alternativa drivrutiner"
+
+#~ msgid "Current drivers are correct"
+#~ msgstr "Nuvarande drivrutiner är korrekta"
+
+#~ msgid "PAE already installed"
+#~ msgstr "PAE är redan installerat"
+
+#~ msgid "PAE support only for 32-bit systems"
+#~ msgstr "PAE support är endast för 32-bit system"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Aktivera"
+
+#, fuzzy
+#~ msgid "Version"
+#~ msgstr "Version"
+
+#~ msgid " (recommended)"
+#~ msgstr "(rekommenderas)"
+
+#~ msgid "Unknown driver"
+#~ msgstr "Okänd drivrutin"
+
+#~ msgid ""
+#~ "Unknown driver found.\n"
+#~ "\n"
+#~ "Please remove before installing drivers with DDM."
+#~ msgstr ""
+#~ "Okänd drivrutinen funnen.\n"
+#~ "\n"
+#~ "Avinstallera den innan du installerar drivrutiner med DDM."
+
+#~ msgid "Driver activation"
+#~ msgstr "Aktivera drivrutin"
+
+#~ msgid ""
+#~ "Are you sure you want to install the following driver:\n"
+#~ "\n"
+#~ "%(drv)s"
+#~ msgstr ""
+#~ "Är du säkert på att du vill installera följande drivrutin?\n"
+#~ "\n"
+#~ "%(drv)s"
+
+#, fuzzy
+#~ msgid "Locked"
+#~ msgstr "Låst"
+
+#~ msgid ""
+#~ "Could not get lock on %(file)s.\n"
+#~ "\n"
+#~ "Close any programs locking the file and try again."
+#~ msgstr ""
+#~ "Kan inte komma åt %(file)s.\n"
+#~ "\n"
+#~ "Stäng de program som använder filen och försök igen."
+
+#~ msgid ""
+#~ "Driver installed: %(drv)s\n"
+#~ "\n"
+#~ "Drivers will be used on next boot.\n"
+#~ "Do you want to reboot now?"
+#~ msgstr ""
+#~ "Drivrutin installerad: %(drv)s\n"
+#~ "\n"
+#~ "Drivrutinen kommer användas vid nästa systemstart.\n"
+#~ "Vill du starta om nu?"
+
+#~ msgid ""
+#~ "Could not get lock on %(file)s.\n"
+#~ "\n"
+#~ "Close any programs locking the file and restart DDM."
+#~ msgstr ""
+#~ "Kan inte komma åt %(file)s.\n"
+#~ "\n"
+#~ "Stäng de program som använder filen och starta DDM igen."
+
+#~ msgid "Checking your hardware..."
+#~ msgstr "Söker igenom din hårdvara..."
+
+#~ msgid "Start automatic driver install"
+#~ msgstr "Påbörja automatisk drivrutinsinstallation"
+
+#~ msgid "Installed PAE: %(pae)s"
+#~ msgstr "Installerat PAE: %(pae)s"
+
+#~ msgid "Multi-core support for 32-bit systems"
+#~ msgstr "Stöd för flerkärninga 32-bit system "
+
+#~ msgid "Multi-core already installed: %(package)s"
+#~ msgstr "Flerkärnigt stöd är redan installerat: %(package)s"
+
+#~ msgid "Multi-core system running single-core kernel found"
+#~ msgstr ""
+#~ "Systemet har stöd för flera kärnor men använder en single-core kärna"
+
+#~ msgid "PAE not installed"
+#~ msgstr "PAE är inte installerat"
+
+#~ msgid "PAE kernel cannot be installed: single-core system"
+#~ msgstr "PAE kärna kan inte installeras: single-core system"
+
+#~ msgid "Done installing PAE"
+#~ msgstr "Installationen av PAE är färdig"
+
+#~ msgid "PAE package to remove: %(package)s"
+#~ msgstr "PAE paket att ta bort: %(package)s"
+
+#~ msgid "Done removing PAE"
+#~ msgstr "Avinstallationen av PAE är färdig"
+
+#~ msgid "Cannot remove PAE when running PAE"
+#~ msgstr "Kan inte ta bort PAE eftersom PAE används"
+
+#~ msgid "Update apt"
+#~ msgstr "Uppdatera apt"
+
+#~ msgid "Install nvidia-detect"
+#~ msgstr "Installerar nvidia-detect"
+
+#~ msgid "Cannot install nvidia-detect: abort"
+#~ msgstr "Kan inte installera nvidia-detect: avbryt"
+
+#~ msgid "Nvidia card found: %(card)s"
+#~ msgstr "Nvidia kort hittat: %(card)s"
+
+#~ msgid "Nvidia driver found: %(drv)s (%(status)s)"
+#~ msgstr "Nvidia drivrutin hittad: %(drv)s (%(status)s)"
+
+#~ msgid "Removing Nvidia drivers"
+#~ msgstr "Tar bort Nvidia drivrutiner"
+
+#~ msgid "Nvidia display driver"
+#~ msgstr "Nvidia bildskärmsdrivrutin"
+
+#~ msgid "Nouveau display driver"
+#~ msgstr "Nouveau bildskärmsdrivrutin"
+
+#~ msgid "Write debug information to file: %(path)s"
+#~ msgstr "Skriv debug information till fil: %(path)s"
+
+#~ msgid "Machine info: %(info)s"
+#~ msgstr "Maskin info: %(info)s"
+
+#~ msgid "DDM version: %(version)s"
+#~ msgstr "DDM version: %(version)s"
+
+#~ msgid ""
+#~ "apt-listbugs is installed and might interfere with driver installation"
+#~ msgstr "apt-listbugs är installerat och kan störa drivrutinsinstallationer"
+
+#~ msgid "DDM - Kernel"
+#~ msgstr "DDM - Kärna"
+
+#~ msgid ""
+#~ "You do not have the latest kernel installed.\n"
+#~ "\n"
+#~ "Use the Update Manager to update your system."
+#~ msgstr ""
+#~ "Du har inte den senaste kärnan installerad.\n"
+#~ "\n"
+#~ "Använd uppdateringsverktyget för att uppdatera ditt system."
+
+#~ msgid "DDM - Live environment"
+#~ msgstr "DDM - live-miljö"
+
+#~ msgid ""
+#~ "DDM cannot run in a live environment\n"
+#~ "\n"
+#~ "To force start, use the --force argument"
+#~ msgstr ""
+#~ "DDM kan inte köras i en live-miljö\n"
+#~ "\n"
+#~ "Du kan använda --force för att starta DDM i en live-miljö"
+
+#~ msgid "DDM - Debian based"
+#~ msgstr "DDM - Debian baserad"
+
+#~ msgid ""
+#~ "Cannot determine the base distribution (debian or ubuntu)\n"
+#~ "\n"
+#~ "To force start, use the --force argument"
+#~ msgstr ""
+#~ "Kan inte avgöra vilken distribution (debian eller ubuntu)\n"
+#~ "\n"
+#~ "Du kan använda --force för att tvinga programmet att starta"
+
+#~ msgid "DDM - Internet"
+#~ msgstr "DDM - Internet"
+
+#~ msgid ""
+#~ "You do not seem to have an internet connection\n"
+#~ "\n"
+#~ "To force start, use the --force argument"
+#~ msgstr ""
+#~ "Du har ingen internetanslutning\n"
+#~ "\n"
+#~ "Du kan använda --force för att tvinga programmet att starta"
 
 #~ msgid "Repository mirrors"
 #~ msgstr "Repository spegel-servrar"

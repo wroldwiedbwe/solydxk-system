@@ -1,17 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
+# Eduard Selma <selma@tinet.cat>, 2015
+# root <arjenbalfoort@solydxk.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: device-driver-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-17 17:55+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Eduard Selma <selma@tinet.cat>, 2017\n"
-"Language-Team: Catalan (https://www.transifex.com/solydxk/teams/54212/ca/)\n"
+"POT-Creation-Date: 2017-09-13 17:05+0200\n"
+"PO-Revision-Date: 2017-04-09 09:18+0000\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>\n"
+"Language-Team: Catalan (http://www.transifex.com/solydxk/device-driver-"
+"manager/language/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,74 +32,74 @@ msgstr ""
 "SolydXK System Settings ha fallat amb el següent error inesperat. Si us "
 "plau, envieu un informe d'error!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:90
+#: ../usr/lib/solydxk/system/solydxk_system.py:101
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr "SolydXK System Settings"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:91
+#: ../usr/lib/solydxk/system/solydxk_system.py:102
 msgid "Save backports"
 msgstr "Desa les retroversions"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:92
+#: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid "Save mirrors"
 msgstr "Desa les rèpliques "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:93
+#: ../usr/lib/solydxk/system/solydxk_system.py:104
 msgid "Check mirrors speed"
 msgstr "Prova la velocitat de les rèpliques "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:94
+#: ../usr/lib/solydxk/system/solydxk_system.py:105
 msgid "Remove"
 msgstr "Elimina "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:95
+#: ../usr/lib/solydxk/system/solydxk_system.py:106
 msgid "Hold back"
 msgstr "Retín"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:96
+#: ../usr/lib/solydxk/system/solydxk_system.py:107
 msgid "Repositories"
 msgstr "Dipòsits"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:97
+#: ../usr/lib/solydxk/system/solydxk_system.py:108
 msgid "Encryption"
 msgstr "Encriptatge"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:98
+#: ../usr/lib/solydxk/system/solydxk_system.py:109
 msgid "Passphrase (6-20 chr)"
 msgstr "Contrasenya (6-20 caràct.)"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:99
+#: ../usr/lib/solydxk/system/solydxk_system.py:110
 msgid "Encrypt"
 msgstr "Encripta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:100
+#: ../usr/lib/solydxk/system/solydxk_system.py:111
 msgid "Decrypt"
 msgstr "Desencripta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:101
+#: ../usr/lib/solydxk/system/solydxk_system.py:112
 msgid "Change passphrase"
 msgstr "Canvia la contrasenya"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:102
+#: ../usr/lib/solydxk/system/solydxk_system.py:113
 msgid "Manually create key file"
 msgstr "Crea fitxer clau manualment"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:103
+#: ../usr/lib/solydxk/system/solydxk_system.py:114
 msgid "Localization"
 msgstr "Localització"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:104
+#: ../usr/lib/solydxk/system/solydxk_system.py:115
 msgid "Timezone"
 msgstr "Zona horària"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:105
-#: ../usr/lib/solydxk/system/solydxk_system.py:123
+#: ../usr/lib/solydxk/system/solydxk_system.py:116
+#: ../usr/lib/solydxk/system/solydxk_system.py:134
 msgid "Locale"
 msgstr "Configuració regional"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:106
+#: ../usr/lib/solydxk/system/solydxk_system.py:117
 msgid ""
 "Encrypt partitions and keep your data safe.\n"
 "Warning: backup your data before you continue!\n"
@@ -107,7 +109,7 @@ msgstr ""
 "Atenció: feu còpia de seguritat abans de continuar!\n"
 "Nota: podeu fer Ctrl+Clic esquerre per triar diverses particions."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:109
+#: ../usr/lib/solydxk/system/solydxk_system.py:120
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
@@ -115,7 +117,7 @@ msgstr ""
 "Feu la vostra configuració regional (una per omissió) i zona horària.\n"
 "Nota: cal tenir connexió a internet per localitzar el programari."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:111
+#: ../usr/lib/solydxk/system/solydxk_system.py:122
 msgid ""
 "Enable the Backports repository if you need a newer software version.\n"
 "Warning: installing software from the backports repository may de-stabalize "
@@ -126,7 +128,7 @@ msgstr ""
 "més noves. Atenció: instal·lar programari de retroversions pot \n"
 "desestabilitzar el sistema. Useu-lo sota la vostra responsabilitat!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:114
+#: ../usr/lib/solydxk/system/solydxk_system.py:125
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
@@ -134,19 +136,19 @@ msgstr ""
 "Trieu el dipòsit més ràpid per les actualitzacions.\n"
 "Nota: Assegureu-vos de tenir connexió a internet."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:116
+#: ../usr/lib/solydxk/system/solydxk_system.py:127
 msgid "Hold back packages"
 msgstr "Retín paquets"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:117
+#: ../usr/lib/solydxk/system/solydxk_system.py:128
 msgid "Held back packages"
 msgstr "Paquets retinguts."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:118
+#: ../usr/lib/solydxk/system/solydxk_system.py:129
 msgid "Available packages"
 msgstr "Paquets disponibles "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:119
+#: ../usr/lib/solydxk/system/solydxk_system.py:130
 msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
@@ -154,27 +156,27 @@ msgstr ""
 "Retín paquets individuals.\n"
 "Retenir un paquet evita que aquest s'actualitzi."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:121
+#: ../usr/lib/solydxk/system/solydxk_system.py:132
 msgid "Save locale"
 msgstr "Desa el Locale"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:122
+#: ../usr/lib/solydxk/system/solydxk_system.py:133
 msgid "Installed"
 msgstr "Instal·lat"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:124
+#: ../usr/lib/solydxk/system/solydxk_system.py:135
 msgid "Language"
 msgstr "Llengua"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:125
+#: ../usr/lib/solydxk/system/solydxk_system.py:136
 msgid "Default"
 msgstr "Omissió"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:126
+#: ../usr/lib/solydxk/system/solydxk_system.py:137
 msgid "Please provide a passphrase (6-20 characters)."
 msgstr "Si us plau, doneu una contrasenya (6-20 caràcters)."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:127
+#: ../usr/lib/solydxk/system/solydxk_system.py:138
 #, python-brace-format
 msgid ""
 "Could not mount {0}\n"
@@ -183,7 +185,7 @@ msgstr ""
 "No puc muntar {0}\n"
 "Si us plau, munteu {0} i refresqueu-ho un cop fet."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:128
+#: ../usr/lib/solydxk/system/solydxk_system.py:139
 msgid ""
 "Remove unneeded packages\n"
 "Pre-selected packages are safe to remove (autoremove).\n"
@@ -193,15 +195,117 @@ msgstr ""
 "És segur eliminar els paquets seleccionats (autoremove).\n"
 "Els altres paquets són orfes. Elimineu-los amb compte!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:131
+#: ../usr/lib/solydxk/system/solydxk_system.py:142
 msgid "Unneeded packages"
 msgstr "Paquets innecessaris"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:315
+#: ../usr/lib/solydxk/system/solydxk_system.py:143
+#: ../usr/lib/solydxk/system/solydxk_system.py:144
+msgid "Fstab mounts"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:145
+msgid ""
+"Mount additional partitions on boot with Fstab.\n"
+"When added to Fstab, the partition will be mounted in /media."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:147
+msgid "Save Fstab mounts"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:148
+#: ../usr/lib/solydxk/system/solydxk_system.py:595
+msgid "Install"
+msgstr "Instal·la "
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:149
+msgid "Use Backports"
+msgstr "Usa Backports "
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:150
+msgid ""
+"Install drivers for supported hardware.\n"
+"Note: do not install these drivers if your hardware functions correctly with "
+"the current open drivers."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+msgid "Add"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Partition"
+msgstr "Partició"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Mount point"
+msgstr "Punt de muntatge"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Label"
+msgstr "Etiqueta"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:413
+msgid "Could not add {} to {}: missing fs type."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:469
+#, fuzzy
+msgid ""
+"Changes were made to fstab.\n"
+"Please reboot your computer for these changes to take effect."
+msgstr "Us cal tornar a arrencar el sistema per activar la nova configuració."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:473
+msgid "No changes were made to fstab."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:539
+#: ../usr/lib/solydxk/system/localize.py:116
+msgid "No internet connection"
+msgstr "No hi ha connexió a Internet "
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:540
+msgid ""
+"You need an internet connection to install the additional software.\n"
+"Please, connect to the internet and try again."
+msgstr ""
+"Cal una connexió a Internet per instal·lar el programari addicional.\n"
+"Si us plau, connecteu-vos a Internet i torneu a provar-ho."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:547
+msgid ""
+"You have selected to install drivers from the backports repository whenever "
+"they are available.\n"
+"\n"
+"Although you can run more up to date software using the backports "
+"repository,\n"
+"you introduce a greater risk of breakage doing so.\n"
+"\n"
+"Are you sure you want to continue?"
+msgstr ""
+"Heu triat  instal·lar controladors del dipòsit backports si aquests estan a "
+"l'abast.\n"
+"\n"
+"Malgrat que podeu obtenir programari més actual usant el dipòsit  "
+"backports,\n"
+"hi ha més risc de tenir algun problema fent-ho.\n"
+"\n"
+"Esteu segurs de voler continuar?"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:595
+msgid "Device"
+msgstr "Dispositiu "
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:671
 msgid "Encrypted partition"
 msgstr "Partició encriptada"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:316
+#: ../usr/lib/solydxk/system/solydxk_system.py:672
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -214,7 +318,7 @@ msgstr ""
 "\n"
 "Voleu continuar?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:336
+#: ../usr/lib/solydxk/system/solydxk_system.py:692
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
@@ -222,7 +326,7 @@ msgstr ""
 "La partició no està encriptada.\n"
 "Si us plau, trieu-ne una altra per desencriptar."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:389
+#: ../usr/lib/solydxk/system/solydxk_system.py:745
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
@@ -231,35 +335,23 @@ msgstr ""
 "%s no està encriptada.\n"
 "Si us plau, trieu una partició encriptada."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Partition"
-msgstr "Partició"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Label"
-msgstr "Etiqueta"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "File system"
 msgstr "Sistema de fitxers"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "Total size"
 msgstr "Mida total"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "Free size"
 msgstr "Espai lliure"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Mount point"
-msgstr "Punt de muntatge"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:524
+#: ../usr/lib/solydxk/system/solydxk_system.py:883
 msgid "Backup"
 msgstr "Còpia de seguretat"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:559
+#: ../usr/lib/solydxk/system/solydxk_system.py:918
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
@@ -268,8 +360,8 @@ msgstr ""
 "Cal una partició de còpia de seguretat amb un mínim de%s lliure.\n"
 "Munteu un disc de còpia de seguretat i premeu el botó Actualitza."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1062
-#: ../usr/lib/solydxk/system/solydxk_system.py:1139
+#: ../usr/lib/solydxk/system/solydxk_system.py:1421
+#: ../usr/lib/solydxk/system/solydxk_system.py:1506
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -277,43 +369,43 @@ msgstr ""
 "No he pogut actualitzar la memòria cau d'APT.\n"
 "Si us plau, actualitzeu-la manualment amb apt-get update "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1066
+#: ../usr/lib/solydxk/system/solydxk_system.py:1425
 msgid "Nothing to do."
 msgstr "Res a fer."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1146
+#: ../usr/lib/solydxk/system/solydxk_system.py:1513
 msgid "There are no repositories to save."
 msgstr "No hi ha dipòsits per desar."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Current"
 msgstr "Actual "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Country"
 msgstr "País "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Repository"
 msgstr "Dipòsit "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "URL"
 msgstr "URL "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Speed"
 msgstr "Velocitat "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1354
+#: ../usr/lib/solydxk/system/solydxk_system.py:1721
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr "Us cal tornar a arrencar el sistema per activar la nova configuració."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1366
+#: ../usr/lib/solydxk/system/solydxk_system.py:1733
 msgid "Encryption done"
 msgstr "Fet l'encriptatge"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1367
+#: ../usr/lib/solydxk/system/solydxk_system.py:1734
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -323,11 +415,11 @@ msgstr ""
 "\n"
 "Voleu tornar a arrencar l'ordinador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1370
+#: ../usr/lib/solydxk/system/solydxk_system.py:1737
 msgid "Decryption done"
 msgstr "Fet el desencriptatge"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1371
+#: ../usr/lib/solydxk/system/solydxk_system.py:1738
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -337,16 +429,16 @@ msgstr ""
 "\n"
 "Voleu tornar a arrencar l'ordinador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1383
+#: ../usr/lib/solydxk/system/solydxk_system.py:1750
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Canviada la contrasenya per {0}."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1431
+#: ../usr/lib/solydxk/system/solydxk_system.py:1800
 msgid "Partition passphrase"
 msgstr "Contrasenya de la partició"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1432
+#: ../usr/lib/solydxk/system/solydxk_system.py:1801
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -411,10 +503,6 @@ msgstr ""
 "localització de programari\n"
 "Si us plau, repetiu el procés quan tingueu connexió a internet."
 
-#: ../usr/lib/solydxk/system/localize.py:116
-msgid "No internet connection"
-msgstr "No hi ha connexió a internet."
-
 #: ../usr/bin/solydxk-system:22
 #, sh-format
 msgid "needs administrative privileges."
@@ -438,17 +526,17 @@ msgstr "Sistema"
 msgid "SolydXK System Settings Encryption Help"
 msgstr "Ajuda de l'encriptatge a SolysXK System Settings"
 
-#: en/help.html+html.body.div.h2:10
+#: en/help.html+html.body.div.h2:10 en/helpdd.html+html.body.div.h2:10
 msgid "Description"
-msgstr "Descripció"
+msgstr "Descripció "
 
 #: en/help.html+html.body.div.p:11
 msgid "Encrypt partitions of your system with LUKS."
 msgstr "Encripta les particions del sistema amb LUKS."
 
-#: en/help.html+html.body.div.h2:13
+#: en/help.html+html.body.div.h2:13 en/helpdd.html+html.body.div.h2:13
 msgid "Important"
-msgstr "Important"
+msgstr "Important "
 
 #: en/help.html+html.body.div.p:14
 msgid ""
@@ -558,6 +646,12 @@ msgid "Open a terminal, and run these commands as root:"
 msgstr "Obriu un terminal, i entreu aquestes ordres com a root: "
 
 #: en/help.html+html.body.div.pre:29
+#, fuzzy
+#| msgid ""
+#| "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/"
+#| "sda2 /mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -"
+#| "o value -s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/"
+#| "fstab"
 msgid ""
 "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 /"
 "mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
@@ -666,3 +760,290 @@ msgid ""
 msgstr ""
 "No us oblideu d'adjuntar el fitxer de registre (/var/log/solydxk-system.log) "
 "quan exposeu el vostre problema al fòrum."
+
+#: en/helpdd.html+html.body.h1:8
+#, fuzzy
+#| msgid "SolydXK System Settings Encryption Help"
+msgid "SolydXK System Settings: Device Driver Help"
+msgstr "Ajuda de l'encriptatge a SolysXK System Settings"
+
+#: en/helpdd.html+html.body.div.p:11
+#, fuzzy
+#| msgid ""
+#| "The Device Driver Manager is a tool to help users installing third-party "
+#| "hardware drivers. Currently Nvidia, ATI and Broadcom drivers can be "
+#| "installed and allows to install the PAE kernel for multi-core 32-bit "
+#| "systems. The Device Driver Manager will only list those devices that are "
+#| "supported. It will not list any other devices then mentioned above."
+msgid ""
+"The Device Driver is a tool to help users installing third-party hardware "
+"drivers. Currently Nvidia, AMD/ATI and Broadcom drivers can be installed and "
+"allows to install the PAE kernel for multi-core 32-bit systems. The Device "
+"Driver will only list those devices that are supported. It will not list any "
+"other devices then mentioned above."
+msgstr ""
+"The Device Driver Manager és una eina per ajudar als usuaris a instal·lar "
+"controladors de dispositiu de tercers. Actualment es poden instal·lar "
+"controladors Nvidia, ATI i Broadcom; també permet instal·lar el kernel PAE "
+"per sistemes de 32 bits amb diversos nuclis. El Device Driver Manager només "
+"mostrarà els dispositius compatibles. No mostrarà altres dispositius que els "
+"abans esmentats."
+
+#: en/helpdd.html+html.body.div.p:14
+#, fuzzy
+#| msgid ""
+#| "The Device Driver Manager can only install drivers which are available in "
+#| "the repositories. Make sure you have an internet connection if you want "
+#| "to install the drivers."
+msgid ""
+"The Device Driver can only install drivers which are available in the "
+"repositories. Make sure you have an internet connection if you want to "
+"install the drivers."
+msgstr ""
+"El Device Driver Manager només instal·larà controladors disponibles als "
+"dipòsits. Assegureu-vos que teniu connexió a Internet si voleu instal·lar "
+"els controladors. "
+
+#: en/helpdd.html+html.body.div.h2:16
+msgid "Commands"
+msgstr "Ordres "
+
+#: en/helpdd.html+html.body.div.p:17
+msgid ""
+"If you prefer to install the drivers by terminal, you can use the following "
+"commands:"
+msgstr ""
+"Si preferiu instal·lar els controladors des del terminal, podeu usar "
+"aquestes ordres: "
+
+#: en/helpdd.html+html.body.div.h3:21
+#, fuzzy
+#| msgid "# ddm -i ati"
+msgid "# ddm -i amd"
+msgstr "# ddm -i ati"
+
+#: en/helpdd.html+html.body.div.p:22
+#, fuzzy
+#| msgid ""
+#| "This will install the fglrx drivers for your ATI graphical card. ATI "
+#| "cards from version HD 5000 and up are supported by the fglrx drivers. "
+#| "Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p "
+#| "ati\" to remove the drivers from your system."
+msgid ""
+"This will install the fglrx drivers for your AMD/ATI graphical card. AMD/ATI "
+"cards from version HD 5000 and up are supported by the fglrx drivers. "
+"Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd"
+"\" to remove the drivers from your system."
+msgstr ""
+"Això instal·larà els controladors fglrx per les targes gràfiques ATI. Les "
+"targes ATI a partir de la versió HD 5000 són compatibles amb els "
+"controladors fglrx. Les versions entre la 1000 i la 5000 poden usar els "
+"controladors Radeon. Useu \"ddm -p ati\" per eliminar els controladors del "
+"vostre sistema. "
+
+#: en/helpdd.html+html.body.div.h3:24
+msgid "# ddm -i nvidia"
+msgstr "# ddm -i nvidia"
+
+#: en/helpdd.html+html.body.div.p:25
+msgid ""
+"This will select the right drivers for your Nvidia graphical card. It will "
+"select the Bumblebee drivers in case you have a hybrid card (both Nvidia and "
+"Intel). Use \"ddm -p nvidia\" to remove the drivers from your system."
+msgstr ""
+"Això triarà els controladors correctes per a la vostra tarja gràfica Nvidia. "
+"També seleccionarà els controladors Bumblebee en el cas que tingueu una "
+"tarja híbrida (amb Nvidia i Intel). Useu \"ddm -p nvidia\" per eliminar els "
+"controladors del vostre sistema. "
+
+#: en/helpdd.html+html.body.div.h3:27
+msgid "# ddm -i open"
+msgstr "# ddm -i open"
+
+#: en/helpdd.html+html.body.div.p:28
+msgid ""
+"You can use this command if you want to revert back to the open Nouveau "
+"drivers. It will remove any proprietary drivers from your system."
+msgstr ""
+"Podeu usar aquesta ordre per a reinstal·lar els controladors lliures "
+"Nouveau. Això eliminarà els controladors propietaris del vostre sistema. "
+
+#: en/helpdd.html+html.body.div.h3:30
+msgid "# ddm -i broadcom"
+msgstr "# ddm -i broadcom"
+
+#: en/helpdd.html+html.body.div.p:31
+msgid ""
+"This command will install the right driver for your wireless Broadcom "
+"adapter. Use \"ddm -p broadcom\" to remove the drivers from your system."
+msgstr ""
+"Aquesta ordre instal·larà el controlador adequat per al vostre adaptador "
+"sense fils Broadcom. Useu \"ddm -p broadcom\" per eliminar aquests "
+"controladors del vostre sistema. "
+
+#: en/helpdd.html+html.body.div.h3:33
+msgid "# ddm -i pae"
+msgstr "# ddm -i pae"
+
+#: en/helpdd.html+html.body.div.p:34
+msgid ""
+"This will install the PAE kernel on multi-processor systems running a 32-bit "
+"OS. Use \"ddm -p pae\" to remove the PAE kernel from your system. Note that "
+"you cannot remove the kernel when you are currently booted into that kernel."
+msgstr ""
+"Això instal·larà el nucli (kernel) PAE en sistemes multiprocessador amb S. "
+"O. de 32 bit. Useu \"ddm -p pae\" per eliminar el kernel PAE del vostre "
+"sistema. Tingueu en compte que no es pot eliminar el nucli que s'està "
+"executant en aquell moment. "
+
+#: en/helpdd.html+html.body.div.h2:36
+msgid "Logging"
+msgstr ""
+
+#: en/helpdd.html+html.body.div.h3:37
+#, fuzzy
+#| msgid "File: /var/log/ddm.log"
+msgid "File: /var/log/solydxk-system.log"
+msgstr "Fitxer: /var/log/ddm.log"
+
+#: en/helpdd.html+html.body.div.p:38
+#, fuzzy
+#| msgid ""
+#| "Please, attach your log file when you post an issue on our forum: <a href="
+#| "\"http://forums.solydxk.com\" target=\"_blank\">http://forums.solydxk."
+#| "com</a>"
+msgid ""
+"Please, attach your log file when you post an issue on our forum: <a href="
+"\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
+"a>"
+msgstr ""
+"Si us plau, adjunteu el vostre fitxer de registre quan informeu d'un "
+"incident al nostre fòrum <a href=\"http://forums.solydxk.com\" target="
+"\"_blank\">http://forums.solydxk.com</a> "
+
+#~ msgid "Device Driver Manager"
+#~ msgstr "Device Driver Manager"
+
+#~ msgid "Help"
+#~ msgstr "Ajuda "
+
+#~ msgid "Log"
+#~ msgstr "Registre "
+
+#~ msgid "Quit"
+#~ msgstr "Surt "
+
+#~ msgid "Remove kernel"
+#~ msgstr "Elimina el kernel "
+
+#~ msgid ""
+#~ "You cannot remove a booted kernel.\n"
+#~ "Please, boot another kernel and try again."
+#~ msgstr ""
+#~ "No es pot eliminar un kernel actiu.\n"
+#~ "Si us plau, engegueu amb un nou kernel i torneu a provar-ho. "
+
+#~ msgid "Hardware scan"
+#~ msgstr "Explora maquinari "
+
+#~ msgid "There are no available drivers for your hardware:"
+#~ msgstr "No hi ha controladors disponibles pel vostre maquinari: "
+
+#~ msgid "DDM did not find any supported hardware."
+#~ msgstr "DDM no ha trobat cap maquinari compatible. "
+
+#~ msgid "ATI FirePro/Gl card found"
+#~ msgstr "S'ha trobat una tarja ATI FirePro/Gl "
+
+#~ msgid ""
+#~ "Installing the proprietary driver for an ATI FirePro/Gl card may render "
+#~ "your system unbootable.\n"
+#~ "\n"
+#~ "Proceed at your own risk."
+#~ msgstr ""
+#~ "Instal·lar el controlador propietari per a la tarja ATI FirePro/Gl pot "
+#~ "deixar el vostre sistema sense possibilitat d'arrencar.\n"
+#~ "\n"
+#~ "Procediu sota la vostra responsabilitat."
+
+#~ msgid "PAE capable system"
+#~ msgstr "Sistema amb capacitat PAE "
+
+#~ msgid "Run as root."
+#~ msgstr "Executa com a usuari primari. "
+
+#~ msgid "Wrong arguments passed to ddm."
+#~ msgstr "S'han passat a DDM arguments erronis. "
+
+#~ msgid "There are no driver available."
+#~ msgstr "No hi ha cap controlador disponible. "
+
+#~ msgid "The driver cannot be found in repository."
+#~ msgstr "No es troba el controlador al dipòsit. "
+
+#~ msgid ""
+#~ "Download error.\n"
+#~ "Check your internet connection."
+#~ msgstr ""
+#~ "Error de descàrrega.\n"
+#~ "Comproveu la connexió a Internet. "
+
+#~ msgid "DDM cannot purge the driver."
+#~ msgstr "DDM no pot purgar el controlador. "
+
+#~ msgid "This card is not supported."
+#~ msgstr "Aquesta tarja no està suportada. "
+
+#~ msgid ""
+#~ "There was an error during the installation.\n"
+#~ "Please, run 'sudo apt-get -f install' in a terminal.\n"
+#~ "Visit our forum for support: http://forums.solydxk.com"
+#~ msgstr ""
+#~ "Hi ha hagut un error a la instal·lació.\n"
+#~ "Si us plau, executeu 'sudo apt-get -f install' en un terminal.\n"
+#~ "Visiteu el nostre fòrum per obtenir suport: http://forums.solydyxk.com "
+
+#~ msgid "The software has been successfully installed."
+#~ msgstr "El programari s'ha instal·lat amb èxit. "
+
+#~ msgid "You will need to restart your system."
+#~ msgstr "Cal que reinicieu el vostre sistema. "
+
+#, fuzzy
+#~ msgid "Available partitions"
+#~ msgstr "Paquets disponibles "
+
+#~ msgid "Device Driver Manager Help"
+#~ msgstr "Ajuda del Device Driver Manager "
+
+#~ msgid "# ddm -i fixbumblebee"
+#~ msgstr "# ddm -i fixbumblebee"
+
+#~ msgid "This will try to fix a Bumblebee install."
+#~ msgstr "Això intentarà esmenar una instal·lació de Bumblebee. "
+
+#~ msgid ""
+#~ "Device Driver Manager helps to install proprietary drivers for your "
+#~ "hardware.\n"
+#~ "Only install proprietary drivers if you are sure you really need them.\n"
+#~ "Usually open drivers are enough."
+#~ msgstr ""
+#~ "El Device Driver Manager us ajuda a instal·lar controladors propietaris "
+#~ "per al vostre maquinari.\n"
+#~ "Instal·leu controladors propietaris només si esteu segurs de necessitar-"
+#~ "los.\n"
+#~ "Sovint, amb els controladors lliures ja n'hi ha prou."
+
+#~ msgid ""
+#~ "Device Driver Manager cannot be started in a live environment\n"
+#~ "You can use the --force argument to start DDM in a live environment"
+#~ msgstr ""
+#~ "No es pot engegar Device Driver Manager en un entorn autònom.\n"
+#~ "Podeu usar l'argument --force per engegar-lo en entorn autònom."
+
+#~ msgid ""
+#~ "DDM has failed with the following unexpected error. Please submit a bug "
+#~ "report!"
+#~ msgstr ""
+#~ "DDM ha fallat amb un error inesperat. Si us plau, envieu un informe "
+#~ "d'error! "

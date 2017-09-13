@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="../link/general.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="background"></div>
+	<h1>SolydXK System Settings: Device Driver Help</h1>
+	<div class="main">
+		<h2>Aprašas</h2>
+		<p>The Device Driver is a tool to help users installing third-party hardware
+drivers. Currently Nvidia, AMD/ATI and Broadcom drivers can be installed and
+allows to install the PAE kernel for multi-core 32-bit systems. The Device
+Driver will only list those devices that are supported. It will not list any
+other devices then mentioned above.</p>
+
+		<h2>Svarbu</h2>
+		<p>The Device Driver can only install drivers which are available in the
+repositories. Make sure you have an internet connection if you want to
+install the drivers.</p>
+
+		<h2>Komandos</h2>
+		<p>Jeigu teikiate pirmenybę įdiegti tvarkykles per terminalą, galite naudoti
+šias komandas:</p>
+
+		<p>&nbsp;</p>
+
+		<h3># ddm -i amd</h3>
+		<p>This will install the fglrx drivers for your AMD/ATI graphical card. AMD/ATI
+cards from version HD 5000 and up are supported by the fglrx
+drivers. Versions between 1000 and 5000 will use the Radeon drivers. Use
+"ddm -p amd" to remove the drivers from your system.</p>
+
+		<h3># ddm -i nvidia</h3>
+		<p>Tai, jūsų Nvidia grafikos plokštei parinks tinkamas tvarkykles. Tuo atveju,
+jeigu turite hibridinę plokštę (Nvidia ir Intel), tai parinks Bumblebee
+tvarkykles. Naudokite "ddm -p nvidia", kad pašalintumėte tvarkykles iš savo
+sistemos.</p>
+
+		<h3># ddm -i open</h3>
+		<p>Jūs galite naudoti šią komandą, jeigu norite sugrįžti prie atvirų Nouveau
+tvarkyklių. Tai pašalins bet kokias nuosavybines tvarkykles iš jūsų
+sistemos.</p>
+
+		<h3># ddm -i broadcom</h3>
+		<p>Ši komanda jūsų belaidžiam Broadcom adapteriui įdiegs tinkamas
+tvarkykles. Naudokite "ddm -p broadcom", kad pašalintumėte tvarkykles iš
+savo sistemos.</p>
+
+		<h3># ddm -i pae</h3>
+		<p>Tai, kelių procesorių sistemose, kuriose vykdoma 32-bitų operacinė sistema,
+įdiegs PAE branduolį. Naudokite "ddm -p pae", kad pašalintumėte PAE
+branduolį iš savo sistemos. Turėkite omenyje, kad jūs negalite pašalinti
+branduolio, kuomet jūsų sistema yra paleista į tą branduolį.</p>
+
+		<h2>Registravimas</h2>
+		<h3>File: /var/log/solydxk-system.log</h3>
+		<p>Please, attach your log file when you post an issue on our forum: <a
+href="https://forums.solydxk.com"
+target="_blank">https://forums.solydxk.com</a></p>
+    </div>
+  </body>
+</html>

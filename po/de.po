@@ -1,17 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
+# Arjen Balfoort <arjenbalfoort@solydxk.com>, 2015
+# ilu lu, 2015
+# ilu lu, 2015
+# pitfd <pitfd@openmailbox.org>, 2015,2017
+# Ronnie Soak <chaoschaos0909@googlemail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: device-driver-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-17 17:55+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: pitfd <pitfd@openmailbox.org>, 2017\n"
-"Language-Team: German (https://www.transifex.com/solydxk/teams/54212/de/)\n"
+"POT-Creation-Date: 2017-09-13 17:05+0200\n"
+"PO-Revision-Date: 2017-06-21 06:35+0000\n"
+"Last-Translator: pitfd <pitfd@openmailbox.org>\n"
+"Language-Team: German (http://www.transifex.com/solydxk/device-driver-"
+"manager/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,74 +35,74 @@ msgstr ""
 "Das Programm SolydXK Systemeinstellungen ist mit dem folgenden unerwarteten "
 "Fehler beendet worden. Bitte erstelle einen Fehlerbericht!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:90
+#: ../usr/lib/solydxk/system/solydxk_system.py:101
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr "SolydXK Systemeinstellungen"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:91
+#: ../usr/lib/solydxk/system/solydxk_system.py:102
 msgid "Save backports"
 msgstr "Backports speichern"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:92
+#: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid "Save mirrors"
 msgstr "Spiegelserver speichern"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:93
+#: ../usr/lib/solydxk/system/solydxk_system.py:104
 msgid "Check mirrors speed"
 msgstr "Überprüfe Spiegelserver-Geschwindigkeit"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:94
+#: ../usr/lib/solydxk/system/solydxk_system.py:105
 msgid "Remove"
 msgstr "Entfernen"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:95
+#: ../usr/lib/solydxk/system/solydxk_system.py:106
 msgid "Hold back"
 msgstr "zurückhalten"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:96
+#: ../usr/lib/solydxk/system/solydxk_system.py:107
 msgid "Repositories"
 msgstr "Repositorien"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:97
+#: ../usr/lib/solydxk/system/solydxk_system.py:108
 msgid "Encryption"
 msgstr "Verschlüsselung"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:98
+#: ../usr/lib/solydxk/system/solydxk_system.py:109
 msgid "Passphrase (6-20 chr)"
 msgstr "Verschlüsselungskennwort (6-20 Zeichen)"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:99
+#: ../usr/lib/solydxk/system/solydxk_system.py:110
 msgid "Encrypt"
 msgstr "Verschlüssele"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:100
+#: ../usr/lib/solydxk/system/solydxk_system.py:111
 msgid "Decrypt"
 msgstr "Entschlüssele"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:101
+#: ../usr/lib/solydxk/system/solydxk_system.py:112
 msgid "Change passphrase"
 msgstr "Ändern Sie das Verschlüsselungskennwort"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:102
+#: ../usr/lib/solydxk/system/solydxk_system.py:113
 msgid "Manually create key file"
 msgstr "Erzeugen Sie die Verschlüsselungsdatei von Hand"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:103
+#: ../usr/lib/solydxk/system/solydxk_system.py:114
 msgid "Localization"
 msgstr "Lokalisierung"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:104
+#: ../usr/lib/solydxk/system/solydxk_system.py:115
 msgid "Timezone"
 msgstr "Zeitzone"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:105
-#: ../usr/lib/solydxk/system/solydxk_system.py:123
+#: ../usr/lib/solydxk/system/solydxk_system.py:116
+#: ../usr/lib/solydxk/system/solydxk_system.py:134
 msgid "Locale"
 msgstr "Sprachumgebung"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:106
+#: ../usr/lib/solydxk/system/solydxk_system.py:117
 msgid ""
 "Encrypt partitions and keep your data safe.\n"
 "Warning: backup your data before you continue!\n"
@@ -108,7 +113,7 @@ msgstr ""
 "Hinweis: Sie können mit der Ctrl-Links Tastenkombination mehrere Partitionen "
 "gleichzeitig auswählen."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:109
+#: ../usr/lib/solydxk/system/solydxk_system.py:120
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
@@ -118,7 +123,7 @@ msgstr ""
 "Hinweis: Stellen Sie sicher, dass Sie eine Internetverbindung haben, bevor "
 "Sie Ihre Sprachumgebung einstellen."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:111
+#: ../usr/lib/solydxk/system/solydxk_system.py:122
 msgid ""
 "Enable the Backports repository if you need a newer software version.\n"
 "Warning: installing software from the backports repository may de-stabalize "
@@ -131,7 +136,7 @@ msgstr ""
 "System destabilisieren.\n"
 "Diese Vorgehensweise erfolgt auf Ihr eigenes Risiko!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:114
+#: ../usr/lib/solydxk/system/solydxk_system.py:125
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
@@ -139,19 +144,19 @@ msgstr ""
 "Wählen Sie das schnellste Repository für Ihre Updates aus.\n"
 "Hinweis: Stellen Sie sicher, dass Sie eine Internetverbindung haben."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:116
+#: ../usr/lib/solydxk/system/solydxk_system.py:127
 msgid "Hold back packages"
 msgstr "Halte Pakete zurück"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:117
+#: ../usr/lib/solydxk/system/solydxk_system.py:128
 msgid "Held back packages"
 msgstr "Pakete wurden zurückgehalten"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:118
+#: ../usr/lib/solydxk/system/solydxk_system.py:129
 msgid "Available packages"
 msgstr "Verfügbare Pakete"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:119
+#: ../usr/lib/solydxk/system/solydxk_system.py:130
 msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
@@ -160,27 +165,27 @@ msgstr ""
 "Das Zurückhalten eines Paketes führt dazu, dass dieses Paket von einem "
 "Update ausgeschlossen werden wird."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:121
+#: ../usr/lib/solydxk/system/solydxk_system.py:132
 msgid "Save locale"
 msgstr "Sichern der Sprachumgebung"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:122
+#: ../usr/lib/solydxk/system/solydxk_system.py:133
 msgid "Installed"
 msgstr "Installiert"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:124
+#: ../usr/lib/solydxk/system/solydxk_system.py:135
 msgid "Language"
 msgstr "Sprache"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:125
+#: ../usr/lib/solydxk/system/solydxk_system.py:136
 msgid "Default"
 msgstr "Standard"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:126
+#: ../usr/lib/solydxk/system/solydxk_system.py:137
 msgid "Please provide a passphrase (6-20 characters)."
 msgstr "Bitte geben Sie ein Verschlüsselungskennwort (6-20 Zeichen) ein."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:127
+#: ../usr/lib/solydxk/system/solydxk_system.py:138
 #, python-brace-format
 msgid ""
 "Could not mount {0}\n"
@@ -189,7 +194,7 @@ msgstr ""
 "Konnte {0} nicht einhängen.\n"
 "Bitte hängen Sie {0} ein und and aktualsieren Sie anschliessend."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:128
+#: ../usr/lib/solydxk/system/solydxk_system.py:139
 msgid ""
 "Remove unneeded packages\n"
 "Pre-selected packages are safe to remove (autoremove).\n"
@@ -199,15 +204,119 @@ msgstr ""
 "Vorausgewählte Pakete können sicher entfernt werden (autoremove).\n"
 "Andere Pakete sind verwaiste Pakete. Bitte mit Vorsicht entfernen!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:131
+#: ../usr/lib/solydxk/system/solydxk_system.py:142
 msgid "Unneeded packages"
 msgstr "Nicht benötigte Pakete"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:315
+#: ../usr/lib/solydxk/system/solydxk_system.py:143
+#: ../usr/lib/solydxk/system/solydxk_system.py:144
+msgid "Fstab mounts"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:145
+msgid ""
+"Mount additional partitions on boot with Fstab.\n"
+"When added to Fstab, the partition will be mounted in /media."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:147
+msgid "Save Fstab mounts"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:148
+#: ../usr/lib/solydxk/system/solydxk_system.py:595
+msgid "Install"
+msgstr "Installieren"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:149
+msgid "Use Backports"
+msgstr "Verwende Backports"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:150
+msgid ""
+"Install drivers for supported hardware.\n"
+"Note: do not install these drivers if your hardware functions correctly with "
+"the current open drivers."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+msgid "Add"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Partition"
+msgstr "Partition"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Mount point"
+msgstr "Einhängepunkt"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Label"
+msgstr "Aufschrift"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:413
+msgid "Could not add {} to {}: missing fs type."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:469
+#, fuzzy
+msgid ""
+"Changes were made to fstab.\n"
+"Please reboot your computer for these changes to take effect."
+msgstr ""
+"Sie müssen Ihr System neu starten, damit die neuen Einstellungen wirksam "
+"werden können."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:473
+msgid "No changes were made to fstab."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:539
+#: ../usr/lib/solydxk/system/localize.py:116
+msgid "No internet connection"
+msgstr "Keine Internetverbindung"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:540
+msgid ""
+"You need an internet connection to install the additional software.\n"
+"Please, connect to the internet and try again."
+msgstr ""
+"Zum Installieren der zusätzlichen Software wird eine Internetverbindung "
+"benötigt.\n"
+"Bitte verbinden und noch einmal versuchen."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:547
+msgid ""
+"You have selected to install drivers from the backports repository whenever "
+"they are available.\n"
+"\n"
+"Although you can run more up to date software using the backports "
+"repository,\n"
+"you introduce a greater risk of breakage doing so.\n"
+"\n"
+"Are you sure you want to continue?"
+msgstr ""
+"Sie haben sich entschieden, Treiber aus den Backports-Quellen zu "
+"installieren, sofern diese verfügbar sind \n"
+"\n"
+"Sie können dadurch aktuellere Progammversionen nutzen, \n"
+"erhöhen aber das Risiko von Fehlern bei der Programmausführung .\n"
+"\n"
+"Sind Sie sicher, dass Sie fortfahren wollen?"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:595
+msgid "Device"
+msgstr "Gerät"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:671
 msgid "Encrypted partition"
 msgstr "Verschlüsselte Partition"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:316
+#: ../usr/lib/solydxk/system/solydxk_system.py:672
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -221,7 +330,7 @@ msgstr ""
 "\n"
 "Wollen Sie fortfahren?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:336
+#: ../usr/lib/solydxk/system/solydxk_system.py:692
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
@@ -229,7 +338,7 @@ msgstr ""
 "Die Partition ist nicht verschlüsselt\n"
 "Bitte wählen Sie eine andere Partition für die Entschlüsselung."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:389
+#: ../usr/lib/solydxk/system/solydxk_system.py:745
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
@@ -238,35 +347,23 @@ msgstr ""
 "%s ist nicht verschlüsselt.\n"
 "Bitte wählen Sie eine veschlüsselte Partition."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Partition"
-msgstr "Partition"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Label"
-msgstr "Aufschrift"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "File system"
 msgstr "Dateisystem"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "Total size"
 msgstr "Gesamtgröße"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "Free size"
 msgstr "Freie Größe"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Mount point"
-msgstr "Einhängepunkt"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:524
+#: ../usr/lib/solydxk/system/solydxk_system.py:883
 msgid "Backup"
 msgstr "Sicherung"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:559
+#: ../usr/lib/solydxk/system/solydxk_system.py:918
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
@@ -277,8 +374,8 @@ msgstr ""
 "Hängen Sie einen Sicherungslaufwerk ein und betätigen Sie die Aktualsieren "
 "Schaltfläche."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1062
-#: ../usr/lib/solydxk/system/solydxk_system.py:1139
+#: ../usr/lib/solydxk/system/solydxk_system.py:1421
+#: ../usr/lib/solydxk/system/solydxk_system.py:1506
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -287,45 +384,45 @@ msgstr ""
 "Bitte führen Sie eine händische Aktualisierung mit dem Befehl \"apt-get "
 "update\" durch"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1066
+#: ../usr/lib/solydxk/system/solydxk_system.py:1425
 msgid "Nothing to do."
 msgstr "Nichts untenehmen"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1146
+#: ../usr/lib/solydxk/system/solydxk_system.py:1513
 msgid "There are no repositories to save."
 msgstr "Es sind keine Paketquellen zur Sicherung vorhanden. "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Current"
 msgstr "Aktuell"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Country"
 msgstr "Land"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Repository"
 msgstr "Paketquelle"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Speed"
 msgstr "Geschwindigkeit"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1354
+#: ../usr/lib/solydxk/system/solydxk_system.py:1721
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Sie müssen Ihr System neu starten, damit die neuen Einstellungen wirksam "
 "werden können."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1366
+#: ../usr/lib/solydxk/system/solydxk_system.py:1733
 msgid "Encryption done"
 msgstr "Veschlüsselung wurde durchgeführt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1367
+#: ../usr/lib/solydxk/system/solydxk_system.py:1734
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -335,11 +432,11 @@ msgstr ""
 "\n"
 "Wollen Sie Ihren Computer neu starten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1370
+#: ../usr/lib/solydxk/system/solydxk_system.py:1737
 msgid "Decryption done"
 msgstr "Entschlüsselung wurde durchgeführt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1371
+#: ../usr/lib/solydxk/system/solydxk_system.py:1738
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -349,16 +446,16 @@ msgstr ""
 "\n"
 "Wollen Sie Ihren Computer neu starten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1383
+#: ../usr/lib/solydxk/system/solydxk_system.py:1750
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Verschlüsselungskenntwort für{0} geändert."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1431
+#: ../usr/lib/solydxk/system/solydxk_system.py:1800
 msgid "Partition passphrase"
 msgstr "Partitionskennwort"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1432
+#: ../usr/lib/solydxk/system/solydxk_system.py:1801
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -426,10 +523,6 @@ msgstr ""
 "Sprachumgebung nicht downloaden und installieren.\n"
 "Bitte wiederholen Sie den Schritt, wenn eine Internetverbindung besteht."
 
-#: ../usr/lib/solydxk/system/localize.py:116
-msgid "No internet connection"
-msgstr "Keine Internetverbindung"
-
 #: ../usr/bin/solydxk-system:22
 #, sh-format
 msgid "needs administrative privileges."
@@ -453,7 +546,7 @@ msgstr "System"
 msgid "SolydXK System Settings Encryption Help"
 msgstr "SolydXK System Einstellungen Veschlüsselungshilfe"
 
-#: en/help.html+html.body.div.h2:10
+#: en/help.html+html.body.div.h2:10 en/helpdd.html+html.body.div.h2:10
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -461,7 +554,7 @@ msgstr "Beschreibung"
 msgid "Encrypt partitions of your system with LUKS."
 msgstr "Verschlüsseln Sie Systempartitionen mit LUKS."
 
-#: en/help.html+html.body.div.h2:13
+#: en/help.html+html.body.div.h2:13 en/helpdd.html+html.body.div.h2:13
 msgid "Important"
 msgstr "Wichtig"
 
@@ -582,6 +675,12 @@ msgid "Open a terminal, and run these commands as root:"
 msgstr "Open a terminal, and run these commands as root:"
 
 #: en/help.html+html.body.div.pre:29
+#, fuzzy
+#| msgid ""
+#| "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/"
+#| "sda2 /mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -"
+#| "o value -s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/"
+#| "fstab"
 msgid ""
 "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 /"
 "mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
@@ -696,3 +795,299 @@ msgid ""
 msgstr ""
 "Vergessen Sie nicht, eine Logdatei anzufügen, wenn Sie in unserem Forum "
 "Fragen stellen: /var/log/solydxk-system.log"
+
+#: en/helpdd.html+html.body.h1:8
+#, fuzzy
+#| msgid "SolydXK System Settings Encryption Help"
+msgid "SolydXK System Settings: Device Driver Help"
+msgstr "SolydXK System Einstellungen Veschlüsselungshilfe"
+
+#: en/helpdd.html+html.body.div.p:11
+#, fuzzy
+#| msgid ""
+#| "The Device Driver Manager is a tool to help users installing third-party "
+#| "hardware drivers. Currently Nvidia, ATI and Broadcom drivers can be "
+#| "installed and allows to install the PAE kernel for multi-core 32-bit "
+#| "systems. The Device Driver Manager will only list those devices that are "
+#| "supported. It will not list any other devices then mentioned above."
+msgid ""
+"The Device Driver is a tool to help users installing third-party hardware "
+"drivers. Currently Nvidia, AMD/ATI and Broadcom drivers can be installed and "
+"allows to install the PAE kernel for multi-core 32-bit systems. The Device "
+"Driver will only list those devices that are supported. It will not list any "
+"other devices then mentioned above."
+msgstr ""
+"Der Device Driver Manager unterstützt den Nutzer bei der Installation von "
+"Hardwaretreibern von Drittherstellern. Momentan können Treiber von Nvidia, "
+"ATI und Broadcom sowie der PAE Kernel für 32-bit Systeme installiert werden. "
+"Der DDM listet nur unterstützte Geräte auf. Andere Treiber als oben erwähnt "
+"werden nicht angezeigt."
+
+#: en/helpdd.html+html.body.div.p:14
+#, fuzzy
+#| msgid ""
+#| "The Device Driver Manager can only install drivers which are available in "
+#| "the repositories. Make sure you have an internet connection if you want "
+#| "to install the drivers."
+msgid ""
+"The Device Driver can only install drivers which are available in the "
+"repositories. Make sure you have an internet connection if you want to "
+"install the drivers."
+msgstr ""
+"Der Device Driver Manager kann nur in den Paketquellen vorhandene Treiber "
+"installieren. Sollten Sie Treiber installieren wollen, sorgen Sie dafür, "
+"dass Sie eine Internetverbindung haben. "
+
+#: en/helpdd.html+html.body.div.h2:16
+msgid "Commands"
+msgstr "Befehle"
+
+#: en/helpdd.html+html.body.div.p:17
+msgid ""
+"If you prefer to install the drivers by terminal, you can use the following "
+"commands:"
+msgstr ""
+"Wenn Sie die Treiberinstallation im Terminal durchführen wollen, können Sie "
+"die folgenden Befehle benutzen:"
+
+#: en/helpdd.html+html.body.div.h3:21
+#, fuzzy
+#| msgid "# ddm -i ati"
+msgid "# ddm -i amd"
+msgstr "# ddm -i ati"
+
+#: en/helpdd.html+html.body.div.p:22
+#, fuzzy
+#| msgid ""
+#| "This will install the fglrx drivers for your ATI graphical card. ATI "
+#| "cards from version HD 5000 and up are supported by the fglrx drivers. "
+#| "Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p "
+#| "ati\" to remove the drivers from your system."
+msgid ""
+"This will install the fglrx drivers for your AMD/ATI graphical card. AMD/ATI "
+"cards from version HD 5000 and up are supported by the fglrx drivers. "
+"Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd"
+"\" to remove the drivers from your system."
+msgstr ""
+"Dies wird die fglrx Treiber für Ihre ATI Grafikkarte der Versionen HD 5000 "
+"und später installieren. Versionen zwischen 1000 und 5000 nutzen die "
+"quelloffenen Radeon Treiber. Benutzen Sie \"ddm -p ati\" um die Treiber von "
+"Ihrem System zu entfernen."
+
+#: en/helpdd.html+html.body.div.h3:24
+msgid "# ddm -i nvidia"
+msgstr "# ddm -i nvidia"
+
+#: en/helpdd.html+html.body.div.p:25
+msgid ""
+"This will select the right drivers for your Nvidia graphical card. It will "
+"select the Bumblebee drivers in case you have a hybrid card (both Nvidia and "
+"Intel). Use \"ddm -p nvidia\" to remove the drivers from your system."
+msgstr ""
+"Dies wird die passenden Treiber für Ihre Nvidia Grafikkarte wählen. Für "
+"Hybridgrafikkarten (gleichzeitig Nvidia und Intel) werden die Bumblebee "
+"Treiber ausgewählt. Benutzen Sie \"ddm -p nividia\" um die Treiber von Ihrem "
+"System zu entfernen."
+
+#: en/helpdd.html+html.body.div.h3:27
+msgid "# ddm -i open"
+msgstr "# ddm -i open"
+
+#: en/helpdd.html+html.body.div.p:28
+msgid ""
+"You can use this command if you want to revert back to the open Nouveau "
+"drivers. It will remove any proprietary drivers from your system."
+msgstr ""
+"Dieser Befehl ermöglicht die Rückkehr zum quelloffenen Nouveau-Treiber. Er "
+"wird sämtliche proprietären Treiber von Ihrem System entfernen."
+
+#: en/helpdd.html+html.body.div.h3:30
+msgid "# ddm -i broadcom"
+msgstr "# ddm -i broadcom"
+
+#: en/helpdd.html+html.body.div.p:31
+msgid ""
+"This command will install the right driver for your wireless Broadcom "
+"adapter. Use \"ddm -p broadcom\" to remove the drivers from your system."
+msgstr ""
+"Dieser Befehl wird die passenden Treiber für Ihren Broadcom W-LAN-Adapter "
+"installieren. Benutzen Sie \"ddm -p broadcom\" um die Treiber von Ihrem "
+"System zu entfernen."
+
+#: en/helpdd.html+html.body.div.h3:33
+msgid "# ddm -i pae"
+msgstr "# ddm -i pae"
+
+#: en/helpdd.html+html.body.div.p:34
+msgid ""
+"This will install the PAE kernel on multi-processor systems running a 32-bit "
+"OS. Use \"ddm -p pae\" to remove the PAE kernel from your system. Note that "
+"you cannot remove the kernel when you are currently booted into that kernel."
+msgstr ""
+"Dies installiert den PAE Kernel für 32-bit Betriebssysteme auf Multi-"
+"Prozessor-Systemen. Benutzen Sie \"ddm -p pae\" um den PAE Kernel von Ihrem "
+"System zu entfernen. Der Kernel kann nicht deinstalliert werden, während er "
+"in Benutzung ist."
+
+#: en/helpdd.html+html.body.div.h2:36
+msgid "Logging"
+msgstr "Protokollierung aktiv"
+
+#: en/helpdd.html+html.body.div.h3:37
+#, fuzzy
+#| msgid "File: /var/log/ddm.log"
+msgid "File: /var/log/solydxk-system.log"
+msgstr "Datei: /var/log/ddm.log"
+
+#: en/helpdd.html+html.body.div.p:38
+#, fuzzy
+#| msgid ""
+#| "Please, attach your log file when you post an issue on our forum: <a href="
+#| "\"http://forums.solydxk.com\" target=\"_blank\">http://forums.solydxk."
+#| "com</a>"
+msgid ""
+"Please, attach your log file when you post an issue on our forum: <a href="
+"\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
+"a>"
+msgstr ""
+"Bitte fügen Sie die Logdatei bei, wenn Sie eine Frage in unserem Forum "
+"stellen: <a href=\"http://forums.solydxk.com\" target=\"_blank\">http://"
+"forums.solydxk.com</a>"
+
+#~ msgid "Device Driver Manager"
+#~ msgstr "Device Driver Manager"
+
+#~ msgid "Help"
+#~ msgstr "Hilfe"
+
+#~ msgid "Log"
+#~ msgstr "Log"
+
+#~ msgid "Quit"
+#~ msgstr "Schließen"
+
+#~ msgid "Remove kernel"
+#~ msgstr "Linux-Kernel entfernen"
+
+#~ msgid ""
+#~ "You cannot remove a booted kernel.\n"
+#~ "Please, boot another kernel and try again."
+#~ msgstr ""
+#~ "Ein geladener Kernel kann nicht entfernt werden.\n"
+#~ "Bitte starte einen anderen Kernel und versuche es erneut."
+
+#~ msgid "Hardware scan"
+#~ msgstr "Untersuche Hardware"
+
+#~ msgid "There are no available drivers for your hardware:"
+#~ msgstr "Es sind keine Treiber für diese Hardware verfügbar."
+
+#~ msgid "DDM did not find any supported hardware."
+#~ msgstr "DDM konnte keine unterstützte Hardware finden."
+
+#~ msgid "ATI FirePro/Gl card found"
+#~ msgstr "ATI FirePro/Gl Grafikkarte wurde gefunden"
+
+#~ msgid ""
+#~ "Installing the proprietary driver for an ATI FirePro/Gl card may render "
+#~ "your system unbootable.\n"
+#~ "\n"
+#~ "Proceed at your own risk."
+#~ msgstr ""
+#~ "Die Installation des proprietären Treibers für die ATI FirePro/Gl "
+#~ "Grafikkarte könnte dazu führen, dass Ihr System sich nicht mehr starten "
+#~ "lässt \n"
+#~ "\n"
+#~ "Fahren Sie auf eigenes Risiko fort."
+
+#~ msgid "PAE capable system"
+#~ msgstr "PAE fähiges System"
+
+#~ msgid "Run as root."
+#~ msgstr "Als Administrator ausführen."
+
+#~ msgid "Wrong arguments passed to ddm."
+#~ msgstr "Diese Parameter für DDM sind ungültig."
+
+#~ msgid "There are no driver available."
+#~ msgstr "Es sind keine Treiber verfügbar."
+
+#~ msgid "The driver cannot be found in repository."
+#~ msgstr "Der Treiber kann in den Paketquellen nicht gefunden werden."
+
+#~ msgid ""
+#~ "Download error.\n"
+#~ "Check your internet connection."
+#~ msgstr ""
+#~ "Fehler beim Download.\n"
+#~ "Bitte Internetverbindung überprüfen."
+
+#~ msgid "DDM cannot purge the driver."
+#~ msgstr "DDM kann den Treiber nicht vollständig entfernen."
+
+#~ msgid "This card is not supported."
+#~ msgstr "Diese Grafikkarte wird nicht unterstützt."
+
+#~ msgid ""
+#~ "Cannot get the Debian version from /etc/debian_version.\n"
+#~ "Please install the base-files package."
+#~ msgstr ""
+#~ "Die Debian Version kann aus /etc/debian_version nicht ausgelesen werden\n"
+#~ "Bitte installieren Sie das base-file Paket."
+
+#~ msgid "Could not configure Nvidia Bumblebee."
+#~ msgstr "Nividia Bumblebee konnte nicht konfiguriert werden."
+
+#~ msgid ""
+#~ "There was an error during the installation.\n"
+#~ "Please, run 'sudo apt-get -f install' in a terminal.\n"
+#~ "Visit our forum for support: http://forums.solydxk.com"
+#~ msgstr ""
+#~ "Es gab einen Fehler während der Installation.\n"
+#~ "Bitte 'sudo apt-get -f install' im Terminal ausführen.\n"
+#~ "Hilfe gibt es in unserem Forum http://forums.solydxk.com"
+
+#~ msgid "The software has been successfully installed."
+#~ msgstr "Die Software wurde erfolgreich installiert."
+
+#~ msgid "You will need to restart your system."
+#~ msgstr "Das System muß neu gestartet werden."
+
+#, fuzzy
+#~ msgid "Available partitions"
+#~ msgstr "Verfügbare Pakete"
+
+#~ msgid "Device Driver Manager Help"
+#~ msgstr "Hilfe zum Device Driver Manager"
+
+#~ msgid "# ddm -i fixbumblebee"
+#~ msgstr "# ddm -i fixbumblebee"
+
+#~ msgid "This will try to fix a Bumblebee install."
+#~ msgstr "Dies wird die Reparatur einer Bumblebee-Installation versuchen."
+
+#~ msgid ""
+#~ "Device Driver Manager helps to install proprietary drivers for your "
+#~ "hardware.\n"
+#~ "Only install proprietary drivers if you are sure you really need them.\n"
+#~ "Usually open drivers are enough."
+#~ msgstr ""
+#~ "Der Device Driver Manager hilft bei der Installation proprietärer Geräte-"
+#~ "Treiber.\n"
+#~ "Installieren Sie diese nur, wenn sie wirklich nötig sind.\n"
+#~ "Normalerweise reichen die quelloffenen Treiber aus."
+
+#~ msgid ""
+#~ "Device Driver Manager cannot be started in a live environment\n"
+#~ "You can use the --force argument to start DDM in a live environment"
+#~ msgstr ""
+#~ "Der Device Driver Manager kann nicht in einer Live-Umgebung gestartet "
+#~ "werden.\n"
+#~ "Ein Start mit dem Argument --force umgeht diese Beschränkung."
+
+#~ msgid ""
+#~ "DDM has failed with the following unexpected error. Please submit a bug "
+#~ "report!"
+#~ msgstr ""
+#~ "DDM ist mit dem folgenden unerwarteten Fehler gescheitert. Bitte einen "
+#~ "Fehler-Bericht erstellen!"

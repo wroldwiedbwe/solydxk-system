@@ -20,7 +20,8 @@ from utils import getoutput, ExecuteThreadedCommands, \
                   shell_exec, human_size, has_internet_connection, \
                   get_backports, get_debian_name, comment_line, \
                   in_virtualbox, get_apt_force, is_running_live, \
-                  get_device_from_uuid, get_label
+                  get_device_from_uuid, get_label, is_package_installed, \
+                  get_logged_user, get_uuid
 from dialogs import MessageDialog, QuestionDialog, InputDialog, \
                     WarningDialog
 from mirror import MirrorGetSpeed, Mirror, get_mirror_data, get_local_repos
@@ -38,6 +39,9 @@ TMPMOUNT = '/mnt/solydxk-system'
 #class for the main window
 class SolydXKSystemSettings(object):
     def __init__(self):
+        # Load and install test data for the device manager
+        self.test_devices = False
+        
         # Check if script is running
         self.scriptDir = abspath(dirname(__file__))
         self.shareDir = self.scriptDir.replace('lib', 'share')
@@ -85,6 +89,13 @@ class SolydXKSystemSettings(object):
         self.imgPassphraseCheck = go("imgPassphraseCheck")
         self.tvCleanup = go("tvCleanup")
         self.btnCleanup = go("btnCleanup")
+        self.btnSaveFstabMounts = go("btnSaveFstabMounts")
+        self.tvFstabMounts = go("tvFstabMounts")
+        self.tvDeviceDriver = go("tvDeviceDriver")
+        self.btnSaveDeviceDriver = go("btnSaveDeviceDriver")
+        self.btnHelpDeviceDriver = go("btnHelpDeviceDriver")
+        self.btnLogDeviceDriver = go("btnLogDeviceDriver")
+        self.chkBackportsDeviceDriver = go("chkBackportsDeviceDriver")
 
         # GUI translations
         self.window.set_title(_("SolydXK System Settings"))
@@ -126,32 +137,38 @@ class SolydXKSystemSettings(object):
         self.no_passphrase_msg = _("Please provide a passphrase (6-20 characters).")
         self.mount_error = _("Could not mount {0}\nPlease mount {0} and refresh when done.")
         go("lblCleanupInfo").set_label(_("Remove unneeded packages\n"
-                                                              "Pre-selected packages are safe to remove (autoremove).\n"
-                                                              "Other packages are orphaned packages. Remove with caution!"))
+                                          "Pre-selected packages are safe to remove (autoremove).\n"
+                                          "Other packages are orphaned packages. Remove with caution!"))
         go("lblCleanupText").set_label(_("Unneeded packages"))
+        go("lblFstabMounts").set_label(_("Fstab mounts"))
+        go("lblCurrentFstabMounts").set_label(_("Fstab mounts"))
+        go("lblFstabMountsInfo").set_label(_("Mount additional partitions on boot with Fstab.\n"
+                                            "When added to Fstab, the partition will be mounted in /media."))
+        self.btnSaveFstabMounts.set_label(_("Save Fstab mounts"))
+        self.btnSaveDeviceDriver.set_label(_("Install"))
+        self.chkBackportsDeviceDriver.set_label(_("Use Backports"))
+        go("lblDeviceDriverInfo").set_label(_("Install drivers for supported hardware.\n"
+                                          "Note: do not install these drivers if your hardware functions correctly with the current open drivers."))
 
-        # Initiate the treeview handler and connect the custom toggle event with on_tvMirrors_toggle
+        # Initiate the treeview handlers and connect the custom toggle events
         self.tvMirrorsHandler = TreeViewHandler(self.tvMirrors)
         self.tvMirrorsHandler.connect('checkbox-toggled', self.on_tvMirrors_toggle)
-
         self.tvHoldbackHandler = TreeViewHandler(self.tvHoldback)
         self.tvAvailableHandler = TreeViewHandler(self.tvAvailable)
         self.tvLocaleHandler = TreeViewHandler(self.tvLocale)
-        self.tvLocaleHandler.connect('checkbox-toggled', self.on_tvLocale_toggle)
+        self.tvLocaleHandler.connect('checkbox-toggled', self.on_tvLocale_toggled)
         self.tvPartitionsHandler = TreeViewHandler(self.tvPartitions)
         self.tvCleanupHandler = TreeViewHandler(self.tvCleanup)
-
+        self.tvFstabMountsHandler = TreeViewHandler(self.tvFstabMounts)
         self.cmbTimezoneContinentHandler = ComboBoxHandler(self.cmbTimezoneContinent)
         self.cmbTimezoneHandler = ComboBoxHandler(self.cmbTimezone)
+        self.tvDeviceDriverHandler = TreeViewHandler(self.tvDeviceDriver)
 
         # Initialize
         self.queue = Queue(-1)
         self.threads = {}
         self.excludeMirrors = ['security', 'community']
-        self.activeMirrors = get_mirror_data(excludeMirrors=self.excludeMirrors)
-        self.deadMirrors = get_mirror_data(getDeadMirrors=True)
         self.current_debian_repo = ''
-        self.mirrors = self.get_mirrors()
         self.holdback = []
         self.available = []
         self.locales = []
@@ -159,37 +176,46 @@ class SolydXKSystemSettings(object):
         self.partitions = []
         self.my_partitions = []
         self.my_passphrase = ''
-        self.htmlDir = join(self.shareDir, "html")
-        self.helpFile = join(self.get_language_dir(), "help.html")
+        self.htmlDir = join(self.shareDir, 'html')
+        self.helpFile = join(self.get_language_dir(), 'help.html')
+        self.helpddFile = join(self.get_language_dir(), 'helpdd.html')
         self.udisks2 = Udisks2()
         self.keyfile_path = None
         self.debian_name = get_debian_name()
-        self.backports = get_backports()
         self.endecrypt_success = True
         self.encrypt = False
         self.failed_mount_devices = []
         self.boot_partition = None
         self.changed_devices = []
+        self.hardware = []
 
-        if self.backports[0]:
-            self.chkEnableBackports.set_active(True)
-
-        self.locale_info = LocaleInfo()
-        self.fill_treeview_mirrors()
-        self.fill_treeview_holdback()
-        self.fill_treeview_available()
-        self.fill_treeview_locale()
-        self.fill_cmb_timezone_continent()
+        # Collect data and disable tabs when running live: Device Driver, Fstab mounts, Localization, Hold back packages, Cleanup
+        self.activeMirrors = get_mirror_data(excludeMirrors=self.excludeMirrors)
+        self.deadMirrors = get_mirror_data(getDeadMirrors=True)
+        self.mirrors = self.get_mirrors()
         self.fill_treeview_partition()
         self.save_my_partitions()
-        self.fill_treeview_cleanup()
-        
-        # Disable tabs when running live: Localization, Hold back packages, Cleanup
+        self.fill_treeview_mirrors()
         if is_running_live():
-            self.nbPref.get_nth_page(1).set_visible(False)
+            self.nbPref.get_nth_page(0).set_visible(False)
+            self.nbPref.get_nth_page(2).set_visible(False)
             self.nbPref.get_nth_page(3).set_visible(False)
-            self.nbPref.get_nth_page(4).set_visible(False)
-        
+            self.nbPref.get_nth_page(5).set_visible(False)
+            self.nbPref.get_nth_page(6).set_visible(False)
+        else:
+            self.backports = get_backports()
+            self.locale_info = LocaleInfo()
+            self.fill_treeview_cleanup()
+            self.fill_treeview_device_driver()
+            self.fill_treeview_holdback()
+            self.fill_treeview_available()
+            self.fill_cmb_timezone_continent()
+            self.fill_treeview_locale()
+            if self.backports[0]:
+                self.chkEnableBackports.set_active(True)
+            else:
+                self.chkBackportsDeviceDriver.set_sensitive(False)
+
         # Disable this for later implementation
         self.btnCreateKeyfile.set_visible(False)
 
@@ -261,6 +287,336 @@ class SolydXKSystemSettings(object):
         
     def on_btnCleanup_clicked(self, widget):
         self.remove_unneeded_packages()
+               
+    def on_btnSaveFstabMounts_clicked(self, widget):
+        self.save_fstab_mounts()
+        
+    def on_btnSaveDeviceDriver_clicked(self, widget):
+        self.install_device_drivers()
+    
+    def on_btnLogDeviceDriver_clicked(self, widget):
+        shell_exec("open-as-user \"%s\"" % self.log_file)
+        
+    def on_btnHelpDeviceDriver_clicked(self, widget):
+        shell_exec("open-as-user \"%s\"" % self.helpddFile)
+        
+    # ===============================================
+    # Fstab mount functions
+    # ===============================================
+    
+    def fill_treeview_fstab_partitions(self):
+        fs_partitions = []
+        
+        # Add headers
+        fs_partitions.append([_('Add'), _('Partition'), _('Mount point'), _('Label')])
+        
+        for partition in self.partitions:
+            if partition['fstab_mount']:
+                fs_partitions.append([True, partition['device'], partition['fstab_mount'], partition['label']])
+            else:
+                # Do not show temporary mount point: it only confuses the user
+                mount = partition['mount_point']
+                if TMPMOUNT in mount:
+                    mount = ''
+                fs_partitions.append([False, partition['device'], mount, partition['label']])
+
+        columnTypes = ['bool', 'str', 'str', 'str']
+                
+        # Fill treeview
+        self.tvFstabMountsHandler.fillTreeview(contentList=fs_partitions, columnTypesList=columnTypes, firstItemIsColName=True, fontSize=12000)
+        
+    def save_fstab_mounts(self):
+        changed = False
+        fix_virtualbox = False
+        fstab_path = '/etc/fstab'
+        crypttab_path = '/etc/crypttab'
+        crypttab_keyfile_path = '/.lukskey'
+
+        fstab_cont = []
+        with open(fstab_path, 'r') as f:
+            fstab_cont = f.readlines()
+        
+        # Loop through the partitions
+        model = self.tvFstabMounts.get_model()
+        itr = model.get_iter_first()
+        while itr is not None:
+            selected = model.get_value(itr, 0)
+            device = model.get_value(itr, 1)
+            mount = model.get_value(itr, 2)
+            label = model.get_value(itr, 3).strip()
+            uuid = ''
+            fs_type = ''
+            fstab_mount = ''
+
+            # Get additional information
+            for p in self.partitions:
+                if p['device'] == device:
+                    uuid = p['uuid']
+                    fs_type = p['fs_type']
+                    fstab_mount = p['fstab_mount']
+                    encrypted = p['encrypted']
+                    passphrase = p['passphrase']
+                    break
+                                   
+            if selected and not fstab_mount:
+                # Add information to fstab
+                if (uuid or device) and fs_type:
+                    # Decide new mount point
+                    mount = join('/media', basename(device))
+                    if label:
+                        mount = join('/media', label.replace(' ', '_'))
+                        
+                    # Create mount directory and mount
+                    if not exists(mount):
+                        os.makedirs(mount)
+                    
+                    if exists(mount):
+                        # Mount the device
+                        shell_exec('mount {} {}'.format(device, mount))
+                        usr = get_logged_user()
+                        if usr:
+                            # Make current user owner of the mount
+                            shell_exec('chown {0}:{0} {1}'.format(usr, mount))
+                    
+                    # Create new line for fstab
+                    uuid = 'UUID={}'.format(uuid) if uuid and not encrypted else device
+                    fsck = 0 if fs_type in ('ntfs', 'swap', 'vfat') else 1 if mount == '/' else 2
+                    opts = 'rw,errors=remount-ro' if 'ext' in fs_type else 'sw' if fs_type == 'swap' else 'defaults'
+                    new_line = '%s\t%s\t%s\t%s\t0\t%s\n' % (uuid, mount, fs_type, opts, fsck)
+                    fstab_cont.append(new_line)
+                    changed = True
+                    self.log.write('Add new line to {}: {}'.format(fstab_path, new_line), 'save_fstab_mounts')
+                    
+                    if encrypted:
+                        fix_virtualbox = True
+                        
+                        # Only add key file if you can safe to another encrypted partition.
+                        add_key = False
+                        for p in self.partitions:
+                            if p['mount_point'] == '/' and p['encrypted']:
+                                add_key = True
+                                break
+
+                        enc_device = device.replace('/mapper', '')
+                        if passphrase and add_key:
+                            # Write keyfile
+                            self.log.write('Add device to key file {}: {}'.format(crypttab_keyfile_path, enc_device), 'save_fstab_mounts', 'info')
+                            create_keyfile(crypttab_keyfile_path, enc_device, passphrase)
+                        else:
+                            crypttab_keyfile_path = 'none'
+                            
+                        # Write crypttab
+                        self.log.write('Add device to crypttab {}: {}'.format(crypttab_path, enc_device), 'save_fstab_mounts', 'info')
+                        write_crypttab(enc_device, fs_type, crypttab_path, crypttab_keyfile_path, not encrypted)
+                else:
+                    # We should not get here
+                    msg = _("Could not add {} to {}: missing fs type.".format(device, fstab_path))
+                    self.log.write(msg, 'save_fstab_mounts')
+                    WarningDialog(self.btnSaveFstabMounts.get_label(), msg)
+                    continue
+            elif not selected and fstab_mount:
+                # Remove partition line from fstab
+                for i, line in enumerate(fstab_cont):
+                    if (uuid in line or device in line) and \
+                        mount in line:
+                        self.log.write('Remove device from {}: {}'.format(fstab_path, device), 'save_fstab_mounts', 'info')
+                        del fstab_cont[i]
+                        changed = True
+                        break
+                # Remove partition from crypttab
+                if encrypted and exists(crypttab_path):
+                    enc_device = device.replace('/mapper', '')
+                    enc_device_uuid = get_uuid(enc_device)
+                    #print(("+++ {} exists for device {}".format(crypttab_path, enc_device)))
+                    crypttab_cont = []
+                    with open(crypttab_path, 'r') as f:
+                        crypttab_cont = f.readlines()
+                    #print(("   {}".format(''.join(crypttab_cont))))
+                    for i, line in enumerate(crypttab_cont):
+                        #print(("+++ '{}' or '{}' exists '{}'".format(enc_device, enc_device_uuid, line)))
+                        if enc_device in line or enc_device_uuid in line:
+                            self.log.write('Remove device from crypttab {}: {}'.format(crypttab_path, enc_device), 'save_fstab_mounts', 'info')
+                            del crypttab_cont[i]
+                            with open(crypttab_path, 'w') as f:
+                                f.write(''.join(crypttab_cont))
+                            break
+            
+            # Get the next in line
+            itr = model.iter_next(itr)
+        
+        if fix_virtualbox:
+            # Fix VirtualBox by disabling Plymouth
+            if in_virtualbox():
+                grub_path = '/etc/default/grub'
+                grubcfg_path = '/boot/grub/grub.cfg'
+                if exists(grub_path) and exists(grubcfg_path):
+                    self.log.write("Fix Grub in VirtualBox: %s and %s" % (grub_path, grubcfg_path), 'save_fstab_mounts', 'info')
+                    shell_exec("sed -i 's/ *splash *//g' %s" % grub_path)
+                    shell_exec("sed -i 's/ *splash *//g' %s" % grubcfg_path)
+
+        if changed:
+            # Save fstab
+            with open(fstab_path, 'w') as f:
+                f.write(''.join(fstab_cont))
+                
+            # Log fstab and crypttab  
+            self.log.write(''.join(fstab_cont), 'save_fstab_mounts', 'info')
+            if exists(crypttab_path):
+                with open(crypttab_path, 'r') as f:
+                    self.log.write(f.read(), 'save_fstab_mounts', 'info')
+                    
+            # Show a message
+            msg = _("Changes were made to fstab.\n"
+                    "Please reboot your computer for these changes to take effect.")
+            MessageDialog(self.btnSaveFstabMounts.get_label(), msg)
+        else:
+            msg = _("No changes were made to fstab.")
+            MessageDialog(self.btnSaveFstabMounts.get_label(), msg)
+    
+    # ===============================================
+    # Device Driver functions
+    # ===============================================
+    
+    def install_device_drivers(self):
+        # Save selected hardware
+        arguments = []
+
+        model = self.tvDeviceDriver.get_model()
+        itr = model.get_iter_first()
+        while itr is not None:
+            action = 'no change'
+            selected = model.get_value(itr, 0)
+            device = model.get_value(itr, 2)
+            manufacturerId = ''
+
+            # Check currently selected state with initial state
+            # This decides whether we should install or purge the drivers
+            for hw in self.hardware:
+                self.log.write('Device = {} in {}'.format(device, hw[2]), 'install_device_drivers')
+                if device in hw[2]:
+                    hw_driver = hw[3]
+                    manufacturerId = hw[4]
+                    if hw[0] and not selected:
+                        action = 'purge'
+                    elif not hw[0] and selected:
+                        action = 'install'
+                    break
+
+            self.log.write('{}: {} ({})'.format(action, device, manufacturerId), 'install_device_drivers')
+
+            # Install/purge selected driver
+            option = ''
+            if action == 'install':
+                option = '-i'
+            elif action == 'purge':
+                option = '-p'
+
+            if option:
+                driver = ''
+                # Run the manufacturer specific bash script
+                if manufacturerId == '1002':
+                    driver = 'amd'
+                elif manufacturerId == '10de':
+                    driver = 'nvidia '
+                    # If nvidia-detect needs a drivers from the backports repository
+                    # and the user didn't select the backports check box,
+                    # force the use of backports to install the appropriate drivers
+                    if 'backports' in hw_driver and not self.chkBackports.get_active():
+                        option = "-b %s" % option
+                elif manufacturerId == '14e4':
+                    driver = 'broadcom '
+                elif 'pae' in manufacturerId:
+                    driver = 'pae '
+                if driver:
+                    arguments.append("{} {}".format(option, driver))
+
+            # Get the next in line
+            itr = model.iter_next(itr)
+
+        # Execute the command
+        if arguments:
+            if '-i' in arguments and not has_internet_connection:
+                title = _("No internet connection")
+                msg = _("You need an internet connection to install the additional software.\n"
+                        "Please, connect to the internet and try again.")
+                WarningDialog(title, msg)
+            else:
+                # Warn for use of Backports
+                if self.chkBackportsDeviceDriver.get_active():
+                    answer = QuestionDialog(self.chkBackportsDeviceDriver.get_label(),
+                            _("You have selected to install drivers from the backports repository whenever they are available.\n\n"
+                              "Although you can run more up to date software using the backports repository,\n"
+                              "you introduce a greater risk of breakage doing so.\n\n"
+                              "Are you sure you want to continue?"))
+                    if not answer:
+                        self.chkBackportsDeviceDriver.set_active(False)
+                        return True
+                    arguments.append('-b')
+
+                # Testing
+                if self.test_devices:
+                    arguments.append('-t')
+
+                command = 'ddm {}'.format(' '.join(arguments))
+                self.log.write('Command to execute: {}'.format(command), 'install_device_drivers')
+                
+                # Run driver installation in a thread and show progress
+                name = 'driver'
+                self.set_buttons_state(False)
+                # Pass -g to let the ddm script know it is run from a GUI
+                t = ExecuteThreadedCommands('{} -g'.format(command), self.queue)
+                self.threads[name] = t
+                t.daemon = True
+                t.start()
+                self.queue.join()
+                GObject.timeout_add(250, self.check_thread, name)
+
+    def fill_hw(self, driver_name, hw_lst):
+        # Expected lspci output plus drivers:
+        # driver name [manufacturer id:device id] [driver-1 driver-2 etc]
+        regexp = '(.*)\[([0-9a-z]{4}):([0-9a-z]{4})\]\s+\[([0-9a-z\-]*)'
+        for hw in hw_lst:
+            matchObj = re.search(regexp, hw)
+            if matchObj:
+                #Check if driver is installed (check for multiple drivers)
+                installed = False
+                drivers = matchObj.group(4).split(' ')
+                for drv in drivers:
+                    if is_package_installed(drv):
+                        installed = True
+                    else:
+                        break
+                # Save the information
+                self.hardware.append([installed, join(self.shareDir, 'images/{}.png'.format(driver_name)), matchObj.group(1), matchObj.group(4), matchObj.group(2), matchObj.group(3)])
+                
+    def fill_treeview_device_driver(self):
+        # Fill a list with supported hardware
+        self.hardware = []
+        self.hardware.append([_("Install"), '', _("Device"), 'driver', 'manid', 'deviceid'])
+        
+        # Use test data (check /usr/lib/solydxk/scripts/ddm-*.sh)
+        tst = ''
+        if self.test_devices:
+            tst = '-t -f'
+        
+        # Fill with supported hardware
+        self.fill_hw('amd', getoutput('ddm -i amd -s {}'.format(tst)))
+        self.fill_hw('nvidia', getoutput('ddm -i nvidia -s {}'.format(tst)))
+        self.fill_hw('broadcom', getoutput('ddm -i broadcom -s {}'.format(tst)))
+        self.fill_hw('pae', getoutput('ddm -i pae -s {}'.format(tst)))
+        
+        print((self.hardware))
+
+        # columns: checkbox, image (logo), device, driver
+        columnTypes = ['bool', 'GdkPixbuf.Pixbuf', 'str']
+
+        # Keep some info from the user
+        showHw = []
+        for hw in self.hardware:
+            showHw.append([hw[0], hw[1], hw[2]])
+
+        # Fill treeview
+        self.tvDeviceDriverHandler.fillTreeview(contentList=showHw, columnTypesList=columnTypes, firstItemIsColName=True, fontSize=12000)
 
     # ===============================================
     # Encryption functions
@@ -501,6 +857,9 @@ class SolydXKSystemSettings(object):
                                               columnTypesList=column_types,
                                               firstItemIsColName=True,
                                               multipleSelection=True)
+                                              
+        # Refresh fstab mount treeviews as well
+        self.fill_treeview_fstab_partitions()
 
     def check_passphrase(self):
         self.my_passphrase = ''
@@ -935,7 +1294,7 @@ class SolydXKSystemSettings(object):
         self.cmbTimezoneHandler.fillComboBox(timezones,
                                              self.locale_info.current_timezone)
 
-    def on_tvLocale_toggle(self, obj, path, colNr, toggleValue):
+    def on_tvLocale_toggled(self, obj, path, colNr, toggleValue):
         path = int(path)
         model = self.tvLocale.get_model()
         selectedIter = model.get_iter(path)
@@ -1065,6 +1424,14 @@ class SolydXKSystemSettings(object):
         else:
             msg = _("Nothing to do.")
             MessageDialog(self.btnSaveBackports.get_label(), msg)
+            
+        # Make sure the current state is saved
+        # and that the backports checkbox for devices is enabled/disabled
+        self.backports = get_backports()
+        if self.backports[0]:
+            self.chkBackportsDeviceDriver.set_sensitive(True)
+        else:
+            self.chkBackportsDeviceDriver.set_sensitive(False)
 
     def fill_treeview_mirrors(self):
         # Fill mirror list
@@ -1278,7 +1645,7 @@ class SolydXKSystemSettings(object):
 
     def check_thread(self, name):
         if self.threads[name].is_alive():
-            if 'update' in name or name == 'cleanup':
+            if 'update' in name or name == 'cleanup' or name == 'driver':
                 self.update_progress(0.1, True)
             if not self.queue.empty():
                 ret = self.queue.get()
@@ -1405,6 +1772,8 @@ class SolydXKSystemSettings(object):
         self.btnHoldback.set_sensitive(enable)
         self.btnRemoveHoldback.set_sensitive(enable)
         self.btnCleanup.set_sensitive(enable)
+        self.btnSaveFstabMounts.set_sensitive(enable)
+        self.btnSaveDeviceDriver.set_sensitive(enable)
 
     def get_language_dir(self):
         # First test if full locale directory exists, e.g. html/pt_BR,

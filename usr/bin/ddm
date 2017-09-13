@@ -1,0 +1,198 @@
+#!/bin/bash
+
+# ==============================================
+# DDM driver installation for Stretch
+# ==============================================
+# Shell for scripts in SCRIPTSDIR
+# ==============================================
+
+# Exit codes
+# 0 - All's well
+# 1 - Not root
+# 2 - Wrong parameters
+# 3 - No driver available
+# 4 - Driver not in repository
+# 5 - Download error
+# 6 - Cannot purge driver
+# 7 - Card not supported
+# 8 - Missing files
+# 9 - Error configuring Bumblebee
+
+SCRIPTSDIR='/usr/lib/solydxk/scripts'
+
+# Run this script as root
+if [ $UID -ne 0 ]; then
+  sudo "$0" "$@"
+  exit $?
+fi
+
+function usage() {
+  echo
+  echo 'DDM Help:'
+  echo
+  echo 'The following options are allowed:'
+  echo
+  echo '-b           Use backported packages when available.'
+  echo
+  echo '-h           Show this help.'
+  echo '             Use with -i to show help for given driver.'
+  echo
+  echo '-i driver    Install given driver.'
+  echo '             drivers: amd, nvidia, broadcom, pae'
+  echo
+  echo '-p driver    Purge given driver.'
+  echo '             driver: amd, nvidia, broadcom, pae'
+  echo
+  echo '-s           Show supported and available hardware.'
+  echo '             Use with -i.'
+  echo
+  echo '-t           For development testing only!'
+  echo '             This will install drivers for pre-defined hardware.'
+  echo '             Use with -i.'
+  echo
+}
+
+function launch_gui() {
+  ARGS=$1
+  PYTHON=$(which python3)
+  if [ "$PYTHON" == '' ]; then
+    echo 'Cannot find python3 executable.'
+    exit
+  fi
+
+  optimize='OO'; case "$*" in *--debug*) unset optimize; esac
+  CMD="$PYTHON -tt${optimize} '/usr/lib/solydxk/system/main.py' $ARGS"
+  if [ -e '/usr/bin/xksudo' ]; then
+    xksudo -i 'ddm' -c "$CMD"
+  elif [ -e '/usr/bin/kdesudo' ]; then
+    kdesudo -d -c "$CMD"
+  else
+    gksudo "$CMD"
+  fi
+  exit 0
+}
+
+# ==============================================
+# ==============================================
+
+BACKPORTS=false
+PURGE=''
+INSTALL=''
+TEST=false
+GUI=false
+SHOW=false
+HELP=false
+FORCE=true
+while getopts ':bfghi:p:st' opt; do
+  case $opt in
+    b)
+      # Backports
+      BACKPORTS=true
+      ;;
+    f)
+      # Force driver installation when TEST = true
+      FORCE=true
+      ;;
+    g)
+      # Started from GUI
+      GUI=true
+      ;;
+    h)
+      HELP=true
+      ;;
+    i)
+      # Install
+      INSTALL="$INSTALL $OPTARG"
+      ;;
+    p)
+      # Purge
+      PURGE="$PURGE $OPTARG"
+      ;;
+    s)
+      # Show drivers
+      SHOW=true
+      ;;
+    t)
+      # Testing
+      TEST=true
+      ;;
+    \?)
+      # Invalid option: start GUI
+      launch_gui $@
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument."
+      exit 2
+      ;;
+    *)
+      # Unknown error: start GUI
+      launch_gui $@
+      ;;
+  esac
+done
+
+
+# Is there anything to do?
+if [ "$INSTALL" == '' ] && [ "$PURGE" == '' ]; then
+  if $HELP; then
+    usage
+    exit 0
+  fi
+  # Started without anything to install or purge
+  launch_gui $@
+fi
+
+# If not running in terminal, use GUI frontend
+#export DEBIAN_FRONTEND=noninteractive
+if $GUI || [ ! -t 1 ]; then
+  export DEBIAN_FRONTEND=gnome
+fi
+
+# Install given drivers
+for DRV in $INSTALL; do
+  # Build arguments string
+  if $HELP; then
+    ARGS='-h'
+  else
+    if $BACKPORTS; then
+      ARGS="$ARGS -b"
+    fi
+    if $SHOW; then
+      ARGS="$ARGS -s"
+    fi
+    if $TEST; then
+      ARGS="$ARGS -t"
+    fi
+    if $FORCE; then
+      ARGS="$ARGS -f"
+    fi
+  fi
+
+  # Execute corresponing script
+  case $DRV in
+    amd|ati)
+      bash -c "$SCRIPTSDIR/ddm-amd.sh $ARGS"
+    ;;
+    nvidia)
+      bash -c "$SCRIPTSDIR/ddm-nvidia.sh $ARGS"
+    ;;
+    broadcom)
+      bash -c "$SCRIPTSDIR/ddm-broadcom.sh $ARGS"
+    ;;
+    pae)
+      bash -c "$SCRIPTSDIR/ddm-pae.sh $ARGS"
+    ;;
+  esac
+done
+
+# Purge given drivers
+for DRV in $PURGE; do
+  # Build arguments string
+  if $HELP; then
+    ARGS='-h'
+  elif $TEST; then
+    ARGS='-t'
+  fi
+  # Execute corresponing script
+  bash -c "$SCRIPTSDIR/ddm-open.sh -p $DRV $ARGS"
+done

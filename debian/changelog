@@ -1,3 +1,15 @@
+solydxk-system (3.0.3b1) solydxk; urgency=low
+
+  * Added feature: additional Fstab mounts
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 12 Sep 2017 11:54:08 +0200
+
+solydxk-system (3.0.2) solydxk; urgency=low
+
+  * Merge with DDM
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 08 Sep 2017 07:26:06 +0200
+
 solydxk-system (3.0.1) solydxk; urgency=low
 
   * Fix pulse audio setting volume to 100%

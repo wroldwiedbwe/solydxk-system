@@ -1,18 +1,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
+# Moo, 2016-2017
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: device-driver-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-17 17:55+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Moo <moose@mail.ru>, 2017\n"
-"Language-Team: Lithuanian (https://www.transifex.com/solydxk/teams/54212/"
-"lt/)\n"
+"POT-Creation-Date: 2017-09-13 17:05+0200\n"
+"PO-Revision-Date: 2017-04-25 18:06+0000\n"
+"Last-Translator: Moo\n"
+"Language-Team: Lithuanian (http://www.transifex.com/solydxk/device-driver-"
+"manager/language/lt/)\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,74 +32,74 @@ msgstr ""
 "SolydXK sistemos nustatymai patyrė nesėkmę su šia netikėta klaida. Prašome "
 "pranešti apie klaidą!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:90
+#: ../usr/lib/solydxk/system/solydxk_system.py:101
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr "SolydXK sistemos nustatymai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:91
+#: ../usr/lib/solydxk/system/solydxk_system.py:102
 msgid "Save backports"
 msgstr "Įrašyti naujų versijų paketus"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:92
+#: ../usr/lib/solydxk/system/solydxk_system.py:103
 msgid "Save mirrors"
 msgstr "Įrašyti tinklavietes"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:93
+#: ../usr/lib/solydxk/system/solydxk_system.py:104
 msgid "Check mirrors speed"
 msgstr "Tikrinti tinklaviečių spartą"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:94
+#: ../usr/lib/solydxk/system/solydxk_system.py:105
 msgid "Remove"
 msgstr "Šalinti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:95
+#: ../usr/lib/solydxk/system/solydxk_system.py:106
 msgid "Hold back"
 msgstr "Sulaikyti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:96
+#: ../usr/lib/solydxk/system/solydxk_system.py:107
 msgid "Repositories"
 msgstr "Saugyklos"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:97
+#: ../usr/lib/solydxk/system/solydxk_system.py:108
 msgid "Encryption"
 msgstr "Šifravimas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:98
+#: ../usr/lib/solydxk/system/solydxk_system.py:109
 msgid "Passphrase (6-20 chr)"
 msgstr "Slaptafrazė (6-20 simb.)"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:99
+#: ../usr/lib/solydxk/system/solydxk_system.py:110
 msgid "Encrypt"
 msgstr "Šifruoti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:100
+#: ../usr/lib/solydxk/system/solydxk_system.py:111
 msgid "Decrypt"
 msgstr "Iššifruoti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:101
+#: ../usr/lib/solydxk/system/solydxk_system.py:112
 msgid "Change passphrase"
 msgstr "Keisti slaptafrazę"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:102
+#: ../usr/lib/solydxk/system/solydxk_system.py:113
 msgid "Manually create key file"
 msgstr "Rankiniu būdu sukurti rakto failą"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:103
+#: ../usr/lib/solydxk/system/solydxk_system.py:114
 msgid "Localization"
 msgstr "Lokalizavimas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:104
+#: ../usr/lib/solydxk/system/solydxk_system.py:115
 msgid "Timezone"
 msgstr "Laiko juosta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:105
-#: ../usr/lib/solydxk/system/solydxk_system.py:123
+#: ../usr/lib/solydxk/system/solydxk_system.py:116
+#: ../usr/lib/solydxk/system/solydxk_system.py:134
 msgid "Locale"
 msgstr "Lokalė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:106
+#: ../usr/lib/solydxk/system/solydxk_system.py:117
 msgid ""
 "Encrypt partitions and keep your data safe.\n"
 "Warning: backup your data before you continue!\n"
@@ -110,7 +110,7 @@ msgstr ""
 "Pastaba: norėdami pasirinkti kelis skaidinius, galite naudoti Ctrl-kairįjį "
 "spustelėjimą."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:109
+#: ../usr/lib/solydxk/system/solydxk_system.py:120
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
@@ -119,7 +119,7 @@ msgstr ""
 "Pastaba: norėdami lokalizuoti savo programinę įrangą, įsitikinkite, kad "
 "esate prisijungę prie interneto."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:111
+#: ../usr/lib/solydxk/system/solydxk_system.py:122
 msgid ""
 "Enable the Backports repository if you need a newer software version.\n"
 "Warning: installing software from the backports repository may de-stabalize "
@@ -132,7 +132,7 @@ msgstr ""
 "gali destabilizuoti jūsų sistemą.\n"
 "Naudokite savo pačių rizika!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:114
+#: ../usr/lib/solydxk/system/solydxk_system.py:125
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
@@ -140,19 +140,19 @@ msgstr ""
 "Pasirinkite savo atnaujinimams greičiausią saugyklą.\n"
 "Pastaba: įsitikinkite, kad esate prisijungę prie interneto."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:116
+#: ../usr/lib/solydxk/system/solydxk_system.py:127
 msgid "Hold back packages"
 msgstr "Sulaikyti paketus"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:117
+#: ../usr/lib/solydxk/system/solydxk_system.py:128
 msgid "Held back packages"
 msgstr "Sulaikyti paketai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:118
+#: ../usr/lib/solydxk/system/solydxk_system.py:129
 msgid "Available packages"
 msgstr "Prieinami paketai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:119
+#: ../usr/lib/solydxk/system/solydxk_system.py:130
 msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
@@ -160,27 +160,27 @@ msgstr ""
 "Sulaikykite atskirus paketus.\n"
 "Paketų sulaikymas neleis šiems paketams būti atnaujintiems."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:121
+#: ../usr/lib/solydxk/system/solydxk_system.py:132
 msgid "Save locale"
 msgstr "Įrašyti lokalę"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:122
+#: ../usr/lib/solydxk/system/solydxk_system.py:133
 msgid "Installed"
 msgstr "Įdiegta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:124
+#: ../usr/lib/solydxk/system/solydxk_system.py:135
 msgid "Language"
 msgstr "Kalba"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:125
+#: ../usr/lib/solydxk/system/solydxk_system.py:136
 msgid "Default"
 msgstr "Numatytoji"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:126
+#: ../usr/lib/solydxk/system/solydxk_system.py:137
 msgid "Please provide a passphrase (6-20 characters)."
 msgstr "Prašome pateikti slaptafrazę (6-20 simbolių)."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:127
+#: ../usr/lib/solydxk/system/solydxk_system.py:138
 #, python-brace-format
 msgid ""
 "Could not mount {0}\n"
@@ -189,7 +189,7 @@ msgstr ""
 "Nepavyko prijungti {0}\n"
 "Prašome prijungti {0} ir tai padarius, įkelti iš naujo."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:128
+#: ../usr/lib/solydxk/system/solydxk_system.py:139
 msgid ""
 "Remove unneeded packages\n"
 "Pre-selected packages are safe to remove (autoremove).\n"
@@ -199,15 +199,120 @@ msgstr ""
 "Iš anksto pažymėti paketai gali būti saugiai pašalinti (autoremove).\n"
 "Kiti paketai yra liekamieji paketai. Šalinkite apdairiai!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:131
+#: ../usr/lib/solydxk/system/solydxk_system.py:142
 msgid "Unneeded packages"
 msgstr "Nebereikalingi paketai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:315
+#: ../usr/lib/solydxk/system/solydxk_system.py:143
+#: ../usr/lib/solydxk/system/solydxk_system.py:144
+msgid "Fstab mounts"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:145
+msgid ""
+"Mount additional partitions on boot with Fstab.\n"
+"When added to Fstab, the partition will be mounted in /media."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:147
+msgid "Save Fstab mounts"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:148
+#: ../usr/lib/solydxk/system/solydxk_system.py:595
+msgid "Install"
+msgstr "Įdiegti"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:149
+msgid "Use Backports"
+msgstr "Naudoti naujų versijų paketus"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:150
+msgid ""
+"Install drivers for supported hardware.\n"
+"Note: do not install these drivers if your hardware functions correctly with "
+"the current open drivers."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+msgid "Add"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Partition"
+msgstr "Skaidinys"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Mount point"
+msgstr "Prijungimo taškas"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
+msgid "Label"
+msgstr "Etiketė"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:413
+msgid "Could not add {} to {}: missing fs type."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:469
+#, fuzzy
+msgid ""
+"Changes were made to fstab.\n"
+"Please reboot your computer for these changes to take effect."
+msgstr ""
+"Tam, kad įsigaliotų naujieji nustatymai jums reikia iš naujo paleisti "
+"sistemą."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:473
+msgid "No changes were made to fstab."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:539
+#: ../usr/lib/solydxk/system/localize.py:116
+msgid "No internet connection"
+msgstr "Nėra interneto ryšio"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:540
+msgid ""
+"You need an internet connection to install the additional software.\n"
+"Please, connect to the internet and try again."
+msgstr ""
+"Norėdami įdiegti papildomą programinę įrangą, turite prisijungti prie "
+"interneto.\n"
+"Prašome prisijungti prie interneto ir bandyti vėl."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:547
+msgid ""
+"You have selected to install drivers from the backports repository whenever "
+"they are available.\n"
+"\n"
+"Although you can run more up to date software using the backports "
+"repository,\n"
+"you introduce a greater risk of breakage doing so.\n"
+"\n"
+"Are you sure you want to continue?"
+msgstr ""
+"Jūs pasirinkote įdiegti tvarkykles iš naujų versijų paketų saugyklos, kai "
+"tik jos bus prieinamos.\n"
+"\n"
+"Nors naudodamiesi naujų versijų paketų saugykla, jūs galite naudotis "
+"naujesne programine įranga,\n"
+"tačiau taip darydami sukeliate gedimo riziką.\n"
+"\n"
+"Ar tikrai norite tęsti?"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:595
+msgid "Device"
+msgstr "Įrenginys"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:671
 msgid "Encrypted partition"
 msgstr "Šifruotas skaidinys"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:316
+#: ../usr/lib/solydxk/system/solydxk_system.py:672
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -220,7 +325,7 @@ msgstr ""
 "\n"
 "Ar norite tęsti?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:336
+#: ../usr/lib/solydxk/system/solydxk_system.py:692
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
@@ -228,7 +333,7 @@ msgstr ""
 "Skaidinys nėra užšifruotas.\n"
 "Prašome iššifravimui pasirinkti kitą skaidinį."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:389
+#: ../usr/lib/solydxk/system/solydxk_system.py:745
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
@@ -237,35 +342,23 @@ msgstr ""
 "%s nėra užšifruotas.\n"
 "Prašome pasirinkti užšifruotą skaidinį."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Partition"
-msgstr "Skaidinys"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Label"
-msgstr "Etiketė"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "File system"
 msgstr "Failų sistema"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "Total size"
 msgstr "Bendras dydis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
+#: ../usr/lib/solydxk/system/solydxk_system.py:837
 msgid "Free size"
 msgstr "Laisvos vietos dydis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:481
-msgid "Mount point"
-msgstr "Prijungimo taškas"
-
-#: ../usr/lib/solydxk/system/solydxk_system.py:524
+#: ../usr/lib/solydxk/system/solydxk_system.py:883
 msgid "Backup"
 msgstr "Atsarginė kopija"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:559
+#: ../usr/lib/solydxk/system/solydxk_system.py:918
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
@@ -275,8 +368,8 @@ msgstr ""
 "vietos.\n"
 "Prijunkite atsarginės kopijos diską ir spustelėkite įkėlimo iš naujo mygtuką."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1062
-#: ../usr/lib/solydxk/system/solydxk_system.py:1139
+#: ../usr/lib/solydxk/system/solydxk_system.py:1421
+#: ../usr/lib/solydxk/system/solydxk_system.py:1506
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -284,45 +377,45 @@ msgstr ""
 "Nepavyko atnaujinti apt podėlio.\n"
 "Prašome rankiniu būdu atnaujinti apt podėlį, naudojant: apt-get update"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1066
+#: ../usr/lib/solydxk/system/solydxk_system.py:1425
 msgid "Nothing to do."
 msgstr "Nėra ką atlikti."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1146
+#: ../usr/lib/solydxk/system/solydxk_system.py:1513
 msgid "There are no repositories to save."
 msgstr "Nėra saugyklų kurias įrašyti."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Current"
 msgstr "Dabartinė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Country"
 msgstr "Šalis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Repository"
 msgstr "Saugykla"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1150
+#: ../usr/lib/solydxk/system/solydxk_system.py:1517
 msgid "Speed"
 msgstr "Sparta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1354
+#: ../usr/lib/solydxk/system/solydxk_system.py:1721
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Tam, kad įsigaliotų naujieji nustatymai jums reikia iš naujo paleisti "
 "sistemą."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1366
+#: ../usr/lib/solydxk/system/solydxk_system.py:1733
 msgid "Encryption done"
 msgstr "Šifravimas atliktas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1367
+#: ../usr/lib/solydxk/system/solydxk_system.py:1734
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -332,11 +425,11 @@ msgstr ""
 "\n"
 "Ar norite paleisti savo kompiuterį iš naujo?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1370
+#: ../usr/lib/solydxk/system/solydxk_system.py:1737
 msgid "Decryption done"
 msgstr "Iššifravimas atliktas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1371
+#: ../usr/lib/solydxk/system/solydxk_system.py:1738
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -346,16 +439,16 @@ msgstr ""
 "\n"
 "Ar norite paleisti savo kompiuterį iš naujo?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1383
+#: ../usr/lib/solydxk/system/solydxk_system.py:1750
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "{0} slaptafrazė pakeista."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1431
+#: ../usr/lib/solydxk/system/solydxk_system.py:1800
 msgid "Partition passphrase"
 msgstr "Skaidinio slaptafrazė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1432
+#: ../usr/lib/solydxk/system/solydxk_system.py:1801
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -421,10 +514,6 @@ msgstr ""
 "įrangos lokalizavimo paketus\n"
 "Prašome pakartoti šį procesą, kai užmegsite interneto ryšį."
 
-#: ../usr/lib/solydxk/system/localize.py:116
-msgid "No internet connection"
-msgstr "Nėra interneto ryšio"
-
 #: ../usr/bin/solydxk-system:22
 #, sh-format
 msgid "needs administrative privileges."
@@ -448,7 +537,7 @@ msgstr "Sistema"
 msgid "SolydXK System Settings Encryption Help"
 msgstr "SolydXK sistemos nustatymų šifravimo žinynas"
 
-#: en/help.html+html.body.div.h2:10
+#: en/help.html+html.body.div.h2:10 en/helpdd.html+html.body.div.h2:10
 msgid "Description"
 msgstr "Aprašas"
 
@@ -456,7 +545,7 @@ msgstr "Aprašas"
 msgid "Encrypt partitions of your system with LUKS."
 msgstr "Šifruoti sistemos skaidinius, naudojant LUKS."
 
-#: en/help.html+html.body.div.h2:13
+#: en/help.html+html.body.div.h2:13 en/helpdd.html+html.body.div.h2:13
 msgid "Important"
 msgstr "Svarbu"
 
@@ -573,6 +662,12 @@ msgstr ""
 "Atverkite terminalą, ir vykdykite šias komandas kaip supernaudotojas (root):"
 
 #: en/help.html+html.body.div.pre:29
+#, fuzzy
+#| msgid ""
+#| "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/"
+#| "sda2 /mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -"
+#| "o value -s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/"
+#| "fstab"
 msgid ""
 "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 /"
 "mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
@@ -682,3 +777,300 @@ msgid ""
 msgstr ""
 "Pranešdami apie problemą mūsų forume, nepamirškite pridėti žurnalo failą: /"
 "var/log/solydxk-system.log"
+
+#: en/helpdd.html+html.body.h1:8
+#, fuzzy
+#| msgid "SolydXK System Settings Encryption Help"
+msgid "SolydXK System Settings: Device Driver Help"
+msgstr "SolydXK sistemos nustatymų šifravimo žinynas"
+
+#: en/helpdd.html+html.body.div.p:11
+#, fuzzy
+#| msgid ""
+#| "The Device Driver Manager is a tool to help users installing third-party "
+#| "hardware drivers. Currently Nvidia, ATI and Broadcom drivers can be "
+#| "installed and allows to install the PAE kernel for multi-core 32-bit "
+#| "systems. The Device Driver Manager will only list those devices that are "
+#| "supported. It will not list any other devices then mentioned above."
+msgid ""
+"The Device Driver is a tool to help users installing third-party hardware "
+"drivers. Currently Nvidia, AMD/ATI and Broadcom drivers can be installed and "
+"allows to install the PAE kernel for multi-core 32-bit systems. The Device "
+"Driver will only list those devices that are supported. It will not list any "
+"other devices then mentioned above."
+msgstr ""
+"Įrenginių tvarkyklių tvarkytuvė yra įrankis, skirtas padėti naudotojams "
+"įdiegti trečiųjų šalių aparatinės įrangos tvarkykles. Šiuo metu gali būti "
+"įdiegtos Nvidia, ATI ir Broadcom tvarkytuvės bei yra leidžiama įdiegti PAE "
+"branduolį, skirtą kelių branduolių 32-bitų sistemoms. Įrenginių tvarkyklių "
+"tvarkytuvė išvardys tik tuos įrenginius, kurie yra palaikomi. Išskyrus juos, "
+"tvarkytuvė daugiau jokių įrenginių nevardys."
+
+#: en/helpdd.html+html.body.div.p:14
+#, fuzzy
+#| msgid ""
+#| "The Device Driver Manager can only install drivers which are available in "
+#| "the repositories. Make sure you have an internet connection if you want "
+#| "to install the drivers."
+msgid ""
+"The Device Driver can only install drivers which are available in the "
+"repositories. Make sure you have an internet connection if you want to "
+"install the drivers."
+msgstr ""
+"Įrenginių tvarkyklių tvarkytuvė gali įdiegti tik tas tvarkykles, kurios yra "
+"prieinamos saugyklose. Norėdami įdiegti tvarkykles, įsitikinkite, kad esate "
+"prisijungę prie interneto."
+
+#: en/helpdd.html+html.body.div.h2:16
+msgid "Commands"
+msgstr "Komandos"
+
+#: en/helpdd.html+html.body.div.p:17
+msgid ""
+"If you prefer to install the drivers by terminal, you can use the following "
+"commands:"
+msgstr ""
+"Jeigu teikiate pirmenybę įdiegti tvarkykles per terminalą, galite naudoti "
+"šias komandas:"
+
+#: en/helpdd.html+html.body.div.h3:21
+#, fuzzy
+#| msgid "# ddm -i ati"
+msgid "# ddm -i amd"
+msgstr "# ddm -i ati"
+
+#: en/helpdd.html+html.body.div.p:22
+#, fuzzy
+#| msgid ""
+#| "This will install the fglrx drivers for your ATI graphical card. ATI "
+#| "cards from version HD 5000 and up are supported by the fglrx drivers. "
+#| "Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p "
+#| "ati\" to remove the drivers from your system."
+msgid ""
+"This will install the fglrx drivers for your AMD/ATI graphical card. AMD/ATI "
+"cards from version HD 5000 and up are supported by the fglrx drivers. "
+"Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd"
+"\" to remove the drivers from your system."
+msgstr ""
+"Tai, jūsų ATI grafikos plokštei įdiegs fglrx tvarkykles. Fglrx tvarkyklės "
+"palaiko ATI plokštes, pradedant nuo HD 5000 versijos ir naujesnes. Versijos "
+"tarp 1000 ir 5000 naudos Radeon tvarkykles. Naudokite \"ddm -p ati\", kad "
+"pašalintumėte tvarkykles iš savo sistemos."
+
+#: en/helpdd.html+html.body.div.h3:24
+msgid "# ddm -i nvidia"
+msgstr "# ddm -i nvidia"
+
+#: en/helpdd.html+html.body.div.p:25
+msgid ""
+"This will select the right drivers for your Nvidia graphical card. It will "
+"select the Bumblebee drivers in case you have a hybrid card (both Nvidia and "
+"Intel). Use \"ddm -p nvidia\" to remove the drivers from your system."
+msgstr ""
+"Tai, jūsų Nvidia grafikos plokštei parinks tinkamas tvarkykles. Tuo atveju, "
+"jeigu turite hibridinę plokštę (Nvidia ir Intel), tai parinks Bumblebee "
+"tvarkykles. Naudokite \"ddm -p nvidia\", kad pašalintumėte tvarkykles iš "
+"savo sistemos."
+
+#: en/helpdd.html+html.body.div.h3:27
+msgid "# ddm -i open"
+msgstr "# ddm -i open"
+
+#: en/helpdd.html+html.body.div.p:28
+msgid ""
+"You can use this command if you want to revert back to the open Nouveau "
+"drivers. It will remove any proprietary drivers from your system."
+msgstr ""
+"Jūs galite naudoti šią komandą, jeigu norite sugrįžti prie atvirų Nouveau "
+"tvarkyklių. Tai pašalins bet kokias nuosavybines tvarkykles iš jūsų sistemos."
+
+#: en/helpdd.html+html.body.div.h3:30
+msgid "# ddm -i broadcom"
+msgstr "# ddm -i broadcom"
+
+#: en/helpdd.html+html.body.div.p:31
+msgid ""
+"This command will install the right driver for your wireless Broadcom "
+"adapter. Use \"ddm -p broadcom\" to remove the drivers from your system."
+msgstr ""
+"Ši komanda jūsų belaidžiam Broadcom adapteriui įdiegs tinkamas tvarkykles. "
+"Naudokite \"ddm -p broadcom\", kad pašalintumėte tvarkykles iš savo sistemos."
+
+#: en/helpdd.html+html.body.div.h3:33
+msgid "# ddm -i pae"
+msgstr "# ddm -i pae"
+
+#: en/helpdd.html+html.body.div.p:34
+msgid ""
+"This will install the PAE kernel on multi-processor systems running a 32-bit "
+"OS. Use \"ddm -p pae\" to remove the PAE kernel from your system. Note that "
+"you cannot remove the kernel when you are currently booted into that kernel."
+msgstr ""
+"Tai, kelių procesorių sistemose, kuriose vykdoma 32-bitų operacinė sistema, "
+"įdiegs PAE branduolį. Naudokite \"ddm -p pae\", kad pašalintumėte PAE "
+"branduolį iš savo sistemos. Turėkite omenyje, kad jūs negalite pašalinti "
+"branduolio, kuomet jūsų sistema yra paleista į tą branduolį."
+
+#: en/helpdd.html+html.body.div.h2:36
+msgid "Logging"
+msgstr "Registravimas"
+
+#: en/helpdd.html+html.body.div.h3:37
+#, fuzzy
+#| msgid "File: /var/log/ddm.log"
+msgid "File: /var/log/solydxk-system.log"
+msgstr "Failas: /var/log/ddm.log"
+
+#: en/helpdd.html+html.body.div.p:38
+#, fuzzy
+#| msgid ""
+#| "Please, attach your log file when you post an issue on our forum: <a href="
+#| "\"http://forums.solydxk.com\" target=\"_blank\">http://forums.solydxk."
+#| "com</a>"
+msgid ""
+"Please, attach your log file when you post an issue on our forum: <a href="
+"\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
+"a>"
+msgstr ""
+"Prašome, pridėti savo žurnalo failą, kai skelbiate apie problemą mūsų "
+"forume: <a href=\"http://forums.solydxk.com\" target=\"_blank\">http://"
+"forums.solydxk.com</a>"
+
+#~ msgid "Device Driver Manager"
+#~ msgstr "Įrenginių tvarkyklių tvarkytuvė"
+
+#~ msgid "Help"
+#~ msgstr "Pagalba"
+
+#~ msgid "Log"
+#~ msgstr "Žurnalas"
+
+#~ msgid "Quit"
+#~ msgstr "Baigti"
+
+#~ msgid "Remove kernel"
+#~ msgstr "Šalinti branduolį"
+
+#~ msgid ""
+#~ "You cannot remove a booted kernel.\n"
+#~ "Please, boot another kernel and try again."
+#~ msgstr ""
+#~ "Jūs negalite pašalinti paleisto branduolio.\n"
+#~ "Prašome, paleisti kitą branduolį ir bandyti vėl."
+
+#~ msgid "Hardware scan"
+#~ msgstr "Aparatinės įrangos peržiūra"
+
+#~ msgid "There are no available drivers for your hardware:"
+#~ msgstr "Jūsų aparatinei įrangai nėra prieinama jokių tvarkyklių:"
+
+#~ msgid "DDM did not find any supported hardware."
+#~ msgstr "ĮTT nerado jokios palaikomos aparatinės įrangos."
+
+#~ msgid "ATI FirePro/Gl card found"
+#~ msgstr "Rasta ATI FirePro/Gl plokštė"
+
+#~ msgid ""
+#~ "Installing the proprietary driver for an ATI FirePro/Gl card may render "
+#~ "your system unbootable.\n"
+#~ "\n"
+#~ "Proceed at your own risk."
+#~ msgstr ""
+#~ "ATI FirePro/Gl plokštei skirtų nuosavybinių tvarkyklių įdiegimas gali "
+#~ "padaryti jūsų sistemą nepaleidžiamą.\n"
+#~ "\n"
+#~ "Tęskite savo pačių rizika."
+
+#~ msgid "PAE capable system"
+#~ msgstr "PAE įgalinta sistema"
+
+#~ msgid "Run as root."
+#~ msgstr "Vykdykite kaip pagrindinis naudotojas (root)."
+
+#~ msgid "Wrong arguments passed to ddm."
+#~ msgstr "Į ĮTT perduoti neteisingi argumentai."
+
+#~ msgid "There are no driver available."
+#~ msgstr "Nėra prieinamos tvarkyklės."
+
+#~ msgid "The driver cannot be found in repository."
+#~ msgstr "Nepavyksta saugykloje rasti tvarkyklės."
+
+#~ msgid ""
+#~ "Download error.\n"
+#~ "Check your internet connection."
+#~ msgstr ""
+#~ "Atsiuntimo klaida.\n"
+#~ "Patikrinkite savo interneto ryšį."
+
+#~ msgid "DDM cannot purge the driver."
+#~ msgstr "ĮTT nepavyksta panaikinti tvarkyklės."
+
+#~ msgid "This card is not supported."
+#~ msgstr "Ši plokštė yra nepalaikoma."
+
+#~ msgid ""
+#~ "Cannot get the Debian version from /etc/debian_version.\n"
+#~ "Please install the base-files package."
+#~ msgstr ""
+#~ "Nepavyksta gauti Debian versijos iš /etc/debian_version.\n"
+#~ "Prašome įdiegti base-files paketą."
+
+#~ msgid "Could not configure Nvidia Bumblebee."
+#~ msgstr "Nepavyko sukonfigūruoti Nvidia Bumblebee."
+
+#~ msgid ""
+#~ "There was an error during the installation.\n"
+#~ "Please, run 'sudo apt-get -f install' in a terminal.\n"
+#~ "Visit our forum for support: http://forums.solydxk.com"
+#~ msgstr ""
+#~ "Įdiegimo metu įvyko klaida.\n"
+#~ "Prašome terminale įvykdyti \"sudo apt-get -f install\".\n"
+#~ "Norėdami gauti palaikymą, apsilankykite mūsų forume: http://forums."
+#~ "solydxk.com"
+
+#~ msgid "The software has been successfully installed."
+#~ msgstr "Programinė įranga buvo sėkmingai įdiegta."
+
+#~ msgid "You will need to restart your system."
+#~ msgstr "Jums reikės iš naujo paleisti kompiuterį."
+
+#, fuzzy
+#~ msgid "Available partitions"
+#~ msgstr "Prieinami paketai"
+
+#~ msgid "Device Driver Manager Help"
+#~ msgstr "Įrenginių tvarkyklių tvarkytuvės pagalba"
+
+#~ msgid "# ddm -i fixbumblebee"
+#~ msgstr "# ddm -i fixbumblebee"
+
+#~ msgid "This will try to fix a Bumblebee install."
+#~ msgstr "Tai pabandys pataisyti Bumblebee įdiegimą."
+
+#~ msgid ""
+#~ "Device Driver Manager helps to install proprietary drivers for your "
+#~ "hardware.\n"
+#~ "Only install proprietary drivers if you are sure you really need them.\n"
+#~ "Usually open drivers are enough."
+#~ msgstr ""
+#~ "Įrenginių tvarkyklių tvarkytuvė padeda įdiegti jūsų aparatinei įrangai "
+#~ "skirtas nuosavybines tvarkykles.\n"
+#~ "Įdiekite nuosavybines tvarkykles tik tuo atveju, jeigu esate tikri, kad "
+#~ "jums jų tikrai reikia.\n"
+#~ "Dažniausiai, pakanka atvirų tvarkyklių."
+
+#~ msgid ""
+#~ "Device Driver Manager cannot be started in a live environment\n"
+#~ "You can use the --force argument to start DDM in a live environment"
+#~ msgstr ""
+#~ "Įrenginių tvarkyklių tvarkytuvė negali būti paleista pristatymo "
+#~ "aplinkoje\n"
+#~ "Galite naudoti --force argumentą, kad paleistumėte ĮTT pristatymo "
+#~ "aplinkoje"
+
+#~ msgid ""
+#~ "DDM has failed with the following unexpected error. Please submit a bug "
+#~ "report!"
+#~ msgstr ""
+#~ "ĮTT patyrė nesėkmę su šia netikėta klaida. Prašome pranešti apie klaidą!"
