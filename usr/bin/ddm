@@ -20,12 +20,6 @@
 
 SCRIPTSDIR='/usr/lib/solydxk/scripts'
 
-# Run this script as root
-if [ $UID -ne 0 ]; then
-  sudo "$0" "$@"
-  exit $?
-fi
-
 function usage() {
   echo
   echo 'DDM Help:'
@@ -131,6 +125,11 @@ while getopts ':bfghi:p:st' opt; do
   esac
 done
 
+# Run this script as root
+if [ $UID -ne 0 ] && ! $SHOW; then
+  sudo "$0" "$@"
+  exit $?
+fi
 
 # Is there anything to do?
 if [ "$INSTALL" == '' ] && [ "$PURGE" == '' ]; then

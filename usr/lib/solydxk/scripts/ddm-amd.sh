@@ -44,12 +44,6 @@ SHOW=false
 # End configuration
 # ==============================================
 
-# Run this script as root
-if [ $UID -ne 0 ]; then
-  sudo "$0" "$@"
-  exit $?
-fi
-
 # Log file for traceback
 MAX_SIZE_KB=5120
 LOG_SIZE_KB=0
@@ -134,6 +128,12 @@ while getopts ':bfhst' opt; do
       ;;
   esac
 done
+
+# Run this script as root
+if [ $UID -ne 0 ] && ! $SHOW; then
+  sudo "$0" "$@"
+  exit $?
+fi
 
 # Get distribution release
 if [ -f /etc/debian_version ]; then

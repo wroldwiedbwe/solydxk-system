@@ -24,12 +24,6 @@ SHOW=false
 # End configuration
 # ==============================================
 
-# Run this script as root
-if [ $UID -ne 0 ]; then
-  sudo "$0" "$@"
-  exit $?
-fi
-
 # Log file for traceback
 MAX_SIZE_KB=5120
 LOG_SIZE_KB=0
@@ -114,6 +108,12 @@ while getopts ':bfhst' opt; do
   esac
 done
 
+# Run this script as root
+if [ $UID -ne 0 ] && ! $SHOW; then
+  sudo "$0" "$@"
+  exit $?
+fi
+
 # Get distribution release
 if [ -f /etc/debian_version ]; then
   DISTRIB_RELEASE=$(head -n 1 /etc/debian_version 2>/dev/null | sed 's/[a-zA-Z]/0/' | cut -d'.' -f 1)
@@ -165,5 +165,7 @@ if [ $MACHINE == "i686" ]; then
     fi
   fi
 else
-  echo "[PAE] $MACHINE machine: not installing." | tee -a $LOG
+  if ! $SHOW; then
+    echo "[PAE] $MACHINE machine: not installing." | tee -a $LOG
+  fi
 fi
