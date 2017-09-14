@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ddm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-13 20:12+0200\n"
+"POT-Creation-Date: 2017-09-14 10:02+0200\n"
 "PO-Revision-Date: 2013-12-28 11:43+0100\n"
 "Last-Translator: Schoelje <schoelje@solydxk.com>\n"
 "Language-Team: SolydXK <admin@solydxk.com>\n"
@@ -207,8 +207,9 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:148
 #: ../usr/lib/solydxk/system/solydxk_system.py:595
+#, fuzzy
 msgid "Install"
-msgstr ""
+msgstr "Ovladač nainstalován"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:149
 msgid "Use Backports"
@@ -691,10 +692,10 @@ msgstr "Instalovat ovladač: %(drv)s"
 
 #: en/helpdd.html+html.body.div.p:22
 msgid ""
-"This will install the fglrx drivers for your AMD/ATI graphical card. AMD/ATI "
-"cards from version HD 5000 and up are supported by the fglrx drivers. "
-"Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd"
-"\" to remove the drivers from your system."
+"This will install the drivers for your AMD/ATI graphical card. AMD/ATI cards "
+"from version HD 5000 and up are supported by the drivers. Versions between "
+"1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd\" to remove the "
+"drivers from your system."
 msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:24

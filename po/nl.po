@@ -1,19 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
-# Arjen Balfoort <arjenbalfoort@solydxk.com>, 2015,2017
-# root <arjenbalfoort@solydxk.com>, 2015
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: device-driver-manager\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-13 20:12+0200\n"
-"PO-Revision-Date: 2017-05-01 13:16+0000\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/solydxk/device-driver-manager/"
-"language/nl/)\n"
+"POT-Creation-Date: 2017-09-14 10:02+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
+"Language-Team: Dutch (https://www.transifex.com/solydxk/teams/54212/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -206,17 +204,19 @@ msgstr "Onnodige pakketten"
 #: ../usr/lib/solydxk/system/solydxk_system.py:143
 #: ../usr/lib/solydxk/system/solydxk_system.py:144
 msgid "Fstab mounts"
-msgstr ""
+msgstr "Fstab koppelingen"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:145
 msgid ""
 "Mount additional partitions on boot with Fstab.\n"
 "When added to Fstab, the partition will be mounted in /media."
 msgstr ""
+"Koppel extra partities tijdens het opstarten met Fstab.\n"
+"Wanneer deze aan Fstab is toegevoegd, wordt de partitie in /media gekoppeld."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:147
 msgid "Save Fstab mounts"
-msgstr ""
+msgstr "Bewaar Fstab koppelingen"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:148
 #: ../usr/lib/solydxk/system/solydxk_system.py:595
@@ -233,10 +233,13 @@ msgid ""
 "Note: do not install these drivers if your hardware functions correctly with "
 "the current open drivers."
 msgstr ""
+"Installeer drivers voor ondersteunde hardware.\n"
+"Opmerking: installeer deze drivers niet als uw hardware correct werkt met de "
+"huidige open drivers."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:311
 msgid "Add"
-msgstr ""
+msgstr "Toevoegen"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:311
 #: ../usr/lib/solydxk/system/solydxk_system.py:837
@@ -255,18 +258,19 @@ msgstr "Label"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:413
 msgid "Could not add {} to {}: missing fs type."
-msgstr ""
+msgstr "Kon {} niet toevoegen aan {}: fs type mist."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:469
-#, fuzzy
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
-msgstr "Herstart uw systeem om de nieuwe instellingen te gebruiken."
+msgstr ""
+"Wijzigingen zijn gemaakt in fstab.\n"
+"Start de computer opnieuw op om de wijzigingen door te voeren."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:473
 msgid "No changes were made to fstab."
-msgstr ""
+msgstr "Er zijn geen wijzigingen gemaakt in Fstab."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:539
 #: ../usr/lib/solydxk/system/localize.py:116
@@ -650,12 +654,6 @@ msgid "Open a terminal, and run these commands as root:"
 msgstr "Open een terminal en voor de volgende commando's uit:"
 
 #: en/help.html+html.body.div.pre:29
-#, fuzzy
-#| msgid ""
-#| "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/"
-#| "sda2 /mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -"
-#| "o value -s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/"
-#| "fstab"
 msgid ""
 "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 /"
 "mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
@@ -766,19 +764,10 @@ msgstr ""
 "probleem op ons forum post: /var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.h1:8
-#, fuzzy
-#| msgid "SolydXK System Settings Encryption Help"
 msgid "SolydXK System Settings: Device Driver Help"
-msgstr "SolydXK Systeeminstellingen Versleuteling Hulp"
+msgstr "SolydXK Systeeminstellingen: Device Driver Help"
 
 #: en/helpdd.html+html.body.div.p:11
-#, fuzzy
-#| msgid ""
-#| "The Device Driver Manager is a tool to help users installing third-party "
-#| "hardware drivers. Currently Nvidia, ATI and Broadcom drivers can be "
-#| "installed and allows to install the PAE kernel for multi-core 32-bit "
-#| "systems. The Device Driver Manager will only list those devices that are "
-#| "supported. It will not list any other devices then mentioned above."
 msgid ""
 "The Device Driver is a tool to help users installing third-party hardware "
 "drivers. Currently Nvidia, AMD/ATI and Broadcom drivers can be installed and "
@@ -786,27 +775,22 @@ msgid ""
 "Driver will only list those devices that are supported. It will not list any "
 "other devices then mentioned above."
 msgstr ""
-"De Device Driver Manager is een hulpmiddel om gebruikers te helpen om "
-"drivers van hardware leveranciers te installeren. Momenteel kunnen Nvidia, "
-"ATI en Broadcom drivers worden geïnstalleerd en maakt het mogelijk om de PAE "
-"kernel voor multi-core 32-bit systemen te installeren. De Device Driver "
-"Manager toont alleen die hardware die ondersteund wordt. Het zal niet die "
-"apparaten tonen anders dan hierboven vermeld."
+"De Device Driver is een hulpmiddel om gebruikers te helpen om drivers van "
+"hardware leveranciers te installeren. Momenteel kunnen Nvidia, AMD/ATI en "
+"Broadcom drivers worden geïnstalleerd en maakt het mogelijk om de PAE kernel "
+"voor multi-core 32-bit systemen te installeren. De Device Driver toont "
+"alleen die hardware die ondersteund wordt. Het zal niet die apparaten tonen "
+"anders dan hierboven vermeld."
 
 #: en/helpdd.html+html.body.div.p:14
-#, fuzzy
-#| msgid ""
-#| "The Device Driver Manager can only install drivers which are available in "
-#| "the repositories. Make sure you have an internet connection if you want "
-#| "to install the drivers."
 msgid ""
 "The Device Driver can only install drivers which are available in the "
 "repositories. Make sure you have an internet connection if you want to "
 "install the drivers."
 msgstr ""
-"De Device Driver Manager kan alleen drivers installeren die beschikbaar zijn "
-"in de repository's. Zorg ervoor dat u een internetverbinding hebt wanneer u "
-"de drivers wilt installeren."
+"De Device Driver kan alleen drivers installeren die beschikbaar zijn in de "
+"repository's. Zorg ervoor dat u een internetverbinding hebt wanneer u de "
+"drivers wilt installeren."
 
 #: en/helpdd.html+html.body.div.h2:16
 msgid "Commands"
@@ -821,28 +805,26 @@ msgstr ""
 "gebruik maken van de volgende commando's:"
 
 #: en/helpdd.html+html.body.div.h3:21
-#, fuzzy
-#| msgid "# ddm -i ati"
 msgid "# ddm -i amd"
-msgstr "# ddm -i ati"
+msgstr "# ddm -i amd"
 
 #: en/helpdd.html+html.body.div.p:22
 #, fuzzy
 #| msgid ""
-#| "This will install the fglrx drivers for your ATI graphical card. ATI "
-#| "cards from version HD 5000 and up are supported by the fglrx drivers. "
-#| "Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p "
-#| "ati\" to remove the drivers from your system."
+#| "This will select the right drivers for your Nvidia graphical card. It "
+#| "will select the Bumblebee drivers in case you have a hybrid card (both "
+#| "Nvidia and Intel). Use \"ddm -p nvidia\" to remove the drivers from your "
+#| "system."
 msgid ""
-"This will install the fglrx drivers for your AMD/ATI graphical card. AMD/ATI "
-"cards from version HD 5000 and up are supported by the fglrx drivers. "
-"Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd"
-"\" to remove the drivers from your system."
+"This will install the drivers for your AMD/ATI graphical card. AMD/ATI cards "
+"from version HD 5000 and up are supported by the drivers. Versions between "
+"1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd\" to remove the "
+"drivers from your system."
 msgstr ""
-"Dit zal de fglrx drivers voor de ATI grafische kaart installeren. ATI "
-"kaarten vanaf versie HD 5000 en hoger worden ondersteund door de fglrx "
-"drivers. Versies tussen 1000 en 5000 zullen de Radeon drivers te gebruiken. "
-"Gebruik \"ddm -p ati\" om de drivers te verwijderen van uw systeem."
+"Dit zal de juiste drivers voor de Nvidia grafische kaart selecteren. Het zal "
+"de Bumblebee drivers selecteren in het geval u een hybride-kaart (zowel "
+"Nvidia en Intel) heeft. Gebruik \"ddm -p nvidia\" om de drivers van uw "
+"systeem te verwijderen."
 
 #: en/helpdd.html+html.body.div.h3:24
 msgid "# ddm -i nvidia"
@@ -905,210 +887,15 @@ msgid "Logging"
 msgstr "Logging"
 
 #: en/helpdd.html+html.body.div.h3:37
-#, fuzzy
-#| msgid "File: /var/log/ddm.log"
 msgid "File: /var/log/solydxk-system.log"
-msgstr "Bestand: /var/log/ddm.log"
+msgstr "Bestand: /var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.div.p:38
-#, fuzzy
-#| msgid ""
-#| "Please, attach your log file when you post an issue on our forum: <a href="
-#| "\"http://forums.solydxk.com\" target=\"_blank\">http://forums.solydxk."
-#| "com</a>"
 msgid ""
 "Please, attach your log file when you post an issue on our forum: <a href="
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
 "a>"
 msgstr ""
-"Voeg uw log bestand toe wanneer u een probleem met DDM wilt posten op ons "
-"forum: <a href=\"http://forums.solydxk.com\" target=\"_blank\">http://forums."
-"solydxk.com</a>"
-
-#~ msgid "Device Driver Manager"
-#~ msgstr "Device Driver Manager"
-
-#~ msgid "Help"
-#~ msgstr "Help"
-
-#~ msgid "Log"
-#~ msgstr "Log"
-
-#~ msgid "Quit"
-#~ msgstr "Afsluiten"
-
-#~ msgid "Remove kernel"
-#~ msgstr "Verwijder kernel"
-
-#~ msgid ""
-#~ "You cannot remove a booted kernel.\n"
-#~ "Please, boot another kernel and try again."
-#~ msgstr ""
-#~ "U kunt de kernel die nu gestart is niet verwijderen.\n"
-#~ "Boot een andere kernel en probeer het nogmaals."
-
-#~ msgid "Hardware scan"
-#~ msgstr "Hardware scan"
-
-#~ msgid "There are no available drivers for your hardware:"
-#~ msgstr "Er zijn geen beschikbare drivers voor uw hardware:"
-
-#~ msgid "DDM did not find any supported hardware."
-#~ msgstr "DDM heeft geen ondersteunde hardware gevonden."
-
-#~ msgid "ATI FirePro/Gl card found"
-#~ msgstr "ATI FirePro/Gl kaart gevonden"
-
-#~ msgid ""
-#~ "Installing the proprietary driver for an ATI FirePro/Gl card may render "
-#~ "your system unbootable.\n"
-#~ "\n"
-#~ "Proceed at your own risk."
-#~ msgstr ""
-#~ "Door de gesloten driver voor een ATI FirePro / Gl-kaart te installeren, "
-#~ "is het mogelijk dat uw systeem niet meer zal kunnen opstarten.\n"
-#~ "\n"
-#~ "Ga door op eigen risico."
-
-#~ msgid "PAE capable system"
-#~ msgstr "Systeem geschikt voor PAE"
-
-#~ msgid "Run as root."
-#~ msgstr "Als root uitvoeren."
-
-#~ msgid "Wrong arguments passed to ddm."
-#~ msgstr "Verkeerde argumenten gebruikt voor ddm."
-
-#~ msgid "There are no driver available."
-#~ msgstr "Er zijn geen drivers beschikbaar."
-
-#~ msgid "The driver cannot be found in repository."
-#~ msgstr "De driver kan niet in de repository gevonden worden."
-
-#~ msgid ""
-#~ "Download error.\n"
-#~ "Check your internet connection."
-#~ msgstr ""
-#~ "Download fout.\n"
-#~ "Controleer uw internet connectie."
-
-#~ msgid "DDM cannot purge the driver."
-#~ msgstr "DDM kan de driver niet verwijderen."
-
-#~ msgid "This card is not supported."
-#~ msgstr "Deze kaart wordt niet ondersteund."
-
-#~ msgid ""
-#~ "Cannot get the Debian version from /etc/debian_version.\n"
-#~ "Please install the base-files package."
-#~ msgstr ""
-#~ "Kan de Debian versie van /etc/debian_version niet verkrijgen\n"
-#~ "Installeer a.u.b. het pakket base-files."
-
-#~ msgid "Could not configure Nvidia Bumblebee."
-#~ msgstr "Kon Nvidia Bumblebee niet configureren."
-
-#~ msgid ""
-#~ "There was an error during the installation.\n"
-#~ "Please, run 'sudo apt-get -f install' in a terminal.\n"
-#~ "Visit our forum for support: http://forums.solydxk.com"
-#~ msgstr ""
-#~ "Er is een fout opgetreden tijdens de installatie.\n"
-#~ "Voer de volgende opdracht uit in een terminal: 'sudo apt-get -f "
-#~ "install'.\n"
-#~ "Bezoek ons forum wanneer u hulp nodig heeft: http://forums.solydxk.com"
-
-#~ msgid "The software has been successfully installed."
-#~ msgstr "De software is succesvol geïnstalleerd."
-
-#~ msgid "You will need to restart your system."
-#~ msgstr "U dient uw systeem te herstarten."
-
-#~ msgid ""
-#~ "Device Driver Manager helps to install proprietary drivers for your "
-#~ "hardware.\n"
-#~ "Only install proprietary drivers if you are sure you really need them.\n"
-#~ "Usually open drivers are enough."
-#~ msgstr ""
-#~ "Device Driver Manager helpt om proprietary drivers te installeren voor uw "
-#~ "hardware.\n"
-#~ "Installeer deze drivers alleen als u er zeker van bent dat u ze echt "
-#~ "nodig hebt.\n"
-#~ "Over het algemeen zijn open drivers voldoende."
-
-#~ msgid ""
-#~ "Device Driver Manager cannot be started in a live environment\n"
-#~ "You can use the --force argument to start DDM in a live environment"
-#~ msgstr ""
-#~ "Update Manager kan niet gestart worden in een live omgeving\n"
-#~ "In een live omgeving kunt u met het --force argument starten."
-
-#~ msgid ""
-#~ "DDM has failed with the following unexpected error. Please submit a bug "
-#~ "report!"
-#~ msgstr ""
-#~ "DDM is mislukt met de volgende onverwachte fout. Gelieve een bug verslag "
-#~ "in te dienen!"
-
-#~ msgid "Device Driver Manager Help"
-#~ msgstr "Device Driver Manager Help"
-
-#~ msgid ""
-#~ "The Device Driver Manager is a tool to help users installing third-party "
-#~ "hardware drivers. Currently Nvidia, ATI and Broadcom drivers can be "
-#~ "installed and allows to install the PAE kernel for multi-core 32-bit "
-#~ "systems. The Device Driver Manager will only list those devices that are "
-#~ "supported. It will not list any other devices then mentioned above."
-#~ msgstr ""
-#~ "De Device Driver Manager is een hulpmiddel om gebruikers te helpen om "
-#~ "drivers van hardware leveranciers te installeren. Momenteel kunnen "
-#~ "Nvidia, ATI en Broadcom drivers worden geïnstalleerd en maakt het "
-#~ "mogelijk om de PAE kernel voor multi-core 32-bit systemen te installeren. "
-#~ "De Device Driver Manager toont alleen die hardware die ondersteund wordt. "
-#~ "Het zal niet die apparaten tonen anders dan hierboven vermeld."
-
-#~ msgid ""
-#~ "The Device Driver Manager can only install drivers which are available in "
-#~ "the repositories. Make sure you have an internet connection if you want "
-#~ "to install the drivers."
-#~ msgstr ""
-#~ "De Device Driver Manager kan alleen drivers installeren die beschikbaar "
-#~ "zijn in de repository's. Zorg ervoor dat u een internetverbinding hebt "
-#~ "wanneer u de drivers wilt installeren."
-
-#~ msgid "# ddm -i ati"
-#~ msgstr "# ddm -i ati"
-
-#~ msgid ""
-#~ "This will install the fglrx drivers for your ATI graphical card. ATI "
-#~ "cards from version HD 5000 and up are supported by the fglrx drivers. "
-#~ "Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p "
-#~ "ati\" to remove the drivers from your system."
-#~ msgstr ""
-#~ "Dit zal de fglrx drivers voor de ATI grafische kaart installeren. ATI "
-#~ "kaarten vanaf versie HD 5000 en hoger worden ondersteund door de fglrx "
-#~ "drivers. Versies tussen 1000 en 5000 zullen de Radeon drivers te "
-#~ "gebruiken. Gebruik \"ddm -p ati\" om de drivers te verwijderen van uw "
-#~ "systeem."
-
-#~ msgid "# ddm -i fixbumblebee"
-#~ msgstr "# ddm -i fixbumblebee"
-
-#~ msgid "This will try to fix a Bumblebee install."
-#~ msgstr "Dit zal uw Bumblebee installatie proberen te herstellen."
-
-#~ msgid "File: /var/log/ddm.log"
-#~ msgstr "Bestand: /var/log/ddm.log"
-
-#~ msgid ""
-#~ "Please, attach your log file when you post an issue on our forum: <a href="
-#~ "\"http://forums.solydxk.com\" target=\"_blank\">http://forums.solydxk."
-#~ "com</a>"
-#~ msgstr ""
-#~ "Voeg uw log bestand toe wanneer u een probleem met DDM wilt posten op ons "
-#~ "forum: <a href=\"http://forums.solydxk.com\" target=\"_blank\">http://"
-#~ "forums.solydxk.com</a>"
-
-#, fuzzy
-#~ msgid "Available partitions"
-#~ msgstr "Beschikbare pakketten"
+"Voeg uw log bestand toe wanneer u een probleem wilt posten op ons forum: <a "
+"href=\"http://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk."
+"com</a>"
