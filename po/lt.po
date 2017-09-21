@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-14 10:02+0200\n"
+"POT-Creation-Date: 2017-09-21 14:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Moo <moose@mail.ru>, 2017\n"
 "Language-Team: Lithuanian (https://www.transifex.com/solydxk/teams/54212/"
@@ -206,17 +206,19 @@ msgstr "Nebereikalingi paketai"
 #: ../usr/lib/solydxk/system/solydxk_system.py:143
 #: ../usr/lib/solydxk/system/solydxk_system.py:144
 msgid "Fstab mounts"
-msgstr ""
+msgstr "Fstab prijungimai"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:145
 msgid ""
 "Mount additional partitions on boot with Fstab.\n"
 "When added to Fstab, the partition will be mounted in /media."
 msgstr ""
+"Prijunkite paleidimo metu papildomus skaidinius, naudodami Fstab.\n"
+"Pridėjus skaidinį į Fstab, jis bus prijungtas ties /media."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:147
 msgid "Save Fstab mounts"
-msgstr ""
+msgstr "Įrašyti Fstab prijungimus"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:148
 #: ../usr/lib/solydxk/system/solydxk_system.py:595
@@ -233,10 +235,13 @@ msgid ""
 "Note: do not install these drivers if your hardware functions correctly with "
 "the current open drivers."
 msgstr ""
+"Įdiekite tvarkykles palaikomai aparatinei įrangai.\n"
+"Pastaba: nediekite šių tvarkyklių, jeigu jūsų aparatinė įranga teisingai "
+"funkcionuoja, naudodama esamas atvirąsias tvarkykles."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:311
 msgid "Add"
-msgstr ""
+msgstr "Pridėti"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:311
 #: ../usr/lib/solydxk/system/solydxk_system.py:837
@@ -255,17 +260,19 @@ msgstr "Etiketė"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:413
 msgid "Could not add {} to {}: missing fs type."
-msgstr ""
+msgstr "Nepavyko pridėti {} į {}: trūksta fs tipo."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:469
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
 msgstr ""
+"Failui fstab buvo atlikti pakeitimai.\n"
+"Tam, kad šie pakeitimai įsigaliotų, paleiskite savo kompiuterį iš naujo."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:473
 msgid "No changes were made to fstab."
-msgstr ""
+msgstr "Failui fstab nebuvo atlikta jokių pakeitimų."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:539
 #: ../usr/lib/solydxk/system/localize.py:116
@@ -770,10 +777,8 @@ msgstr ""
 "var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.h1:8
-#, fuzzy
-#| msgid "SolydXK System Settings Encryption Help"
 msgid "SolydXK System Settings: Device Driver Help"
-msgstr "SolydXK sistemos nustatymų šifravimo žinynas"
+msgstr "SolydXK sistemos nustatymai: Įrenginių tvarkyklių žinynas"
 
 #: en/helpdd.html+html.body.div.p:11
 msgid ""
@@ -783,6 +788,12 @@ msgid ""
 "Driver will only list those devices that are supported. It will not list any "
 "other devices then mentioned above."
 msgstr ""
+"Įrenginių tvarkyklės yra įrankis, skirtas padėti naudotojams įdiegti "
+"trečiųjų šalių aparatinės įrangos tvarkykles. Šiuo metu gali būti įdiegtos "
+"Nvidia, ATI ir Broadcom tvarkyklės bei yra leidžiama įdiegti PAE branduolį, "
+"skirtą kelių branduolių 32-bitų sistemoms. Įrenginių tvarkyklės išvardys tik "
+"tuos įrenginius, kurie yra palaikomi. Išskyrus juos, daugiau nebus išvardyti "
+"jokie įrenginiai."
 
 #: en/helpdd.html+html.body.div.p:14
 msgid ""
@@ -790,6 +801,9 @@ msgid ""
 "repositories. Make sure you have an internet connection if you want to "
 "install the drivers."
 msgstr ""
+"Įrenginių tvarkyklės gali įdiegti tik tas tvarkykles, kurios yra prieinamos "
+"saugyklose. Norėdami įdiegti tvarkykles, įsitikinkite, kad esate prisijungę "
+"prie interneto."
 
 #: en/helpdd.html+html.body.div.h2:16
 msgid "Commands"
@@ -804,28 +818,20 @@ msgstr ""
 "šias komandas:"
 
 #: en/helpdd.html+html.body.div.h3:21
-#, fuzzy
-#| msgid "# ddm -i pae"
 msgid "# ddm -i amd"
-msgstr "# ddm -i pae"
+msgstr "# ddm -i amd"
 
 #: en/helpdd.html+html.body.div.p:22
-#, fuzzy
-#| msgid ""
-#| "This will select the right drivers for your Nvidia graphical card. It "
-#| "will select the Bumblebee drivers in case you have a hybrid card (both "
-#| "Nvidia and Intel). Use \"ddm -p nvidia\" to remove the drivers from your "
-#| "system."
 msgid ""
 "This will install the drivers for your AMD/ATI graphical card. AMD/ATI cards "
 "from version HD 5000 and up are supported by the drivers. Versions between "
 "1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd\" to remove the "
 "drivers from your system."
 msgstr ""
-"Tai, jūsų Nvidia grafikos plokštei parinks tinkamas tvarkykles. Tuo atveju, "
-"jeigu turite hibridinę plokštę (Nvidia ir Intel), tai parinks Bumblebee "
-"tvarkykles. Naudokite \"ddm -p nvidia\", kad pašalintumėte tvarkykles iš "
-"savo sistemos."
+"Tai įdiegs tvarkykles, skirtas jūsų AMD/ATI grafikos plokštei. Tvarkyklės "
+"palaiko AMD/ATI plokštes nuo versijos HD 5000 ir naujesnes. Versijos tarp "
+"1000 ir 5000 naudos Radeon tvarkykles. Norėdami pašalinti tvarkykles iš savo "
+"sistemos, naudokite komandą \"ddm -p amd\"."
 
 #: en/helpdd.html+html.body.div.h3:24
 msgid "# ddm -i nvidia"
@@ -887,7 +893,7 @@ msgstr "Registravimas"
 
 #: en/helpdd.html+html.body.div.h3:37
 msgid "File: /var/log/solydxk-system.log"
-msgstr ""
+msgstr "Failas: /var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.div.p:38
 msgid ""
@@ -895,3 +901,6 @@ msgid ""
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
 "a>"
 msgstr ""
+"Prašome pridėti savo žurnalo failą, kai skelbiate apie problemą mūsų forume: "
+"<a href=\"https://forums.solydxk.com\" target=\"_blank\">https://forums."
+"solydxk.com</a>"

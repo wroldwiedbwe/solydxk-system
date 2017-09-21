@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-14 10:02+0200\n"
+"POT-Creation-Date: 2017-09-21 14:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Luis Filipe Teixeira <lufilte@gmail.com>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/solydxk/teams/54212/"
@@ -205,7 +205,7 @@ msgstr "Pacotes desnecessários"
 #: ../usr/lib/solydxk/system/solydxk_system.py:143
 #: ../usr/lib/solydxk/system/solydxk_system.py:144
 msgid "Fstab mounts"
-msgstr ""
+msgstr "Montagens Fstab"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:145
 msgid ""
@@ -219,14 +219,12 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:148
 #: ../usr/lib/solydxk/system/solydxk_system.py:595
-#, fuzzy
 msgid "Install"
-msgstr "Instalado"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:149
-#, fuzzy
 msgid "Use Backports"
-msgstr "Salvar backports"
+msgstr "Usar Backports"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:150
 msgid ""
@@ -234,10 +232,13 @@ msgid ""
 "Note: do not install these drivers if your hardware functions correctly with "
 "the current open drivers."
 msgstr ""
+"Instale drivers para hardware suportado.\n"
+"Nota: não instale esses drivers se suas funções de hardware corretamente com "
+"os atuais drivers abertos."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:311
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:311
 #: ../usr/lib/solydxk/system/solydxk_system.py:837
@@ -259,17 +260,16 @@ msgid "Could not add {} to {}: missing fs type."
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:469
-#, fuzzy
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
 msgstr ""
-"É necessário reiniciar o sistema para que as novas configurações sejam "
-"afetadas."
+"As alterações foram feitas para fstab.\n"
+"Por favor, reinicie o computador para que essas alterações tenham efeito."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:473
 msgid "No changes were made to fstab."
-msgstr ""
+msgstr "Não foram feitas alterações para fstab."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:539
 #: ../usr/lib/solydxk/system/localize.py:116
@@ -296,7 +296,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:595
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:671
 msgid "Encrypted partition"
@@ -649,12 +649,6 @@ msgid "Open a terminal, and run these commands as root:"
 msgstr "Abra um terminal e execute esses comandos como root:"
 
 #: en/help.html+html.body.div.pre:29
-#, fuzzy
-#| msgid ""
-#| "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/"
-#| "sda2 /mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -"
-#| "o value -s UUID /dev/sda1) /boot ext4 defaults 0 0\" >> /mnt/root/etc/"
-#| "fstab"
 msgid ""
 "# mkdir /mnt/boot /mnt/root # mount /dev/sda1 /mnt/boot # mount /dev/sda2 /"
 "mnt/root # cp -a /mnt/root/boot/* /mnt/boot/ # echo \"UUID=$(blkid -o value -"
@@ -766,10 +760,8 @@ msgstr ""
 "no nosso fórum: /var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.h1:8
-#, fuzzy
-#| msgid "SolydXK System Settings Encryption Help"
 msgid "SolydXK System Settings: Device Driver Help"
-msgstr "Ajuda da Cifração das Configurações do Sistema SolydXK"
+msgstr "Configurações do Sistema SolydXK: Ajuda do driver do dispositivo"
 
 #: en/helpdd.html+html.body.div.p:11
 msgid ""
@@ -799,7 +791,7 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:21
 msgid "# ddm -i amd"
-msgstr ""
+msgstr "# ddm -i amd"
 
 #: en/helpdd.html+html.body.div.p:22
 msgid ""
@@ -811,7 +803,7 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:24
 msgid "# ddm -i nvidia"
-msgstr ""
+msgstr "# ddm -i nvidia"
 
 #: en/helpdd.html+html.body.div.p:25
 msgid ""
@@ -821,8 +813,10 @@ msgid ""
 msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:27
+#, fuzzy
+#| msgid "# ddm -i amd"
 msgid "# ddm -i open"
-msgstr ""
+msgstr "# ddm -i amd"
 
 #: en/helpdd.html+html.body.div.p:28
 msgid ""
@@ -832,7 +826,7 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:30
 msgid "# ddm -i broadcom"
-msgstr ""
+msgstr "# ddm -i broadcom"
 
 #: en/helpdd.html+html.body.div.p:31
 msgid ""
@@ -841,8 +835,10 @@ msgid ""
 msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:33
+#, fuzzy
+#| msgid "# ddm -i amd"
 msgid "# ddm -i pae"
-msgstr ""
+msgstr "# ddm -i amd"
 
 #: en/helpdd.html+html.body.div.p:34
 msgid ""
@@ -857,7 +853,7 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:37
 msgid "File: /var/log/solydxk-system.log"
-msgstr ""
+msgstr "Ficheiro: /var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.div.p:38
 msgid ""
@@ -865,25 +861,3 @@ msgid ""
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
 "a>"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Remove kernel"
-#~ msgstr "Remover"
-
-#, fuzzy
-#~ msgid "PAE capable system"
-#~ msgstr "Sistema de ficheiro"
-
-#, fuzzy
-#~ msgid "There are no driver available."
-#~ msgstr "Não há nenhum repositórios para salvar."
-
-#, fuzzy
-#~ msgid ""
-#~ "Download error.\n"
-#~ "Check your internet connection."
-#~ msgstr "Sem ligação à Internet"
-
-#, fuzzy
-#~ msgid "Available partitions"
-#~ msgstr "Pacotes disponíveis"
