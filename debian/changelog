@@ -1,3 +1,9 @@
+solydxk-system (3.0.3b2) solydxk; urgency=low
+
+  * Improved is_package_installed in utils.py
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 21 Sep 2017 14:06:48 +0200
+
 solydxk-system (3.0.3b1) solydxk; urgency=low
 
   * Added feature: additional Fstab mounts

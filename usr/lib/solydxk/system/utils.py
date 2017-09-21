@@ -241,13 +241,13 @@ def has_string_in_file(searchString, filePath):
 # Check if a package is installed
 def is_package_installed(packageName, alsoCheckVersion=False):
     isInstalled = False
+    expr = "^i.+\s(%s[a-z0-9\-_\.]*)" % packageName
+    if not '*' in packageName:
+        packageName = '^{}$'.format(packageName)
     try:
-        cmd = 'dpkg-query -l %s | grep ^i' % packageName
-        if '*' in packageName:
-            cmd = 'aptitude search -w 150 %s | grep ^i' % packageName
+        cmd = 'aptitude search -w 150 %s | grep ^i' % packageName
         pckList = getoutput(cmd)
         for line in pckList:
-            expr = "^i[a-z] +(%s[a-z0-9\-_\.]*)" % packageName
             matchObj = re.search(expr, line)
             if matchObj:
                 if alsoCheckVersion:

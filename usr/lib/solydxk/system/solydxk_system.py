@@ -491,7 +491,7 @@ class SolydXKSystemSettings(object):
 
             # Check currently selected state with initial state
             # This decides whether we should install or purge the drivers
-            for hw in self.hardware:
+            for hw in self.hardware[1:]:
                 self.log.write('Device = {} in {}'.format(device, hw[2]), 'install_device_drivers')
                 if device in hw[2]:
                     hw_driver = hw[3]
