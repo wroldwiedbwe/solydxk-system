@@ -1,17 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
+# Linux2TheCore <ichbin1199@gmail.com>, 2015
+# anechampenois <anechampenois@solydxk.com>, 2015
+# Kyodev <kyodev@yandex.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: device-driver-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-14 10:02+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Kyodev <kyodev@yandex.com>, 2017\n"
-"Language-Team: French (https://www.transifex.com/solydxk/teams/54212/fr/)\n"
+"POT-Creation-Date: 2017-09-21 16:46+0200\n"
+"PO-Revision-Date: 2017-04-10 08:13+0000\n"
+"Last-Translator: Kyodev <kyodev@yandex.com>\n"
+"Language-Team: French (http://www.transifex.com/solydxk/device-driver-"
+"manager/language/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -217,9 +220,9 @@ msgid "Save Fstab mounts"
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:148
-#: ../usr/lib/solydxk/system/solydxk_system.py:595
-msgid "Install"
-msgstr "Installation "
+#, fuzzy
+msgid "Save drivers"
+msgstr "Sauver les mirroirs"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:149
 msgid "Use Backports"
@@ -232,45 +235,45 @@ msgid ""
 "the current open drivers."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:312
 msgid "Add"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:311
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:312
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Partition"
 msgstr "Partition"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:311
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:312
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Mount point"
 msgstr "Point de montage"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:311
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:312
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Label"
 msgstr "Étiquette"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:413
+#: ../usr/lib/solydxk/system/solydxk_system.py:416
 msgid "Could not add {} to {}: missing fs type."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:469
+#: ../usr/lib/solydxk/system/solydxk_system.py:472
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:473
+#: ../usr/lib/solydxk/system/solydxk_system.py:476
 msgid "No changes were made to fstab."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:539
+#: ../usr/lib/solydxk/system/solydxk_system.py:544
 #: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr "Pas de connexion internet"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:540
+#: ../usr/lib/solydxk/system/solydxk_system.py:545
 msgid ""
 "You need an internet connection to install the additional software.\n"
 "Please, connect to the internet and try again."
@@ -279,7 +282,7 @@ msgstr ""
 "supplémentaire.\n"
 "Merci de vous connecter et de réessayer."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:547
+#: ../usr/lib/solydxk/system/solydxk_system.py:552
 msgid ""
 "You have selected to install drivers from the backports repository whenever "
 "they are available.\n"
@@ -297,15 +300,31 @@ msgstr ""
 "système.\n"
 "Etes-vous sûr de vouloir continuer?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:595
+#: ../usr/lib/solydxk/system/solydxk_system.py:588
+msgid "Remove kernel"
+msgstr "Désinstaller le noyau"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:589
+msgid ""
+"You cannot remove a booted kernel.\n"
+"Please, boot another kernel and try again."
+msgstr ""
+"Impossible de supprimer le noyau utilisé actuellement.\n"
+"Merci de réessayer après redémarrage avec un autre noyau."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:615
+msgid "Install"
+msgstr "Installation "
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:615
 msgid "Device"
 msgstr "Périphérique"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:671
+#: ../usr/lib/solydxk/system/solydxk_system.py:691
 msgid "Encrypted partition"
 msgstr "Partition chiffrée"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:672
+#: ../usr/lib/solydxk/system/solydxk_system.py:692
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -318,7 +337,7 @@ msgstr ""
 "\n"
 "Voulez-vous continuer?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:692
+#: ../usr/lib/solydxk/system/solydxk_system.py:712
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
@@ -326,7 +345,7 @@ msgstr ""
 "La partition n'est pas chiffrée.\n"
 "Veuillez choisir une autre partition à déchiffrer."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:745
+#: ../usr/lib/solydxk/system/solydxk_system.py:765
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
@@ -335,23 +354,23 @@ msgstr ""
 "%s n'est pas chiffrée.\n"
 "Veuillez choisir une partition chiffrée."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "File system"
 msgstr "Système de fichiers"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Total size"
 msgstr "Taille totale"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Free size"
 msgstr "Espace libre"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:883
+#: ../usr/lib/solydxk/system/solydxk_system.py:903
 msgid "Backup"
 msgstr "Sauvegarde"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:918
+#: ../usr/lib/solydxk/system/solydxk_system.py:938
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
@@ -360,8 +379,8 @@ msgstr ""
 "Vous avez besoin d'une partition de sauvegarde avec au moins %s de libre.\n"
 "Montez un disque de sauvegarde et cliquer sur le bouton rafraîchir."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1421
-#: ../usr/lib/solydxk/system/solydxk_system.py:1506
+#: ../usr/lib/solydxk/system/solydxk_system.py:1441
+#: ../usr/lib/solydxk/system/solydxk_system.py:1526
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -369,45 +388,45 @@ msgstr ""
 "Impossible de mettre à jour le cache apt.\n"
 "Veuillez mettre à jour le cache manuellement avec: apt-get update"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1425
+#: ../usr/lib/solydxk/system/solydxk_system.py:1445
 msgid "Nothing to do."
 msgstr "Rien à effectué."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1513
+#: ../usr/lib/solydxk/system/solydxk_system.py:1533
 msgid "There are no repositories to save."
 msgstr "Il n'y a pas de dépôts à sauvegarder."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "Current"
 msgstr "Courant"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "Country"
 msgstr "Pays"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "Repository"
 msgstr "Dépôt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "Speed"
 msgstr "Vitesse"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1721
+#: ../usr/lib/solydxk/system/solydxk_system.py:1741
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Vous avez besoin de redémarrer votre système pour que les nouveaux "
 "paramètres prennent effet."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1733
+#: ../usr/lib/solydxk/system/solydxk_system.py:1753
 msgid "Encryption done"
 msgstr "Chiffrage fait"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1734
+#: ../usr/lib/solydxk/system/solydxk_system.py:1754
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -416,11 +435,11 @@ msgstr ""
 "Chiffrage fini.\n"
 "Voulez-vous redémarrer votre ordinateur?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1737
+#: ../usr/lib/solydxk/system/solydxk_system.py:1757
 msgid "Decryption done"
 msgstr "Déchiffrage fait"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1738
+#: ../usr/lib/solydxk/system/solydxk_system.py:1758
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -429,16 +448,16 @@ msgstr ""
 "Déchiffrage fini.\n"
 "Voulez-vous redémarrer votre ordinateur?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1750
+#: ../usr/lib/solydxk/system/solydxk_system.py:1770
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Phrase secrète changée pour {0}."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1800
+#: ../usr/lib/solydxk/system/solydxk_system.py:1820
 msgid "Partition passphrase"
 msgstr "Phrase secrète de la partition"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1801
+#: ../usr/lib/solydxk/system/solydxk_system.py:1821
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -769,6 +788,13 @@ msgid "SolydXK System Settings: Device Driver Help"
 msgstr "Aide chiffrage SolydXK System Settings"
 
 #: en/helpdd.html+html.body.div.p:11
+#, fuzzy
+#| msgid ""
+#| "The Device Driver Manager is a tool to help users installing third-party "
+#| "hardware drivers. Currently Nvidia, ATI and Broadcom drivers can be "
+#| "installed and allows to install the PAE kernel for multi-core 32-bit "
+#| "systems. The Device Driver Manager will only list those devices that are "
+#| "supported. It will not list any other devices then mentioned above."
 msgid ""
 "The Device Driver is a tool to help users installing third-party hardware "
 "drivers. Currently Nvidia, AMD/ATI and Broadcom drivers can be installed and "
@@ -776,13 +802,26 @@ msgid ""
 "Driver will only list those devices that are supported. It will not list any "
 "other devices then mentioned above."
 msgstr ""
+"Le gestionnaire de pilotes de périphériques est un outil destiné à aider les "
+"utilisateurs à installer des pilotes propriétaires.\n"
+"Actuellement les pilotes Nvidia, ATI et Broadcom peuvent être installés, de "
+"même que le noyau PAE pour les systèmes 32-bit multi-coeur. Le gestionnaire "
+"listera uniquement  les périphériques supportés."
 
 #: en/helpdd.html+html.body.div.p:14
+#, fuzzy
+#| msgid ""
+#| "The Device Driver Manager can only install drivers which are available in "
+#| "the repositories. Make sure you have an internet connection if you want "
+#| "to install the drivers."
 msgid ""
 "The Device Driver can only install drivers which are available in the "
 "repositories. Make sure you have an internet connection if you want to "
 "install the drivers."
 msgstr ""
+"Le gestionnaire de pilotes de périphériques ne peut installer que les "
+"pilotes présents dans les dépôts. Assurez-vous d'avoir une connection "
+"internet fonctionnelle si vous voulez installer ces pilotes."
 
 #: en/helpdd.html+html.body.div.h2:16
 msgid "Commands"
@@ -882,12 +921,160 @@ msgid "Logging"
 msgstr "Connexion"
 
 #: en/helpdd.html+html.body.div.h3:37
+#, fuzzy
+#| msgid "File: /var/log/ddm.log"
 msgid "File: /var/log/solydxk-system.log"
-msgstr ""
+msgstr "Fichier: /var/log/ddm.log"
 
 #: en/helpdd.html+html.body.div.p:38
+#, fuzzy
+#| msgid ""
+#| "Please, attach your log file when you post an issue on our forum: <a href="
+#| "\"http://forums.solydxk.com\" target=\"_blank\">http://forums.solydxk."
+#| "com</a>"
 msgid ""
 "Please, attach your log file when you post an issue on our forum: <a href="
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
 "a>"
 msgstr ""
+"Merci de joindre un fichier de log lorsque vous postez une demande sur notre "
+"forum: <a href=\"http://forums.solydxk.com\" target=\"_blank\">http://forums."
+"solydxk.com</a>"
+
+#~ msgid "Device Driver Manager"
+#~ msgstr "Device Driver Manager"
+
+#~ msgid "Help"
+#~ msgstr "Aide"
+
+#~ msgid "Log"
+#~ msgstr "Journal"
+
+#~ msgid "Quit"
+#~ msgstr "Quitter"
+
+#~ msgid "Hardware scan"
+#~ msgstr "Analyse du matériel"
+
+#~ msgid "There are no available drivers for your hardware:"
+#~ msgstr "Il n'y a pas de pilote disponible pour votre matériel:"
+
+#~ msgid "DDM did not find any supported hardware."
+#~ msgstr "DDM n'a trouvé aucun matériel supporté."
+
+#~ msgid "ATI FirePro/Gl card found"
+#~ msgstr "Carte ATIPro/GI trouvée"
+
+#~ msgid ""
+#~ "Installing the proprietary driver for an ATI FirePro/Gl card may render "
+#~ "your system unbootable.\n"
+#~ "\n"
+#~ "Proceed at your own risk."
+#~ msgstr ""
+#~ "Installer le pilote propriétaire d'une carte ATI FirePro/Gl peut empêcher "
+#~ "votre système de démarrer.\n"
+#~ "\n"
+#~ "Faites-le à vos risques et périls."
+
+#~ msgid "PAE capable system"
+#~ msgstr "Système compatible PAE"
+
+#~ msgid "Run as root."
+#~ msgstr "Exécuter en tant qu'administrateur."
+
+#~ msgid "Wrong arguments passed to ddm."
+#~ msgstr "Des paramètres erronés ont été fournis à DDM."
+
+#~ msgid "There are no driver available."
+#~ msgstr "Il n'y a aucun pilote disponible."
+
+#~ msgid "The driver cannot be found in repository."
+#~ msgstr "Le pilote ne peut être trouvé dans les dépôts."
+
+#~ msgid ""
+#~ "Download error.\n"
+#~ "Check your internet connection."
+#~ msgstr ""
+#~ "Erreur de téléchargement.\n"
+#~ "Vérifiez votre connexion internet."
+
+#~ msgid "DDM cannot purge the driver."
+#~ msgstr "DDM n'a pas réussi à désinstaller le pilote."
+
+#~ msgid "This card is not supported."
+#~ msgstr "Cette carte n'est pas supportée."
+
+#~ msgid ""
+#~ "Cannot get the Debian version from /etc/debian_version.\n"
+#~ "Please install the base-files package."
+#~ msgstr ""
+#~ "Impossible d'obtenir la version Debian à partir de /etc/debian_version.\n"
+#~ "Installez le paquet de fichiers de base."
+
+#~ msgid "Could not configure Nvidia Bumblebee."
+#~ msgstr "Impossible de configurer Nvidia Bumblebee."
+
+#~ msgid ""
+#~ "There was an error during the installation.\n"
+#~ "Please, run 'sudo apt-get -f install' in a terminal.\n"
+#~ "Visit our forum for support: http://forums.solydxk.com"
+#~ msgstr ""
+#~ "Une erreur s'est produite durant l'installation.\n"
+#~ "Ouvrez un terminal et exécutez 'sudo apt-get -f install'.\n"
+#~ "Visitez notre forum pour toute aide: http://forums.solydxk.com"
+
+#~ msgid "The software has been successfully installed."
+#~ msgstr "Le programme a été installé avec succès."
+
+#~ msgid "You will need to restart your system."
+#~ msgstr "Vous devez redémarrer votre système."
+
+#~ msgid ""
+#~ "Device Driver Manager helps to install proprietary drivers for your "
+#~ "hardware.\n"
+#~ "Only install proprietary drivers if you are sure you really need them.\n"
+#~ "Usually open drivers are enough."
+#~ msgstr ""
+#~ "Le gestionnaire de pilotes de périphériques vous aide à installer des "
+#~ "pilotes propriétaires pour votre matériel.\n"
+#~ "N'installez des pilotes propriétaires que si vous êtes sûrs que vous en "
+#~ "avez besoin.\n"
+#~ "Les pilotes libres sont habituellement suffisants."
+
+#~ msgid ""
+#~ "Device Driver Manager cannot be started in a live environment\n"
+#~ "You can use the --force argument to start DDM in a live environment"
+#~ msgstr ""
+#~ "DDM ne peut fonctionner dans un environnement live\n"
+#~ "\n"
+#~ "Pour forcer le démarrage, utilisez l'argument --force"
+
+#~ msgid ""
+#~ "DDM has failed with the following unexpected error. Please submit a bug "
+#~ "report!"
+#~ msgstr ""
+#~ "DDM a planté avec cette erreur inattendue. Merci de soumettre un rapport "
+#~ "d'erreur!"
+
+#~ msgid "Device Driver Manager Help"
+#~ msgstr "Aide du gestionnaire de pilotes de périphériques"
+
+#~ msgid "# ddm -i ati"
+#~ msgstr "# ddm -i ati"
+
+#~ msgid ""
+#~ "This will install the fglrx drivers for your ATI graphical card. ATI "
+#~ "cards from version HD 5000 and up are supported by the fglrx drivers. "
+#~ "Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p "
+#~ "ati\" to remove the drivers from your system."
+#~ msgstr ""
+#~ "Ceci installera les pilotes fglrx pour votre carte graphique ATI. Les "
+#~ "cartes ATI version HD 5000 et supérieures sont supportées par ces "
+#~ "pilotes. Les version 1000 à 5000 utiliserons les pilotes Radeon. Utilisez "
+#~ "la commande \"ddm -p ati\" pour supprimer les pilotes de votre système."
+
+#~ msgid "# ddm -i fixbumblebee"
+#~ msgstr "# ddm -i fixbumblebee"
+
+#~ msgid "This will try to fix a Bumblebee install."
+#~ msgstr "Cela va tenter de réparer une installation par Bumblebee."

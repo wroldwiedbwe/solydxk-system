@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: device-driver-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-14 10:02+0200\n"
+"POT-Creation-Date: 2017-09-21 16:46+0200\n"
 "PO-Revision-Date: 2017-04-10 23:27+0000\n"
 "Last-Translator: Михаил Ильинский <mail@milinsky.com>\n"
 "Language-Team: Russian (http://www.transifex.com/solydxk/device-driver-"
@@ -214,9 +214,9 @@ msgid "Save Fstab mounts"
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:148
-#: ../usr/lib/solydxk/system/solydxk_system.py:595
-msgid "Install"
-msgstr "Установить"
+#, fuzzy
+msgid "Save drivers"
+msgstr "Сохранить зеркала"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:149
 msgid "Use Backports"
@@ -229,46 +229,46 @@ msgid ""
 "the current open drivers."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:311
+#: ../usr/lib/solydxk/system/solydxk_system.py:312
 msgid "Add"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:311
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:312
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 #, fuzzy
 msgid "Partition"
 msgstr "Описание"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:311
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:312
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Mount point"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:311
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:312
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Label"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:413
+#: ../usr/lib/solydxk/system/solydxk_system.py:416
 msgid "Could not add {} to {}: missing fs type."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:469
+#: ../usr/lib/solydxk/system/solydxk_system.py:472
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:473
+#: ../usr/lib/solydxk/system/solydxk_system.py:476
 msgid "No changes were made to fstab."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:539
+#: ../usr/lib/solydxk/system/solydxk_system.py:544
 #: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr "Нет подключения к интернету"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:540
+#: ../usr/lib/solydxk/system/solydxk_system.py:545
 msgid ""
 "You need an internet connection to install the additional software.\n"
 "Please, connect to the internet and try again."
@@ -277,7 +277,7 @@ msgstr ""
 "обеспечения.\n"
 "Пожалуйста, подключитесь к Интернету и повторите попытку"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:547
+#: ../usr/lib/solydxk/system/solydxk_system.py:552
 msgid ""
 "You have selected to install drivers from the backports repository whenever "
 "they are available.\n"
@@ -296,16 +296,32 @@ msgstr ""
 "\n"
 "Уверены, что хотите продолжить?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:595
+#: ../usr/lib/solydxk/system/solydxk_system.py:588
+msgid "Remove kernel"
+msgstr "Удалить ядра"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:589
+msgid ""
+"You cannot remove a booted kernel.\n"
+"Please, boot another kernel and try again."
+msgstr ""
+"Вы не можете удалить запущенные ядра.\n"
+"Пожалуйста, загрузитесь с другого ядра и попробуйте снова."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:615
+msgid "Install"
+msgstr "Установить"
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:615
 msgid "Device"
 msgstr "Устройство"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:671
+#: ../usr/lib/solydxk/system/solydxk_system.py:691
 #, fuzzy
 msgid "Encrypted partition"
 msgstr "Описание"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:672
+#: ../usr/lib/solydxk/system/solydxk_system.py:692
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -314,117 +330,117 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:692
+#: ../usr/lib/solydxk/system/solydxk_system.py:712
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:745
+#: ../usr/lib/solydxk/system/solydxk_system.py:765
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
 "Please choose an encrypted partition."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 #, fuzzy
 msgid "File system"
 msgstr "Система с поддержкой PAE"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Total size"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:837
+#: ../usr/lib/solydxk/system/solydxk_system.py:857
 msgid "Free size"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:883
+#: ../usr/lib/solydxk/system/solydxk_system.py:903
 msgid "Backup"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:918
+#: ../usr/lib/solydxk/system/solydxk_system.py:938
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
 "Mount a backup drive and hit the refresh button."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1421
-#: ../usr/lib/solydxk/system/solydxk_system.py:1506
+#: ../usr/lib/solydxk/system/solydxk_system.py:1441
+#: ../usr/lib/solydxk/system/solydxk_system.py:1526
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1425
+#: ../usr/lib/solydxk/system/solydxk_system.py:1445
 msgid "Nothing to do."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1513
+#: ../usr/lib/solydxk/system/solydxk_system.py:1533
 msgid "There are no repositories to save."
 msgstr "Нет репозиториев для сохранения"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "Current"
 msgstr "Текущий"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "Country"
 msgstr "Страна"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "Repository"
 msgstr "Репозиторий"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "URL"
 msgstr "Адрес"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1517
+#: ../usr/lib/solydxk/system/solydxk_system.py:1537
 msgid "Speed"
 msgstr "Скорость"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1721
+#: ../usr/lib/solydxk/system/solydxk_system.py:1741
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1733
+#: ../usr/lib/solydxk/system/solydxk_system.py:1753
 #, fuzzy
 msgid "Encryption done"
 msgstr "Описание"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1734
+#: ../usr/lib/solydxk/system/solydxk_system.py:1754
 msgid ""
 "Encryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1737
+#: ../usr/lib/solydxk/system/solydxk_system.py:1757
 #, fuzzy
 msgid "Decryption done"
 msgstr "Описание"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1738
+#: ../usr/lib/solydxk/system/solydxk_system.py:1758
 msgid ""
 "Decryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1750
+#: ../usr/lib/solydxk/system/solydxk_system.py:1770
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1800
+#: ../usr/lib/solydxk/system/solydxk_system.py:1820
 #, fuzzy
 msgid "Partition passphrase"
 msgstr "Описание"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1801
+#: ../usr/lib/solydxk/system/solydxk_system.py:1821
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -836,16 +852,6 @@ msgstr ""
 
 #~ msgid "Quit"
 #~ msgstr "Выйти"
-
-#~ msgid "Remove kernel"
-#~ msgstr "Удалить ядра"
-
-#~ msgid ""
-#~ "You cannot remove a booted kernel.\n"
-#~ "Please, boot another kernel and try again."
-#~ msgstr ""
-#~ "Вы не можете удалить запущенные ядра.\n"
-#~ "Пожалуйста, загрузитесь с другого ядра и попробуйте снова."
 
 #~ msgid "Hardware scan"
 #~ msgstr "Сканирование оборудования"

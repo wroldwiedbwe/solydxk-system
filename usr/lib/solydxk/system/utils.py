@@ -241,19 +241,18 @@ def has_string_in_file(searchString, filePath):
 # Check if a package is installed
 def is_package_installed(packageName, alsoCheckVersion=False):
     isInstalled = False
-    expr = "^i.+\s(%s[a-z0-9\-_\.]*)" % packageName
+    expr = '^i\s([a-z0-9\-_\.]+)\s+(.*)\s+(.*)'
     if not '*' in packageName:
         packageName = '^{}$'.format(packageName)
     try:
-        cmd = 'aptitude search -w 150 %s | grep ^i' % packageName
+        # https://aptitude.alioth.debian.org/doc/en/ch02s05s01.html
+        cmd = "aptitude search -F '%c %p %v %V' --disable-columns {} | grep ^i".format(packageName)
         pckList = getoutput(cmd)
         for line in pckList:
             matchObj = re.search(expr, line)
             if matchObj:
                 if alsoCheckVersion:
-                    cache = apt.Cache()
-                    pkg = cache[matchObj.group(1)]
-                    if pkg.installed.version == pkg.candidate.version:
+                    if matchObj.group(2) == matchObj.group(3):
                         isInstalled = True
                         break
                 else:

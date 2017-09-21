@@ -145,7 +145,7 @@ class SolydXKSystemSettings(object):
         go("lblFstabMountsInfo").set_label(_("Mount additional partitions on boot with Fstab.\n"
                                             "When added to Fstab, the partition will be mounted in /media."))
         self.btnSaveFstabMounts.set_label(_("Save Fstab mounts"))
-        self.btnSaveDeviceDriver.set_label(_("Install"))
+        self.btnSaveDeviceDriver.set_label(_("Save drivers"))
         self.chkBackportsDeviceDriver.set_label(_("Use Backports"))
         go("lblDeviceDriverInfo").set_label(_("Install drivers for supported hardware.\n"
                                           "Note: do not install these drivers if your hardware functions correctly with the current open drivers."))
@@ -163,6 +163,7 @@ class SolydXKSystemSettings(object):
         self.cmbTimezoneContinentHandler = ComboBoxHandler(self.cmbTimezoneContinent)
         self.cmbTimezoneHandler = ComboBoxHandler(self.cmbTimezone)
         self.tvDeviceDriverHandler = TreeViewHandler(self.tvDeviceDriver)
+        self.tvDeviceDriverHandler.connect('checkbox-toggled', self.on_tvDeviceDriver_toggled)
 
         # Initialize
         self.queue = Queue(-1)
@@ -331,6 +332,8 @@ class SolydXKSystemSettings(object):
         fstab_path = '/etc/fstab'
         crypttab_path = '/etc/crypttab'
         crypttab_keyfile_path = '/.lukskey'
+        
+        self.set_buttons_state(False)
 
         fstab_cont = []
         with open(fstab_path, 'r') as f:
@@ -472,6 +475,8 @@ class SolydXKSystemSettings(object):
         else:
             msg = _("No changes were made to fstab.")
             MessageDialog(self.btnSaveFstabMounts.get_label(), msg)
+            
+        self.set_buttons_state(True)
     
     # ===============================================
     # Device Driver functions
@@ -571,6 +576,21 @@ class SolydXKSystemSettings(object):
                 self.queue.join()
                 GObject.timeout_add(250, self.check_thread, name)
 
+    # This method is fired by the TreeView.checkbox-toggled event
+    def on_tvDeviceDriver_toggled(self, obj, path, colNr, toggleValue):
+        path = int(path)
+        model = self.tvDeviceDriver.get_model()
+        itr = model.get_iter(path)
+        pae_selected = 'pae' in model[itr][2].lower()
+        pae_booted = 'pae' in getoutput('uname -r')[0]
+
+        if pae_selected and pae_booted and not toggleValue:
+            title = _("Remove kernel")
+            msg = _("You cannot remove a booted kernel.\nPlease, boot another kernel and try again.")
+            self.log.write(msg, 'on_tvDeviceDriver_toggled')
+            WarningDialog(title, msg)
+            model[itr][0] = True
+    
     def fill_hw(self, driver_name, hw_lst):
         # Expected lspci output plus drivers:
         # driver name [manufacturer id:device id] [driver-1 driver-2 etc]
