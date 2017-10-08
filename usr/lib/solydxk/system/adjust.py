@@ -20,13 +20,16 @@ log.write('=====================================', 'adjust')
 force = get_apt_force()
 #force += " --assume-yes -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold"
 
-
-# Fix some programs [package, what to fix, options, exec from version (0 = all)]
+# Fix some programs [package, what to fix, options, exec from debian version (0 = all)]
 fix_progs = [['apache2', '/var/log/apache2', 'root:adm', 0],
              ['mysql-client', '/var/log/mysql', 'mysql:adm', 0],
              ['clamav', '/var/log/clamav', 'clamav:clamav', 0],
+             ['samba', '/var/log/samba', 'root:adm', 0],
+             ['exim4-base', '/var/log/exim4', 'Debian-exim:adm', 0],
              ['lightdm', '/var/lib/lightdm/data', 'lightdm:lightdm', 0],
+             ['usbguard', '/etc/usbguard/rules.conf', 'touch', 0],
              ['v86d', 'v86d', 'purge', 0],
+             ['lightdm', 'accountsservice', 'install', 0],
              ['usb-creator', 'solydxk-usb-creator', 'purge', 0],
              ['solydk-system-adjustments-8', 'solydk-system-adjustments', 'purge', 0],
              ['solydx-system-adjustments-8', 'solydx-system-adjustments', 'purge', 0],
@@ -47,6 +50,11 @@ for prog in fix_progs:
             if prog[2] == 'purge' or prog[2] == 'install':
                 if get_apt_cache_locked_program() == '':
                     os.system("apt-get %s %s %s" % (prog[2], force, prog[1]))
+            elif prog[2] == 'touch' and not exists(prog[1]):
+                dir_name = dirname(prog[1])
+                if not isdir(dir_name):
+                    os.system("mkdir -p %s" % dir_name)
+                os.system("touch %s" % prog[1])
             elif ':' in prog[2] and not isdir(prog[1]):
                 os.system("mkdir -p %s" % prog[1])
                 os.system("chown %s %s" % (prog[2], prog[1]))
@@ -189,15 +197,6 @@ try:
         with open(pulse, 'a') as f:
             f.write("\n# Fix pulse\nflat-volumes = no")
         
-    # Cleanup old default grub settings
-    default_grub = '/etc/default/grub'
-    if has_string_in_file('LANG=',  default_grub):
-        os.system("sed -i '/^# Set locale/d' {0} && " \
-                   "sed -i '/^LANG=/d' {0} && " \
-                   "sed -i '/^LANGUAGE=/d' {0} && " \
-                   "sed -i '/^GRUB_LANG=/d' {0} && " \
-                   "update-grub".format(default_grub))
-
     # Fix device notifiers for Plasma 5
     actions_k4 = '/usr/share/kde4/apps/solid/actions/'
     actions_p5 = '/usr/share/solid/actions/'
