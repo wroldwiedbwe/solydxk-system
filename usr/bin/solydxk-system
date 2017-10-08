@@ -29,6 +29,9 @@ if [ $UID -ne 0 ]; then
   if [ -e "/usr/bin/kdesudo" ]; then
     ICON=$(get-app-theme-icon "solydxk")
     kdesudo -d -i "$ICON" --comment "$MSG" -c "$CMD"
+  elif [ -e "/usr/bin/kdesu" ]; then
+    ICON=$(get-app-theme-icon "solydxk")
+    kdesu -i "$ICON" -c "$CMD"
   else
     gksudo --message "$MSG" "$CMD"
   fi

@@ -48,7 +48,7 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , dpkg
   , gawk
   , grep
-  , kdesudo | gksu
+  , kdesudo | kde-cli-tools | gksu
   , base-files
   , bash
   , apt
