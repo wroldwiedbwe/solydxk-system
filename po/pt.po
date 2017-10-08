@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-21 16:46+0200\n"
+"POT-Creation-Date: 2017-10-08 08:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
+"Last-Translator: Luis Filipe Teixeira <lufilte@gmail.com>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/solydxk/teams/54212/"
 "pt/)\n"
 "Language: pt\n"
@@ -212,14 +212,16 @@ msgid ""
 "Mount additional partitions on boot with Fstab.\n"
 "When added to Fstab, the partition will be mounted in /media."
 msgstr ""
+"Montar partições adcionais no arranque com Fstab.\n"
+"Quando adicionado ao Fstab, a partição será montada em /media."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:147
 msgid "Save Fstab mounts"
-msgstr ""
+msgstr "Salvar montagens do Fstab"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:148
 msgid "Save drivers"
-msgstr ""
+msgstr "Salvar drivers"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:149
 msgid "Use Backports"
@@ -256,7 +258,7 @@ msgstr "Etiqueta"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:416
 msgid "Could not add {} to {}: missing fs type."
-msgstr ""
+msgstr "Não foi possível adicionar {} para {}: tipo de fs em falta."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:472
 msgid ""
@@ -280,6 +282,8 @@ msgid ""
 "You need an internet connection to install the additional software.\n"
 "Please, connect to the internet and try again."
 msgstr ""
+"Você precisa de uma ligação à Internet para instalar o software adicional.\n"
+"Por favor, conecte-se à Internet e tente novamente."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:552
 msgid ""
@@ -295,17 +299,19 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:588
 msgid "Remove kernel"
-msgstr ""
+msgstr "Remover o kernel"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:589
 msgid ""
 "You cannot remove a booted kernel.\n"
 "Please, boot another kernel and try again."
 msgstr ""
+"Você não pode remover um kernel inicializado.\n"
+"Por favor, inicie com outro kernel e tente de novo."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:615
 msgid "Install"
-msgstr ""
+msgstr "Instalar"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:615
 msgid "Device"
@@ -794,13 +800,15 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h2:16
 msgid "Commands"
-msgstr ""
+msgstr "Comandos"
 
 #: en/helpdd.html+html.body.div.p:17
 msgid ""
 "If you prefer to install the drivers by terminal, you can use the following "
 "commands:"
 msgstr ""
+"Se você prefere instalar os drivers pelo terminal, pode usar os seguintes "
+"comandos:"
 
 #: en/helpdd.html+html.body.div.h3:21
 msgid "# ddm -i amd"
@@ -826,16 +834,16 @@ msgid ""
 msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:27
-#, fuzzy
-#| msgid "# ddm -i amd"
 msgid "# ddm -i open"
-msgstr "# ddm -i amd"
+msgstr "# ddm -i open"
 
 #: en/helpdd.html+html.body.div.p:28
 msgid ""
 "You can use this command if you want to revert back to the open Nouveau "
 "drivers. It will remove any proprietary drivers from your system."
 msgstr ""
+"Você pode usar este comando se quiser reverter para os drivers do Nouveau "
+"aberto. Ele removerá todos os drivers proprietários do seu sistema."
 
 #: en/helpdd.html+html.body.div.h3:30
 msgid "# ddm -i broadcom"
@@ -848,10 +856,8 @@ msgid ""
 msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:33
-#, fuzzy
-#| msgid "# ddm -i amd"
 msgid "# ddm -i pae"
-msgstr "# ddm -i amd"
+msgstr "# ddm -i pae"
 
 #: en/helpdd.html+html.body.div.p:34
 msgid ""

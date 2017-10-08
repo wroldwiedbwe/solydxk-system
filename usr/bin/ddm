@@ -56,10 +56,10 @@ function launch_gui() {
 
   optimize='OO'; case "$*" in *--debug*) unset optimize; esac
   CMD="$PYTHON -tt${optimize} '/usr/lib/solydxk/system/main.py' $ARGS"
-  if [ -e '/usr/bin/xksudo' ]; then
-    xksudo -i 'ddm' -c "$CMD"
-  elif [ -e '/usr/bin/kdesudo' ]; then
+  if [ -e '/usr/bin/kdesudo' ]; then
     kdesudo -d -c "$CMD"
+  elif [ -e '/usr/bin/kdesu' ]; then
+    kdesu -c "$CMD"
   else
     gksudo "$CMD"
   fi
