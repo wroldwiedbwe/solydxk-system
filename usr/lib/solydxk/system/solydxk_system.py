@@ -21,7 +21,7 @@ from utils import getoutput, ExecuteThreadedCommands, \
                   get_backports, get_debian_name, comment_line, \
                   in_virtualbox, get_apt_force, is_running_live, \
                   get_device_from_uuid, get_label, is_package_installed, \
-                  get_logged_user, get_uuid
+                  get_logged_user, get_uuid, compare_package_versions
 from dialogs import MessageDialog, QuestionDialog, InputDialog, \
                     WarningDialog
 from mirror import MirrorGetSpeed, Mirror, get_mirror_data, get_local_repos
@@ -138,7 +138,7 @@ class SolydXKSystemSettings(object):
         self.mount_error = _("Could not mount {0}\nPlease mount {0} and refresh when done.")
         go("lblCleanupInfo").set_label(_("Remove unneeded packages\n"
                                           "Pre-selected packages are safe to remove (autoremove).\n"
-                                          "Other packages are orphaned packages. Remove with caution!"))
+                                          "Other packages: remove with caution!"))
         go("lblCleanupText").set_label(_("Unneeded packages"))
         go("lblFstabMounts").set_label(_("Fstab mounts"))
         go("lblCurrentFstabMounts").set_label(_("Fstab mounts"))
@@ -1612,6 +1612,8 @@ class SolydXKSystemSettings(object):
             pck_data.append([True, pck])
         for pck in self.get_deborphan_packages():
             pck_data.append([False, pck])
+        for pck in self.get_old_kernel_packages():
+            pck_data.append([False, pck])
         # Fill treeview
         col_type_lst = ['bool', 'str']
         self.tvCleanupHandler.fillTreeview(pck_data, col_type_lst, 0, 400, False)
@@ -1637,6 +1639,32 @@ class SolydXKSystemSettings(object):
         if len(orphans) == 1 and orphans[0] == '':
             orphans = []
         return orphans
+        
+    def get_old_kernel_packages(self):
+        kernel_packages = []
+        # Check booted kernel version
+        cur_version = getoutput("ls -al / | grep -e '\svmlinuz\s' | cut -d'/' -f2 | cut -d'-' -f2,3")[0]
+        # Get kernel packages not with cur_version
+        packages = getoutput("dpkg-query -f '${binary:Package}\n' -W | grep -E 'linux-image-[0-9]|linux-headers-[0-9]' | grep -v '%s' | egrep -v '[a-z]-486|[a-z]-686|[a-z]-586'" % cur_version)
+        # Check version number of found kernel packages
+        for pck in packages:
+            regexp = '[0-9][0-9\.\-]+[0-9]'
+            matchObj = re.search(regexp, pck)
+            if matchObj:
+                if compare_package_versions(matchObj.group(0), cur_version) == 'smaller':
+                    # Add to the kernel_packages list
+                    kernel_packages.append(pck)
+                            
+        if kernel_packages:
+            # Add kbuild packages
+            del_string = '.0'
+            kbuild_version = cur_version[:cur_version.index('-')]
+            while kbuild_version.endswith(del_string):
+                kbuild_version = kbuild_version[:-len(del_string)]
+            kbuild_packages = getoutput("dpkg-query -f '${binary:Package}\n' -W | grep linux-kbuild | grep -v '%s'" % kbuild_version)
+            if kbuild_packages[0]:
+                kernel_packages.append(kbuild_packages)
+        return kernel_packages
         
     def remove_unneeded_packages(self):
         force = get_apt_force()

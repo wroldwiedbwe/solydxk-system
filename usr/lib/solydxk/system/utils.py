@@ -10,6 +10,7 @@ import apt
 import filecmp
 from os import walk, listdir
 from os.path import exists, isdir, expanduser,  splitext,  dirname
+from distutils.version import LooseVersion, StrictVersion
 
     
 def shell_exec_popen(command, kwargs={}):
@@ -117,7 +118,29 @@ def get_package_version(package, candidate=False):
     if lst:
         version = lst[-1]
     return version
-
+    
+# Compare two package version strings
+def compare_package_versions(package_version_1, package_version_2, compare_loose=True):
+    if compare_loose:
+        try:
+            if LooseVersion(package_version_1) < LooseVersion(package_version_2):
+                return 'smaller'
+            if LooseVersion(package_version_1) > LooseVersion(package_version_2):
+                return 'larger'
+            else:
+                return 'equal'
+        except:
+            return ''
+    else:
+        try:
+            if StrictVersion(package_version_1) < StrictVersion(package_version_2):
+                return 'smaller'
+            if StrictVersion(package_version_1) > StrictVersion(package_version_2):
+                return 'larger'
+            else:
+                return 'equal'
+        except:
+            return ''
 
 # Get system version information
 def get_system_version_info():

@@ -1,3 +1,9 @@
+solydxk-system (3.0.3b4) solydxk; urgency=low
+
+  * Add old kernel packages to cleanup list
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 09 Oct 2017 11:12:06 +0200
+
 solydxk-system (3.0.3b3) solydxk; urgency=low
 
   * Check if /var/log/samba exists
