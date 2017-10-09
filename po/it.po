@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-08 08:30+0200\n"
+"POT-Creation-Date: 2017-10-09 12:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Davide Favaro <belzebu87@gmail.com>, 2017\n"
 "Language-Team: Italian (https://www.transifex.com/solydxk/teams/54212/it/)\n"
@@ -190,12 +190,8 @@ msgstr ""
 msgid ""
 "Remove unneeded packages\n"
 "Pre-selected packages are safe to remove (autoremove).\n"
-"Other packages are orphaned packages. Remove with caution!"
+"Other packages: remove with caution!"
 msgstr ""
-"Rimuove pacchetti non più necessari.\n"
-"I pacchetti pre-selezionati sono rimuovibili senza ulteriori preoccupazioni "
-"(autoremove).\n"
-"I pacchetti restanti sono orfani. Rimuoverli con attenzione!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:142
 msgid "Unneeded packages"
@@ -419,16 +415,16 @@ msgstr "URL"
 msgid "Speed"
 msgstr "Velocit"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1741
+#: ../usr/lib/solydxk/system/solydxk_system.py:1769
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Si prega di riavviare il sistema per rendere effettive le nuove impostazioni."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1753
+#: ../usr/lib/solydxk/system/solydxk_system.py:1781
 msgid "Encryption done"
 msgstr "Cifratura completata"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1754
+#: ../usr/lib/solydxk/system/solydxk_system.py:1782
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -438,11 +434,11 @@ msgstr ""
 "\n"
 "Riavviare il computer?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1757
+#: ../usr/lib/solydxk/system/solydxk_system.py:1785
 msgid "Decryption done"
 msgstr "Decifratura completata"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1758
+#: ../usr/lib/solydxk/system/solydxk_system.py:1786
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -452,16 +448,16 @@ msgstr ""
 "\n"
 "Riavviare il computer?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1770
+#: ../usr/lib/solydxk/system/solydxk_system.py:1798
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Passphrase cambiata per {0}"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1820
+#: ../usr/lib/solydxk/system/solydxk_system.py:1848
 msgid "Partition passphrase"
 msgstr "Passphrase della partizione"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1821
+#: ../usr/lib/solydxk/system/solydxk_system.py:1849
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"

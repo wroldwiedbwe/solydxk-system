@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: updatemanager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-08 08:30+0200\n"
+"POT-Creation-Date: 2017-10-09 12:36+0200\n"
 "PO-Revision-Date: 2016-06-02 07:15+0000\n"
 "Last-Translator: Arjen Balfoort <schoelje@solydxk.com>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/solydxk/"
@@ -181,7 +181,7 @@ msgstr ""
 msgid ""
 "Remove unneeded packages\n"
 "Pre-selected packages are safe to remove (autoremove).\n"
-"Other packages are orphaned packages. Remove with caution!"
+"Other packages: remove with caution!"
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:142
@@ -380,42 +380,42 @@ msgstr "URL"
 msgid "Speed"
 msgstr "Hastighet"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1741
+#: ../usr/lib/solydxk/system/solydxk_system.py:1769
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1753
+#: ../usr/lib/solydxk/system/solydxk_system.py:1781
 msgid "Encryption done"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1754
+#: ../usr/lib/solydxk/system/solydxk_system.py:1782
 msgid ""
 "Encryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1757
+#: ../usr/lib/solydxk/system/solydxk_system.py:1785
 msgid "Decryption done"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1758
+#: ../usr/lib/solydxk/system/solydxk_system.py:1786
 msgid ""
 "Decryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1770
+#: ../usr/lib/solydxk/system/solydxk_system.py:1798
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1820
+#: ../usr/lib/solydxk/system/solydxk_system.py:1848
 msgid "Partition passphrase"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1821
+#: ../usr/lib/solydxk/system/solydxk_system.py:1849
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
