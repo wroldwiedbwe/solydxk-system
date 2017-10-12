@@ -21,12 +21,15 @@ from utils import getoutput, ExecuteThreadedCommands, \
                   get_backports, get_debian_name, comment_line, \
                   in_virtualbox, get_apt_force, is_running_live, \
                   get_device_from_uuid, get_label, is_package_installed, \
-                  get_logged_user, get_uuid, compare_package_versions
+                  get_logged_user, get_uuid, compare_package_versions, \
+                  get_current_resolution, get_resolutions
 from dialogs import MessageDialog, QuestionDialog, InputDialog, \
                     WarningDialog
 from mirror import MirrorGetSpeed, Mirror, get_mirror_data, get_local_repos
 from encryption import is_encrypted, create_keyfile, write_crypttab
 from endecrypt_partitions import EnDecryptPartitions, ChangePassphrase
+from plymouth import Plymouth, PlymouthSave
+from image import ImageHandler
 
 # i18n: http://docs.python.org/3/library/gettext.html
 import gettext
@@ -96,6 +99,12 @@ class SolydXKSystemSettings(object):
         self.btnHelpDeviceDriver = go("btnHelpDeviceDriver")
         self.btnLogDeviceDriver = go("btnLogDeviceDriver")
         self.chkBackportsDeviceDriver = go("chkBackportsDeviceDriver")
+        self.chkEnableSplash = go("chkEnableSplash")
+        self.swSplash = go("swSplash")
+        self.tvSplash = go("tvSplash")
+        self.btnSaveSplash = go("btnSaveSplash")
+        self.imgSplashPreview = go("imgSplashPreview")
+        self.cmbSplashResolution = go("cmbSplashResolution")
 
         # GUI translations
         self.window.set_title(_("SolydXK System Settings"))
@@ -149,6 +158,12 @@ class SolydXKSystemSettings(object):
         self.chkBackportsDeviceDriver.set_label(_("Use Backports"))
         go("lblDeviceDriverInfo").set_label(_("Install drivers for supported hardware.\n"
                                           "Note: do not install these drivers if your hardware functions correctly with the current open drivers."))
+        go("lblSplash").set_label(_("Plymouth splash"))
+        go("lblSplashInfo").set_label(_("Select a Plymouth boot splash theme."))
+        go("lblSplashText").set_label(_("Plymouth themes"))
+        self.chkEnableSplash.set_label(_("Enable Plymouth splash"))
+        self.btnSaveSplash.set_label(_("Save"))
+        go("lblSplashResolution").set_label(_("Resolution"))
 
         # Initiate the treeview handlers and connect the custom toggle events
         self.tvMirrorsHandler = TreeViewHandler(self.tvMirrors)
@@ -164,6 +179,9 @@ class SolydXKSystemSettings(object):
         self.cmbTimezoneHandler = ComboBoxHandler(self.cmbTimezone)
         self.tvDeviceDriverHandler = TreeViewHandler(self.tvDeviceDriver)
         self.tvDeviceDriverHandler.connect('checkbox-toggled', self.on_tvDeviceDriver_toggled)
+        self.tvSplashHandler = TreeViewHandler(self.tvSplash)
+        self.tvSplashHandler.connect('checkbox-toggled', self.on_tvSplashHandler_toggled)
+        self.cmbSplashResolutionHandler = ComboBoxHandler(self.cmbSplashResolution)
 
         # Initialize
         self.queue = Queue(-1)
@@ -189,6 +207,9 @@ class SolydXKSystemSettings(object):
         self.boot_partition = None
         self.changed_devices = []
         self.hardware = []
+        self.plymouth = Plymouth(self.log)
+        self.current_theme = self.plymouth.getCurrentTheme()
+        self.installed_themes = self.plymouth.getInstalledThemes()
 
         # Collect data and disable tabs when running live: Device Driver, Fstab mounts, Localization, Hold back packages, Cleanup
         self.activeMirrors = get_mirror_data(excludeMirrors=self.excludeMirrors)
@@ -203,6 +224,7 @@ class SolydXKSystemSettings(object):
             self.nbPref.get_nth_page(3).set_visible(False)
             self.nbPref.get_nth_page(5).set_visible(False)
             self.nbPref.get_nth_page(6).set_visible(False)
+            self.nbPref.get_nth_page(7).set_visible(False)
         else:
             self.backports = get_backports()
             self.locale_info = LocaleInfo()
@@ -216,6 +238,16 @@ class SolydXKSystemSettings(object):
                 self.chkEnableBackports.set_active(True)
             else:
                 self.chkBackportsDeviceDriver.set_sensitive(False)
+            if not is_package_installed('plymouth'):
+                self.nbPref.get_nth_page(7).set_visible(False)
+            else:
+                self.fill_treeview_installed_splash()
+                self.fill_cmb_splash_resolution()
+                if self.current_theme:
+                    self.chkEnableSplash.set_active(True)
+                else:
+                    self.chkEnableSplash.set_active(False)
+                    self.swSplash.set_sensitive(False)
 
         # Disable this for later implementation
         self.btnCreateKeyfile.set_visible(False)
@@ -300,6 +332,15 @@ class SolydXKSystemSettings(object):
         
     def on_btnHelpDeviceDriver_clicked(self, widget):
         shell_exec("open-as-user \"%s\"" % self.helpddFile)
+
+    def on_btnSaveSplash_clicked(self, widget):
+        self.save_splash()
+        
+    def on_chkEnableSplash_toggled(self, widget):
+        self.swSplash.set_sensitive(widget.get_active())
+        
+    def on_tvSplash_selection_changed(self, widget):
+        self.show_splash_preview()
         
     # ===============================================
     # Fstab mount functions
@@ -1643,12 +1684,13 @@ class SolydXKSystemSettings(object):
     def get_old_kernel_packages(self):
         kernel_packages = []
         # Check booted kernel version
-        cur_version = getoutput("ls -al / | grep -e '\svmlinuz\s' | cut -d'/' -f2 | cut -d'-' -f2,3")[0]
+        regexp = '[0-9][0-9\.\-]+[0-9]'
+        cur_version = getoutput("uname -r | egrep -o '%s'" % regexp)[0]
+        #cur_version = getoutput("ls -al / | grep -e '\svmlinuz\s' | egrep -o '%s'" % regexp)[0]
         # Get kernel packages not with cur_version
         packages = getoutput("dpkg-query -f '${binary:Package}\n' -W | grep -E 'linux-image-[0-9]|linux-headers-[0-9]' | grep -v '%s' | egrep -v '[a-z]-486|[a-z]-686|[a-z]-586'" % cur_version)
         # Check version number of found kernel packages
         for pck in packages:
-            regexp = '[0-9][0-9\.\-]+[0-9]'
             matchObj = re.search(regexp, pck)
             if matchObj:
                 if compare_package_versions(matchObj.group(0), cur_version) == 'smaller':
@@ -1686,6 +1728,95 @@ class SolydXKSystemSettings(object):
             t.start()
             self.queue.join()
             GObject.timeout_add(250, self.check_thread, name)
+            
+    # ===============================================
+    # Plymouth splash functions
+    # ===============================================
+
+    def fill_treeview_installed_splash(self):
+        themes = []
+        cursor = 0
+        cnt = 0
+        for theme in self.installed_themes:
+            current = False
+            if self.current_theme == theme:
+                current = True
+                cursor = cnt
+            themes.append([current, theme])
+            cnt += 1
+        
+        col_type_lst = ['bool', 'str']
+        self.tvSplashHandler.fillTreeview(themes, col_type_lst, cursor, 400, False)
+        
+        self.show_splash_preview()
+        
+    def fill_cmb_splash_resolution(self):
+        sel_res = '1024x768'
+        cur_res = self.plymouth.getCurrentResolution()
+        if cur_res is None:
+            cur_res = get_current_resolution()
+        resolutions = get_resolutions(use_vesa=True)
+        for res in resolutions:
+            if int(res.split('x')[0]) >= int(cur_res.split('x')[0]):
+                sel_res = res
+                break
+        self.cmbSplashResolutionHandler.fillComboBox(resolutions, sel_res)
+        
+    def on_tvSplashHandler_toggled(self, obj, path, colNr, toggleValue):
+        path = int(path)
+        model = self.tvSplash.get_model()
+        selectedIter = model.get_iter(path)
+        
+        # Prevent de-selecting current theme
+        if not toggleValue:
+            model[selectedIter][0] = True
+            return
+        
+        # De-select any other theme if needed
+        rowCnt = 0
+        itr = model.get_iter_first()
+        while itr is not None:
+            if rowCnt != path:
+                model[itr][0] = False
+            itr = model.iter_next(itr)
+            rowCnt += 1
+            
+    def show_splash_preview(self):
+        plymouth_theme_name = self.tvSplashHandler.getSelectedValue(1)
+        preview_path = '{}/images/splash-{}.png'.format(self.shareDir, plymouth_theme_name)
+        if not exists(preview_path):
+            preview_path = '{}/images/splash-no-preview.png'.format(self.shareDir)
+        
+        # Resize image
+        img_width = self.imgSplashPreview.get_allocation().width
+        if img_width < 300:
+            img_width = 300
+        else:
+            img_width = img_width - (img_width % 100)
+
+        self.log.write("Plymouth theme preview: {} (width:{})".format(preview_path, img_width), 'show_splash_preview')
+        ih = ImageHandler(preview_path)
+        ih.resizeImage(width=img_width)
+        self.imgSplashPreview.set_from_pixbuf(ih.pixbuf)
+
+            
+    def save_splash(self):
+        selected_theme = None
+        resolution = None
+        if self.chkEnableSplash.get_active():
+            selected_theme = self.tvSplashHandler.getToggledValues()[0]
+            resolution = self.cmbSplashResolutionHandler.getValue()
+            self.log.write("Plymouth theme: {} ({})".format(selected_theme, resolution), 'save_splash', 'info')
+            
+        name = 'splash'
+        self.set_buttons_state(False)
+        # Start saving in a separate thread
+        t = PlymouthSave(selected_theme, resolution, self.queue, self.log)
+        self.threads[name] = t
+        t.daemon = True
+        t.start()
+        self.queue.join()
+        GObject.timeout_add(5, self.check_thread, name)
 
     # ===============================================
     # General functions
@@ -1703,7 +1834,7 @@ class SolydXKSystemSettings(object):
                     if name == 'mirrorspeed':
                         self.update_progress(1 / (ret[3] / ret[2]))
                         self.write_speed(ret[0], ret[1])
-                    elif name == 'localize':
+                    elif name == 'localize' or name == 'splash':
                         self.update_progress(1 / (ret[0] / ret[1]))
                     elif name == 'endecrypt':
                         # Queue returns list: [fraction, error_code, partition_index, partition, message]
@@ -1765,9 +1896,9 @@ class SolydXKSystemSettings(object):
             self.fill_treeview_cleanup()
             self.update_progress(0)
             self.set_buttons_state(True)
-        elif name == 'localize':
+        elif name == 'localize' or name == 'splash':
             msg = _("You need to reboot your system for the new settings to take affect.")
-            MessageDialog(self.btnSaveLocale.get_label(), msg)
+            MessageDialog(_("Reboot"), msg)
             self.update_progress(0)
             self.set_buttons_state(True)
         elif name == 'endecrypt':
@@ -1822,6 +1953,8 @@ class SolydXKSystemSettings(object):
         self.btnCleanup.set_sensitive(enable)
         self.btnSaveFstabMounts.set_sensitive(enable)
         self.btnSaveDeviceDriver.set_sensitive(enable)
+        self.chkEnableSplash.set_sensitive(enable)
+        self.btnSaveSplash.set_sensitive(enable)
 
     def get_language_dir(self):
         # First test if full locale directory exists, e.g. html/pt_BR,

@@ -53,17 +53,20 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , bash
   , apt
   , apt-show-versions
+  , hwinfo
 Conflicts: solydkbo-grub2-theme
   , solydkbe-grub2-theme
   , solydxbe-grub2-theme
   , solydk-grub2-theme
   , xksudo
   , ddm
+  , debian-plymouth-manager
 Replaces: solydkbo-grub2-theme
   , solydkbe-grub2-theme
   , solydxbe-grub2-theme
   , solydk-grub2-theme
   , xksudo
   , ddm
+  , debian-plymouth-manager
 Description: SolidXK System Base Package
  Used by the desktop and other SolydXK tools to gather information and process common system tasks.

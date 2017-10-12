@@ -11,22 +11,22 @@
   <object class="GtkImage" id="imgHelp1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">gtk-help</property>
+    <property name="icon_name">system-help</property>
   </object>
   <object class="GtkImage" id="imgHelp2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">gtk-help</property>
+    <property name="icon_name">system-help</property>
   </object>
-  <object class="GtkImage" id="imgInstall">
+  <object class="GtkImage" id="imgKey1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">document-save</property>
+    <property name="icon_name">dialog-password</property>
   </object>
-  <object class="GtkImage" id="imgKeyfile">
+  <object class="GtkImage" id="imgKey2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">gtk-dialog-authentication</property>
+    <property name="icon_name">dialog-password</property>
   </object>
   <object class="GtkImage" id="imgLocked">
     <property name="visible">True</property>
@@ -34,26 +34,21 @@
     <property name="margin_right">5</property>
     <property name="icon_name">object-locked</property>
   </object>
-  <object class="GtkImage" id="imgLogDeviceDriver">
+  <object class="GtkImage" id="imgLog">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">text-changelog</property>
-  </object>
-  <object class="GtkImage" id="imgPassphrase">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">gtk-dialog-authentication</property>
+    <property name="icon_name">text-x-changelog</property>
   </object>
   <object class="GtkImage" id="imgReceive">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_right">5</property>
-    <property name="icon_name">network-receive</property>
+    <property name="icon_name">preferences-system-network</property>
   </object>
   <object class="GtkImage" id="imgRefresh">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">gtk-refresh</property>
+    <property name="icon_name">view-refresh</property>
   </object>
   <object class="GtkImage" id="imgRemove1">
     <property name="visible">True</property>
@@ -64,15 +59,25 @@
   <object class="GtkImage" id="imgSave1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="margin_right">5</property>
     <property name="icon_name">document-save</property>
   </object>
   <object class="GtkImage" id="imgSave2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="margin_right">5</property>
     <property name="icon_name">document-save</property>
   </object>
   <object class="GtkImage" id="imgSave3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-save</property>
+  </object>
+  <object class="GtkImage" id="imgSave4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-save</property>
+  </object>
+  <object class="GtkImage" id="imgSave5">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">document-save</property>
@@ -199,7 +204,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="image">imgInstall</property>
+                        <property name="image">imgSave1</property>
                         <property name="always_show_image">True</property>
                         <signal name="clicked" handler="on_btnSaveDeviceDriver_clicked" swapped="no"/>
                       </object>
@@ -214,8 +219,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="tooltip_text" translatable="yes">Show the log file.</property>
-                        <property name="image">imgLogDeviceDriver</property>
+                        <property name="image">imgLog</property>
                         <property name="always_show_image">True</property>
                         <signal name="clicked" handler="on_btnLogDeviceDriver_clicked" swapped="no"/>
                       </object>
@@ -344,7 +348,7 @@
                         <property name="has_default">True</property>
                         <property name="receives_default">True</property>
                         <property name="margin_top">5</property>
-                        <property name="image">imgSave2</property>
+                        <property name="image">imgSave3</property>
                         <property name="always_show_image">True</property>
                         <signal name="clicked" handler="on_btnSaveBackports_clicked" swapped="no"/>
                       </object>
@@ -451,7 +455,7 @@
                         <property name="can_default">True</property>
                         <property name="has_default">True</property>
                         <property name="receives_default">True</property>
-                        <property name="image">imgSave1</property>
+                        <property name="image">imgSave2</property>
                         <property name="always_show_image">True</property>
                         <signal name="clicked" handler="on_btnSaveMirrors_clicked" swapped="no"/>
                       </object>
@@ -790,7 +794,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="margin_top">10</property>
-                        <property name="image">imgSave3</property>
+                        <property name="image">imgSave4</property>
                         <property name="always_show_image">True</property>
                         <signal name="clicked" handler="on_btnSaveFstabMounts_clicked" swapped="no"/>
                       </object>
@@ -1017,7 +1021,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="image">imgPassphrase</property>
+                            <property name="image">imgKey1</property>
                             <property name="always_show_image">True</property>
                             <signal name="clicked" handler="on_btnChangePassphrase_clicked" swapped="no"/>
                           </object>
@@ -1040,7 +1044,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="image">imgKeyfile</property>
+                        <property name="image">imgKey2</property>
                         <property name="always_show_image">True</property>
                         <signal name="clicked" handler="on_btnCreateKeyfile_clicked" swapped="no"/>
                       </object>
@@ -1478,6 +1482,222 @@
               </object>
               <packing>
                 <property name="position">6</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="boxSplash">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkBox" id="box14">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImage" id="imgWarning8">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_top">5</property>
+                        <property name="margin_bottom">5</property>
+                        <property name="icon_name">dialog-warning</property>
+                        <property name="icon_size">3</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="lblSplashInfo">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="padding">5</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="chkEnableSplash">
+                    <property name="label" translatable="yes">Enable Plymouth splash</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_chkEnableSplash_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lblSplashText">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_top">3</property>
+                    <property name="margin_bottom">3</property>
+                    <property name="label" translatable="yes">Plymouth themes</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="vexpand">True</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkScrolledWindow" id="swSplash">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <object class="GtkTreeView" id="tvSplash">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="reorderable">True</property>
+                            <property name="rules_hint">True</property>
+                            <property name="enable_search">False</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection">
+                                <signal name="changed" handler="on_tvSplash_selection_changed" swapped="no"/>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="imgSplashPreview">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_left">20</property>
+                        <property name="margin_right">20</property>
+                        <property name="margin_top">20</property>
+                        <property name="margin_bottom">20</property>
+                        <property name="stock">gtk-missing-image</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box15">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_top">10</property>
+                    <child>
+                      <object class="GtkLabel" id="lblSplashResolution">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_right">10</property>
+                        <property name="label" translatable="yes">Resolution</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="cmbSplashResolution">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="lblSpacer1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btnSaveSplash">
+                        <property name="label" translatable="yes">Save</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">imgSave5</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="clicked" handler="on_btnSaveSplash_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">7</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="lblSplash">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Plymouth splash</property>
+              </object>
+              <packing>
+                <property name="position">7</property>
                 <property name="tab_fill">False</property>
               </packing>
             </child>

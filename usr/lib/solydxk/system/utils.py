@@ -155,18 +155,18 @@ def get_system_version_info():
 
 
 # Get valid screen resolutions
-def get_resolutions(minRes='', maxRes='', reverseOrder=False, getVesaResolutions=False):
+def get_resolutions(minRes='', maxRes='', reverse_order=False, use_vesa=False):
     cmd = None
     cmdList = ['640x480', '800x600', '1024x768', '1280x1024', '1600x1200']
 
-    if getVesaResolutions:
+    if use_vesa:
         vbeModes = '/sys/bus/platform/drivers/uvesafb/uvesafb.0/vbe_modes'
         if exists(vbeModes):
             cmd = "cat %s | cut -d'-' -f1" % vbeModes
-        elif is_package_installed('v86d') and is_package_installed('hwinfo'):
-            cmd = "sudo hwinfo --framebuffer | grep '0x0' | cut -d' ' -f5 | uniq"
+        elif is_package_installed('hwinfo'):
+            cmd = "hwinfo --framebuffer | egrep '[0-9]x[0-9]' | awk '{print $3}' | uniq"
     else:
-        cmd = "xrandr | grep '^\s' | cut -d' ' -f4"
+        cmd = "xrandr | awk '{print $1}' | egrep '[0-9]x[0-9]'"
 
     if cmd is not None:
         cmdList = getoutput(cmd)
@@ -200,14 +200,70 @@ def get_resolutions(minRes='', maxRes='', reverseOrder=False, getVesaResolutions
                 itemH = str_to_nr(itemList[1], True)
                 # Check if it can be added
                 if itemW >= minW and itemH >= minH and (maxW == 0 or itemW <= maxW) and (maxH == 0 or itemH <= maxH):
-                    print(("Resolution added: %(res)s" % { "res": item }))
+                    #print(("Resolution added: %(res)s" % { "res": item }))
                     avlResTmp.append([itemW, itemH])
 
     # Sort the list and return as readable resolution strings
-    avlResTmp.sort(key=operator.itemgetter(0), reverse=reverseOrder)
+    avlResTmp.sort(key=operator.itemgetter(0), reverse=reverse_order)
     for res in avlResTmp:
         avlRes.append(str(res[0]) + 'x' + str(res[1]))
     return avlRes
+    
+
+def get_current_resolution():
+    res = getoutput("xrandr | grep '*' | awk '{print $1}'")[0]
+    if not res:
+        res = getoutput("xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'")[0]
+    return res
+    
+    
+def get_current_aspect_ratio():
+    return get_resolution_aspect_ratio(get_current_resolution())
+
+
+def get_resolution_aspect_ratio(resolution_string):
+    res = resolution_string.split('x')
+    if len(res) != 2:
+        return ''
+
+    width = str_to_nr(res[0], True)
+    height = str_to_nr(res[1], True)
+    
+    if width <= 0 or height <= 0:
+        return ''
+
+    m = width
+    n = height
+    temp = 0
+    remainder = 0
+    hcf = 1
+    
+    if m < n:
+        temp = m
+        m = n
+        n = temp
+
+    while True:
+        remainder = m % n
+        if remainder == 0:
+            hcf = n
+            break
+        else:
+            m = n
+        n = remainder
+    
+    # Return aspect ratio string
+    return "{}:{}".format(int(width / hcf), int(height / hcf))
+    
+    
+def get_resolutions_with_aspect_ratio(aspect_ratio_string, use_vesa=False):
+    ret_arr = []
+    resolutions = get_resolutions(use_vesa=use_vesa)
+    for res in resolutions:
+        ar = get_resolution_aspect_ratio(res)
+        if ar == aspect_ratio_string:
+            ret_arr.append(res)
+    return ret_arr
 
 
 # Return human readable string from number of kilobytes

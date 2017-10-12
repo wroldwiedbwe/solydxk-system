@@ -281,7 +281,7 @@ class Localize(threading.Thread):
         if self.current_step > self.max_steps:
             self.current_step = self.max_steps
         if self.queue is not None:
-            print((">> step %d of %d" % (self.current_step, self.max_steps)))
+            #print((">> step %d of %d" % (self.current_step, self.max_steps)))
             self.queue.put([self.max_steps, self.current_step])
 
     def get_localized_package(self, package):

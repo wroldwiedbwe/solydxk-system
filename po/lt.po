@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-09 12:36+0200\n"
+"POT-Creation-Date: 2017-10-12 13:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
 "Language-Team: Lithuanian (https://www.transifex.com/solydxk/teams/54212/"
@@ -19,6 +19,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../usr/lib/solydxk/system/plymouth.py:131
+msgid "Neither grub nor burg found in /etc/default"
+msgstr ""
 
 #: ../usr/lib/solydxk/system/main.py:44
 msgid "Unexpected error"
@@ -32,74 +36,78 @@ msgstr ""
 "SolydXK sistemos nustatymai patyrė nesėkmę su šia netikėta klaida. Prašome "
 "pranešti apie klaidą!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:101
+#: ../usr/lib/solydxk/system/grub.py:47 ../usr/lib/solydxk/system/grub.py:76
+msgid "Neither grub nor burg found"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:110
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:1
 msgid "SolydXK System Settings"
 msgstr "SolydXK sistemos nustatymai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:102
+#: ../usr/lib/solydxk/system/solydxk_system.py:111
 msgid "Save backports"
 msgstr "Įrašyti naujų versijų paketus"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:103
+#: ../usr/lib/solydxk/system/solydxk_system.py:112
 msgid "Save mirrors"
 msgstr "Įrašyti tinklavietes"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:104
+#: ../usr/lib/solydxk/system/solydxk_system.py:113
 msgid "Check mirrors speed"
 msgstr "Tikrinti tinklaviečių spartą"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:105
+#: ../usr/lib/solydxk/system/solydxk_system.py:114
 msgid "Remove"
 msgstr "Šalinti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:106
+#: ../usr/lib/solydxk/system/solydxk_system.py:115
 msgid "Hold back"
 msgstr "Sulaikyti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:107
+#: ../usr/lib/solydxk/system/solydxk_system.py:116
 msgid "Repositories"
 msgstr "Saugyklos"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:108
+#: ../usr/lib/solydxk/system/solydxk_system.py:117
 msgid "Encryption"
 msgstr "Šifravimas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:109
+#: ../usr/lib/solydxk/system/solydxk_system.py:118
 msgid "Passphrase (6-20 chr)"
 msgstr "Slaptafrazė (6-20 simb.)"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:110
+#: ../usr/lib/solydxk/system/solydxk_system.py:119
 msgid "Encrypt"
 msgstr "Šifruoti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:111
+#: ../usr/lib/solydxk/system/solydxk_system.py:120
 msgid "Decrypt"
 msgstr "Iššifruoti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:112
+#: ../usr/lib/solydxk/system/solydxk_system.py:121
 msgid "Change passphrase"
 msgstr "Keisti slaptafrazę"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:113
+#: ../usr/lib/solydxk/system/solydxk_system.py:122
 msgid "Manually create key file"
 msgstr "Rankiniu būdu sukurti rakto failą"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:114
+#: ../usr/lib/solydxk/system/solydxk_system.py:123
 msgid "Localization"
 msgstr "Lokalizavimas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:115
+#: ../usr/lib/solydxk/system/solydxk_system.py:124
 msgid "Timezone"
 msgstr "Laiko juosta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:116
-#: ../usr/lib/solydxk/system/solydxk_system.py:134
+#: ../usr/lib/solydxk/system/solydxk_system.py:125
+#: ../usr/lib/solydxk/system/solydxk_system.py:143
 msgid "Locale"
 msgstr "Lokalė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:117
+#: ../usr/lib/solydxk/system/solydxk_system.py:126
 msgid ""
 "Encrypt partitions and keep your data safe.\n"
 "Warning: backup your data before you continue!\n"
@@ -110,7 +118,7 @@ msgstr ""
 "Pastaba: norėdami pasirinkti kelis skaidinius, galite naudoti Ctrl-kairįjį "
 "spustelėjimą."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:120
+#: ../usr/lib/solydxk/system/solydxk_system.py:129
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
@@ -119,7 +127,7 @@ msgstr ""
 "Pastaba: norėdami lokalizuoti savo programinę įrangą, įsitikinkite, kad "
 "esate prisijungę prie interneto."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:122
+#: ../usr/lib/solydxk/system/solydxk_system.py:131
 msgid ""
 "Enable the Backports repository if you need a newer software version.\n"
 "Warning: installing software from the backports repository may de-stabalize "
@@ -132,7 +140,7 @@ msgstr ""
 "gali destabilizuoti jūsų sistemą.\n"
 "Naudokite savo pačių rizika!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:125
+#: ../usr/lib/solydxk/system/solydxk_system.py:134
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
@@ -140,19 +148,19 @@ msgstr ""
 "Pasirinkite savo atnaujinimams greičiausią saugyklą.\n"
 "Pastaba: įsitikinkite, kad esate prisijungę prie interneto."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:127
+#: ../usr/lib/solydxk/system/solydxk_system.py:136
 msgid "Hold back packages"
 msgstr "Sulaikyti paketus"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:128
+#: ../usr/lib/solydxk/system/solydxk_system.py:137
 msgid "Held back packages"
 msgstr "Sulaikyti paketai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:129
+#: ../usr/lib/solydxk/system/solydxk_system.py:138
 msgid "Available packages"
 msgstr "Prieinami paketai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:130
+#: ../usr/lib/solydxk/system/solydxk_system.py:139
 msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
@@ -160,27 +168,27 @@ msgstr ""
 "Sulaikykite atskirus paketus.\n"
 "Paketų sulaikymas neleis šiems paketams būti atnaujintiems."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:132
+#: ../usr/lib/solydxk/system/solydxk_system.py:141
 msgid "Save locale"
 msgstr "Įrašyti lokalę"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:133
+#: ../usr/lib/solydxk/system/solydxk_system.py:142
 msgid "Installed"
 msgstr "Įdiegta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:135
+#: ../usr/lib/solydxk/system/solydxk_system.py:144
 msgid "Language"
 msgstr "Kalba"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:136
+#: ../usr/lib/solydxk/system/solydxk_system.py:145
 msgid "Default"
 msgstr "Numatytoji"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:137
+#: ../usr/lib/solydxk/system/solydxk_system.py:146
 msgid "Please provide a passphrase (6-20 characters)."
 msgstr "Prašome pateikti slaptafrazę (6-20 simbolių)."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:138
+#: ../usr/lib/solydxk/system/solydxk_system.py:147
 #, python-brace-format
 msgid ""
 "Could not mount {0}\n"
@@ -189,23 +197,23 @@ msgstr ""
 "Nepavyko prijungti {0}\n"
 "Prašome prijungti {0} ir tai padarius, įkelti iš naujo."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:139
+#: ../usr/lib/solydxk/system/solydxk_system.py:148
 msgid ""
 "Remove unneeded packages\n"
 "Pre-selected packages are safe to remove (autoremove).\n"
 "Other packages: remove with caution!"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:142
+#: ../usr/lib/solydxk/system/solydxk_system.py:151
 msgid "Unneeded packages"
 msgstr "Nebereikalingi paketai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:143
-#: ../usr/lib/solydxk/system/solydxk_system.py:144
+#: ../usr/lib/solydxk/system/solydxk_system.py:152
+#: ../usr/lib/solydxk/system/solydxk_system.py:153
 msgid "Fstab mounts"
 msgstr "Fstab prijungimai"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:145
+#: ../usr/lib/solydxk/system/solydxk_system.py:154
 msgid ""
 "Mount additional partitions on boot with Fstab.\n"
 "When added to Fstab, the partition will be mounted in /media."
@@ -213,19 +221,19 @@ msgstr ""
 "Prijunkite paleidimo metu papildomus skaidinius, naudodami Fstab.\n"
 "Pridėjus skaidinį į Fstab, jis bus prijungtas ties /media."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:147
+#: ../usr/lib/solydxk/system/solydxk_system.py:156
 msgid "Save Fstab mounts"
 msgstr "Įrašyti Fstab prijungimus"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:148
+#: ../usr/lib/solydxk/system/solydxk_system.py:157
 msgid "Save drivers"
 msgstr "Įrašyti tvarkykles"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:149
+#: ../usr/lib/solydxk/system/solydxk_system.py:158
 msgid "Use Backports"
 msgstr "Naudoti naujų versijų paketus"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:150
+#: ../usr/lib/solydxk/system/solydxk_system.py:159
 msgid ""
 "Install drivers for supported hardware.\n"
 "Note: do not install these drivers if your hardware functions correctly with "
@@ -235,30 +243,54 @@ msgstr ""
 "Pastaba: nediekite šių tvarkyklių, jeigu jūsų aparatinė įranga teisingai "
 "funkcionuoja, naudodama esamas atvirąsias tvarkykles."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:312
+#: ../usr/lib/solydxk/system/solydxk_system.py:161
+msgid "Plymouth splash"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:162
+msgid "Select a Plymouth boot splash theme."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:163
+msgid "Plymouth themes"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:164
+msgid "Enable Plymouth splash"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:165
+msgid "Save"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:166
+msgid "Resolution"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:353
 msgid "Add"
 msgstr "Pridėti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:312
-#: ../usr/lib/solydxk/system/solydxk_system.py:857
+#: ../usr/lib/solydxk/system/solydxk_system.py:353
+#: ../usr/lib/solydxk/system/solydxk_system.py:898
 msgid "Partition"
 msgstr "Skaidinys"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:312
-#: ../usr/lib/solydxk/system/solydxk_system.py:857
+#: ../usr/lib/solydxk/system/solydxk_system.py:353
+#: ../usr/lib/solydxk/system/solydxk_system.py:898
 msgid "Mount point"
 msgstr "Prijungimo taškas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:312
-#: ../usr/lib/solydxk/system/solydxk_system.py:857
+#: ../usr/lib/solydxk/system/solydxk_system.py:353
+#: ../usr/lib/solydxk/system/solydxk_system.py:898
 msgid "Label"
 msgstr "Etiketė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:416
+#: ../usr/lib/solydxk/system/solydxk_system.py:457
 msgid "Could not add {} to {}: missing fs type."
 msgstr "Nepavyko pridėti {} į {}: trūksta fs tipo."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:472
+#: ../usr/lib/solydxk/system/solydxk_system.py:513
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
@@ -266,16 +298,16 @@ msgstr ""
 "Failui fstab buvo atlikti pakeitimai.\n"
 "Tam, kad šie pakeitimai įsigaliotų, paleiskite savo kompiuterį iš naujo."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:476
+#: ../usr/lib/solydxk/system/solydxk_system.py:517
 msgid "No changes were made to fstab."
 msgstr "Failui fstab nebuvo atlikta jokių pakeitimų."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:544
+#: ../usr/lib/solydxk/system/solydxk_system.py:585
 #: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr "Nėra interneto ryšio"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:545
+#: ../usr/lib/solydxk/system/solydxk_system.py:586
 msgid ""
 "You need an internet connection to install the additional software.\n"
 "Please, connect to the internet and try again."
@@ -284,7 +316,7 @@ msgstr ""
 "interneto.\n"
 "Prašome prisijungti prie interneto ir bandyti vėl."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:552
+#: ../usr/lib/solydxk/system/solydxk_system.py:593
 msgid ""
 "You have selected to install drivers from the backports repository whenever "
 "they are available.\n"
@@ -304,11 +336,11 @@ msgstr ""
 "\n"
 "Ar tikrai norite tęsti?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:588
+#: ../usr/lib/solydxk/system/solydxk_system.py:629
 msgid "Remove kernel"
 msgstr "Šalinti branduolį"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:589
+#: ../usr/lib/solydxk/system/solydxk_system.py:630
 msgid ""
 "You cannot remove a booted kernel.\n"
 "Please, boot another kernel and try again."
@@ -316,19 +348,19 @@ msgstr ""
 "Jūs negalite pašalinti paleisto branduolio.\n"
 "Prašome, paleisti kitą branduolį ir bandyti vėl."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:615
+#: ../usr/lib/solydxk/system/solydxk_system.py:656
 msgid "Install"
 msgstr "Įdiegti"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:615
+#: ../usr/lib/solydxk/system/solydxk_system.py:656
 msgid "Device"
 msgstr "Įrenginys"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:691
+#: ../usr/lib/solydxk/system/solydxk_system.py:732
 msgid "Encrypted partition"
 msgstr "Šifruotas skaidinys"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:692
+#: ../usr/lib/solydxk/system/solydxk_system.py:733
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -341,7 +373,7 @@ msgstr ""
 "\n"
 "Ar norite tęsti?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:712
+#: ../usr/lib/solydxk/system/solydxk_system.py:753
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
@@ -349,7 +381,7 @@ msgstr ""
 "Skaidinys nėra užšifruotas.\n"
 "Prašome iššifravimui pasirinkti kitą skaidinį."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:765
+#: ../usr/lib/solydxk/system/solydxk_system.py:806
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
@@ -358,23 +390,23 @@ msgstr ""
 "%s nėra užšifruotas.\n"
 "Prašome pasirinkti užšifruotą skaidinį."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:857
+#: ../usr/lib/solydxk/system/solydxk_system.py:898
 msgid "File system"
 msgstr "Failų sistema"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:857
+#: ../usr/lib/solydxk/system/solydxk_system.py:898
 msgid "Total size"
 msgstr "Bendras dydis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:857
+#: ../usr/lib/solydxk/system/solydxk_system.py:898
 msgid "Free size"
 msgstr "Laisvos vietos dydis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:903
+#: ../usr/lib/solydxk/system/solydxk_system.py:944
 msgid "Backup"
 msgstr "Atsarginė kopija"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:938
+#: ../usr/lib/solydxk/system/solydxk_system.py:979
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
@@ -384,8 +416,8 @@ msgstr ""
 "vietos.\n"
 "Prijunkite atsarginės kopijos diską ir spustelėkite įkėlimo iš naujo mygtuką."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1441
-#: ../usr/lib/solydxk/system/solydxk_system.py:1526
+#: ../usr/lib/solydxk/system/solydxk_system.py:1482
+#: ../usr/lib/solydxk/system/solydxk_system.py:1567
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -393,45 +425,49 @@ msgstr ""
 "Nepavyko atnaujinti apt podėlio.\n"
 "Prašome rankiniu būdu atnaujinti apt podėlį, naudojant: apt-get update"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1445
+#: ../usr/lib/solydxk/system/solydxk_system.py:1486
 msgid "Nothing to do."
 msgstr "Nėra ką atlikti."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1533
+#: ../usr/lib/solydxk/system/solydxk_system.py:1574
 msgid "There are no repositories to save."
 msgstr "Nėra saugyklų kurias įrašyti."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1537
+#: ../usr/lib/solydxk/system/solydxk_system.py:1578
 msgid "Current"
 msgstr "Dabartinė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1537
+#: ../usr/lib/solydxk/system/solydxk_system.py:1578
 msgid "Country"
 msgstr "Šalis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1537
+#: ../usr/lib/solydxk/system/solydxk_system.py:1578
 msgid "Repository"
 msgstr "Saugykla"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1537
+#: ../usr/lib/solydxk/system/solydxk_system.py:1578
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1537
+#: ../usr/lib/solydxk/system/solydxk_system.py:1578
 msgid "Speed"
 msgstr "Sparta"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1769
+#: ../usr/lib/solydxk/system/solydxk_system.py:1900
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Tam, kad įsigaliotų naujieji nustatymai jums reikia iš naujo paleisti "
 "sistemą."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1781
+#: ../usr/lib/solydxk/system/solydxk_system.py:1901
+msgid "Reboot"
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:1912
 msgid "Encryption done"
 msgstr "Šifravimas atliktas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1782
+#: ../usr/lib/solydxk/system/solydxk_system.py:1913
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -441,11 +477,11 @@ msgstr ""
 "\n"
 "Ar norite paleisti savo kompiuterį iš naujo?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1785
+#: ../usr/lib/solydxk/system/solydxk_system.py:1916
 msgid "Decryption done"
 msgstr "Iššifravimas atliktas"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1786
+#: ../usr/lib/solydxk/system/solydxk_system.py:1917
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -455,16 +491,16 @@ msgstr ""
 "\n"
 "Ar norite paleisti savo kompiuterį iš naujo?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1798
+#: ../usr/lib/solydxk/system/solydxk_system.py:1929
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "{0} slaptafrazė pakeista."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1848
+#: ../usr/lib/solydxk/system/solydxk_system.py:1981
 msgid "Partition passphrase"
 msgstr "Skaidinio slaptafrazė"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1849
+#: ../usr/lib/solydxk/system/solydxk_system.py:1982
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"

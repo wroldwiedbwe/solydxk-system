@@ -356,7 +356,7 @@ class TreeViewHandler(GObject.GObject):
                     model[it][colNr] = not model[it][colNr]
 
     # Deselect all drivers, except PAE
-    def treeviewToggleAll(self, toggleColNrList, toggleValue=False, excludeColNr=-1, excludeValue=''):
+    def treeviewToggleAll(self, toggleColNrList=[0], toggleValue=False, excludeColNr=-1, excludeValue=''):
         model = self.treeview.get_model()
         if model is not None:
             itr = model.get_iter_first()

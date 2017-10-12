@@ -1,0 +1,2 @@
+#!/bin/bash
+su -c 'plymouthd; plymouth --show-splash ; for ((I=0; I<10; I++)); do plymouth --update=test$I ; sleep 1; done; plymouth quit'
