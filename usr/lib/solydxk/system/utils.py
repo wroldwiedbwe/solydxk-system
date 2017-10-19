@@ -157,21 +157,23 @@ def get_system_version_info():
 # Get valid screen resolutions
 def get_resolutions(minRes='', maxRes='', reverse_order=False, use_vesa=False):
     cmd = None
-    cmdList = ['640x480', '800x600', '1024x768', '1280x1024', '1600x1200']
+    resolutions = []
+    default_res = ['640x480', '800x600', '1024x768', '1280x1024', '1600x1200']
 
+    cmd = "xrandr | awk '{print $1}' | egrep '[0-9]x[0-9]'"
     if use_vesa:
         vbeModes = '/sys/bus/platform/drivers/uvesafb/uvesafb.0/vbe_modes'
         if exists(vbeModes):
             cmd = "cat %s | cut -d'-' -f1" % vbeModes
         elif is_package_installed('hwinfo'):
-            cmd = "hwinfo --framebuffer | egrep '[0-9]x[0-9]' | awk '{print $3}' | uniq"
-    else:
-        cmd = "xrandr | awk '{print $1}' | egrep '[0-9]x[0-9]'"
+            cmd = "hwinfo --framebuffer | egrep '[0-9]x[0-9]' | awk '{print $3}' | uniq"        
 
-    if cmd is not None:
-        cmdList = getoutput(cmd)
+    resolutions = getoutput(cmd)
+    if not resolutions[0]:
+        resolutions = default_res
+
     # Remove any duplicates from the list
-    resList = list(set(cmdList))
+    resList = list(set(resolutions))
 
     avlRes = []
     avlResTmp = []
@@ -536,7 +538,6 @@ class ExecuteThreadedFunction(threading.Thread):
         self._target = target
         self._args = args
         self._queue = queue
-        #threading.Thread.__init__(self)
  
     def run(self):
         out = self._target(*self._args)
