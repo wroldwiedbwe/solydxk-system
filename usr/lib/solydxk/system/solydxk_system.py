@@ -30,6 +30,7 @@ from encryption import is_encrypted, create_keyfile, write_crypttab
 from endecrypt_partitions import EnDecryptPartitions, ChangePassphrase
 from plymouth import Plymouth, PlymouthSave
 from image import ImageHandler
+from splash import Splash
 
 # i18n: http://docs.python.org/3/library/gettext.html
 import gettext
@@ -45,15 +46,21 @@ class SolydXKSystemSettings(object):
         # Load and install test data for the device manager
         self.test_devices = False
         
-        # Check if script is running
+        # Get script and data paths
         self.scriptDir = abspath(dirname(__file__))
         self.shareDir = self.scriptDir.replace('lib', 'share')
+        
+        # Show splash screen while loading
+        self.title = _("SolydXK System Settings")
+        bg = join(self.shareDir, 'images/splash-background.png')
+        splash = Splash(self.title, bg, 'solydxk')
+        splash.start()
 
         # Init logging
         self.log_file = "/var/log/solydxk-system.log"
         self.log = Logger(self.log_file, addLogTime=True, maxSizeKB=5120)
         self.log.write('=====================================', 'init')
-        self.log.write(">>> Start SolydXK System Settings <<<", 'init')
+        self.log.write('>>> Start {} <<<'.format(self.title), 'init')
         self.log.write('=====================================', 'init')
 
         # Load window and widgets
@@ -107,7 +114,7 @@ class SolydXKSystemSettings(object):
         self.cmbSplashResolution = go("cmbSplashResolution")
 
         # GUI translations
-        self.window.set_title(_("SolydXK System Settings"))
+        self.window.set_title(self.title)
         self.btnSaveBackports.set_label(_("Save backports"))
         self.btnSaveMirrors.set_label(_("Save mirrors"))
         self.btnCheckMirrorSpeed.set_label(_("Check mirrors speed"))
@@ -251,6 +258,9 @@ class SolydXKSystemSettings(object):
 
         # Disable this for later implementation
         self.btnCreateKeyfile.set_visible(False)
+        
+        # Destroy splash screen
+        splash.destroy()
 
         # Connect the signals and show the window
         self.builder.connect_signals(self)
