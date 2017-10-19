@@ -108,6 +108,13 @@ def is_amd64():
         return True
     return False
 
+# Check if xfce is running
+def is_xfce_running():
+    xfce = getoutput('pidof xfce4-session')[0]
+    if xfce:
+        return True
+    return False
+
 
 def get_package_version(package, candidate=False):
     version = ''
@@ -366,16 +373,21 @@ def is_running_live():
     return False
 
 
-def get_process_pids(processName, fuzzy=True):
+def get_process_pids(process_name, process_argument=None, fuzzy=True):
     if fuzzy:
-        pids = getoutput("ps -ef | grep -v sudo | grep -v grep | grep '%s' | awk '{print $2}'" % processName)
+        args = ''
+        if process_argument is not None:
+            args = "| grep '%s'" % process_argument
+        cmd = "ps -ef | grep -v grep | grep '%s' %s | awk '{print $2}'" % (process_name, args)
+        #print(cmd)
+        pids = getoutput(cmd)
     else:
-        pids = getoutput("pidof %s" % processName)
+        pids = getoutput("pidof %s" % process_name)
     return pids
 
 
-def is_process_running(processName, fuzzy=True, excludeSelf=True):
-    pids = get_process_pids(processName, fuzzy)
+def is_process_running(process_name, process_argument=None, fuzzy=True):
+    pids = get_process_pids(process_name, process_argument, fuzzy)
     if pids[0] != '':
         return True
     return False

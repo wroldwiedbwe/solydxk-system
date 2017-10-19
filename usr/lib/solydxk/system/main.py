@@ -7,7 +7,7 @@ gi.require_version('Gtk', '3.0')
 import sys
 import gettext
 from os.path import abspath, dirname
-from utils import is_process_running
+from utils import is_process_running, compare_package_versions
 from dialogs import ErrorDialog
 from solydxk_system import SolydXKSystemSettings
 from gi.repository import Gtk, GObject
@@ -49,18 +49,18 @@ def uncaught_excepthook(*args):
 
 sys.excepthook = uncaught_excepthook
 
-
 if __name__ == '__main__':
     # Create an instance of our GTK application
     try:
-        # Calling GObject.threads_init() is not needed for PyGObject 3.10.2+
-        # Check with print (sys.version)
-        # Debian Jessie: 3.4.2
-        GObject.threads_init()
-
-        if is_process_running("solydxk_system.py"):
+        if is_process_running('python3', 'solydxk_system.py'):
             print(("solydxk_system.py already running - exiting"))
         else:
+            # Calling GObject.threads_init() is not needed for PyGObject 3.10.2+
+            version = sys.version.split()[0]
+            if compare_package_versions(version, '3.10.2+') == 'smaller':
+                #print(("Call GObject.threads_init for PyGObject %s" % version))
+                GObject.threads_init()
+            
             SolydXKSystemSettings()
             Gtk.main()
     except KeyboardInterrupt:

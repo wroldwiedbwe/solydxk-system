@@ -22,7 +22,7 @@ from utils import getoutput, ExecuteThreadedCommands, \
                   in_virtualbox, get_apt_force, is_running_live, \
                   get_device_from_uuid, get_label, is_package_installed, \
                   get_logged_user, get_uuid, compare_package_versions, \
-                  get_current_resolution, get_resolutions
+                  get_current_resolution, get_resolutions, is_xfce_running
 from dialogs import MessageDialog, QuestionDialog, InputDialog, \
                     WarningDialog
 from mirror import MirrorGetSpeed, Mirror, get_mirror_data, get_local_repos
@@ -52,8 +52,14 @@ class SolydXKSystemSettings(object):
         
         # Show splash screen while loading
         self.title = _("SolydXK System Settings")
-        bg = join(self.shareDir, 'images/splash-background.png')
-        splash = Splash(self.title, bg, 'solydxk')
+        bg_img = join(self.shareDir, 'images/splash-bgk.png')
+        bg_clr = '#8eb6c9'
+        fg_clr = '#243e4b'
+        if is_xfce_running():
+            bg_img = join(self.shareDir, 'images/splash-bgx.png')
+            bg_clr = '#ff9b3c'
+            fg_clr = '#502800'
+        splash = Splash(title=self.title, foreground_color=fg_clr, background_color=bg_clr, background_image=bg_img, icon_name='solydxk')
         splash.start()
 
         # Init logging
