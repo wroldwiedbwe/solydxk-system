@@ -1,2 +1,27 @@
 #!/bin/bash
-su -c 'plymouthd; plymouth --show-splash ; for ((I=0; I<10; I++)); do plymouth --update=test$I ; sleep 1; done; plymouth quit'
+
+# Be root to run this script
+if [ $UID -ne 0 ]; then
+  sudo $0 $@
+  exit
+fi
+
+if [ "$(which plymouthd)" == '' ]; then
+  echo "Please install plymouth-x11 before running this script."
+  exit
+fi
+
+DURATION=$1
+if [ $# -ne 1 ]; then
+  DURATION=5
+fi
+
+echo "Preview Plymouth theme $(plymouth-set-default-theme) for $DURATION seconds."
+
+plymouthd
+plymouth --show-splash
+for ((I=0; I<$DURATION; I++)); do
+  plymouth --update=test$I
+  sleep 1
+done
+plymouth quit
