@@ -6,10 +6,11 @@
 # Initiate the splash screen:
 # from splash import Splash
 # splash = Splash(title='Splash Screen')
-#     Other arguments: width, height, font, font_weight, font_color, background_color, background_image
-#     width and height are ignored when background_image is used
-#     font can be the font name with size: font='Roboto Slab 18', or only the size in which it will use the system default font
-#     font_weight can be ultralight, light, normal, bold, ultrabold, heavy, or a numeric weight
+#     Other arguments: width, height, font, font_weight, font_color, background_color, background_image.
+#     width and height are ignored when background_image is used.
+#     background_color is ignored when background_image is provided.
+#     font can be the font name with size: font='Roboto Slab 18', or only the size in which it will use the system default font.
+#     font_weight can be ultralight, light, normal, bold, ultrabold, heavy, or a numeric weight.
 #
 # Start the splash screen:
 # splash.start()
@@ -41,7 +42,6 @@ class Splash(Thread):
         self.font = font
         self.font_weight = font_weight
         self.font_color = self.prep_hex_color(font_color)
-        self.background_color_rgba = self.hex_to_rgba(background_color, True)
         self.background_image = '' if background_image is None else background_image
         self.parent = next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
 
@@ -51,8 +51,6 @@ class Splash(Thread):
         self.window.set_title(self.title)
         self.window.connect("destroy", Gtk.main_quit)
         self.window.connect("delete-event", Gtk.main_quit)
-        # Set background color
-        self.window.override_background_color(Gtk.StateType.NORMAL, self.background_color_rgba)
         # Set this window modal if a parent is found
         if self.parent is not None:
             self.window.set_modal(True)
@@ -67,8 +65,11 @@ class Splash(Thread):
         else:
             # Set window dimensions
             self.window.set_default_size(self.width, self.height)
+            # Set background color
+            self.window.override_background_color(Gtk.StateType.NORMAL, 
+                                                  self.hex_to_rgba(background_color, True))
 
-        # Add box with labels and a spinner
+        # Add box with label and spinner
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.set_margin_top(self.height / 4)
         box.set_margin_left(20)
@@ -78,7 +79,10 @@ class Splash(Thread):
         lbl_title = Gtk.Label()
         lbl_title.set_line_wrap(True)
         # Markup format: https://developer.gnome.org/pango/stable/PangoMarkupFormat.html
-        lbl_title.set_markup('<span font="{}" color="#{}" weight="{}">{}</span>'.format(self.font, self.font_color, self.font_weight, self.title))
+        lbl_title.set_markup('<span font="{}" color="#{}" weight="{}">{}</span>'.format(self.font, 
+                                                                                        self.font_color, 
+                                                                                        self.font_weight, 
+                                                                                        self.title))
         box.pack_start(lbl_title, False, True, 0)
         spinner = Gtk.Spinner()
         spinner.start()
@@ -99,7 +103,7 @@ class Splash(Thread):
         # Fill up with last character until length is 6 characters
         if len(hex_color) < 6:
             hex_color = hex_color.ljust(6, hex_color[-1])
-        # Add alpha if it's not there
+        # Add alpha channel if it's not there
         hex_color = hex_color.ljust(8, 'f')
         return hex_color
 
