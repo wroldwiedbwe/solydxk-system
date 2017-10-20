@@ -49,17 +49,15 @@ class SolydXKSystemSettings(object):
         # Get script and data paths
         self.scriptDir = abspath(dirname(__file__))
         self.shareDir = self.scriptDir.replace('lib', 'share')
+        self.title = _("SolydXK System Settings")
         
         # Show splash screen while loading
-        self.title = _("SolydXK System Settings")
-        bg_img = join(self.shareDir, 'images/splash-bgk.png')
-        bg_clr = '#8eb6c9'
-        fg_clr = '#243e4b'
+        b_img = join(self.shareDir, 'images/splash-bgk.png')
+        f_clr = '#243e4b'
         if is_xfce_running():
-            bg_img = join(self.shareDir, 'images/splash-bgx.png')
-            bg_clr = '#ff9b3c'
-            fg_clr = '#502800'
-        splash = Splash(title=self.title, foreground_color=fg_clr, background_color=bg_clr, background_image=bg_img, icon_name='solydxk')
+            b_img = join(self.shareDir, 'images/splash-bgx.png')
+            f_clr = '#502800'
+        splash = Splash(title=self.title, font_size=18, font_color=f_clr, background_image=b_img)
         splash.start()
 
         # Init logging
@@ -76,6 +74,7 @@ class SolydXKSystemSettings(object):
         # Preferences window objects
         go = self.builder.get_object
         self.window = go("windowPref")
+        self.window.set_title(self.title)
         self.nbPref = go('nbPref')
         self.btnSaveBackports = go('btnSaveBackports')
         self.btnSaveMirrors = go('btnSaveMirrors')
@@ -120,7 +119,6 @@ class SolydXKSystemSettings(object):
         self.cmbSplashResolution = go("cmbSplashResolution")
 
         # GUI translations
-        self.window.set_title(self.title)
         self.btnSaveBackports.set_label(_("Save backports"))
         self.btnSaveMirrors.set_label(_("Save mirrors"))
         self.btnCheckMirrorSpeed.set_label(_("Check mirrors speed"))
