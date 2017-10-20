@@ -1,16 +1,25 @@
 #! /usr/bin/env python3
+
 # ====================================================================
-# Splash screen
-#
-# Initiate and start the Splash screen:
+# Class to show a splash screen while application is loading
+# ====================================================================
+# Initiate the splash screen:
 # from splash import Splash
 # splash = Splash(title='Splash Screen')
-#     Other arguments: width, height, font_size, font_color, background_color, background_image
+#     Other arguments: width, height, font, font_weight, font_color, background_color, background_image
 #     width and height are ignored when background_image is used
+#     font can be the font name with size: font='Roboto Slab 18', or only the size in which it will use the system default font
+#     font_weight can be ultralight, light, normal, bold, ultrabold, heavy, or a numeric weight
+#
+# Start the splash screen:
 # splash.start()
 #
 # When done:
 # splash.destroy()
+#
+# Note: you can hide and show the splash screen when needed:
+# splash.hide()
+# splash.show()
 # ====================================================================
 
 # Make sure the right Gtk version is loaded
@@ -24,22 +33,21 @@ from os.path import exists
 
 
 class Splash(Thread):
-    def __init__(self, title, width=400, height=250, font_size=16, font_color='000000', background_color='ffffff', background_image=None):
+    def __init__(self, title, width=400, height=250, font=16, font_weight='normal', font_color='000000', background_color='ffffff', background_image=None):
         super(Splash, self).__init__()
-        #Thread.__init__(self)
-        self.font_size = font_size
-        self.background_image = background_image
+        self.title = title
         self.width = width
         self.height = height
-        self.title = title
+        self.font = font
+        self.font_weight = font_weight
         self.font_color = self.prep_hex_color(font_color)
         self.background_color_rgba = self.hex_to_rgba(background_color, True)
+        self.background_image = '' if background_image is None else background_image
         self.parent = next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
 
         # Window settings
         self.window = Gtk.Window(Gtk.WindowType.POPUP)
         self.window.set_position(Gtk.WindowPosition.CENTER)
-        #self.window.set_decorated(False)
         self.window.set_title(self.title)
         self.window.connect("destroy", Gtk.main_quit)
         self.window.connect("delete-event", Gtk.main_quit)
@@ -61,17 +69,17 @@ class Splash(Thread):
             self.window.set_default_size(self.width, self.height)
 
         # Add box with labels and a spinner
-        # markup format: https://developer.gnome.org/pango/stable/PangoMarkupFormat.html
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         box.set_margin_top(self.height / 4)
+        box.set_margin_left(20)
+        box.set_margin_right(20)
         # Add the box to a new overlay in the existing overlay
         overlay.add_overlay(box)
         lbl_title = Gtk.Label()
-        lbl_title.set_markup('<span font="{}" foreground="#{}">{}</span>'.format(self.font_size, self.font_color, self.title))
-        box.pack_start(lbl_title, False, False, 0)
-
-        # Adding a spinner crashes Gtk sometimes and prevents the main window to show:
-        # Gdk-CRITICAL **: _gdk_frame_clock_freeze: assertion 'GDK_IS_FRAME_CLOCK (clock)' failed
+        lbl_title.set_line_wrap(True)
+        # Markup format: https://developer.gnome.org/pango/stable/PangoMarkupFormat.html
+        lbl_title.set_markup('<span font="{}" color="#{}" weight="{}">{}</span>'.format(self.font, self.font_color, self.font_weight, self.title))
+        box.pack_start(lbl_title, False, True, 0)
         spinner = Gtk.Spinner()
         spinner.start()
         box.pack_start(spinner, True, True, 0)
@@ -108,5 +116,11 @@ class Splash(Thread):
             return Gdk.RGBA(rgba[0], rgba[1], rgba[2], rgba[3])
         return rgba
 
+    def show(self):
+        self.window.show()
+        
+    def hide(self):
+        self.window.hide()
+    
     def destroy(self):
         self.window.destroy()

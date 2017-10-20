@@ -57,7 +57,7 @@ class SolydXKSystemSettings(object):
         if is_xfce_running():
             b_img = join(self.shareDir, 'images/splash-bgx.png')
             f_clr = '#502800'
-        splash = Splash(title=self.title, font_size=18, font_color=f_clr, background_image=b_img)
+        splash = Splash(title=self.title, font='Roboto Slab 18', font_weight='bold', font_color=f_clr, background_image=b_img)
         splash.start()
 
         # Init logging
