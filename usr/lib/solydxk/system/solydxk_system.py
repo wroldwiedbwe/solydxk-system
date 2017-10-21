@@ -26,7 +26,8 @@ from utils import getoutput, ExecuteThreadedCommands, \
 from dialogs import MessageDialog, QuestionDialog, InputDialog, \
                     WarningDialog
 from mirror import MirrorGetSpeed, Mirror, get_mirror_data, get_local_repos
-from encryption import is_encrypted, create_keyfile, write_crypttab
+from encryption import is_encrypted, create_keyfile, write_crypttab, \
+                       connect_block_device
 from endecrypt_partitions import EnDecryptPartitions, ChangePassphrase
 from plymouth import Plymouth, PlymouthSave
 from image import ImageHandler
@@ -93,6 +94,8 @@ class SolydXKSystemSettings(object):
         self.cmbTimezone = go("cmbTimezone")
         self.btnSaveLocale = go("btnSaveLocale")
         self.lblEncryption = go("lblEncryption")
+        self.chkEnableEncryption = go("chkEnableEncryption")
+        self.boxEncryptionEnable = go("boxEncryptionEnable")
         self.btnEncrypt = go("btnEncrypt")
         self.btnDecrypt = go("btnDecrypt")
         self.btnRefresh = go("btnRefresh")
@@ -134,6 +137,7 @@ class SolydXKSystemSettings(object):
         go("lblLocalization").set_label(_("Localization"))
         go("lblTimezone").set_label(_("Timezone"))
         go("lblLocale").set_label(_("Locale"))
+        self.chkEnableEncryption.set_label(_("Enable encryption: this will temporarily mount any not mounted partition."))
         go("lblEncryptionInfo").set_label(_("Encrypt partitions and keep your data safe.\n"
                                             "Warning: backup your data before you continue!\n"
                                             "Note: you can Ctrl-left click to select multiple partitions."))
@@ -212,6 +216,8 @@ class SolydXKSystemSettings(object):
         self.udisks2 = Udisks2()
         self.keyfile_path = None
         self.debian_name = get_debian_name()
+        self.encrypt_col_types = ['GdkPixbuf.Pixbuf', 'str', 'str', 'str', 'str', 'str', 'str']
+        self.encrypt_list_header = [['', _('Partition'), _('Label'), _('File system'), _('Total size'), _('Free size'), _('Mount point')]]
         self.endecrypt_success = True
         self.encrypt = False
         self.failed_mount_devices = []
@@ -223,13 +229,13 @@ class SolydXKSystemSettings(object):
         self.installed_themes = self.plymouth.getInstalledThemes()
 
         # Collect data and disable tabs when running live: Device Driver, Fstab mounts, Localization, Hold back packages, Cleanup
+        self.live = is_running_live()
         self.activeMirrors = get_mirror_data(excludeMirrors=self.excludeMirrors)
         self.deadMirrors = get_mirror_data(getDeadMirrors=True)
         self.mirrors = self.get_mirrors()
-        self.fill_treeview_partition()
-        self.save_my_partitions()
         self.fill_treeview_mirrors()
-        if is_running_live():
+        self.boxEncryptionEnable.set_sensitive(False)
+        if self.live:
             self.nbPref.get_nth_page(0).set_visible(False)
             self.nbPref.get_nth_page(2).set_visible(False)
             self.nbPref.get_nth_page(3).set_visible(False)
@@ -269,6 +275,10 @@ class SolydXKSystemSettings(object):
         # Connect the signals and show the window
         self.builder.connect_signals(self)
         self.window.show()
+        
+        # In case of encrypted partitions, we can only list partitions when the splash is done
+        if not self.live:
+            self.fill_treeview_fstab_partitions()
 
     # ===============================================
     # Main window functions
@@ -297,6 +307,22 @@ class SolydXKSystemSettings(object):
 
     def on_btnSaveLocale_clicked(self, widget):
         self.save_locale()
+        
+    def on_btnRefreshFstab_clicked(self, widget):
+        self.fill_treeview_fstab_partitions()
+        
+    def on_chkEnableEncryption_toggled(self, widget):
+        active = widget.get_active()
+        if active:
+            self.fill_treeview_partition()
+            self.save_my_partitions()
+        else:
+            self.temp_unmount_all()
+            self.tvPartitionsHandler.fillTreeview(contentList=self.encrypt_list_header,
+                                                  columnTypesList=self.encrypt_col_types,
+                                                  firstItemIsColName=True,
+                                                  multipleSelection=True)
+        self.boxEncryptionEnable.set_sensitive(active)
 
     def on_btnEncrypt_clicked(self, widget):
         self.encrypt = True
@@ -364,19 +390,15 @@ class SolydXKSystemSettings(object):
         fs_partitions = []
         
         # Add headers
-        fs_partitions.append([_('Add'), _('Partition'), _('Mount point'), _('Label')])
+        fs_partitions.append([_('Add'), _('Partition'), _('Label')])
+        
+        # Get available partitions
+        self.fill_partitions(False)
         
         for partition in self.partitions:
-            if partition['fstab_mount']:
-                fs_partitions.append([True, partition['device'], partition['fstab_mount'], partition['label']])
-            else:
-                # Do not show temporary mount point: it only confuses the user
-                mount = partition['mount_point']
-                if TMPMOUNT in mount:
-                    mount = ''
-                fs_partitions.append([False, partition['device'], mount, partition['label']])
+            fs_partitions.append([False, partition['device'], partition['label']])
 
-        columnTypes = ['bool', 'str', 'str', 'str']
+        columnTypes = ['bool', 'str', 'str']
                 
         # Fill treeview
         self.tvFstabMountsHandler.fillTreeview(contentList=fs_partitions, columnTypesList=columnTypes, firstItemIsColName=True, fontSize=12000)
@@ -839,12 +861,9 @@ class SolydXKSystemSettings(object):
             return True
         return False
     
-    def fill_treeview_partition(self):
+    def fill_partitions(self, check_encryptable=True):
         # Exclude these device paths
         exclude_devices = ['/dev/sr0', '/dev/sr1', '/dev/cdrom', '/dev/dvd', '/dev/fd0', '/dev/mmcblk0boot0', '/dev/mmcblk0boot1', '/dev/mmcblk0rpmb']
-
-        # columns: encrypted image, partition path, fs type, size, free space
-        column_types = ['GdkPixbuf.Pixbuf', 'str', 'str', 'str', 'str', 'str', 'str']
 
         # List partition info
         self.my_partitions = []
@@ -876,9 +895,10 @@ class SolydXKSystemSettings(object):
                                                 'has_grub': device['has_grub']
                                                })
         self.failed_mount_devices = []
+        
         for partition in tmp_partitions:
             # Get fstab information
-            fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, keyfile_path = self.get_partition_configuration_info(partition, tmp_partitions)
+            fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, keyfile_path = self.get_partition_configuration_info(partition, tmp_partitions, check_encryptable)
             partition['fstab_path'] = fstab_path
             partition['fstab_device'] = fstab_device
             partition['fstab_mount'] = fstab_mount
@@ -902,14 +922,19 @@ class SolydXKSystemSettings(object):
                 can_encrypt = True
 
             if can_encrypt:
-                print(">>> partition = %s" % str(partition))
+                #print(">>> partition = %s" % str(partition))
                 self.partitions.append(partition)
 
         # Sort the list with dictionaries
         self.partitions = sorted(self.partitions, key=lambda k: k['device'])
 
+    def fill_treeview_partition(self):
+        # Get available partitions
+        self.fill_partitions()
+        
         # Create human readable list of partitions
-        hr_list = [['', _('Partition'), _('Label'), _('File system'), _('Total size'), _('Free size'), _('Mount point')]]
+        # Copy the header first by using list()
+        hr_list = list(self.encrypt_list_header)
         for p in self.partitions:
             if p['encrypted']:
                 if p['removable']:
@@ -929,7 +954,7 @@ class SolydXKSystemSettings(object):
 
         # Fill treeview
         self.tvPartitionsHandler.fillTreeview(contentList=hr_list,
-                                              columnTypesList=column_types,
+                                              columnTypesList=self.encrypt_col_types,
                                               firstItemIsColName=True,
                                               multipleSelection=True)
                                               
@@ -1045,7 +1070,7 @@ class SolydXKSystemSettings(object):
 
         return cont
         
-    def get_partition_configuration_info(self, partition, partitions):
+    def get_partition_configuration_info(self, partition, partitions, check_encryptable):
         fstab_paths = ['/etc/fstab']
 
         # Search for fstab file if you're in a live session
@@ -1053,13 +1078,24 @@ class SolydXKSystemSettings(object):
             if not p['mount_point'] \
                and p['fs_type'] != 'swap' \
                and p['device'] not in self.failed_mount_devices:
+
                 current_passphrase = ''
-                if p['encrypted']:
+                mount = ''
+                device = p['device']
+                filesystem = p['fs_type']
+
+                if p['encrypted'] and not p['passphrase'] and not 'mapper' in p['device']:
                     # This is an encrypted, not mounted partition.
                     # Ask the user for the passphrase
                     current_passphrase = self.get_passphrase_dialog(p['device'])
-                device, mount, filesystem = self.temp_mount(p, current_passphrase)
-                
+                               
+                if check_encryptable:
+                    # Mount the partition when working in encryption
+                    device, mount, filesystem = self.temp_mount(p, current_passphrase)
+                elif current_passphrase:
+                    # Not in encryption: connect the block device but do not mount
+                    device, filesystem = connect_block_device(p['device'], current_passphrase)
+
                 # Save necessary information
                 p['fs_type'] = filesystem
                 p['passphrase'] = current_passphrase
@@ -1078,7 +1114,7 @@ class SolydXKSystemSettings(object):
                     p['label'] = get_label(device)
                     
                 #print(("++++ p = %s" % str(p)))
-                if not mount:
+                if check_encryptable and not mount:
                     show_error = True
                     #print((">>>> Could not mount %s (%s)" % (p['device'], p['fs_type'])))
                     if 'crypt' in p['fs_type'] or p['fs_type'] == 'swap' or p['fs_type'] == '':
@@ -1714,7 +1750,10 @@ class SolydXKSystemSettings(object):
         if kernel_packages:
             # Add kbuild packages
             del_string = '.0'
-            kbuild_version = cur_version[:cur_version.index('-')]
+            try:
+                kbuild_version = cur_version[:cur_version.index('-')]
+            except:
+                kbuild_version = cur_version
             while kbuild_version.endswith(del_string):
                 kbuild_version = kbuild_version[:-len(del_string)]
             kbuild_packages = getoutput("dpkg-query -f '${binary:Package}\n' -W | grep linux-kbuild | grep -v '%s'" % kbuild_version)

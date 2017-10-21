@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.6"/>
-  <object class="GtkImage" id="imgAdd1">
+  <object class="GtkImage" id="imgAdd">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_left">5</property>
@@ -45,12 +45,17 @@
     <property name="margin_right">5</property>
     <property name="icon_name">preferences-system-network</property>
   </object>
-  <object class="GtkImage" id="imgRefresh">
+  <object class="GtkImage" id="imgRefresh1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">view-refresh</property>
   </object>
-  <object class="GtkImage" id="imgRemove1">
+  <object class="GtkImage" id="imgRefresh2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">view-refresh</property>
+  </object>
+  <object class="GtkImage" id="imgRemove">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_right">5</property>
@@ -760,6 +765,7 @@
                   <object class="GtkScrolledWindow" id="swFstabMounts">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="margin_bottom">10</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="shadow_type">in</property>
@@ -787,13 +793,28 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
+                    <property name="spacing">10</property>
+                    <child>
+                      <object class="GtkButton" id="btnRefreshFstab">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">imgRefresh2</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="clicked" handler="on_btnRefreshFstab_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
                     <child>
                       <object class="GtkButton" id="btnSaveFstabMounts">
                         <property name="label" translatable="yes">Save Fstab Mounts</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="margin_top">10</property>
                         <property name="image">imgSave4</property>
                         <property name="always_show_image">True</property>
                         <signal name="clicked" handler="on_btnSaveFstabMounts_clicked" swapped="no"/>
@@ -874,162 +895,47 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow" id="swPartitions">
+                  <object class="GtkCheckButton" id="chkEnableEncryption">
+                    <property name="label" translatable="yes">Enable encryption: this will temporary mount all partions not in fstab.</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="shadow_type">in</property>
-                    <child>
-                      <object class="GtkTreeView" id="tvPartitions">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="headers_clickable">False</property>
-                        <property name="enable_grid_lines">both</property>
-                        <child internal-child="selection">
-                          <object class="GtkTreeSelection" id="treeview-selection8">
-                            <signal name="changed" handler="on_tvPartitions_selection_changed" swapped="no"/>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_chkEnableEncryption_toggled" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="grid1">
+                  <object class="GtkBox" id="boxEncryptionEnable">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="resize_mode">immediate</property>
-                    <property name="row_spacing">10</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel" id="lblPassphrase">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">start</property>
-                        <property name="hexpand">True</property>
-                        <property name="label" translatable="yes">Passphrase</property>
-                        <property name="angle">0.029999999999999999</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="txtPassphrase1">
+                      <object class="GtkScrolledWindow" id="swPartitions">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="margin_top">10</property>
-                        <property name="hexpand">True</property>
-                        <property name="max_length">20</property>
-                        <property name="visibility">False</property>
-                        <property name="invisible_char">●</property>
-                        <property name="input_purpose">password</property>
-                        <signal name="changed" handler="on_txtPassphrase1_changed" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="txtPassphrase2">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="margin_bottom">10</property>
-                        <property name="hexpand">True</property>
-                        <property name="max_length">20</property>
-                        <property name="visibility">False</property>
-                        <property name="invisible_char">●</property>
-                        <property name="input_purpose">password</property>
-                        <signal name="changed" handler="on_txtPassphrase2_changed" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkImage" id="imgPassphraseCheck">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">end</property>
-                        <property name="margin_right">10</property>
-                        <property name="stock">gtk-no</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox" id="box3">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="spacing">10</property>
-                    <child>
-                      <object class="GtkBox" id="box4">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="spacing">10</property>
-                        <property name="homogeneous">True</property>
+                        <property name="shadow_type">in</property>
                         <child>
-                          <object class="GtkButton" id="btnEncrypt">
-                            <property name="label" translatable="yes">Encrypt</property>
+                          <object class="GtkTreeView" id="tvPartitions">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="image">imgLocked</property>
-                            <property name="always_show_image">True</property>
-                            <signal name="clicked" handler="on_btnEncrypt_clicked" swapped="no"/>
+                            <property name="headers_clickable">False</property>
+                            <property name="enable_grid_lines">both</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection" id="treeview-selection8">
+                                <signal name="changed" handler="on_tvPartitions_selection_changed" swapped="no"/>
+                              </object>
+                            </child>
                           </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="btnDecrypt">
-                            <property name="label" translatable="yes">Decrypt</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="image">imgUnlocked</property>
-                            <property name="always_show_image">True</property>
-                            <signal name="clicked" handler="on_btnDecrypt_clicked" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="btnChangePassphrase">
-                            <property name="label" translatable="yes">Change passphrase</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="image">imgKey1</property>
-                            <property name="always_show_image">True</property>
-                            <signal name="clicked" handler="on_btnChangePassphrase_clicked" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
                         </child>
                       </object>
                       <packing>
@@ -1039,14 +945,71 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btnCreateKeyfile">
-                        <property name="label" translatable="yes">Manually create key file</property>
+                      <object class="GtkGrid" id="grid1">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">imgKey2</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="clicked" handler="on_btnCreateKeyfile_clicked" swapped="no"/>
+                        <property name="can_focus">False</property>
+                        <property name="resize_mode">immediate</property>
+                        <property name="row_spacing">10</property>
+                        <child>
+                          <object class="GtkLabel" id="lblPassphrase">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="hexpand">True</property>
+                            <property name="label" translatable="yes">Passphrase</property>
+                            <property name="angle">0.029999999999999999</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="txtPassphrase1">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="margin_top">10</property>
+                            <property name="hexpand">True</property>
+                            <property name="max_length">20</property>
+                            <property name="visibility">False</property>
+                            <property name="invisible_char">●</property>
+                            <property name="input_purpose">password</property>
+                            <signal name="changed" handler="on_txtPassphrase1_changed" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="txtPassphrase2">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="hexpand">True</property>
+                            <property name="max_length">20</property>
+                            <property name="visibility">False</property>
+                            <property name="invisible_char">●</property>
+                            <property name="input_purpose">password</property>
+                            <signal name="changed" handler="on_txtPassphrase2_changed" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage" id="imgPassphraseCheck">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">end</property>
+                            <property name="margin_right">10</property>
+                            <property name="stock">gtk-no</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1055,14 +1018,118 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btnRefresh">
+                      <object class="GtkBox" id="box3">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">imgRefresh</property>
-                        <property name="relief">none</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="clicked" handler="on_btnRefresh_clicked" swapped="no"/>
+                        <property name="can_focus">False</property>
+                        <property name="margin_top">10</property>
+                        <property name="spacing">10</property>
+                        <child>
+                          <object class="GtkBox" id="box4">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="spacing">10</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkButton" id="btnEncrypt">
+                                <property name="label" translatable="yes">Encrypt</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">imgLocked</property>
+                                <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_btnEncrypt_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="btnDecrypt">
+                                <property name="label" translatable="yes">Decrypt</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">imgUnlocked</property>
+                                <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_btnDecrypt_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="btnChangePassphrase">
+                                <property name="label" translatable="yes">Change passphrase</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="image">imgKey1</property>
+                                <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_btnChangePassphrase_clicked" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btnCreateKeyfile">
+                            <property name="label" translatable="yes">Manually create key file</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">imgKey2</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="clicked" handler="on_btnCreateKeyfile_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btnRefresh">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">imgRefresh1</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="clicked" handler="on_btnRefresh_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btnHelp">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">imgHelp1</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="clicked" handler="on_btnHelp_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1070,26 +1137,11 @@
                         <property name="position">2</property>
                       </packing>
                     </child>
-                    <child>
-                      <object class="GtkButton" id="btnHelp">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="image">imgHelp1</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="clicked" handler="on_btnHelp_clicked" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">3</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
@@ -1185,7 +1237,7 @@
                             <property name="receives_default">True</property>
                             <property name="margin_left">5</property>
                             <property name="margin_right">5</property>
-                            <property name="image">imgAdd1</property>
+                            <property name="image">imgAdd</property>
                             <property name="image_position">right</property>
                             <property name="always_show_image">True</property>
                             <signal name="clicked" handler="on_btnHoldback_clicked" swapped="no"/>
@@ -1206,7 +1258,7 @@
                             <property name="margin_left">5</property>
                             <property name="margin_right">5</property>
                             <property name="margin_top">10</property>
-                            <property name="image">imgRemove1</property>
+                            <property name="image">imgRemove</property>
                             <property name="always_show_image">True</property>
                             <signal name="clicked" handler="on_btnRemoveHoldback_clicked" swapped="no"/>
                           </object>
