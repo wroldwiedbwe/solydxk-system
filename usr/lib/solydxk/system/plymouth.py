@@ -122,7 +122,7 @@ class Plymouth():
                     lines = f.readlines()
                 for line in lines:
                     # Search text for resolution
-                    matchObj = re.search('^GRUB_GFXPAYLOAD_LINUX=(.*)', line)
+                    matchObj = re.search('^GRUB_GFXPAYLOAD_LINUX\s*=[\s"]*([0-9]+x[0-9]+)', line)
                     if matchObj:
                         res = matchObj.group(1)
                         self.write_log("Current Plymouth resolution: %(res)s" % { "res": res })

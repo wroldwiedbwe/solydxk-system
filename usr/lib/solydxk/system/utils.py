@@ -167,13 +167,13 @@ def get_resolutions(minRes='', maxRes='', reverse_order=False, use_vesa=False):
     resolutions = []
     default_res = ['640x480', '800x600', '1024x768', '1280x1024', '1600x1200']
 
-    cmd = "xrandr | awk '{print $1}' | egrep '[0-9]x[0-9]'"
+    cmd = "xrandr | awk '{print $1}' | egrep '[0-9]+x[0-9]+$'"
     if use_vesa:
         vbeModes = '/sys/bus/platform/drivers/uvesafb/uvesafb.0/vbe_modes'
         if exists(vbeModes):
             cmd = "cat %s | cut -d'-' -f1" % vbeModes
         elif is_package_installed('hwinfo'):
-            cmd = "hwinfo --framebuffer | egrep '[0-9]x[0-9]' | awk '{print $3}' | uniq"        
+            cmd = "hwinfo --framebuffer | awk '{print $3}' | egrep '[0-9]+x[0-9]+$' | uniq"        
 
     resolutions = getoutput(cmd)
     if not resolutions[0]:

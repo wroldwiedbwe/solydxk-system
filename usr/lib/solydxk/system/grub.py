@@ -37,7 +37,7 @@ class Grub():
                 lines = f.read().splitlines()
             for line in lines:
                 # Search text for resolution
-                matchObj = re.search('^GRUB_GFXMODE=(.*)', line)
+                matchObj = re.search('^GRUB_GFXMODE\s*=[\s"]*([0-9]+x[0-9]+)', line)
                 if matchObj:
                     if matchObj.group(1).strip() != "":
                         res = matchObj.group(1)
