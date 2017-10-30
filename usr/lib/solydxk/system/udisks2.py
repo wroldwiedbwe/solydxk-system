@@ -109,8 +109,11 @@ class Udisks2():
                         if exists(mount_point):
                             total_size, free_size, used_size = self.get_mount_size(mount_point)
                         if unmount:
-                            self._unmount_filesystem(fs)
-                            mount_point = ''
+                            try:
+                                self._unmount_filesystem(fs)
+                                mount_point = ''
+                            except:
+                                pass
 
                 # There are no partitions: set free size to total size
                 partition = obj.get_partition()
@@ -314,12 +317,15 @@ class Udisks2():
     def unmount_device(self, device_path):
         fs = self._get_filesystem(device_path)
         if fs is not None:
-            self._unmount_filesystem(fs)
+            try:
+                self._unmount_filesystem(fs)
+            except:
+                pass
         if self.is_mounted(device_path):
             shell_exec("umount -f {}".format(device_path))
-        if is_encrypted(device_path):
-            shell_exec("cryptsetup close {} 2>/dev/null".format(device_path))
         if not self.is_mounted(device_path):
+            if is_encrypted(device_path):
+                shell_exec("cryptsetup close {} 2>/dev/null".format(device_path))
             return True
         return False
 

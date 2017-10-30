@@ -894,11 +894,17 @@ class SolydXKSystemSettings(object):
                                                 'removable': device['removable'],
                                                 'has_grub': device['has_grub']
                                                })
+        # Reset failed mount devices
         self.failed_mount_devices = []
         
         for partition in tmp_partitions:
             # Get fstab information
             fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, keyfile_path = self.get_partition_configuration_info(partition, tmp_partitions, check_encryptable)
+            
+            # Do not add encrypted partitions that failed to connect (bad passphrase)
+            if 'crypt' in partition['fs_type']:
+                continue
+            
             partition['fstab_path'] = fstab_path
             partition['fstab_device'] = fstab_device
             partition['fstab_mount'] = fstab_mount
@@ -958,8 +964,6 @@ class SolydXKSystemSettings(object):
                                               firstItemIsColName=True,
                                               multipleSelection=True)
                                               
-        # Refresh fstab mount treeviews as well
-        self.fill_treeview_fstab_partitions()
 
     def check_passphrase(self):
         self.my_passphrase = ''
@@ -1079,123 +1083,134 @@ class SolydXKSystemSettings(object):
                and p['fs_type'] != 'swap' \
                and p['device'] not in self.failed_mount_devices:
 
-                current_passphrase = ''
+                current_passphrase = None
                 mount = ''
-                device = p['device']
-                filesystem = p['fs_type']
+                device = ''
+                filesystem = ''
 
                 if p['encrypted'] and not p['passphrase'] and not 'mapper' in p['device']:
                     # This is an encrypted, not mounted partition.
                     # Ask the user for the passphrase
                     current_passphrase = self.get_passphrase_dialog(p['device'])
-                               
+
                 if check_encryptable:
                     # Mount the partition when working in encryption
                     device, mount, filesystem = self.temp_mount(p, current_passphrase)
-                elif current_passphrase:
+                    #print((">>>> p1 = %s" % str(p)))
+                    #print(("     mount = %s" % mount))
+                    if mount:
+                        #print((">>>> Save %s: mount=%s, fs_type=%s" % (device, mount, filesystem)))
+                        p['mount_point'] = mount
+                        # Get free_size from mapped path
+                        total, free, used = self.udisks2.get_mount_size(mount)
+                        p['free_size'] = free
+                        p['used_size'] = used
+                        # Get label
+                        p['label'] = get_label(device)
+                        
+                        # Add fstab path
+                        fstab_path = join(p['mount_point'], 'etc/fstab')
+                        if exists(fstab_path) and not fstab_path in fstab_paths:
+                            fstab_paths.append(fstab_path)
+                    else:
+                        show_error = True
+                        #print((">>>> Could not mount %s (%s)" % (p['device'], p['fs_type'])))
+                        if p['fs_type'] == 'swap' or p['fs_type'] == '':
+                            # Don't show error
+                            show_error = False
+                        self.log.write(self.mount_error.format(p['device']), 'get_partition_configuration_info', 'error', show_error)
+                        if p['device'] not in self.failed_mount_devices:
+                            self.failed_mount_devices.append(p['device'])
+                            
+                elif current_passphrase is not None:
                     # Not in encryption: connect the block device but do not mount
                     device, filesystem = connect_block_device(p['device'], current_passphrase)
+                    
+                    #print((">>>> p2 = %s" % str(p)))
+                    #print(("     device = %s" % device))
+                    if device:
+                        # Save information
+                        p['fs_type'] = filesystem
+                        p['passphrase'] = current_passphrase
+                        p['device'] = device
+                    else:
+                        show_error = True
+                        #print((">>>> Could not connect block device %s (%s)" % (p['device'], p['fs_type'])))
+                        if p['fs_type'] == 'swap' or p['fs_type'] == '':
+                            # Don't show error
+                            show_error = False
+                        self.log.write(self.mount_error.format(p['device']), 'get_partition_configuration_info', 'error', show_error)
+                        if p['device'] not in self.failed_mount_devices:
+                            self.failed_mount_devices.append(p['device'])
 
-                # Save necessary information
-                p['fs_type'] = filesystem
-                p['passphrase'] = current_passphrase
-                p['device'] = device
+        if partition['device'] not in self.failed_mount_devices:
+            # Check if given partition is listed in /etc/fstab
+            for fstab_path in fstab_paths:
+                fstab_cont = self.sort_fstab(fstab_path)
+                fstab_mount = ''
                 
-                if mount:
-                    #print((">> Save %s: mount=%s, fs_type=%s" % (device, mount, filesystem)))
-                    p['mount_point'] = mount
+                fstab_device = partition['old_device'].replace('/dev/mapper', '/dev')
+                if not 'mapper' in fstab_device:
+                    fstab_device = fstab_device.replace('/dev', '/dev/mapper')
 
-                    # Get free_size from mapped path
-                    total, free, used = self.udisks2.get_mount_size(mount)
-                    p['free_size'] = free
-                    p['used_size'] = used
-                    
-                    # Get label
-                    p['label'] = get_label(device)
-                    
-                #print(("++++ p = %s" % str(p)))
-                if check_encryptable and not mount:
-                    show_error = True
-                    #print((">>>> Could not mount %s (%s)" % (p['device'], p['fs_type'])))
-                    if 'crypt' in p['fs_type'] or p['fs_type'] == 'swap' or p['fs_type'] == '':
-                        # Don't show error
-                        show_error = False
-                    self.log.write(self.mount_error.format(p['device']), 'get_partition_configuration_info', 'error', show_error)
-                    if p['device'] not in self.failed_mount_devices:
-                        self.failed_mount_devices.append(p['device'])
-            if p['mount_point']:
-                # Add fstab path
-                fstab_path = join(p['mount_point'], 'etc/fstab')
-                if exists(fstab_path) and not fstab_path in fstab_paths:
-                    fstab_paths.append(fstab_path)
-            
-        # Check if given partition is listed in /etc/fstab
-        for fstab_path in fstab_paths:
-            fstab_cont = self.sort_fstab(fstab_path)
-            fstab_mount = ''
-            
-            fstab_device = partition['old_device'].replace('/dev/mapper', '/dev')
-            if not 'mapper' in fstab_device:
-                fstab_device = fstab_device.replace('/dev', '/dev/mapper')
+                regexp = "(%s|%s|%s)\s+(\S+)" % ("UUID=%s" % partition['old_uuid'], partition['old_device'], fstab_device)
+                #print(("++++ regexp = %s" % regexp))
+                matchObj = re.search(regexp, fstab_cont)
+                if matchObj:
+                    fstab_device = matchObj.group(1)
+                    fstab_mount = matchObj.group(2)
+                if fstab_mount:
+                    # Set fs_type for swap partitions
+                    if fstab_mount == 'swap':
+                        partition['fs_type'] = 'swap'
+                        
+                    # Get encryption information
+                    crypttab_path = ''
+                    keyfile_path = ''
+                    #print(("**** crypttab partition: %s" % str(partition)))
+                    if partition['encrypted']:
+                        crypttab_path = fstab_path.replace('fstab', 'crypttab')
+                        #print(("++++ crypttab_path=%s" % crypttab_path))
+                        if exists(crypttab_path):
+                            lines = []
+                            with open(crypttab_path, 'r') as f:
+                                lines = f.readlines()
+                            for line in lines:
+                                line = line.strip()
+                                lineData = line.split()
+                                #print(("++++ lineData=%s" % str(lineData)))
+                                matchObj = re.search('[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', lineData[1])
+                                if matchObj:
+                                    crypttab_uuid = matchObj.group(0)
+                                    #print(("++++ crypttab_uuid=%s" % crypttab_uuid))
+                                    device = get_device_from_uuid(crypttab_uuid)
+                                    #print(("++++ device=%s, partition['device']=%s" % (device, partition['device'])))
+                                    if basename(device) == basename(partition['device']):
+                                        # Get crypttab data
+                                        crypttab_keyfile_path = lineData[2]
+                                        if crypttab_keyfile_path == 'none':
+                                            crypttab_keyfile_path = ''
+                                        if crypttab_keyfile_path:
+                                            # Search the keyfile path
+                                            crypttab_keyfile_dir = dirname(crypttab_keyfile_path)
+                                            regexp = "([0-9a-z-/]+)\s+{0}\s+".format(crypttab_keyfile_dir.replace('/', '\/'))
+                                            #print(("++++ regexp = %s" % regexp))
+                                            matchObj = re.search(regexp, fstab_cont)
+                                            if matchObj:
+                                                keyfile_device = matchObj.group(1)
+                                                if keyfile_device[:1] != '/':
+                                                    keyfile_device = get_device_from_uuid(keyfile_device)
+                                                #print(("++++ keyfile_device = %s" % keyfile_device))
+                                                #print(self.partitions)
+                                                for p in self.partitions:
+                                                    #print(("    ++++ bn_device = %s, bn_keyfile_device = %s" % (basename(p['device']), basename(keyfile_device))))
+                                                    if basename(p['device']) == basename(keyfile_device):
+                                                        keyfile_path = join(p['mount_point'], crypttab_keyfile_path.lstrip('/'))
+                                                        #print(("        ++++ keyfile_path = %s" % keyfile_path))
+                                                        break
+                                        break
+                    return (fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, keyfile_path)
 
-            regexp = "(%s|%s|%s)\s+(\S+)" % ("UUID=%s" % partition['old_uuid'], partition['old_device'], fstab_device)
-            #print(("++++ regexp = %s" % regexp))
-            matchObj = re.search(regexp, fstab_cont)
-            if matchObj:
-                fstab_device = matchObj.group(1)
-                fstab_mount = matchObj.group(2)
-            if fstab_mount:
-                # Set fs_type for swap partitions
-                if fstab_mount == 'swap':
-                    partition['fs_type'] = 'swap'
-                    
-                # Get encryption information
-                crypttab_path = ''
-                keyfile_path = ''
-                #print(("**** crypttab partition: %s" % str(partition)))
-                if partition['encrypted']:
-                    crypttab_path = fstab_path.replace('fstab', 'crypttab')
-                    #print(("++++ crypttab_path=%s" % crypttab_path))
-                    if exists(crypttab_path):
-                        lines = []
-                        with open(crypttab_path, 'r') as f:
-                            lines = f.readlines()
-                        for line in lines:
-                            line = line.strip()
-                            lineData = line.split()
-                            #print(("++++ lineData=%s" % str(lineData)))
-                            matchObj = re.search('[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}', lineData[1])
-                            if matchObj:
-                                crypttab_uuid = matchObj.group(0)
-                                #print(("++++ crypttab_uuid=%s" % crypttab_uuid))
-                                device = get_device_from_uuid(crypttab_uuid)
-                                #print(("++++ device=%s, partition['device']=%s" % (device, partition['device'])))
-                                if basename(device) == basename(partition['device']):
-                                    # Get crypttab data
-                                    crypttab_keyfile_path = lineData[2]
-                                    if crypttab_keyfile_path == 'none':
-                                        crypttab_keyfile_path = ''
-                                    if crypttab_keyfile_path:
-                                        # Search the keyfile path
-                                        crypttab_keyfile_dir = dirname(crypttab_keyfile_path)
-                                        regexp = "([0-9a-z-/]+)\s+{0}\s+".format(crypttab_keyfile_dir.replace('/', '\/'))
-                                        #print(("++++ regexp = %s" % regexp))
-                                        matchObj = re.search(regexp, fstab_cont)
-                                        if matchObj:
-                                            keyfile_device = matchObj.group(1)
-                                            if keyfile_device[:1] != '/':
-                                                keyfile_device = get_device_from_uuid(keyfile_device)
-                                            #print(("++++ keyfile_device = %s" % keyfile_device))
-                                            #print(self.partitions)
-                                            for p in self.partitions:
-                                                #print(("    ++++ bn_device = %s, bn_keyfile_device = %s" % (basename(p['device']), basename(keyfile_device))))
-                                                if basename(p['device']) == basename(keyfile_device):
-                                                    keyfile_path = join(p['mount_point'], crypttab_keyfile_path.lstrip('/'))
-                                                    #print(("        ++++ keyfile_path = %s" % keyfile_path))
-                                                    break
-                                    break
-                return (fstab_path, fstab_device, fstab_mount, fstab_cont, crypttab_path, keyfile_path)
-                
         # Nothing found
         return ('', '', '', '', '', '')
 
@@ -1810,9 +1825,12 @@ class SolydXKSystemSettings(object):
             cur_res = get_current_resolution()
         resolutions = get_resolutions(use_vesa=True)
         for res in resolutions:
-            if int(res.split('x')[0]) >= int(cur_res.split('x')[0]):
-                sel_res = res
-                break
+            try:
+                if int(res.split('x')[0]) >= int(cur_res.split('x')[0]):
+                    sel_res = res
+                    break
+            except:
+                pass
         self.cmbSplashResolutionHandler.fillComboBox(resolutions, sel_res)
         
     def on_tvSplashHandler_toggled(self, obj, path, colNr, toggleValue):
@@ -2051,7 +2069,7 @@ class SolydXKSystemSettings(object):
         if text is not None:
             self.progressbar.set_text(str(text))
             
-    def temp_mount(self, partition, passphrase=''):
+    def temp_mount(self, partition, passphrase=None):
         mount_point =  join(TMPMOUNT, basename(partition['device']))
         return self.udisks2.mount_device(partition['old_device'], mount_point, None, None, passphrase)
         

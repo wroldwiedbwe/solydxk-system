@@ -31,13 +31,14 @@ def encrypt_partition(device, passphrase):
 
 
 def connect_block_device(device, passphrase):
-    mapped_name = basename(device)
-    shell_exec("printf \"{}\" | cryptsetup open --type luks {} {}".format(passphrase, device, mapped_name))
-    # Collect info to return
-    mapped_device = join('/dev/mapper', mapped_name)
-    if exists(mapped_device):
-        filesystem = get_filesystem(mapped_device)
-        return (mapped_device, filesystem)
+    if exists(device):
+        mapped_name = basename(device)
+        shell_exec("printf \"{}\" | cryptsetup open --type luks {} {}".format(passphrase, device, mapped_name))
+        # Collect info to return
+        mapped_device = join('/dev/mapper', mapped_name)
+        if exists(mapped_device):
+            filesystem = get_filesystem(mapped_device)
+            return (mapped_device, filesystem)
     return ('', '')
 
 def is_connected(device):
