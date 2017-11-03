@@ -58,7 +58,7 @@ class SolydXKSystemSettings(object):
         if is_xfce_running():
             b_img = join(self.shareDir, 'images/splash-bgx.png')
             f_clr = '#502800'
-        splash = Splash(title=self.title, font='Roboto Slab 18', font_weight='bold', font_color=f_clr, background_image=b_img)
+        splash = Splash(title=self.title, font='Roboto Slab 18', font_weight='bold', font_color=f_clr, background_image=b_img, min_secs=5)
         splash.start()
 
         # Init logging
@@ -422,8 +422,7 @@ class SolydXKSystemSettings(object):
         while itr is not None:
             selected = model.get_value(itr, 0)
             device = model.get_value(itr, 1)
-            mount = model.get_value(itr, 2)
-            label = model.get_value(itr, 3).strip()
+            label = model.get_value(itr, 2).strip()
             uuid = ''
             fs_type = ''
             fstab_mount = ''

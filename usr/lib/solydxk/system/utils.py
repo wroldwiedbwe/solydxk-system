@@ -355,14 +355,12 @@ def is_package_installed(packageName, alsoCheckVersion=False):
 
 # Check if a package exists
 def does_package_exist(packageName):
-    exists = False
     try:
         cache = apt.Cache()
         cache[packageName]
-        exists = True
+        return True
     except:
-        pass
-    return exists
+        return False
 
 
 def is_running_live():

@@ -31,10 +31,11 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 from threading import Thread
 from os.path import exists
+import time
 
 
 class Splash(Thread):
-    def __init__(self, title, width=400, height=250, font=16, font_weight='normal', font_color='000000', background_color='ffffff', background_image=None):
+    def __init__(self, title, width=400, height=250, font=16, font_weight='normal', font_color='000000', background_color='ffffff', background_image=None, min_secs=0):
         super(Splash, self).__init__()
         self.title = title
         self.width = width
@@ -43,7 +44,13 @@ class Splash(Thread):
         self.font_weight = font_weight
         self.font_color = self.prep_hex_color(font_color)
         self.background_image = '' if background_image is None else background_image
+        self.min_secs = min_secs
         self.parent = next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
+        
+        # Set the timer
+        self.start_time = 0
+        if self.min_secs > 0:
+            self.start_time = time.time()
 
         # Window settings
         self.window = Gtk.Window(Gtk.WindowType.POPUP)
@@ -127,4 +134,8 @@ class Splash(Thread):
         self.window.hide()
     
     def destroy(self):
+        if self.min_secs > 0:
+            time_left = self.min_secs - (time.time() - self.start_time)
+            if time_left > 0:
+                time.sleep(time_left)
         self.window.destroy()

@@ -1,3 +1,15 @@
+solydxk-system (3.0.4b6) solydxk; urgency=low
+
+  * Show splash at least 5 seconds
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Fri, 03 Nov 2017 15:48:45 +0100
+
+solydxk-system (3.0.4b5) solydxk; urgency=low
+
+  * Fix saving additional fstab mount
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 30 Oct 2017 14:16:05 +0100
+
 solydxk-system (3.0.4b4) solydxk; urgency=low
 
   * Let user enable the encryption
