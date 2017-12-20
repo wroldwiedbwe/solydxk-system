@@ -188,8 +188,11 @@ class Localize(threading.Thread):
                 print(msg)
 
     def applications(self):
-        for locale in self.locales:
-            if locale == "en_US":
+        for loc in self.locales:
+            locale = ''
+            if loc[0]:
+                locale = loc[1]
+            if locale == "en_US" or locale == '':
                 continue
             spellchecker = False
             # Localize KDE
