@@ -2,16 +2,10 @@
 
 import os
 import threading
-from dialogs import WarningDialog
 from os.path import join, abspath, dirname, exists, basename
 from utils import getoutput, get_config_dict, shell_exec, has_string_in_file, \
-                  does_package_exist, is_package_installed, has_internet_connection, \
+                  does_package_exist, is_package_installed, \
                   get_debian_version
-
-# i18n: http://docs.python.org/3/library/gettext.html
-import gettext
-from gettext import gettext as _
-gettext.textdomain('solydxk-system')
 
 DEFAULTLOCALE = 'en_US'
 
@@ -105,15 +99,10 @@ class Localize(threading.Thread):
 
     def run(self):
         self.set_locale()
-        if has_internet_connection():
-            self.queue_progress()
-            shell_exec("apt-get update")
-            self.applications()
-            self.language_specific()
-        else:
-            msg = _("SolydXK System Settings cannot download and install the software localization packages\n"
-                    "Please repeat this process when you established an internet connection.")
-            WarningDialog(_("No internet connection", msg))
+        self.queue_progress()
+        shell_exec("apt-get update")
+        self.applications()
+        self.language_specific()
 
     def set_locale(self):
         print((" --> Set locale %s" % self.default_locale))
@@ -199,12 +188,14 @@ class Localize(threading.Thread):
                 print(msg)
 
     def applications(self):
-        if self.default_locale != "en_US":
+        for locale in self.locales:
+            if locale == "en_US":
+                continue
             spellchecker = False
             # Localize KDE
             if is_package_installed("kde-runtime"):
                 print((" --> Localizing KDE"))
-                package = self.get_localized_package("kde-l10n")
+                package = self.get_localized_package("kde-l10n", locale)
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
@@ -212,18 +203,18 @@ class Localize(threading.Thread):
             # Localize LibreOffice
             if is_package_installed("libreoffice"):
                 print((" --> Localizing LibreOffice"))
-                package = self.get_localized_package("libreoffice-l10n")
+                package = self.get_localized_package("libreoffice-l10n", locale)
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s libreoffice %s" % (self.debian_frontend, self.apt_options, package))
-                package = self.get_localized_package("libreoffice-help")
+                package = self.get_localized_package("libreoffice-help", locale)
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
                 if not spellchecker:
-                    package = self.get_localized_package("hunspell")
+                    package = self.get_localized_package("hunspell", locale)
                     if package == '':
-                        package = self.get_localized_package("myspell")
+                        package = self.get_localized_package("myspell", locale)
                     if package != "":
                         spellchecker = True
                         self.queue_progress()
@@ -232,7 +223,7 @@ class Localize(threading.Thread):
             # Localize AbiWord
             if is_package_installed("abiword"):
                 print((" --> Localizing AbiWord"))
-                package = self.get_localized_package("aspell")
+                package = self.get_localized_package("aspell", locale)
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
@@ -247,14 +238,14 @@ class Localize(threading.Thread):
                 if isESR:
                     esr = "esr-"
                 print((" --> Localizing Firefox"))
-                package = self.get_localized_package("firefox-%sl10n" % esr)
+                package = self.get_localized_package("firefox-%sl10n" % esr, locale)
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s %s %s" % (self.debian_frontend, self.apt_options, ff, package))
                 if not spellchecker:
-                    package = self.get_localized_package("hunspell")
+                    package = self.get_localized_package("hunspell", locale)
                     if package == '':
-                        package = self.get_localized_package("myspell")
+                        package = self.get_localized_package("myspell", locale)
                     if package != "":
                         spellchecker = True
                         self.queue_progress()
@@ -263,14 +254,14 @@ class Localize(threading.Thread):
             # Localize Thunderbird
             if is_package_installed("thunderbird"):
                 print((" --> Localizing Thunderbird"))
-                package = self.get_localized_package("thunderbird-l10n")
+                package = self.get_localized_package("thunderbird-l10n", locale)
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s thunderbird %s" % (self.debian_frontend, self.apt_options, package))
                 if not spellchecker:
-                    package = self.get_localized_package("hunspell")
+                    package = self.get_localized_package("hunspell", locale)
                     if package == '':
-                        package = self.get_localized_package("myspell")
+                        package = self.get_localized_package("myspell", locale)
                     if package != "":
                         spellchecker = True
                         self.queue_progress()
@@ -284,8 +275,8 @@ class Localize(threading.Thread):
             #print((">> step %d of %d" % (self.current_step, self.max_steps)))
             self.queue.put([self.max_steps, self.current_step])
 
-    def get_localized_package(self, package):
-        language_list = self.default_locale.lower().split("_")
+    def get_localized_package(self, package, locale):
+        language_list = locale.lower().split("_")
         lan = "".join(language_list)
         pck = "{}-{}".format(package, lan)
         if not does_package_exist(pck):

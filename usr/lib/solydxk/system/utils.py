@@ -108,10 +108,13 @@ def has_internet_connection(test_url=None):
 
 # Check if running in VB
 def in_virtualbox():
-    dmiBIOSVersion = getoutput("dmidecode -t0 | grep 'Version:' | awk -F ': ' '{print $2}'")[0]
-    dmiSystemProduct = getoutput("dmidecode -t1 | grep 'Product Name:' | awk -F ': ' '{print $2}'")[0]
-    dmiBoardProduct = getoutput("dmidecode -t2 | grep 'Product Name:' | awk -F ': ' '{print $2}'")[0]
-    if dmiBIOSVersion != "VirtualBox" and dmiSystemProduct != "VirtualBox" and dmiBoardProduct != "VirtualBox":
+    vb = 'VirtualBox'
+    dmiBIOSVersion = getoutput("grep '{}' /sys/devices/virtual/dmi/id/bios_version".format(vb))
+    dmiSystemProduct = getoutput("grep '{}' /sys/devices/virtual/dmi/id/product_name".format(vb))
+    dmiBoardProduct = getoutput("grep '{}' /sys/devices/virtual/dmi/id/board_name".format(vb))
+    if vb not in dmiBIOSVersion and \
+       vb not in dmiSystemProduct and \
+       vb not in dmiBoardProduct:
         return False
     return True
 

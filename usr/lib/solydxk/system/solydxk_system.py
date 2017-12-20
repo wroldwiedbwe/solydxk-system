@@ -1373,20 +1373,25 @@ class SolydXKSystemSettings(object):
 
     def save_locale(self):
         # Collect information
-        locales = self.tvLocaleHandler.model_to_list()
-        timezone = join(self.cmbTimezoneContinentHandler.getValue(),
-                        self.cmbTimezoneHandler.getValue())
+        if has_internet_connection():
+            locales = self.tvLocaleHandler.model_to_list()
+            timezone = join(self.cmbTimezoneContinentHandler.getValue(),
+                            self.cmbTimezoneHandler.getValue())
 
-        # Run localization in a thread and show progress
-        name = 'localize'
-        self.set_buttons_state(False)
-        t = Localize(locales, timezone, self.queue)
-        self.threads[name] = t
-        t.daemon = True
-        t.start()
-        # TODO: why is queue.join sometimes blocking the thread but not always?
-        #self.queue.join()
-        GObject.timeout_add(250, self.check_thread, name)
+            # Run localization in a thread and show progress
+            name = 'localize'
+            self.set_buttons_state(False)
+            t = Localize(locales, timezone, self.queue)
+            self.threads[name] = t
+            t.daemon = True
+            t.start()
+            # TODO: why is queue.join sometimes blocking the thread but not always?
+            #self.queue.join()
+            GObject.timeout_add(250, self.check_thread, name)
+        else:
+            msg = _("SolydXK System Settings cannot download and install the software localization packages\n"
+                    "Please repeat this process when you established an internet connection.")
+            WarningDialog(self.btnSaveLocale.get_label(), msg)
 
     def fill_treeview_locale(self):
         self.locales = [[self.installed_title, self.locale_title, self.language_title, self.default_title]]
