@@ -1,3 +1,9 @@
+solydxk-system (3.0.4b7) solydxk; urgency=low
+
+  * Check internet connection using repositories in /etc/apt/sources.list
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 20 Dec 2017 10:06:41 +0100
+
 solydxk-system (3.0.4b6) solydxk; urgency=low
 
   * Show splash at least 5 seconds
