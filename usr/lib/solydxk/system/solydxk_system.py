@@ -426,6 +426,10 @@ class SolydXKSystemSettings(object):
             uuid = ''
             fs_type = ''
             fstab_mount = ''
+            # Decide new mount point
+            mount = join('/media', basename(device))
+            if label:
+                mount = join('/media', label.replace(' ', '_'))
 
             # Get additional information
             for p in self.partitions:
@@ -440,11 +444,6 @@ class SolydXKSystemSettings(object):
             if selected and not fstab_mount:
                 # Add information to fstab
                 if (uuid or device) and fs_type:
-                    # Decide new mount point
-                    mount = join('/media', basename(device))
-                    if label:
-                        mount = join('/media', label.replace(' ', '_'))
-                        
                     # Create mount directory and mount
                     if not exists(mount):
                         os.makedirs(mount)
