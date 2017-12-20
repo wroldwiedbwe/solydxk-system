@@ -55,7 +55,7 @@ situação.</p>
 # cp -a /mnt/root/boot/* /mnt/boot/
 # echo "UUID=$(blkid -o value -s UUID /dev/sda1)    /boot   ext4    defaults    0   0" >> /mnt/root/etc/fstab</pre>
 		<p>Agora você pode reiniciar seu sistema e verificar se a partição de
-inicialização está corretamente montada:</p>
+inicialização está correctamente montada:</p>
 		<pre>$ mount | grep sda2</pre>
 		<p>Para cifrar a partição root (e swap), você precisa iniciar uma sessão live
 novamente, iniciar Configurações do Sistema SolydXK e seleccionar a partição
