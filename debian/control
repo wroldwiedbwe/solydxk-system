@@ -68,5 +68,6 @@ Replaces: solydkbo-grub2-theme
   , xksudo
   , ddm
   , debian-plymouth-manager
-Description: SolidXK System Base Package
+Description: SolydXK System Base Package
  Used by the desktop and other SolydXK tools to gather information and process common system tasks.
+ It also includes a GUI (SolydXK System Settings) to change system configuration.
