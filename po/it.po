@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 10:07+0100\n"
+"POT-Creation-Date: 2017-12-22 18:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Davide Favaro <belzebu87@gmail.com>, 2017\n"
 "Language-Team: Italian (https://www.transifex.com/solydxk/teams/54212/it/)\n"
@@ -316,7 +316,6 @@ msgid "No changes were made to fstab."
 msgstr "Nessuna modifica a fstab."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:619
-#: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr "Nessuna connessione internet"
 
@@ -414,8 +413,19 @@ msgstr ""
 "La partizione deve avere almeno %sdi spazio libero.\n"
 "Montare un disco di backup e premere il bottone aggiorna."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1545
-#: ../usr/lib/solydxk/system/solydxk_system.py:1630
+#: ../usr/lib/solydxk/system/solydxk_system.py:1392
+msgid ""
+"SolydXK System Settings cannot download and install the software "
+"localization packages\n"
+"Please repeat this process when you established an internet connection."
+msgstr ""
+"SolydXK System Settings non può scaricare ed installare i pacchetti per la "
+"traduzione.\n"
+"Si prega di ripetere il processo quando si disporrà di una connessione ad "
+"internet funzionante."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:1550
+#: ../usr/lib/solydxk/system/solydxk_system.py:1635
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -423,48 +433,48 @@ msgstr ""
 "Non è stato possibile aggiornare la cache di apt-get.\n"
 "Si prega di aggiornare la cache fi apt-get manualmente con: apt-get update"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1549
+#: ../usr/lib/solydxk/system/solydxk_system.py:1554
 msgid "Nothing to do."
 msgstr "Nessuna operazione da compiere"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1637
+#: ../usr/lib/solydxk/system/solydxk_system.py:1642
 msgid "There are no repositories to save."
 msgstr "Non ci sono repository da slavare"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Current"
 msgstr "Attuale"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Country"
 msgstr "Stato"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Repository"
 msgstr "Repository"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Speed"
 msgstr "Velocit"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1969
+#: ../usr/lib/solydxk/system/solydxk_system.py:1974
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Si prega di riavviare il sistema per rendere effettive le nuove impostazioni."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1970
+#: ../usr/lib/solydxk/system/solydxk_system.py:1975
 msgid "Reboot"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1981
+#: ../usr/lib/solydxk/system/solydxk_system.py:1986
 msgid "Encryption done"
 msgstr "Cifratura completata"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1982
+#: ../usr/lib/solydxk/system/solydxk_system.py:1987
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -474,11 +484,11 @@ msgstr ""
 "\n"
 "Riavviare il computer?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1985
+#: ../usr/lib/solydxk/system/solydxk_system.py:1990
 msgid "Decryption done"
 msgstr "Decifratura completata"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1986
+#: ../usr/lib/solydxk/system/solydxk_system.py:1991
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -488,16 +498,16 @@ msgstr ""
 "\n"
 "Riavviare il computer?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1998
+#: ../usr/lib/solydxk/system/solydxk_system.py:2003
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Passphrase cambiata per {0}"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2050
+#: ../usr/lib/solydxk/system/solydxk_system.py:2055
 msgid "Partition passphrase"
 msgstr "Passphrase della partizione"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2051
+#: ../usr/lib/solydxk/system/solydxk_system.py:2056
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -552,17 +562,6 @@ msgid ""
 msgstr ""
 "Non è stato possibile cambiare la passphrase per {0}\n"
 "Si prega di inserire la passphrase attuale e la nuova passphrase."
-
-#: ../usr/lib/solydxk/system/localize.py:114
-msgid ""
-"SolydXK System Settings cannot download and install the software "
-"localization packages\n"
-"Please repeat this process when you established an internet connection."
-msgstr ""
-"SolydXK System Settings non può scaricare ed installare i pacchetti per la "
-"traduzione.\n"
-"Si prega di ripetere il processo quando si disporrà di una connessione ad "
-"internet funzionante."
 
 #: ../usr/bin/solydxk-system:22
 #, sh-format

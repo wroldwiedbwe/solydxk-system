@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 10:07+0100\n"
+"POT-Creation-Date: 2017-12-22 18:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/solydxk/teams/54212/ca/)\n"
@@ -306,7 +306,6 @@ msgid "No changes were made to fstab."
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:619
-#: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr "No hi ha connexió a Internet "
 
@@ -405,8 +404,18 @@ msgstr ""
 "Cal una partició de còpia de seguretat amb un mínim de%s lliure.\n"
 "Munteu un disc de còpia de seguretat i premeu el botó Actualitza."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1545
-#: ../usr/lib/solydxk/system/solydxk_system.py:1630
+#: ../usr/lib/solydxk/system/solydxk_system.py:1392
+msgid ""
+"SolydXK System Settings cannot download and install the software "
+"localization packages\n"
+"Please repeat this process when you established an internet connection."
+msgstr ""
+"SolydXK System Settings no pot descarregar i instal·lar els paquets de "
+"localització de programari\n"
+"Si us plau, repetiu el procés quan tingueu connexió a internet."
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:1550
+#: ../usr/lib/solydxk/system/solydxk_system.py:1635
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -414,47 +423,47 @@ msgstr ""
 "No he pogut actualitzar la memòria cau d'APT.\n"
 "Si us plau, actualitzeu-la manualment amb apt-get update "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1549
+#: ../usr/lib/solydxk/system/solydxk_system.py:1554
 msgid "Nothing to do."
 msgstr "Res a fer."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1637
+#: ../usr/lib/solydxk/system/solydxk_system.py:1642
 msgid "There are no repositories to save."
 msgstr "No hi ha dipòsits per desar."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Current"
 msgstr "Actual "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Country"
 msgstr "País "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Repository"
 msgstr "Dipòsit "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "URL"
 msgstr "URL "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Speed"
 msgstr "Velocitat "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1969
+#: ../usr/lib/solydxk/system/solydxk_system.py:1974
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr "Us cal tornar a arrencar el sistema per activar la nova configuració."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1970
+#: ../usr/lib/solydxk/system/solydxk_system.py:1975
 msgid "Reboot"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1981
+#: ../usr/lib/solydxk/system/solydxk_system.py:1986
 msgid "Encryption done"
 msgstr "Fet l'encriptatge"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1982
+#: ../usr/lib/solydxk/system/solydxk_system.py:1987
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -464,11 +473,11 @@ msgstr ""
 "\n"
 "Voleu tornar a arrencar l'ordinador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1985
+#: ../usr/lib/solydxk/system/solydxk_system.py:1990
 msgid "Decryption done"
 msgstr "Fet el desencriptatge"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1986
+#: ../usr/lib/solydxk/system/solydxk_system.py:1991
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -478,16 +487,16 @@ msgstr ""
 "\n"
 "Voleu tornar a arrencar l'ordinador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1998
+#: ../usr/lib/solydxk/system/solydxk_system.py:2003
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Canviada la contrasenya per {0}."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2050
+#: ../usr/lib/solydxk/system/solydxk_system.py:2055
 msgid "Partition passphrase"
 msgstr "Contrasenya de la partició"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2051
+#: ../usr/lib/solydxk/system/solydxk_system.py:2056
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -541,16 +550,6 @@ msgid ""
 msgstr ""
 "No puc canviar canviar la contrasenya de {0}\n"
 "Si us plau, doneu la contrasenya actual i la nova."
-
-#: ../usr/lib/solydxk/system/localize.py:114
-msgid ""
-"SolydXK System Settings cannot download and install the software "
-"localization packages\n"
-"Please repeat this process when you established an internet connection."
-msgstr ""
-"SolydXK System Settings no pot descarregar i instal·lar els paquets de "
-"localització de programari\n"
-"Si us plau, repetiu el procés quan tingueu connexió a internet."
 
 #: ../usr/bin/solydxk-system:22
 #, sh-format

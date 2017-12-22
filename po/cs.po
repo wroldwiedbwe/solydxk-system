@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ddm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 10:07+0100\n"
+"POT-Creation-Date: 2017-12-22 18:39+0100\n"
 "PO-Revision-Date: 2013-12-28 11:43+0100\n"
 "Last-Translator: Schoelje <schoelje@solydxk.com>\n"
 "Language-Team: SolydXK <admin@solydxk.com>\n"
@@ -305,7 +305,6 @@ msgid "No changes were made to fstab."
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:619
-#: ../usr/lib/solydxk/system/localize.py:116
 msgid "No internet connection"
 msgstr ""
 
@@ -383,84 +382,91 @@ msgid ""
 "Mount a backup drive and hit the refresh button."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1545
-#: ../usr/lib/solydxk/system/solydxk_system.py:1630
+#: ../usr/lib/solydxk/system/solydxk_system.py:1392
+msgid ""
+"SolydXK System Settings cannot download and install the software "
+"localization packages\n"
+"Please repeat this process when you established an internet connection."
+msgstr ""
+
+#: ../usr/lib/solydxk/system/solydxk_system.py:1550
+#: ../usr/lib/solydxk/system/solydxk_system.py:1635
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1549
+#: ../usr/lib/solydxk/system/solydxk_system.py:1554
 msgid "Nothing to do."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1637
+#: ../usr/lib/solydxk/system/solydxk_system.py:1642
 msgid "There are no repositories to save."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Current"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Country"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Repository"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "URL"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1641
+#: ../usr/lib/solydxk/system/solydxk_system.py:1646
 msgid "Speed"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1969
+#: ../usr/lib/solydxk/system/solydxk_system.py:1974
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1970
+#: ../usr/lib/solydxk/system/solydxk_system.py:1975
 msgid "Reboot"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1981
+#: ../usr/lib/solydxk/system/solydxk_system.py:1986
 #, fuzzy
 msgid "Encryption done"
 msgstr "Popis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1982
+#: ../usr/lib/solydxk/system/solydxk_system.py:1987
 msgid ""
 "Encryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1985
+#: ../usr/lib/solydxk/system/solydxk_system.py:1990
 #, fuzzy
 msgid "Decryption done"
 msgstr "Popis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1986
+#: ../usr/lib/solydxk/system/solydxk_system.py:1991
 msgid ""
 "Decryption has finished.\n"
 "\n"
 "Do you want to restart your computer?"
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1998
+#: ../usr/lib/solydxk/system/solydxk_system.py:2003
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr ""
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2050
+#: ../usr/lib/solydxk/system/solydxk_system.py:2055
 #, fuzzy
 msgid "Partition passphrase"
 msgstr "Popis"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2051
+#: ../usr/lib/solydxk/system/solydxk_system.py:2056
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -500,13 +506,6 @@ msgstr ""
 msgid ""
 "Could not change the passphrase for {0}\n"
 "Please, provide the current and new passphrase."
-msgstr ""
-
-#: ../usr/lib/solydxk/system/localize.py:114
-msgid ""
-"SolydXK System Settings cannot download and install the software "
-"localization packages\n"
-"Please repeat this process when you established an internet connection."
 msgstr ""
 
 #: ../usr/bin/solydxk-system:22
