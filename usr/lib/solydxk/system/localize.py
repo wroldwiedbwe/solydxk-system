@@ -263,9 +263,9 @@ class Localize(threading.Thread):
                     shell_exec("%s apt-get install %s thunderbird %s" % (self.debian_frontend, self.apt_options, package))
                 if is_package_installed("lightning"):
                     print(" --> Localizing Lightning")
-                    package = self.get_localized_package("lightning-l10n")
+                    package = self.get_localized_package("lightning-l10n", locale)
                     if package != "":
-                        self.exec_cmd("apt-get install %s" % package)
+                        shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
                 if not spellchecker:
                     package = self.get_localized_package("hunspell", locale)
                     if package == '':
