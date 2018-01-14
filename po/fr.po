@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-24 21:24+0100\n"
+"POT-Creation-Date: 2018-01-14 11:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
+"Last-Translator: Kyodev <kyodev@yandex.com>, 2018\n"
 "Language-Team: French (https://www.transifex.com/solydxk/teams/54212/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/plymouth.py:131
 msgid "Neither grub nor burg found in /etc/default"
-msgstr ""
+msgstr "Grub ou burg non trouvé dans /etc/default"
 
 #: ../usr/lib/solydxk/system/main.py:44
 msgid "Unexpected error"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/grub.py:47 ../usr/lib/solydxk/system/grub.py:76
 msgid "Neither grub nor burg found"
-msgstr ""
+msgstr "Grub ou burg non trouvé"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:53
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
@@ -109,6 +109,7 @@ msgstr "Localisation"
 msgid ""
 "Enable encryption: this will temporarily mount any not mounted partition."
 msgstr ""
+"Activer le chiffrage: cela montera temporairement toute partition non montée."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:141
 msgid ""
@@ -217,21 +218,23 @@ msgstr "Paquets inutiles"
 #: ../usr/lib/solydxk/system/solydxk_system.py:167
 #: ../usr/lib/solydxk/system/solydxk_system.py:168
 msgid "Fstab mounts"
-msgstr ""
+msgstr "Montages Fstab"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:169
 msgid ""
 "Mount additional partitions on boot with Fstab.\n"
 "When added to Fstab, the partition will be mounted in /media."
 msgstr ""
+"Montage de partitions supplémentaires au démarrage avec Fstab.\n"
+"Une fois ajoutée à Fstab, la partition sera montée dans /media."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:171
 msgid "Save Fstab mounts"
-msgstr ""
+msgstr "Sauver les montages Fstab"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:172
 msgid "Save drivers"
-msgstr ""
+msgstr "Sauver les drivers"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:173
 msgid "Use Backports"
@@ -243,30 +246,33 @@ msgid ""
 "Note: do not install these drivers if your hardware functions correctly with "
 "the current open drivers."
 msgstr ""
+"Installation des drivers pour le matériel pris en charge.\n"
+"Remarque: ne pas installer ces pilotes si votre matériel fonctionne "
+"correctement avec les drivers actuels."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:176
 msgid "Plymouth splash"
-msgstr ""
+msgstr "Écran de démarrage Plymouth"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:177
 msgid "Select a Plymouth boot splash theme."
-msgstr ""
+msgstr "Sélectionner un thème de démarrage Plymouth."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:178
 msgid "Plymouth themes"
-msgstr ""
+msgstr "Thèmes Plymouth"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:179
 msgid "Enable Plymouth splash"
-msgstr ""
+msgstr "Activer l'écran de démarrage Plymouth"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:180
 msgid "Save"
-msgstr ""
+msgstr "Sauver"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:181
 msgid "Resolution"
-msgstr ""
+msgstr "Résolution"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:220
 #: ../usr/lib/solydxk/system/solydxk_system.py:393
@@ -296,21 +302,23 @@ msgstr "Point de montage"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:393
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:491
 msgid "Could not add {} to {}: missing fs type."
-msgstr ""
+msgstr "Impossible d'ajouter {} à {}: type de système de fichiers manquant."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:547
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
 msgstr ""
+"Modifications apportées à fstab.\n"
+"Veuillez redémarrer votre ordinateur pour que les changements prennent effet."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:551
 msgid "No changes were made to fstab."
-msgstr ""
+msgstr "Aucun changement apporté à fstab."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:619
 msgid "No internet connection"
@@ -465,7 +473,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1975
 msgid "Reboot"
-msgstr ""
+msgstr "Redémarrage"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1986
 msgid "Encryption done"
@@ -817,10 +825,8 @@ msgstr ""
 "notre forum: /var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.h1:8
-#, fuzzy
-#| msgid "SolydXK System Settings Encryption Help"
 msgid "SolydXK System Settings: Device Driver Help"
-msgstr "Aide chiffrage SolydXK System Settings"
+msgstr "SolydXK System Settings: Aide pilote de périphérique"
 
 #: en/helpdd.html+html.body.div.p:11
 msgid ""
@@ -830,6 +836,12 @@ msgid ""
 "Driver will only list those devices that are supported. It will not list any "
 "other devices then mentioned above."
 msgstr ""
+"Le Device Driver est un outil pour aider les utilisateurs à installer des "
+"drivers tiers de matériel. Actuellement, les pilotes Nvidia, AMD/ATI et "
+"Broadcom ainsi que le noyau PAE pour les systèmes 32bits multi-cœurs peuvent "
+"être installés. Le Device Driver répertorie uniquement les périphériques "
+"pris en charge. Il ne listera aucun autre périphérique que ceux mentionnés "
+"ci-dessus."
 
 #: en/helpdd.html+html.body.div.p:14
 msgid ""
@@ -837,6 +849,9 @@ msgid ""
 "repositories. Make sure you have an internet connection if you want to "
 "install the drivers."
 msgstr ""
+"Le Device Driver peut seulement installer les drivers disponibles dans les "
+"dépôts. Assurez vous d'avoir une connexion internet si vous voulez les "
+"installer."
 
 #: en/helpdd.html+html.body.div.h2:16
 msgid "Commands"
@@ -851,28 +866,20 @@ msgstr ""
 "les commandes suivantes:"
 
 #: en/helpdd.html+html.body.div.h3:21
-#, fuzzy
-#| msgid "# ddm -i pae"
 msgid "# ddm -i amd"
-msgstr "# ddm -i pae"
+msgstr "# ddm -i amd"
 
 #: en/helpdd.html+html.body.div.p:22
-#, fuzzy
-#| msgid ""
-#| "This will select the right drivers for your Nvidia graphical card. It "
-#| "will select the Bumblebee drivers in case you have a hybrid card (both "
-#| "Nvidia and Intel). Use \"ddm -p nvidia\" to remove the drivers from your "
-#| "system."
 msgid ""
 "This will install the drivers for your AMD/ATI graphical card. AMD/ATI cards "
 "from version HD 5000 and up are supported by the drivers. Versions between "
 "1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd\" to remove the "
 "drivers from your system."
 msgstr ""
-"Ceci sélectionnera le bon pilote pour votre carte graphique Nvidia. Le "
-"pilote Bumblebee sera sélectionné si vous utilisez une carte hybride (à la "
-"fois Nvidia et intel). Utilisez la commande \"ddm -p nvidia\" pour supprimer "
-"ces pilotes de votre système."
+"Cela installera les drivers pour votre carte graphique AMD/ATI. Les versions "
+"HD 5000 et supérieures sont prises en charge par ces pilotes. Les versions "
+"entre 1000 et 5000 utiliseront les drivers Radeon. Utilisez \"ddm -p amd\" "
+"pour supprimer les pilotes de votre système."
 
 #: en/helpdd.html+html.body.div.h3:24
 msgid "# ddm -i nvidia"
@@ -937,7 +944,7 @@ msgstr "Connexion"
 
 #: en/helpdd.html+html.body.div.h3:37
 msgid "File: /var/log/solydxk-system.log"
-msgstr ""
+msgstr "Fichier: /var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.div.p:38
 msgid ""
@@ -945,3 +952,6 @@ msgid ""
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
 "a>"
 msgstr ""
+"Veuillez joindre votre fichier de logs quand vous postez un problème sur nos "
+"forums: <a href=\"https://forums.solydxk.com\" target=\"_blank\">https://"
+"forums.solydxk.com</a>"

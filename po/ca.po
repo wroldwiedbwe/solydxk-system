@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-24 21:24+0100\n"
+"POT-Creation-Date: 2018-01-14 11:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
+"Last-Translator: Eduard Selma <selma@tinet.cat>, 2018\n"
 "Language-Team: Catalan (https://www.transifex.com/solydxk/teams/54212/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/plymouth.py:131
 msgid "Neither grub nor burg found in /etc/default"
-msgstr ""
+msgstr "No he trobat GRUB ni BURG a /etc/default"
 
 #: ../usr/lib/solydxk/system/main.py:44
 msgid "Unexpected error"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/grub.py:47 ../usr/lib/solydxk/system/grub.py:76
 msgid "Neither grub nor burg found"
-msgstr ""
+msgstr "No he trobat GRUB ni BURG"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:53
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
@@ -109,6 +109,7 @@ msgstr "Configuració regional"
 msgid ""
 "Enable encryption: this will temporarily mount any not mounted partition."
 msgstr ""
+"Activa encriptació: això muntarà temporalment qualsevol partició desmuntada."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:141
 msgid ""
@@ -202,6 +203,9 @@ msgid ""
 "Pre-selected packages are safe to remove (autoremove).\n"
 "Other packages: remove with caution!"
 msgstr ""
+"Elimina paquets innecessaris\n"
+"És segur eliminar els paquets preseleccionats (autoremove)\n"
+"Altres paquets: Elimineu-los amb compte!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:166
 msgid "Unneeded packages"
@@ -210,21 +214,23 @@ msgstr "Paquets innecessaris"
 #: ../usr/lib/solydxk/system/solydxk_system.py:167
 #: ../usr/lib/solydxk/system/solydxk_system.py:168
 msgid "Fstab mounts"
-msgstr ""
+msgstr "Muntatges a Fstab"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:169
 msgid ""
 "Mount additional partitions on boot with Fstab.\n"
 "When added to Fstab, the partition will be mounted in /media."
 msgstr ""
+"Munteu particions addicionals a l'arrencada amb Fstab.\n"
+"Quan s'afegeix a Fstab, la partició es muntarà a /media."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:171
 msgid "Save Fstab mounts"
-msgstr ""
+msgstr "Desa els muntatges a Fstab"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:172
 msgid "Save drivers"
-msgstr ""
+msgstr "Desa els controladors"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:173
 msgid "Use Backports"
@@ -236,30 +242,33 @@ msgid ""
 "Note: do not install these drivers if your hardware functions correctly with "
 "the current open drivers."
 msgstr ""
+"Instal·la controladors pel maquinari suportat,\n"
+"Nota: no instal·leu aquests controladors si el maquinari funciona "
+"correctament amb els controladors lliures actuals."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:176
 msgid "Plymouth splash"
-msgstr ""
+msgstr "Pantalla de Plymouth"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:177
 msgid "Select a Plymouth boot splash theme."
-msgstr ""
+msgstr "Trieu una pantalla de presentació de Plymouth."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:178
 msgid "Plymouth themes"
-msgstr ""
+msgstr "Temes de Plymouth"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:179
 msgid "Enable Plymouth splash"
-msgstr ""
+msgstr "Activa la pantalla de Plymouth"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:180
 msgid "Save"
-msgstr ""
+msgstr "Desa"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:181
 msgid "Resolution"
-msgstr ""
+msgstr "Resolució"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:220
 #: ../usr/lib/solydxk/system/solydxk_system.py:393
@@ -289,21 +298,23 @@ msgstr "Punt de muntatge"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:393
 msgid "Add"
-msgstr ""
+msgstr "Afegeix"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:491
 msgid "Could not add {} to {}: missing fs type."
-msgstr ""
+msgstr "No he pogut afegir {} a {}: falta el tipus de fs."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:547
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
 msgstr ""
+"S'han fet els canvis a fstab.\n"
+"Cal tornar a arrencar l'ordinador per tal que els canvis siguin efectius."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:551
 msgid "No changes were made to fstab."
-msgstr ""
+msgstr "No s'han fet canvis a fstab."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:619
 msgid "No internet connection"
@@ -457,7 +468,7 @@ msgstr "Us cal tornar a arrencar el sistema per activar la nova configuració."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1975
 msgid "Reboot"
-msgstr ""
+msgstr "Reinicia"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1986
 msgid "Encryption done"
@@ -804,10 +815,8 @@ msgstr ""
 "quan exposeu el vostre problema al fòrum."
 
 #: en/helpdd.html+html.body.h1:8
-#, fuzzy
-#| msgid "SolydXK System Settings Encryption Help"
 msgid "SolydXK System Settings: Device Driver Help"
-msgstr "Ajuda de l'encriptatge a SolysXK System Settings"
+msgstr "SolydXK System Settings: Ajuda per als controladors"
 
 #: en/helpdd.html+html.body.div.p:11
 msgid ""
@@ -817,6 +826,12 @@ msgid ""
 "Driver will only list those devices that are supported. It will not list any "
 "other devices then mentioned above."
 msgstr ""
+"El Device Driver és una eina per ajudar als usuaris a instal·lar "
+"controladors de maquinari de tercers. Actualment es poden instal·lar "
+"controladors nVidia, AMD/ATI i Broadcom; també es pot instal·lar el kernel "
+"PAE per als sistemes multi-nucli de 32 bit. El Device Driver només us "
+"llistarà els dispositius amb suport. No llista altres dispositius que els "
+"esmentats abans."
 
 #: en/helpdd.html+html.body.div.p:14
 msgid ""
@@ -824,6 +839,9 @@ msgid ""
 "repositories. Make sure you have an internet connection if you want to "
 "install the drivers."
 msgstr ""
+"El Device Driver només pot instal·lar controladors disponibles als dipòsits. "
+"Assegureu-vos que teniu connexió a internet si voleu instal·lar els "
+"controladors."
 
 #: en/helpdd.html+html.body.div.h2:16
 msgid "Commands"
@@ -838,28 +856,20 @@ msgstr ""
 "aquestes ordres: "
 
 #: en/helpdd.html+html.body.div.h3:21
-#, fuzzy
-#| msgid "# ddm -i pae"
 msgid "# ddm -i amd"
-msgstr "# ddm -i pae"
+msgstr "# ddm -i amd"
 
 #: en/helpdd.html+html.body.div.p:22
-#, fuzzy
-#| msgid ""
-#| "This will select the right drivers for your Nvidia graphical card. It "
-#| "will select the Bumblebee drivers in case you have a hybrid card (both "
-#| "Nvidia and Intel). Use \"ddm -p nvidia\" to remove the drivers from your "
-#| "system."
 msgid ""
 "This will install the drivers for your AMD/ATI graphical card. AMD/ATI cards "
 "from version HD 5000 and up are supported by the drivers. Versions between "
 "1000 and 5000 will use the Radeon drivers. Use \"ddm -p amd\" to remove the "
 "drivers from your system."
 msgstr ""
-"Això triarà els controladors correctes per a la vostra tarja gràfica Nvidia. "
-"També seleccionarà els controladors Bumblebee en el cas que tingueu una "
-"tarja híbrida (amb Nvidia i Intel). Useu \"ddm -p nvidia\" per eliminar els "
-"controladors del vostre sistema. "
+"Això instal·larà els controladors per la vostra tarja gràfica AMD/ATI. Els "
+"controladors donen suport a les targes a partir de la versió HD 5000. Les "
+"versions entre 1000 i 5000 usen els controladors Radeon. Useu l'ordre \"ddm -"
+"p amd\" per eliminar aquests controladors del vostre sistema. "
 
 #: en/helpdd.html+html.body.div.h3:24
 msgid "# ddm -i nvidia"
@@ -918,11 +928,11 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h2:36
 msgid "Logging"
-msgstr ""
+msgstr "Autenticant"
 
 #: en/helpdd.html+html.body.div.h3:37
 msgid "File: /var/log/solydxk-system.log"
-msgstr ""
+msgstr "Fitxer: /var/log/solydxk-system.log"
 
 #: en/helpdd.html+html.body.div.p:38
 msgid ""
@@ -930,3 +940,6 @@ msgid ""
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
 "a>"
 msgstr ""
+"Si us plau, adjunteu el vostre fitxer d'informe quan vulgueu informar d'un "
+"problema al nostre fòrum: <a href=\"https://forums.solydxk.com\" target="
+"\"_blank\">https://forums.solydxk.com</a>"
