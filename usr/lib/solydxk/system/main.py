@@ -11,6 +11,14 @@ from utils import is_process_running, compare_package_versions
 from dialogs import ErrorDialog
 from solydxk_system import SolydXKSystemSettings
 from gi.repository import Gtk, GObject
+import argparse
+
+
+# Handle arguments
+parser = argparse.ArgumentParser(description="SolydXK System")
+parser.add_argument('-n', '--nosplash', action="store_true", help='No startup splash.')
+args, extra = parser.parse_known_args()
+nosplash = args.nosplash
 
 # i18n: http://docs.python.org/2/library/gettext.html
 gettext.install("solydxk-system", "/usr/share/locale")
@@ -61,7 +69,10 @@ if __name__ == '__main__':
                 #print(("Call GObject.threads_init for PyGObject %s" % version))
                 GObject.threads_init()
             
-            SolydXKSystemSettings()
+            ns = False
+            if nosplash:
+                ns = True
+            SolydXKSystemSettings(nosplash=ns)
             Gtk.main()
     except KeyboardInterrupt:
         pass

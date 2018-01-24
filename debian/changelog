@@ -1,3 +1,10 @@
+solydxk-system (3.0.4b13) solydxk; urgency=low
+
+  * Remove triggers on /etc files
+  * Add nosplash argument
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 21 Jan 2018 22:53:56 +0100
+
 solydxk-system (3.0.4b12) solydxk; urgency=low
 
   * Updated translations

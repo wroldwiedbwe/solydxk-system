@@ -28,7 +28,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 
 # from gi.repository import Gtk, GdkPixbuf, GObject, Pango, Gdk
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GObject
 from threading import Thread
 from os.path import exists
 import time
@@ -103,6 +103,7 @@ class Splash(Thread):
         self.window.set_auto_startup_notification(True)
 
         # Need to call Gtk.main to draw all widgets
+        GObject.threads_init()
         Gtk.main()
 
     def prep_hex_color(self, hex_color):

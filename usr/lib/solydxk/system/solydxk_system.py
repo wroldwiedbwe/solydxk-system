@@ -43,7 +43,7 @@ TMPMOUNT = '/mnt/solydxk-system'
 
 #class for the main window
 class SolydXKSystemSettings(object):
-    def __init__(self):
+    def __init__(self, nosplash=False):
         # Load and install test data for the device manager
         self.test_devices = False
         
@@ -53,13 +53,14 @@ class SolydXKSystemSettings(object):
         self.title = _("SolydXK System Settings")
         
         # Show splash screen while loading
-        b_img = join(self.shareDir, 'images/splash-bgk.png')
-        f_clr = '#243e4b'
-        if is_xfce_running():
-            b_img = join(self.shareDir, 'images/splash-bgx.png')
-            f_clr = '#502800'
-        splash = Splash(title=self.title, font='Roboto Slab 18', font_weight='bold', font_color=f_clr, background_image=b_img, min_secs=5)
-        splash.start()
+        if not nosplash:
+            b_img = join(self.shareDir, 'images/splash-bgk.png')
+            f_clr = '#243e4b'
+            if is_xfce_running():
+                b_img = join(self.shareDir, 'images/splash-bgx.png')
+                f_clr = '#502800'
+            splash = Splash(title=self.title, font='Roboto Slab 18', font_weight='bold', font_color=f_clr, background_image=b_img, min_secs=5)
+            splash.start()
 
         # Init logging
         self.log_file = "/var/log/solydxk-system.log"
@@ -270,7 +271,8 @@ class SolydXKSystemSettings(object):
         self.btnCreateKeyfile.set_visible(False)
         
         # Destroy splash screen
-        splash.destroy()
+        if not nosplash:
+            splash.destroy()
 
         # Connect the signals and show the window
         self.builder.connect_signals(self)
