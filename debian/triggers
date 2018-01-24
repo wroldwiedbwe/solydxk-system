@@ -1,7 +1,3 @@
-interest /etc/lsb-release
-interest /etc/issue
-interest /etc/issue.net
-interest /etc/os-release
 interest /usr/share/solydxk/adjustments
 interest /usr/share/X11/xkb/symbols/am
 interest /usr/share/applications/debian-uxterm.desktop
