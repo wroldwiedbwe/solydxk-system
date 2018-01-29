@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 11:45+0100\n"
+"POT-Creation-Date: 2018-01-22 14:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kyodev <kyodev@yandex.com>, 2018\n"
 "Language-Team: French (https://www.transifex.com/solydxk/teams/54212/fr/)\n"
@@ -20,13 +20,13 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/plymouth.py:131
 msgid "Neither grub nor burg found in /etc/default"
-msgstr "Grub ou burg non trouvé dans /etc/default"
+msgstr "Ni Grub ni burg  trouvés dans /etc/default"
 
-#: ../usr/lib/solydxk/system/main.py:44
+#: ../usr/lib/solydxk/system/main.py:52
 msgid "Unexpected error"
 msgstr "Erreur inattendue"
 
-#: ../usr/lib/solydxk/system/main.py:45
+#: ../usr/lib/solydxk/system/main.py:53
 msgid ""
 "SolydXK System Settings has failed with the following unexpected error. "
 "Please submit a bug report!"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/grub.py:47 ../usr/lib/solydxk/system/grub.py:76
 msgid "Neither grub nor burg found"
-msgstr "Grub ou burg non trouvé"
+msgstr "Ni grub ni burg trouvés"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:53
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:1
@@ -44,74 +44,74 @@ msgstr "Grub ou burg non trouvé"
 msgid "SolydXK System Settings"
 msgstr "SolydXK System Settings"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:125
+#: ../usr/lib/solydxk/system/solydxk_system.py:126
 msgid "Save backports"
 msgstr "Sauvegarder les backports"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:126
+#: ../usr/lib/solydxk/system/solydxk_system.py:127
 msgid "Save mirrors"
 msgstr "Sauver les mirroirs"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:127
+#: ../usr/lib/solydxk/system/solydxk_system.py:128
 msgid "Check mirrors speed"
 msgstr "Tester la vitesse des miroirs"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:128
+#: ../usr/lib/solydxk/system/solydxk_system.py:129
 msgid "Remove"
 msgstr "Retirer"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:129
+#: ../usr/lib/solydxk/system/solydxk_system.py:130
 msgid "Hold back"
 msgstr "Epingler"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:130
+#: ../usr/lib/solydxk/system/solydxk_system.py:131
 msgid "Repositories"
 msgstr "Dépôts"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:131
+#: ../usr/lib/solydxk/system/solydxk_system.py:132
 msgid "Encryption"
 msgstr "Chiffrage"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:132
+#: ../usr/lib/solydxk/system/solydxk_system.py:133
 msgid "Passphrase (6-20 chr)"
 msgstr "Phrase secrète (6-20 caract.)"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:133
+#: ../usr/lib/solydxk/system/solydxk_system.py:134
 msgid "Encrypt"
 msgstr "Chiffre"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:134
+#: ../usr/lib/solydxk/system/solydxk_system.py:135
 msgid "Decrypt"
 msgstr "Déchiffre"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:135
+#: ../usr/lib/solydxk/system/solydxk_system.py:136
 msgid "Change passphrase"
 msgstr "Changer la phrase secrète"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:136
+#: ../usr/lib/solydxk/system/solydxk_system.py:137
 msgid "Manually create key file"
 msgstr "Créer manuellement un fichier clé"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:137
+#: ../usr/lib/solydxk/system/solydxk_system.py:138
 msgid "Localization"
 msgstr "Localisation"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:138
+#: ../usr/lib/solydxk/system/solydxk_system.py:139
 msgid "Timezone"
 msgstr "Fuseau horaire"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:139
-#: ../usr/lib/solydxk/system/solydxk_system.py:158
+#: ../usr/lib/solydxk/system/solydxk_system.py:140
+#: ../usr/lib/solydxk/system/solydxk_system.py:159
 msgid "Locale"
 msgstr "Localisation"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:140
+#: ../usr/lib/solydxk/system/solydxk_system.py:141
 msgid ""
 "Enable encryption: this will temporarily mount any not mounted partition."
 msgstr ""
 "Activer le chiffrage: cela montera temporairement toute partition non montée."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:141
+#: ../usr/lib/solydxk/system/solydxk_system.py:142
 msgid ""
 "Encrypt partitions and keep your data safe.\n"
 "Warning: backup your data before you continue!\n"
@@ -122,7 +122,7 @@ msgstr ""
 "Remarque: vous pouvez cliquer Ctrl+ clic gauche pour sélectionner plusieurs "
 "partitions."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:144
+#: ../usr/lib/solydxk/system/solydxk_system.py:145
 msgid ""
 "Configure your locales (one as default) and time zone.\n"
 "Note: make sure you have an internet connection to localize your software."
@@ -131,7 +131,7 @@ msgstr ""
 "Remarque: assurez-vous d'avoir une connexion Internet pour localiser votre "
 "logiciel."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:146
+#: ../usr/lib/solydxk/system/solydxk_system.py:147
 msgid ""
 "Enable the Backports repository if you need a newer software version.\n"
 "Warning: installing software from the backports repository may de-stabalize "
@@ -144,7 +144,7 @@ msgstr ""
 "déstabiliser votre système.\n"
 "À utiliser à vos risques et périls!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:149
+#: ../usr/lib/solydxk/system/solydxk_system.py:150
 msgid ""
 "Select the fastest repository for your updates.\n"
 "Note: make sure you have an internet connection."
@@ -152,19 +152,19 @@ msgstr ""
 "Sélectionner les dépôts les plus rapides pour vos mises à jour.\n"
 "Note: soyez certains d'avoir une connexion internet."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:151
+#: ../usr/lib/solydxk/system/solydxk_system.py:152
 msgid "Hold back packages"
 msgstr "Épingler des paquets"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:152
+#: ../usr/lib/solydxk/system/solydxk_system.py:153
 msgid "Held back packages"
 msgstr "Paquets épinglés"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:153
+#: ../usr/lib/solydxk/system/solydxk_system.py:154
 msgid "Available packages"
 msgstr "Paquets disponibles"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:154
+#: ../usr/lib/solydxk/system/solydxk_system.py:155
 msgid ""
 "Hold back individual packages.\n"
 "Holding back a package will prevent this package from being updated."
@@ -172,27 +172,27 @@ msgstr ""
 "Geler des paquets individuels.\n"
 "Si vous gelez un paquet, cela empêchera sa mise à jour."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:156
+#: ../usr/lib/solydxk/system/solydxk_system.py:157
 msgid "Save locale"
 msgstr "Sauvegarder votre localisation"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:157
+#: ../usr/lib/solydxk/system/solydxk_system.py:158
 msgid "Installed"
 msgstr "Installé(s)"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:159
+#: ../usr/lib/solydxk/system/solydxk_system.py:160
 msgid "Language"
 msgstr "Langage"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:160
+#: ../usr/lib/solydxk/system/solydxk_system.py:161
 msgid "Default"
 msgstr "Défaut"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:161
+#: ../usr/lib/solydxk/system/solydxk_system.py:162
 msgid "Please provide a passphrase (6-20 characters)."
 msgstr "Veuillez fournir une phrase secrète (6-20 caractères)."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:162
+#: ../usr/lib/solydxk/system/solydxk_system.py:163
 #, python-brace-format
 msgid ""
 "Could not mount {0}\n"
@@ -201,7 +201,7 @@ msgstr ""
 "Impossible de monter {0}\n"
 "Essayer de monter {0} et rafraîchir une fois fait."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:163
+#: ../usr/lib/solydxk/system/solydxk_system.py:164
 msgid ""
 "Remove unneeded packages\n"
 "Pre-selected packages are safe to remove (autoremove).\n"
@@ -211,16 +211,16 @@ msgstr ""
 "Les paquets pré-sélectionnés sont sûrs à supprimer (autoremove).\n"
 "Les autres paquets: supprimez les avec prudence!"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:166
+#: ../usr/lib/solydxk/system/solydxk_system.py:167
 msgid "Unneeded packages"
 msgstr "Paquets inutiles"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:167
 #: ../usr/lib/solydxk/system/solydxk_system.py:168
+#: ../usr/lib/solydxk/system/solydxk_system.py:169
 msgid "Fstab mounts"
 msgstr "Montages Fstab"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:169
+#: ../usr/lib/solydxk/system/solydxk_system.py:170
 msgid ""
 "Mount additional partitions on boot with Fstab.\n"
 "When added to Fstab, the partition will be mounted in /media."
@@ -228,19 +228,19 @@ msgstr ""
 "Montage de partitions supplémentaires au démarrage avec Fstab.\n"
 "Une fois ajoutée à Fstab, la partition sera montée dans /media."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:171
+#: ../usr/lib/solydxk/system/solydxk_system.py:172
 msgid "Save Fstab mounts"
 msgstr "Sauver les montages Fstab"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:172
+#: ../usr/lib/solydxk/system/solydxk_system.py:173
 msgid "Save drivers"
 msgstr "Sauver les drivers"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:173
+#: ../usr/lib/solydxk/system/solydxk_system.py:174
 msgid "Use Backports"
 msgstr "Utiliser le dépôt Backports"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:174
+#: ../usr/lib/solydxk/system/solydxk_system.py:175
 msgid ""
 "Install drivers for supported hardware.\n"
 "Note: do not install these drivers if your hardware functions correctly with "
@@ -250,65 +250,65 @@ msgstr ""
 "Remarque: ne pas installer ces pilotes si votre matériel fonctionne "
 "correctement avec les drivers actuels."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:176
+#: ../usr/lib/solydxk/system/solydxk_system.py:177
 msgid "Plymouth splash"
 msgstr "Écran de démarrage Plymouth"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:177
+#: ../usr/lib/solydxk/system/solydxk_system.py:178
 msgid "Select a Plymouth boot splash theme."
 msgstr "Sélectionner un thème de démarrage Plymouth."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:178
+#: ../usr/lib/solydxk/system/solydxk_system.py:179
 msgid "Plymouth themes"
 msgstr "Thèmes Plymouth"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:179
+#: ../usr/lib/solydxk/system/solydxk_system.py:180
 msgid "Enable Plymouth splash"
 msgstr "Activer l'écran de démarrage Plymouth"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:180
+#: ../usr/lib/solydxk/system/solydxk_system.py:181
 msgid "Save"
 msgstr "Sauver"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:181
+#: ../usr/lib/solydxk/system/solydxk_system.py:182
 msgid "Resolution"
 msgstr "Résolution"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:220
-#: ../usr/lib/solydxk/system/solydxk_system.py:393
+#: ../usr/lib/solydxk/system/solydxk_system.py:221
+#: ../usr/lib/solydxk/system/solydxk_system.py:395
 msgid "Partition"
 msgstr "Partition"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:220
-#: ../usr/lib/solydxk/system/solydxk_system.py:393
+#: ../usr/lib/solydxk/system/solydxk_system.py:221
+#: ../usr/lib/solydxk/system/solydxk_system.py:395
 msgid "Label"
 msgstr "Étiquette"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:220
+#: ../usr/lib/solydxk/system/solydxk_system.py:221
 msgid "File system"
 msgstr "Système de fichiers"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:220
+#: ../usr/lib/solydxk/system/solydxk_system.py:221
 msgid "Total size"
 msgstr "Taille totale"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:220
+#: ../usr/lib/solydxk/system/solydxk_system.py:221
 msgid "Free size"
 msgstr "Espace libre"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:220
+#: ../usr/lib/solydxk/system/solydxk_system.py:221
 msgid "Mount point"
 msgstr "Point de montage"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:393
+#: ../usr/lib/solydxk/system/solydxk_system.py:395
 msgid "Add"
 msgstr "Ajouter"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:491
+#: ../usr/lib/solydxk/system/solydxk_system.py:493
 msgid "Could not add {} to {}: missing fs type."
 msgstr "Impossible d'ajouter {} à {}: type de système de fichiers manquant."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:547
+#: ../usr/lib/solydxk/system/solydxk_system.py:549
 msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
@@ -316,15 +316,15 @@ msgstr ""
 "Modifications apportées à fstab.\n"
 "Veuillez redémarrer votre ordinateur pour que les changements prennent effet."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:551
+#: ../usr/lib/solydxk/system/solydxk_system.py:553
 msgid "No changes were made to fstab."
 msgstr "Aucun changement apporté à fstab."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:619
+#: ../usr/lib/solydxk/system/solydxk_system.py:621
 msgid "No internet connection"
 msgstr "Pas de connexion internet"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:620
+#: ../usr/lib/solydxk/system/solydxk_system.py:622
 msgid ""
 "You need an internet connection to install the additional software.\n"
 "Please, connect to the internet and try again."
@@ -333,7 +333,7 @@ msgstr ""
 "supplémentaire.\n"
 "Merci de vous connecter et de réessayer."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:627
+#: ../usr/lib/solydxk/system/solydxk_system.py:629
 msgid ""
 "You have selected to install drivers from the backports repository whenever "
 "they are available.\n"
@@ -351,11 +351,11 @@ msgstr ""
 "système.\n"
 "Etes-vous sûr de vouloir continuer?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:663
+#: ../usr/lib/solydxk/system/solydxk_system.py:665
 msgid "Remove kernel"
 msgstr "Désinstaller le noyau"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:664
+#: ../usr/lib/solydxk/system/solydxk_system.py:666
 msgid ""
 "You cannot remove a booted kernel.\n"
 "Please, boot another kernel and try again."
@@ -363,19 +363,19 @@ msgstr ""
 "Impossible de supprimer le noyau utilisé actuellement.\n"
 "Merci de réessayer après redémarrage avec un autre noyau."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:690
+#: ../usr/lib/solydxk/system/solydxk_system.py:692
 msgid "Install"
 msgstr "Installation "
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:690
+#: ../usr/lib/solydxk/system/solydxk_system.py:692
 msgid "Device"
 msgstr "Périphérique"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:766
+#: ../usr/lib/solydxk/system/solydxk_system.py:768
 msgid "Encrypted partition"
 msgstr "Partition chiffrée"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:767
+#: ../usr/lib/solydxk/system/solydxk_system.py:769
 #, python-brace-format
 msgid ""
 "The partition {0} is already encrypted.\n"
@@ -388,7 +388,7 @@ msgstr ""
 "\n"
 "Voulez-vous continuer?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:787
+#: ../usr/lib/solydxk/system/solydxk_system.py:789
 msgid ""
 "The partition is not encrypted.\n"
 "Please choose another partition to decrypt."
@@ -396,7 +396,7 @@ msgstr ""
 "La partition n'est pas chiffrée.\n"
 "Veuillez choisir une autre partition à déchiffrer."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:840
+#: ../usr/lib/solydxk/system/solydxk_system.py:842
 #, python-format
 msgid ""
 "%s is not encrypted.\n"
@@ -405,11 +405,11 @@ msgstr ""
 "%s n'est pas chiffrée.\n"
 "Veuillez choisir une partition chiffrée."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:985
+#: ../usr/lib/solydxk/system/solydxk_system.py:987
 msgid "Backup"
 msgstr "Sauvegarde"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1020
+#: ../usr/lib/solydxk/system/solydxk_system.py:1022
 #, python-format
 msgid ""
 "You need a backup partition with at least %s free.\n"
@@ -418,7 +418,7 @@ msgstr ""
 "Vous avez besoin d'une partition de sauvegarde avec au moins %s de libre.\n"
 "Montez un disque de sauvegarde et cliquer sur le bouton rafraîchir."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1392
+#: ../usr/lib/solydxk/system/solydxk_system.py:1394
 msgid ""
 "SolydXK System Settings cannot download and install the software "
 "localization packages\n"
@@ -428,8 +428,8 @@ msgstr ""
 "localisation du logiciel\n"
 "Veuillez recommencer quand vous aurez établi une connexion internet."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1550
-#: ../usr/lib/solydxk/system/solydxk_system.py:1635
+#: ../usr/lib/solydxk/system/solydxk_system.py:1552
+#: ../usr/lib/solydxk/system/solydxk_system.py:1637
 msgid ""
 "Could not update the apt cache.\n"
 "Please update the apt cache manually with: apt-get update"
@@ -437,49 +437,49 @@ msgstr ""
 "Impossible de mettre à jour le cache apt.\n"
 "Veuillez mettre à jour le cache manuellement avec: apt-get update"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1554
+#: ../usr/lib/solydxk/system/solydxk_system.py:1556
 msgid "Nothing to do."
 msgstr "Rien à effectué."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1642
+#: ../usr/lib/solydxk/system/solydxk_system.py:1644
 msgid "There are no repositories to save."
 msgstr "Il n'y a pas de dépôts à sauvegarder."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1646
+#: ../usr/lib/solydxk/system/solydxk_system.py:1648
 msgid "Current"
 msgstr "Courant"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1646
+#: ../usr/lib/solydxk/system/solydxk_system.py:1648
 msgid "Country"
 msgstr "Pays"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1646
+#: ../usr/lib/solydxk/system/solydxk_system.py:1648
 msgid "Repository"
 msgstr "Dépôt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1646
+#: ../usr/lib/solydxk/system/solydxk_system.py:1648
 msgid "URL"
 msgstr "URL"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1646
+#: ../usr/lib/solydxk/system/solydxk_system.py:1648
 msgid "Speed"
 msgstr "Vitesse"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1974
+#: ../usr/lib/solydxk/system/solydxk_system.py:1976
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Vous avez besoin de redémarrer votre système pour que les nouveaux "
 "paramètres prennent effet."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1975
+#: ../usr/lib/solydxk/system/solydxk_system.py:1977
 msgid "Reboot"
 msgstr "Redémarrage"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1986
+#: ../usr/lib/solydxk/system/solydxk_system.py:1988
 msgid "Encryption done"
 msgstr "Chiffrage fait"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1987
+#: ../usr/lib/solydxk/system/solydxk_system.py:1989
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -488,11 +488,11 @@ msgstr ""
 "Chiffrage fini.\n"
 "Voulez-vous redémarrer votre ordinateur?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1990
+#: ../usr/lib/solydxk/system/solydxk_system.py:1992
 msgid "Decryption done"
 msgstr "Déchiffrage fait"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1991
+#: ../usr/lib/solydxk/system/solydxk_system.py:1993
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -501,16 +501,16 @@ msgstr ""
 "Déchiffrage fini.\n"
 "Voulez-vous redémarrer votre ordinateur?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2003
+#: ../usr/lib/solydxk/system/solydxk_system.py:2005
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Phrase secrète changée pour {0}."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2055
+#: ../usr/lib/solydxk/system/solydxk_system.py:2057
 msgid "Partition passphrase"
 msgstr "Phrase secrète de la partition"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2056
+#: ../usr/lib/solydxk/system/solydxk_system.py:2058
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
