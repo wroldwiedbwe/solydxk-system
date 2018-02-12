@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:20+0100\n"
+"POT-Creation-Date: 2018-02-12 15:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -488,16 +488,6 @@ msgid ""
 "Please, provide the current and new passphrase."
 msgstr ""
 
-#: ../usr/bin/solydxk-system:22
-#, sh-format
-msgid "needs administrative privileges."
-msgstr ""
-
-#: ../usr/bin/solydxk-system:23
-#, sh-format
-msgid "Please enter your password."
-msgstr ""
-
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
@@ -505,6 +495,10 @@ msgstr ""
 
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
+msgstr ""
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
 msgstr ""
 
 #: en/help.html+html.body.h1:8
