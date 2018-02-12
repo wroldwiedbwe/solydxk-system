@@ -1,0 +1,5 @@
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
+msgstr ""
+

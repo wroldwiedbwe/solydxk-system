@@ -1,3 +1,9 @@
+solydxk-system (3.0.5b1) solydxk; urgency=low
+
+  * Use pkexec for administrative privileges
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 12 Feb 2018 15:46:25 +0100
+
 solydxk-system (3.0.4b13) solydxk; urgency=low
 
   * Remove triggers on /etc files

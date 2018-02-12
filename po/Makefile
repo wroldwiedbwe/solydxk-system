@@ -41,6 +41,17 @@ update:
 		--package-version='' \
 		--from-code=UTF-8 \
 		../usr/bin/$(package) && echo OK
+	# get strings from policy files: segfaults
+	#@ for POLICY in `find ../usr/share/polkit-1/actions/ -name '*.policy'`; do \
+	#	xgettext \
+	#	--join-existing \
+	#	--its=polkit/polkit.its \
+	#	--output=$(package).pot \
+	#	--package-name=$(package) \
+	#	--package-version='' \
+	#	--from-code=UTF-8 \
+	#	$$POLICY; \
+	#done && echo OK
 	# get strings from the desktop file
 	@ for LAUNCHER in `find ../usr/share/k* -name '*.desktop'`; do \
 		sed -r \
@@ -65,12 +76,30 @@ update:
 	done && echo OK
 	# fix charset
 	@ find . -type f -name "*.po*" -exec sed -i 's/charset=CHARSET/charset=UTF-8/' {} \;
-	# html
+	# temporary pot files
 	@ touch pot/dummy.pot
 	@ rm pot/*.pot
+	# get strings from policy files
+	@ for POLICY in `find ../usr/share/polkit-1/actions/ -name '*.policy'`; do \
+		itstool \
+		--out pot/"$${POLICY##*/}".pot \
+		--its=polkit/polkit.its \
+		$$POLICY; \
+	done && echo "Policy pot files created"
+	# create pot files from html files
 	@ html2po -P en pot && echo "HTML pot files created"
+	# remove headers in generated pot files before merging
+	@ for POT in `find ./pot -name '*.pot'`; do \
+		sed -i '1,/^$$/d' $$POT; \
+	done
+	#	if grep -Fxq 'itstool' $$POT; then \
+	#		sed -i '/msgid ""/,/itstool/d' $$POT; \
+	#	else \
+	#		sed -i '/fuzzy/,/X-/d' $$POT; \
+	#	fi \
+	#done
 	@ msgcat pot/*.pot >> $(package).pot
-	@ head -n50 $(package).pot > .tmp && tail -n+51 $(package).pot | sed '/fuzzy/,/X-/d' >> .tmp && mv -f .tmp $(package).pot && echo "Pot files merged"
+	#@ head -n50 $(package).pot > .tmp && tail -n+51 $(package).pot | sed '/fuzzy/,/X-/d' >> .tmp && mv -f .tmp $(package).pot && echo "Pot files merged"
 	@ po4a po4a.cfg && echo "Po files and translations updated"
 	# don't ship incomplete translations
 	@ n_required=`ls en | wc -l`; \

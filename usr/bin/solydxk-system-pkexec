@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python3 /usr/lib/solydxk/system/main.py $@
