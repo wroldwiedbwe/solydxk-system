@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:20+0100\n"
+"POT-Creation-Date: 2018-02-12 15:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kyodev <kyodev@yandex.com>, 2018\n"
 "Language-Team: French (https://www.transifex.com/solydxk/teams/54212/fr/)\n"
@@ -208,8 +208,9 @@ msgid ""
 "Other packages: remove with caution!"
 msgstr ""
 "Supprimer les paquets inutiles.\n"
-"Les paquets pré-sélectionnés sont sûrs à supprimer (autoremove).\n"
-"Les autres paquets: supprimez les avec prudence!"
+"Les paquets pré-sélectionnés peuvent être supprimer sans crainte "
+"(autoremove).\n"
+"Pour les autres paquets: supprimez les avec prudence!"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:167
 msgid "Unneeded packages"
@@ -268,7 +269,7 @@ msgstr "Activer l'écran de démarrage Plymouth"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:181
 msgid "Save"
-msgstr "Sauver"
+msgstr "Enregistrer"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:182
 msgid "Resolution"
@@ -313,12 +314,12 @@ msgid ""
 "Changes were made to fstab.\n"
 "Please reboot your computer for these changes to take effect."
 msgstr ""
-"Modifications apportées à fstab.\n"
-"Veuillez redémarrer votre ordinateur pour que les changements prennent effet."
+"Des modifications ont été apportées à fstab.\n"
+"Veuillez redémarrer votre ordinateur pour que les changements s'appliquent."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:553
 msgid "No changes were made to fstab."
-msgstr "Aucun changement apporté à fstab."
+msgstr "Aucun changement n'a été apporté à fstab."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:621
 msgid "No internet connection"
@@ -344,7 +345,7 @@ msgid ""
 "\n"
 "Are you sure you want to continue?"
 msgstr ""
-"Vous avez choisi d'installer des pilotes depuis le dépôt backports dès lors "
+"Vous avez choisi d'installer des pilotes depuis le dépôt backports dès "
 "qu'ils sont disponibles.\n"
 "Bien que l'utilisation du dépôt backports permet d'obtenir des logiciels "
 "plus à jour, elle présente aussi un plus grand risque de casser votre "
@@ -566,16 +567,6 @@ msgstr ""
 "Impossible de changer la phrase secrète pour {0}\n"
 "Veuillez fournir la phrase secrète courante et la nouvelle."
 
-#: ../usr/bin/solydxk-system:22
-#, sh-format
-msgid "needs administrative privileges."
-msgstr "Privilèges administratifs requis."
-
-#: ../usr/bin/solydxk-system:23
-#, sh-format
-msgid "Please enter your password."
-msgstr "Veuillez saisir votre mot de passe."
-
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
@@ -584,6 +575,11 @@ msgstr "Changer les paramètres système de SolydXK"
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
 msgstr "Système"
+
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
+msgstr ""
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
@@ -849,7 +845,7 @@ msgid ""
 "repositories. Make sure you have an internet connection if you want to "
 "install the drivers."
 msgstr ""
-"Le Device Driver peut seulement installer les drivers disponibles dans les "
+"Le Device Driver peut seulement installer les pilotes disponibles dans les "
 "dépôts. Assurez vous d'avoir une connexion internet si vous voulez les "
 "installer."
 
@@ -892,9 +888,9 @@ msgid ""
 "Intel). Use \"ddm -p nvidia\" to remove the drivers from your system."
 msgstr ""
 "Ceci sélectionnera le bon pilote pour votre carte graphique Nvidia. Le "
-"pilote Bumblebee sera sélectionné si vous utilisez une carte hybride (à la "
-"fois Nvidia et intel). Utilisez la commande \"ddm -p nvidia\" pour supprimer "
-"ces pilotes de votre système."
+"pilote Bumblebee sera choisi si vous utilisez une carte hybride (à la fois "
+"Nvidia et intel). Utilisez la commande \"ddm -p nvidia\" pour supprimer ces "
+"pilotes de votre système."
 
 #: en/helpdd.html+html.body.div.h3:27
 msgid "# ddm -i open"
@@ -918,7 +914,7 @@ msgid ""
 "This command will install the right driver for your wireless Broadcom "
 "adapter. Use \"ddm -p broadcom\" to remove the drivers from your system."
 msgstr ""
-"Cette commande installera le bon pilote pour votre carte sans fil braodcom. "
+"Cette commande installera le bon pilote pour votre carte wifi Broadcom. "
 "Utilisez la commande \"ddm -p broadcom\" pour supprimer ce pilote de votre "
 "système."
 
@@ -932,8 +928,8 @@ msgid ""
 "OS. Use \"ddm -p pae\" to remove the PAE kernel from your system. Note that "
 "you cannot remove the kernel when you are currently booted into that kernel."
 msgstr ""
-"Ceci installera le noyau PAE pour les systèmes multi-processeur exécutant un "
-"système d'exploitation 32-bit. Utilisez la commande \"ddm -p pae\" pour "
+"Ceci installera le noyau PAE pour les systèmes multi-processeurs exécutant "
+"un système d'exploitation 32-bits. Utilisez la commande \"ddm -p pae\" pour "
 "supprimer ce noyau de votre système. Vous ne pourrez cependant pas supprimer "
 "ce noyau si vous l'avez utilisé pour démarrer votre système et qu'il est en "
 "cours d'utilisation."

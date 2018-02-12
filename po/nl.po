@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:20+0100\n"
+"POT-Creation-Date: 2018-02-12 15:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/solydxk/teams/54212/nl/)\n"
@@ -562,16 +562,6 @@ msgstr ""
 "Kon het wachtwoord voor {0} niet wijzigen.\n"
 "Geef alstublieft het huidige en nieuwe wachtwoord aan."
 
-#: ../usr/bin/solydxk-system:22
-#, sh-format
-msgid "needs administrative privileges."
-msgstr "heeft beheerdersrechten nodig."
-
-#: ../usr/bin/solydxk-system:23
-#, sh-format
-msgid "Please enter your password."
-msgstr "Vul hier uw wachtwoord in."
-
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
@@ -580,6 +570,11 @@ msgstr "Verander systeem instellingen voor SolydXK"
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
 msgstr "Systeem"
+
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
+msgstr "Verificatie is vereist om SolydXK Systeeminstellingen uit te voeren"
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
