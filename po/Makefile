@@ -92,12 +92,6 @@ update:
 	@ for POT in `find ./pot -name '*.pot'`; do \
 		sed -i '1,/^$$/d' $$POT; \
 	done
-	#	if grep -Fxq 'itstool' $$POT; then \
-	#		sed -i '/msgid ""/,/itstool/d' $$POT; \
-	#	else \
-	#		sed -i '/fuzzy/,/X-/d' $$POT; \
-	#	fi \
-	#done
 	@ msgcat pot/*.pot >> $(package).pot
 	#@ head -n50 $(package).pot > .tmp && tail -n+51 $(package).pot | sed '/fuzzy/,/X-/d' >> .tmp && mv -f .tmp $(package).pot && echo "Pot files merged"
 	@ po4a po4a.cfg && echo "Po files and translations updated"
