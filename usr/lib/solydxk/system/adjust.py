@@ -158,6 +158,10 @@ try:
                         "if [ -f /usr/share/solydxk/info ]; then\n"
                         "  . /usr/share/solydxk/info\n"
                         "fi\n")
+        if not has_string_in_file("alias pkexec=",  bashrc):
+            with open(bashrc, 'a') as f:
+                f.write("\n# Make pkexec use environment variables\n"
+                        "alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'\n")
         log.write("%s adapted" % bashrc,  'bashrc')
 
     # Check start menu favorite for either Firefox ESR or Firefox

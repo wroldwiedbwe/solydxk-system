@@ -46,26 +46,6 @@ function usage() {
   echo
 }
 
-function launch_gui() {
-  ARGS=$1
-  PYTHON=$(which python3)
-  if [ "$PYTHON" == '' ]; then
-    echo 'Cannot find python3 executable.'
-    exit
-  fi
-
-  optimize='OO'; case "$*" in *--debug*) unset optimize; esac
-  CMD="$PYTHON -tt${optimize} '/usr/lib/solydxk/system/main.py' $ARGS"
-  if [ -e '/usr/bin/kdesudo' ]; then
-    kdesudo -d -c "$CMD"
-  elif [ -e '/usr/bin/kdesu' ]; then
-    kdesu -c "$CMD"
-  else
-    gksudo "$CMD"
-  fi
-  exit 0
-}
-
 # ==============================================
 # ==============================================
 
@@ -112,7 +92,7 @@ while getopts ':bfghi:p:st' opt; do
       ;;
     \?)
       # Invalid option: start GUI
-      launch_gui $@
+      pkexec solydxk-system-pkexec $@
       ;;
     :)
       echo "Option -$OPTARG requires an argument."
@@ -120,7 +100,7 @@ while getopts ':bfghi:p:st' opt; do
       ;;
     *)
       # Unknown error: start GUI
-      launch_gui $@
+      pkexec solydxk-system-pkexec $@
       ;;
   esac
 done
@@ -138,7 +118,7 @@ if [ "$INSTALL" == '' ] && [ "$PURGE" == '' ]; then
     exit 0
   fi
   # Started without anything to install or purge
-  launch_gui $@
+  pkexec solydxk-system-pkexec $@
 fi
 
 # If not running in terminal, use GUI frontend

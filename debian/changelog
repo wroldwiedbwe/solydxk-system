@@ -1,4 +1,4 @@
-solydxk-system (3.0.5b1) solydxk; urgency=low
+solydxk-system (3.0.5b2) solydxk; urgency=low
 
   * Use pkexec for administrative privileges
 
