@@ -1,5 +1,4 @@
 interest /usr/share/solydxk/adjustments
-interest /usr/share/X11/xkb/symbols/am
 interest /usr/share/applications/debian-uxterm.desktop
 interest /usr/share/applications/debian-xterm.desktop
 interest /usr/share/applications/display-im6.desktop
@@ -13,5 +12,4 @@ interest /usr/share/applications/luckybackup-kde-su.desktop
 interest /usr/share/applications/luckybackup.desktop
 interest /usr/lib/libreoffice/share/xdg/math.desktop
 interest /usr/share/applications/PlayOnLinux.desktop
-interest /usr/share/applications/systemadm.desktop
 interest /usr/share/kservicetypes5/konqpopupmenuplugin.desktop
