@@ -1,3 +1,12 @@
+solydxk-system (3.0.5b3) solydxk; urgency=low
+
+  * Create additional log items if they don't exist
+  * Fix crash when plymouth is not installed
+  * Add systemd service to umount cifs mounts on shutdown
+  * Disable wifi powersafe in NetworkManager
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 22 Feb 2018 17:10:57 +0100
+
 solydxk-system (3.0.5b2) solydxk; urgency=low
 
   * Use pkexec for administrative privileges
