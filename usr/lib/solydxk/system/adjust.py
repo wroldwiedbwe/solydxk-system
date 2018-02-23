@@ -24,7 +24,9 @@ force = get_apt_force()
 fix_progs = [['apache2', '/var/log/apache2', 'root:adm', 0],
              ['mysql-client', '/var/log/mysql', 'mysql:adm', 0],
              ['clamav', '/var/log/clamav', 'clamav:clamav', 0],
+             ['clamav', '/var/log/clamav/freshclam.log', 'touch', 0],
              ['samba', '/var/log/samba', 'root:adm', 0],
+             ['consolekit', '/var/log/ConsoleKit', 'root:root', 0],
              ['exim4-base', '/var/log/exim4', 'Debian-exim:adm', 0],
              ['lightdm', '/var/lib/lightdm/data', 'lightdm:lightdm', 0],
              ['usbguard', '/etc/usbguard/rules.conf', 'touch', 0],
@@ -55,6 +57,8 @@ for prog in fix_progs:
                 if not isdir(dir_name):
                     os.system("mkdir -p %s" % dir_name)
                 os.system("touch %s" % prog[1])
+                stat = os.stat(dir_name)
+                os.system("chown -R %s %s" % ("%s:%s" % (stat.st_uid, stat.st_gid), dir_name))
             elif ':' in prog[2] and not isdir(prog[1]):
                 os.system("mkdir -p %s" % prog[1])
                 os.system("chown %s %s" % (prog[2], prog[1]))
@@ -190,7 +194,7 @@ try:
             escPath = livesh.replace('/', '\/')
             os.system("sed -i \"s/echo '}'/if [ -e %s ]; then \/bin\/bash %s; fi; echo '}'/\" %s" % (escPath, escPath, grubsh))
             log.write("%s adapted for live boot menu" % grubsh,  'boot-isos')
-        
+    
     # Fix gpg
     if exists('/etc/apt/trusted.gpg'):
         os.system('/bin/bash /usr/lib/solydxk/scripts/fix-gpg.sh')

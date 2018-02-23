@@ -1,7 +1,7 @@
 [Unit]
 Description=Configure SolydXK
 After=syslog.target network.target
-Before=apache2.service mysql.service
+Before=clamav-freshclam.service console-kit-log-system-start.service apache2.service mysql.service
 
 [Service]
 Type=oneshot
