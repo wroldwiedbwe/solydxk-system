@@ -30,9 +30,12 @@ class Plymouth():
     # Get a list of installed Plymouth themes
     def getInstalledThemes(self):
         instThemes = []
-        if isfile(self.setThemePath):
-            cmd = '%s --list' % self.setThemePath
-            instThemes = getoutput(cmd)
+        try:
+            if isfile(self.setThemePath):
+                cmd = '%s --list' % self.setThemePath
+                instThemes = getoutput(cmd)
+        except:
+            pass
         return instThemes
         
     def is_plymouth_booted(self):
@@ -52,10 +55,13 @@ class Plymouth():
 
     # Get the currently used Plymouth theme
     def getCurrentTheme(self):
-        if isfile(self.setThemePath) and \
-           self.boot is not None and \
-           self.is_plymouth_booted():
-                return getoutput(self.setThemePath)[0]
+        try:
+            if isfile(self.setThemePath) and \
+               self.boot is not None and \
+               self.is_plymouth_booted():
+                    return getoutput(self.setThemePath)[0]
+        except:
+            pass
         return ''
 
     # Get a list of Plymouth themes in the repositories that can be installed
@@ -161,6 +167,10 @@ class PlymouthSave(threading.Thread):
 
     # Save given theme and resolution
     def run(self):
+        if self.setThemePath is None:
+            self.write_log('Plymouth not installed - exiting', 'warning')
+            return
+            
         try:
             if not exists(self.modulesPath):
                 shell_exec("touch {}".format(self.modulesPath))

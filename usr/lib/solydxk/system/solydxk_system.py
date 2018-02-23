@@ -256,7 +256,7 @@ class SolydXKSystemSettings(object):
                 self.chkEnableBackports.set_active(True)
             else:
                 self.chkBackportsDeviceDriver.set_sensitive(False)
-            if not is_package_installed('plymouth'):
+            if self.plymouth.setThemePath is None:
                 self.nbPref.get_nth_page(7).set_visible(False)
             else:
                 self.fill_treeview_installed_splash()
