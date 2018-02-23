@@ -1,0 +1,10 @@
+[Unit]
+ Description=Umount cifs mounts at shutdown
+
+[Service]
+ RemainAfterExit=true
+ ExecStart=/bin/true
+ ExecStop=/bin/umount -alf -t cifs
+
+[Install]
+ WantedBy=multi-user.target

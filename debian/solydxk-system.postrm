@@ -5,14 +5,14 @@ set -e
 # Automatically added by dh_systemd_enable
 if [ "$1" = "remove" ]; then
 	if [ -x "/usr/bin/deb-systemd-helper" ]; then
-		deb-systemd-helper mask solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
+		deb-systemd-helper mask solydxk-cifs-umount.service solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
 	fi
 fi
 
 if [ "$1" = "purge" ]; then
 	if [ -x "/usr/bin/deb-systemd-helper" ]; then
-		deb-systemd-helper purge solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
-		deb-systemd-helper unmask solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
+		deb-systemd-helper purge solydxk-cifs-umount.service solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
+		deb-systemd-helper unmask solydxk-cifs-umount.service solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
 	fi
 fi
 # End automatically added section

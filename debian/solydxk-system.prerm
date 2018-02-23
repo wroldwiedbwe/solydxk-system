@@ -2,6 +2,6 @@
 set -e
 # Automatically added by dh_systemd_start
 if [ -d /run/systemd/system ]; then
-	deb-systemd-invoke stop solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
+	deb-systemd-invoke stop solydxk-cifs-umount.service solydxk-system-adjust.service solydxk-system-aptupdate.service >/dev/null
 fi
 # End automatically added section
