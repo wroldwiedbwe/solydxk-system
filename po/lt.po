@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:20+0100\n"
+"POT-Creation-Date: 2018-02-23 08:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Moo <moose@mail.ru>, 2017\n"
+"Last-Translator: Moo, 2017\n"
 "Language-Team: Lithuanian (https://www.transifex.com/solydxk/teams/54212/"
 "lt/)\n"
 "Language: lt\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:131
+#: ../usr/lib/solydxk/system/plymouth.py:137
 msgid "Neither grub nor burg found in /etc/default"
 msgstr "Kataloge /etc/default nerasta nei grub nei burg"
 
@@ -573,16 +573,6 @@ msgstr ""
 "Nepavyko pakeisti {0} slaptafrazės\n"
 "Prašome pateikti esamą ir naują slaptafrazę."
 
-#: ../usr/bin/solydxk-system:22
-#, sh-format
-msgid "needs administrative privileges."
-msgstr "reikalauja administratoriaus teisių."
-
-#: ../usr/bin/solydxk-system:23
-#, sh-format
-msgid "Please enter your password."
-msgstr "Prašome įvesti savo slaptažodį."
-
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
@@ -591,6 +581,11 @@ msgstr "Keisti SolydXK sistemos nustatymus"
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
 msgstr "Sistema"
+
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
+msgstr "Norint paleisti SolydXK sistemos nustatymus, reikia nustatyti tapatybę"
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"

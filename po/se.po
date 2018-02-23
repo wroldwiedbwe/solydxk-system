@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:20+0100\n"
+"POT-Creation-Date: 2018-02-23 08:19+0100\n"
 "PO-Revision-Date: 2014-08-23 12:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:131
+#: ../usr/lib/solydxk/system/plymouth.py:137
 msgid "Neither grub nor burg found in /etc/default"
 msgstr ""
 
@@ -222,8 +222,9 @@ msgid "Save drivers"
 msgstr "Alternativa drivrutiner"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:174
+#, fuzzy
 msgid "Use Backports"
-msgstr ""
+msgstr "Spara spegel-servrar"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:175
 msgid ""
@@ -325,8 +326,9 @@ msgid ""
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:665
+#, fuzzy
 msgid "Remove kernel"
-msgstr ""
+msgstr "Ta bort"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:666
 msgid ""
@@ -335,8 +337,9 @@ msgid ""
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:692
+#, fuzzy
 msgid "Install"
-msgstr ""
+msgstr "Drivrutin installerad"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:692
 msgid "Device"
@@ -506,23 +509,19 @@ msgid ""
 "Please, provide the current and new passphrase."
 msgstr ""
 
-#: ../usr/bin/solydxk-system:22
-#, sh-format
-msgid "needs administrative privileges."
-msgstr ""
-
-#: ../usr/bin/solydxk-system:23
-#, fuzzy, sh-format
-msgid "Please enter your password."
-msgstr "Ange ditt lösenord."
-
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
 msgstr ""
 
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
+#, fuzzy
 msgid "System"
+msgstr "Systemet har stöd för PAE"
+
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
 msgstr ""
 
 #: en/help.html+html.body.h1:8
@@ -598,7 +597,6 @@ msgstr ""
 
 #: en/help.html+html.body.div.h3:25
 #, fuzzy
-#| msgid "Driver activation"
 msgid "Encrypt the root (and swap) partition"
 msgstr "Aktivera drivrutin"
 
@@ -737,7 +735,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:21
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i amd"
 msgstr "Installerar drivrutin: %(drv)s"
 
@@ -751,7 +748,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:24
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i nvidia"
 msgstr "Installerar drivrutin: %(drv)s"
 
@@ -764,7 +760,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:27
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i open"
 msgstr "Installerar drivrutin: %(drv)s"
 
@@ -776,7 +771,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:30
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i broadcom"
 msgstr "Installerar drivrutin: %(drv)s"
 
@@ -788,7 +782,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:33
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i pae"
 msgstr "Installerar drivrutin: %(drv)s"
 
@@ -813,6 +806,22 @@ msgid ""
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
 "a>"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Package Installer"
+#~ msgstr "Drivrutin installerad"
+
+#, fuzzy
+#~ msgid "Install and view software packages"
+#~ msgstr "Installerar hämtade paket"
+
+#, fuzzy
+#~ msgid "Update Applet"
+#~ msgstr "Uppdatera apt"
+
+#, fuzzy
+#~ msgid "Please enter your password."
+#~ msgstr "Ange ditt lösenord."
 
 #, fuzzy
 #~ msgid "Hardware scan"
@@ -934,9 +943,6 @@ msgstr ""
 
 #~ msgid "Download package: %(drv)s"
 #~ msgstr "Hämtar paket: %(drv)s"
-
-#~ msgid "Install downloaded packages"
-#~ msgstr "Installerar hämtade paket"
 
 #~ msgid "Reconfigure package: %(package)s"
 #~ msgstr "Rekonfigurerar paket: %(package)s"
@@ -1108,9 +1114,6 @@ msgstr ""
 
 #~ msgid "Cannot remove PAE when running PAE"
 #~ msgstr "Kan inte ta bort PAE eftersom PAE används"
-
-#~ msgid "Update apt"
-#~ msgstr "Uppdatera apt"
 
 #~ msgid "Install nvidia-detect"
 #~ msgstr "Installerar nvidia-detect"

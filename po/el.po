@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ddm 0.8.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:20+0100\n"
+"POT-Creation-Date: 2018-02-23 08:19+0100\n"
 "PO-Revision-Date: 2013-10-03 10:45+0100\n"
 "Last-Translator: Schoelje <schoelje@solydxk.com>\n"
 "Language-Team: SolydXK <admin@solydxk.com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:131
+#: ../usr/lib/solydxk/system/plymouth.py:137
 msgid "Neither grub nor burg found in /etc/default"
 msgstr ""
 
@@ -223,8 +223,9 @@ msgid "Save drivers"
 msgstr "Εναλλακτικοί οδηγοί"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:174
+#, fuzzy
 msgid "Use Backports"
-msgstr ""
+msgstr " "
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:175
 msgid ""
@@ -336,8 +337,9 @@ msgid ""
 msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:692
+#, fuzzy
 msgid "Install"
-msgstr ""
+msgstr "Ο οδηγός εγκαταστάθηκε"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:692
 msgid "Device"
@@ -508,23 +510,19 @@ msgid ""
 "Please, provide the current and new passphrase."
 msgstr ""
 
-#: ../usr/bin/solydxk-system:22
-#, sh-format
-msgid "needs administrative privileges."
-msgstr ""
-
-#: ../usr/bin/solydxk-system:23
-#, fuzzy, sh-format
-msgid "Please enter your password."
-msgstr "Παρακαλώ εισάγετε τον κωδικό σας"
-
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
 msgstr ""
 
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
+#, fuzzy
 msgid "System"
+msgstr "Σύστημα με δυνατότητα PAE"
+
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
 msgstr ""
 
 #: en/help.html+html.body.h1:8
@@ -599,7 +597,6 @@ msgstr ""
 
 #: en/help.html+html.body.div.h3:25
 #, fuzzy
-#| msgid "Driver activation"
 msgid "Encrypt the root (and swap) partition"
 msgstr "Ενεργοποίηση οδηγού"
 
@@ -738,7 +735,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:21
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i amd"
 msgstr "Εγκατάσταση οδηγού: %(drv)s"
 
@@ -752,7 +748,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:24
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i nvidia"
 msgstr "Εγκατάσταση οδηγού: %(drv)s"
 
@@ -765,7 +760,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:27
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i open"
 msgstr "Εγκατάσταση οδηγού: %(drv)s"
 
@@ -777,7 +771,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:30
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i broadcom"
 msgstr "Εγκατάσταση οδηγού: %(drv)s"
 
@@ -789,7 +782,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:33
 #, fuzzy
-#| msgid "Install driver: %(drv)s"
 msgid "# ddm -i pae"
 msgstr "Εγκατάσταση οδηγού: %(drv)s"
 
@@ -814,6 +806,22 @@ msgid ""
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
 "a>"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Package Installer"
+#~ msgstr "Ο οδηγός εγκαταστάθηκε"
+
+#, fuzzy
+#~ msgid "Install and view software packages"
+#~ msgstr "Εγκατάσταση ληφθέντων πακέτων"
+
+#, fuzzy
+#~ msgid "Update Applet"
+#~ msgstr "Ενημέρωση apt"
+
+#, fuzzy
+#~ msgid "Please enter your password."
+#~ msgstr "Παρακαλώ εισάγετε τον κωδικό σας"
 
 #, fuzzy
 #~ msgid "Hardware scan"
@@ -941,9 +949,6 @@ msgstr ""
 
 #~ msgid "Download package: %(drv)s"
 #~ msgstr "Λήψη πακέτου: %(drv)s"
-
-#~ msgid "Install downloaded packages"
-#~ msgstr "Εγκατάσταση ληφθέντων πακέτων"
 
 #~ msgid "Reconfigure package: %(package)s"
 #~ msgstr "Επαναρύθμιση πακέτου: %(package)s"
@@ -1108,9 +1113,6 @@ msgstr ""
 
 #~ msgid "Cannot remove PAE when running PAE"
 #~ msgstr "Αδύνατη η αφαιρεση PAE όταν εκτελείται"
-
-#~ msgid "Update apt"
-#~ msgstr "Ενημέρωση apt"
 
 #~ msgid "Install nvidia-detect"
 #~ msgstr "Εγκατάσταση nvidia-detect"

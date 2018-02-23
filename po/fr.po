@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-12 15:47+0100\n"
+"POT-Creation-Date: 2018-02-23 08:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kyodev <kyodev@yandex.com>, 2018\n"
 "Language-Team: French (https://www.transifex.com/solydxk/teams/54212/fr/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:131
+#: ../usr/lib/solydxk/system/plymouth.py:137
 msgid "Neither grub nor burg found in /etc/default"
 msgstr "Ni Grub ni burg  trouvés dans /etc/default"
 
@@ -580,6 +580,7 @@ msgstr "Système"
 #: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
 msgid "Authentication is required to run SolydXK System Settings"
 msgstr ""
+"l'authentification est nécessaire pour exécuter SolydXK System Settings"
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
@@ -951,3 +952,19 @@ msgstr ""
 "Veuillez joindre votre fichier de logs quand vous postez un problème sur nos "
 "forums: <a href=\"https://forums.solydxk.com\" target=\"_blank\">https://"
 "forums.solydxk.com</a>"
+
+#, fuzzy
+#~ msgid "luckyBackup"
+#~ msgstr "Sauvegarde"
+
+#, fuzzy
+#~ msgid "systemadm"
+#~ msgstr "Système"
+
+#, fuzzy
+#~ msgid "Package Installer"
+#~ msgstr "Installé(s)"
+
+#, fuzzy
+#~ msgid "KSystemLog"
+#~ msgstr "Système"

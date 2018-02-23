@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-12 15:47+0100\n"
+"POT-Creation-Date: 2018-02-23 08:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/solydxk/teams/54212/nl/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:131
+#: ../usr/lib/solydxk/system/plymouth.py:137
 msgid "Neither grub nor burg found in /etc/default"
 msgstr "grub en burg zijn niet in /etc/default gevonden"
 
@@ -942,3 +942,19 @@ msgstr ""
 "Voeg uw log bestand toe wanneer u een probleem wilt posten op ons forum: <a "
 "href=\"http://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk."
 "com</a>"
+
+#, fuzzy
+#~ msgid "luckyBackup"
+#~ msgstr "Backup"
+
+#, fuzzy
+#~ msgid "systemadm"
+#~ msgstr "Systeem"
+
+#, fuzzy
+#~ msgid "Package Installer"
+#~ msgstr "Geïnstalleerd"
+
+#, fuzzy
+#~ msgid "KSystemLog"
+#~ msgstr "Systeem"

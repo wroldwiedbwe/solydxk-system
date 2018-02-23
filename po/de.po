@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:20+0100\n"
+"POT-Creation-Date: 2018-02-23 08:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: pitfd <pitfd@posteo.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/solydxk/teams/54212/de/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:131
+#: ../usr/lib/solydxk/system/plymouth.py:137
 msgid "Neither grub nor burg found in /etc/default"
 msgstr "Weder grub noch burg wurden in /etc/default gefunden"
 
@@ -578,16 +578,6 @@ msgstr ""
 "Konnte das Verschlüsselungskennwort für {0} nicht ändern.\n"
 "Bitte geben Sie das gegenwärtige und ein neues Verschlüsselungskennwort an."
 
-#: ../usr/bin/solydxk-system:22
-#, sh-format
-msgid "needs administrative privileges."
-msgstr "Benötigt Administratorrechte."
-
-#: ../usr/bin/solydxk-system:23
-#, sh-format
-msgid "Please enter your password."
-msgstr "Bitte geben Sie Ihr Kennwort ein."
-
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
@@ -596,6 +586,11 @@ msgstr "Ändere Systemeinstellungen für SolydXK"
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
 msgstr "System"
+
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
+msgstr ""
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
@@ -974,3 +969,19 @@ msgstr ""
 "Bitte fügen Sie Ihre Logdatei bei, wenn Sie ein Problem in unserem Forum "
 "veröffentlichen: <a href=\"https://forums.solydxk.com\" target=\"_blank"
 "\">https://forums.solydxk.com</a>"
+
+#, fuzzy
+#~ msgid "luckyBackup"
+#~ msgstr "Sicherung"
+
+#, fuzzy
+#~ msgid "systemadm"
+#~ msgstr "System"
+
+#, fuzzy
+#~ msgid "Package Installer"
+#~ msgstr "Installiert"
+
+#, fuzzy
+#~ msgid "KSystemLog"
+#~ msgstr "System"

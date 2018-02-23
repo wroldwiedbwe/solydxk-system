@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: device-driver-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:20+0100\n"
+"POT-Creation-Date: 2018-02-23 08:19+0100\n"
 "PO-Revision-Date: 2017-04-10 23:27+0000\n"
 "Last-Translator: Михаил Ильинский <mail@milinsky.com>\n"
 "Language-Team: Russian (http://www.transifex.com/solydxk/device-driver-"
@@ -24,7 +24,7 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:131
+#: ../usr/lib/solydxk/system/plymouth.py:137
 msgid "Neither grub nor burg found in /etc/default"
 msgstr ""
 
@@ -528,23 +528,19 @@ msgid ""
 "Please, provide the current and new passphrase."
 msgstr ""
 
-#: ../usr/bin/solydxk-system:22
-#, sh-format
-msgid "needs administrative privileges."
-msgstr ""
-
-#: ../usr/bin/solydxk-system:23
-#, sh-format
-msgid "Please enter your password."
-msgstr ""
-
 #: ../usr/share/kde4/services/kcm_solydxk-system.desktop.in.h:2
 #: ../usr/share/kservices5/kcm_solydxk-system.desktop.in.h:2
 msgid "Change system settings for SolydXK"
 msgstr ""
 
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
+#, fuzzy
 msgid "System"
+msgstr "Система с поддержкой PAE"
+
+#. (itstool) path: action/message
+#: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
+msgid "Authentication is required to run SolydXK System Settings"
 msgstr ""
 
 #: en/help.html+html.body.h1:8
@@ -619,7 +615,6 @@ msgstr ""
 
 #: en/help.html+html.body.div.h3:25
 #, fuzzy
-#| msgid "Description"
 msgid "Encrypt the root (and swap) partition"
 msgstr "Описание"
 
@@ -732,12 +727,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.p:11
 #, fuzzy
-#| msgid ""
-#| "The Device Driver Manager is a tool to help users installing third-party "
-#| "hardware drivers. Currently Nvidia, ATI and Broadcom drivers can be "
-#| "installed and allows to install the PAE kernel for multi-core 32-bit "
-#| "systems. The Device Driver Manager will only list those devices that are "
-#| "supported. It will not list any other devices then mentioned above."
 msgid ""
 "The Device Driver is a tool to help users installing third-party hardware "
 "drivers. Currently Nvidia, AMD/ATI and Broadcom drivers can be installed and "
@@ -753,10 +742,6 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.p:14
 #, fuzzy
-#| msgid ""
-#| "The Device Driver Manager can only install drivers which are available in "
-#| "the repositories. Make sure you have an internet connection if you want "
-#| "to install the drivers."
 msgid ""
 "The Device Driver can only install drivers which are available in the "
 "repositories. Make sure you have an internet connection if you want to "
@@ -780,17 +765,11 @@ msgstr ""
 
 #: en/helpdd.html+html.body.div.h3:21
 #, fuzzy
-#| msgid "# ddm -i ati"
 msgid "# ddm -i amd"
 msgstr "# ddm -i ati"
 
 #: en/helpdd.html+html.body.div.p:22
 #, fuzzy
-#| msgid ""
-#| "This will install the fglrx drivers for your ATI graphical card. ATI "
-#| "cards from version HD 5000 and up are supported by the fglrx drivers. "
-#| "Versions between 1000 and 5000 will use the Radeon drivers. Use \"ddm -p "
-#| "ati\" to remove the drivers from your system."
 msgid ""
 "This will install the drivers for your AMD/ATI graphical card. AMD/ATI cards "
 "from version HD 5000 and up are supported by the drivers. Versions between "
@@ -861,16 +840,11 @@ msgstr "Логирование"
 
 #: en/helpdd.html+html.body.div.h3:37
 #, fuzzy
-#| msgid "File: /var/log/ddm.log"
 msgid "File: /var/log/solydxk-system.log"
 msgstr "File: /var/log/ddm.log"
 
 #: en/helpdd.html+html.body.div.p:38
 #, fuzzy
-#| msgid ""
-#| "Please, attach your log file when you post an issue on our forum: <a href="
-#| "\"http://forums.solydxk.com\" target=\"_blank\">http://forums.solydxk."
-#| "com</a>"
 msgid ""
 "Please, attach your log file when you post an issue on our forum: <a href="
 "\"https://forums.solydxk.com\" target=\"_blank\">https://forums.solydxk.com</"
@@ -879,6 +853,10 @@ msgstr ""
 "Пожалуйста, прикрепите файл журнала, когда вы отправляете вопрос на нашем "
 "форуме: <a href=\"http://forums.solydxk.com\" target=\"_blank\">http://"
 "forums.solydxk.com</a>"
+
+#, fuzzy
+#~ msgid "Package Installer"
+#~ msgstr "Установить"
 
 #~ msgid "Device Driver Manager"
 #~ msgstr "Менеджер драйверов устройств"
