@@ -59,7 +59,7 @@ class SolydXKSystemSettings(object):
             if is_xfce_running():
                 b_img = join(self.shareDir, 'images/splash-bgx.png')
                 f_clr = '#502800'
-            splash = Splash(title=self.title, font='Roboto Slab 18', font_weight='bold', font_color=f_clr, background_image=b_img, min_secs=5)
+            splash = Splash(title=self.title, font='Roboto Slab 18', font_weight='bold', font_color=f_clr, background_image=b_img)
             splash.start()
 
         # Init logging
@@ -269,10 +269,6 @@ class SolydXKSystemSettings(object):
 
         # Disable this for later implementation
         self.btnCreateKeyfile.set_visible(False)
-        
-        # Destroy splash screen
-        if not nosplash:
-            splash.destroy()
 
         # Connect the signals and show the window
         self.builder.connect_signals(self)
@@ -281,6 +277,10 @@ class SolydXKSystemSettings(object):
         # In case of encrypted partitions, we can only list partitions when the splash is done
         if not self.live:
             self.fill_treeview_fstab_partitions()
+            
+        # Destroy splash screen
+        if not nosplash:
+            splash.destroy()
 
     # ===============================================
     # Main window functions
@@ -398,7 +398,9 @@ class SolydXKSystemSettings(object):
         self.fill_partitions(False)
         
         for partition in self.partitions:
-            fs_partitions.append([False, partition['device'], partition['label']])
+            # Only add partition if it's not already listed in fstab
+            if not partition['fstab_path']:
+                fs_partitions.append([False, partition['device'], partition['label']])
 
         columnTypes = ['bool', 'str', 'str']
                 

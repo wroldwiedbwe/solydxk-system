@@ -1,3 +1,16 @@
+solydxk-system (3.0.5b5) solydxk; urgency=low
+
+  * Fix splash
+  * Only list fstab mountable partitions when not already in fstab
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 27 Feb 2018 16:30:48 +0100
+
+solydxk-system (3.0.5b4) solydxk; urgency=low
+
+  * Resolve unmountable partitions in udisks2
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 26 Feb 2018 09:31:49 +0100
+
 solydxk-system (3.0.5b3) solydxk; urgency=low
 
   * Create additional log items if they don't exist

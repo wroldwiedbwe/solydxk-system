@@ -28,15 +28,14 @@ import gi
 gi.require_version('Gtk', '3.0')
 
 # from gi.repository import Gtk, GdkPixbuf, GObject, Pango, Gdk
-from gi.repository import Gtk, Gdk, GObject
+from gi.repository import Gtk, Gdk
 from threading import Thread
 from os.path import exists
-import time
 
 
 class Splash(Thread):
-    def __init__(self, title, width=400, height=250, font=16, font_weight='normal', font_color='000000', background_color='ffffff', background_image=None, min_secs=0):
-        super(Splash, self).__init__()
+    def __init__(self, title, width=400, height=250, font=16, font_weight='normal', font_color='000000', background_color='ffffff', background_image=None):
+        Thread.__init__(self)
         self.title = title
         self.width = width
         self.height = height
@@ -44,23 +43,12 @@ class Splash(Thread):
         self.font_weight = font_weight
         self.font_color = self.prep_hex_color(font_color)
         self.background_image = '' if background_image is None else background_image
-        self.min_secs = min_secs
-        self.parent = next((w for w in Gtk.Window.list_toplevels() if w.get_title()), None)
-        
-        # Set the timer
-        self.start_time = 0
-        if self.min_secs > 0:
-            self.start_time = time.time()
 
         # Window settings
         self.window = Gtk.Window(Gtk.WindowType.POPUP)
+        self.window.set_type_hint(Gdk.WindowTypeHint.SPLASHSCREEN)
         self.window.set_position(Gtk.WindowPosition.CENTER)
         self.window.set_title(self.title)
-        self.window.connect("destroy", Gtk.main_quit)
-        self.window.connect("delete-event", Gtk.main_quit)
-        # Set this window modal if a parent is found
-        if self.parent is not None:
-            self.window.set_modal(True)
 
         # Create overlay with a background image
         overlay = Gtk.Overlay()
@@ -76,9 +64,9 @@ class Splash(Thread):
             self.window.override_background_color(Gtk.StateType.NORMAL, 
                                                   self.hex_to_rgba(background_color, True))
 
-        # Add box with label and spinner
+        # Add box with label
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        box.set_margin_top(self.height / 4)
+        box.set_margin_top(self.height / 3)
         box.set_margin_left(20)
         box.set_margin_right(20)
         # Add the box to a new overlay in the existing overlay
@@ -91,20 +79,14 @@ class Splash(Thread):
                                                                                         self.font_weight, 
                                                                                         self.title))
         box.pack_start(lbl_title, False, True, 0)
-        spinner = Gtk.Spinner()
-        spinner.start()
-        box.pack_start(spinner, True, True, 0)
 
     def run(self):
-        # Show the splash screen without causing startup notification
-        # https://developer.gnome.org/gtk3/stable/GtkWindow.html#gtk-window-set-auto-startup-notification
-        self.window.set_auto_startup_notification(False)
+        # Show the splash screen
         self.window.show_all()
-        self.window.set_auto_startup_notification(True)
 
-        # Need to call Gtk.main to draw all widgets
-        GObject.threads_init()
-        Gtk.main()
+        # Without this ugly one-liner, the window won't show
+        while Gtk.events_pending(): Gtk.main_iteration()
+        
 
     def prep_hex_color(self, hex_color):
         hex_color = hex_color.strip('#')
@@ -130,13 +112,10 @@ class Splash(Thread):
 
     def show(self):
         self.window.show()
-        
+
     def hide(self):
         self.window.hide()
-    
+
     def destroy(self):
-        if self.min_secs > 0:
-            time_left = self.min_secs - (time.time() - self.start_time)
-            if time_left > 0:
-                time.sleep(time_left)
+        while Gtk.events_pending(): Gtk.main_iteration()
         self.window.destroy()
