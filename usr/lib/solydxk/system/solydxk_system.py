@@ -398,8 +398,8 @@ class SolydXKSystemSettings(object):
         self.fill_partitions(False)
         
         for partition in self.partitions:
-            # Only add partition if it's not already listed in fstab
-            if not partition['fstab_path']:
+            # Only add partition if it's not already listed in the local fstab
+            if partition['fstab_path'] != '/etc/fstab':
                 fs_partitions.append([False, partition['device'], partition['label']])
 
         columnTypes = ['bool', 'str', 'str']
@@ -1155,7 +1155,7 @@ class SolydXKSystemSettings(object):
                 if not 'mapper' in fstab_device:
                     fstab_device = fstab_device.replace('/dev', '/dev/mapper')
 
-                regexp = "(%s|%s|%s)\s+(\S+)" % ("UUID=%s" % partition['old_uuid'], partition['old_device'], fstab_device)
+                regexp = "^\s*(%s|%s|%s)\s+(\S+)" % ("UUID=%s" % partition['old_uuid'], partition['old_device'], fstab_device)
                 #print(("++++ regexp = %s" % regexp))
                 matchObj = re.search(regexp, fstab_cont)
                 if matchObj:

@@ -1,3 +1,15 @@
+solydxk-system (3.0.5b7) solydxk; urgency=low
+
+  * Exclude commented mounts in fstab
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 28 Feb 2018 22:18:00 +0100
+
+solydxk-system (3.0.5b6) solydxk; urgency=low
+
+  * Fix not listing mounts listed in non-local fstab file
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 27 Feb 2018 20:14:55 +0100
+
 solydxk-system (3.0.5b5) solydxk; urgency=low
 
   * Fix splash
