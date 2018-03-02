@@ -1,3 +1,9 @@
+solydxk-system (3.0.5b8) solydxk; urgency=low
+
+  * Fix fstab mounts regexp for multiline variable
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 01 Mar 2018 19:14:00 +0100
+
 solydxk-system (3.0.5b7) solydxk; urgency=low
 
   * Exclude commented mounts in fstab

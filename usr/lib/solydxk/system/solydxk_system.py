@@ -1157,7 +1157,7 @@ class SolydXKSystemSettings(object):
 
                 regexp = "^\s*(%s|%s|%s)\s+(\S+)" % ("UUID=%s" % partition['old_uuid'], partition['old_device'], fstab_device)
                 #print(("++++ regexp = %s" % regexp))
-                matchObj = re.search(regexp, fstab_cont)
+                matchObj = re.search(regexp, fstab_cont, re.M)
                 if matchObj:
                     fstab_device = matchObj.group(1)
                     fstab_mount = matchObj.group(2)
