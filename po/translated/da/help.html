@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="../link/general.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="background"></div>
+	<h1>Hjælp til SolydXK Systemindstillinger for kryptering</h1>
+	<div class="main">
+		<h2>Beskrivelse</h2>
+		<p>Kryptér partitioner på dit system med LUKS.</p>
+
+		<h2>Vigtigt</h2>
+		<p>SolydXK Systemindstillinger vil foretage en sikkerhedskopiering af -og
+genskabe data på den partition du vil kryptere eller dekryptere.  Montér en
+partition eller et eksternt drev til dette formål før du begynder.</p>
+		<p>Du kan ikke bruge SolydXK Systemindstillinger til at kryptere en root eller
+home partition der er i brug. Hvis det er det du ønsker, kan du starte
+systemet på den nyeste SolydXK live-udgave og køre SolydXK
+Systemindstillinger fra live-sessionen. Bemærk at du skal have en ukrypteret
+boot partition hvis du vil have din root partiton krypteret og at Grub2 vil
+blive installeret på den harddisk som root partitionen ligger på.</p>
+		<p>Kun de partitioner der ses monteret i fstab gemmes i fstab. Hvis du ønsker
+at tilføje nye partitioner i fstab skal du gøre det manuelt før du starter
+SolydXK Systemindstillinger.</p>
+
+		<h2>Eksempler</h2>
+		<p>When you start SolydXK System Settings you will see a list of partitions
+that you can either encrypt or decrypt. An encrypted partition shows this
+icon: <img src="/usr/share/solydxk/system/icons/encrypted.png" /> and an unencrypted partition shows this icon: <img src="/usr/share/solydxk/system/icons/unencrypted.png" />. Your selection will decide which actions can be taken on that
+partition. Removable media will show these icons:  <img src="/usr/share/solydxk/system/icons/unencrypted-usb.png" /> and  <img src="/usr/share/solydxk/system/icons/encrypted-usb.png" /></p>
+		<p>Her er nogle eksempler på anvendelsen af SolydXK Systemindstillinger:</p>
+
+		<h3>Krypter en USB-pen</h3>
+		<p>Indsæt en USB-stick og montér den. Tryk 'Opdatér' for at få vist USB-pennen
+og vælg den partition du vil kryptere. Indtast kodeordssætningen to gange og
+tryk på 'Kryptér'.</p>
+		
+		<h3>Kryptér root (og swap) partitionen</h3>
+		<strong><p>ADVARSEL: dette er på eget ansvar!</p></strong>
+		<p>Du skal bruge en ukrypteret /boot partition. Hvis du ikke har en ukrypteret
+/boot partition kan du oprette en på følgende måde. I en live-session skal
+du starte Gparted og oprette en partition med mindst 200 MB ledig
+plads. Denne partition kan oprettes på eksisterende uallokeret plads. eller
+ved at krympe en anden partition og så anvende den frigjorte plads. I dette
+eksempel opretter vi en ny partition: /dev/sda1 som vi vil montere på /boot
+på root-partitionen /dev/sda2. Tilret partitionsstierne så de passer til din
+aktuelle situation.</p>
+		<p>Åbn en kommandoprompt og kør følgende kommandoer som root:</p>
+		<pre># mkdir /mnt/boot /mnt/root
+# mount /dev/sda1 /mnt/boot
+# mount /dev/sda2 /mnt/root
+# cp -a /mnt/root/boot/* /mnt/boot/
+# echo "UUID=$(blkid -o value -s UUID /dev/sda1)    /boot   ext4    defaults    0   0" >> /mnt/root/etc/fstab</pre>
+		<p>Du kan nu genstarte maskinen og kontrollere om boot-partitionen er monteret
+korrekt:</p>
+		<pre>$ mount | grep sda2</pre>
+		<p>For at kryptere root- (og swap-) partitionen skal du igen starte en
+live-session. Start SolydXK Systemindstillinger og vælg root-partitionen (og
+evt. andre partitioner du vil kryptere).</p>
+		
+		<h3>Skift kodeordssætningen på en krypteret partition</h3>
+		<p>Vælg en krypteret partition fra listen, indtast kodeordssætningen to gange
+og tryk på 'Skift kodeordssætning'.</p>
+		
+		<h3>Opret en nøglefil til et antal krypterede partitioner</h3>
+		<p>Vælg adskillige krypterede partitioner fra listen, indtast kodeordssætningen
+to gange og tryk på 'Opret nøglefil manuelt'. Den første krypterede
+partition vil indeholde nøglefilen mens de andre partitioner automatisk
+åbnes med nævnte nøglefil.</p>
+		
+		<h3>Dekryptér en partition</h3>
+		<p>Vælg en krypteret partition fra listen, indtast kodeordssætningen to gange
+og tryk på 'Dekryptér'. SolydXK Systemindstillinger vil lede efter en
+partition med tilstrækkelig ledig plads til at oprette en midlertidig
+sikkerhedskopi af den partition du vil dekryptere. Du vil blive anmodet om
+et backupmedie hvis der ikke kan findes tilstrækkelig ledig plads på
+systemet.</p>
+		
+
+		<h2>Fejlretning</h2>
+		<p>Hjælp venligst med at forbedre dette program. Du kan finde kildekoden på
+vores <a href="https://github.com/SolydXK/solydxk-system"
+target="_blank">GitHub</a> side.</p>
+		<p>Hvis dit system af en eller anden årsag ikke vil montere den nyligt
+oprettede krypterede partition, bedes du besøge vores <a
+href="http://forums.solydxk.com" target="_blank">forum</a> og beskrive dine
+problemer der.</p>
+		<p>Glem ikke at tilføje log-filen når du opretter et indlæg på vores forum:
+/var/log/solydxk-system.log</p>
+    </div>
+  </body>
+</html>

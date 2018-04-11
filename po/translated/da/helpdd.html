@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="../link/general.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="background"></div>
+	<h1>SolydXK Systemindstillinger: Hjælp til 'Enhedsdrivere'</h1>
+	<div class="main">
+		<h2>Beskrivelse</h2>
+		<p>'Enhedsdrivere' er et værktøj der skal gøre det lettere for brugere at
+installere tredjepartsdrivere. Aktuelt er NVIDIA, AMD/ATi og Broadcom
+drivere tilgængelige og man kan installere PAE-kernen hvis man har et
+kulti-kerne 32-bit system. 'Enhedsdrivere' vil kun vise en liste over de
+enheder der er understøttede. </p>
+
+		<h2>Vigtigt</h2>
+		<p>*Enhedsdrivere' kan kun installere drivere der er tilgængelige i
+repositorierne. Kontrollér at du har forbindelse til internettet først hvis
+du vil installere driverne.</p>
+
+		<h2>Kommandoer</h2>
+		<p>Hvis du foretrækker at installere driverne gennem en kommandoprompt, kan du
+bruge følgende kommandoer:</p>
+
+		<p>&nbsp;</p>
+
+		<h3># ddm -i amd</h3>
+		<p>Dette vil installere drivere til dit AMD/ATi grafikkort. AMD/ATi kort
+version over HD5000 er understøttet. Version mellem 1000 og 5000 vil anvende
+Radeon driveren. Brug "ddm -p amd" for at fjerne driverne fra dit system.</p>
+
+		<h3># ddm -i nvidia</h3>
+		<p>Dette vil vælge de korrekte drivere til dit NVIDIA grafikkort. Bumblebee
+drivere anvendes hvis du har et hybrid-kort (NVIDIA/Intel). Anvend "ddm -p
+nvidia" for at fjerne driverne fra dit system.</p>
+
+		<h3># ddm -i open</h3>
+		<p>Du kan anvende denne kommando hvis du vil vende tilbage til de åbne
+Nouveau-drivere. Det vil fjerne evt. proprietære drivere fra dit system.</p>
+
+		<h3># ddm -i broadcom</h3>
+		<p>Dette vil vælge de korrekte drivere til dit trådløse broadcom kort. Anvend
+"ddm -p broadcom" for at fjerne driverne fra dit system.</p>
+
+		<h3># ddm -i pae</h3>
+		<p>Dette vil installere PAE-kernen på multiprocessor 32-bit systemer. Anvend
+"ddm -p pae" for at fjerne PAE kernen fra dit system. Bemærk at du ikke kan
+fjerne PAE-kernen hvis den er kørende.</p>
+
+		<h2>Logning</h2>
+		<h3>Fil: /var/log/solydxk-system.log</h3>
+		<p>Vedhæft venligst logfilen når du opretter et indlæg omkring et problem på
+vores forum: <a href="https://forums.solydxk.com"
+target="_blank">https://forums.solydxk.com</a></p>
+    </div>
+  </body>
+</html>
