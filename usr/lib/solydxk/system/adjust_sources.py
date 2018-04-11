@@ -19,7 +19,7 @@ class Sources():
         # Data file structure:
         # 0) active (0, 1)
         # 1) Debian version (0 = any)
-        # 2) action (replace, remove, removeline, append)
+        # 2) action (replace, replaceline, removeline, append)
         # 3) search string
         # 4) replace string
 

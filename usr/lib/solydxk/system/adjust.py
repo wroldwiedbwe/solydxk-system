@@ -6,7 +6,7 @@ from adjust_sources import Sources
 from logger import Logger
 from utils import getoutput,  get_apt_force,  get_package_version,  \
                              get_apt_cache_locked_program,  has_string_in_file,  \
-                             get_debian_version,  can_copy
+                             get_debian_version,  can_copy, get_swap_device
 
 # Init logging
 log_file = "/var/log/solydxk-system.log"
@@ -18,7 +18,6 @@ log.write('=====================================', 'adjust')
 
 # --force-yes is deprecated in stretch
 force = get_apt_force()
-#force += " --assume-yes -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold"
 
 # Fix some programs [package, what to fix, options, exec from debian version (0 = all)]
 fix_progs = [['apache2', '/var/log/apache2', 'root:adm', 0],
@@ -31,13 +30,13 @@ fix_progs = [['apache2', '/var/log/apache2', 'root:adm', 0],
              ['lightdm', '/var/lib/lightdm/data', 'lightdm:lightdm', 0],
              ['usbguard', '/etc/usbguard/rules.conf', 'touch', 0],
              ['v86d', 'v86d', 'purge', 0],
-             ['lightdm', 'accountsservice', 'install', 0],
-             ['usb-creator', 'solydxk-usb-creator', 'purge', 0],
-             ['solydk-system-adjustments-8', 'solydk-system-adjustments', 'purge', 0],
-             ['solydx-system-adjustments-8', 'solydx-system-adjustments', 'purge', 0],
-             ['solydk-system-adjustments-9', 'solydk-system-adjustments', 'purge', 0],
-             ['solydx-system-adjustments-9', 'solydx-system-adjustments', 'purge', 0],
-             ['firefox-solydxk-adjustments', 'firefox-esr-solydxk-adjustments', 'purge', 0]]
+             ['lightdm', 'accountsservice', 'install', 0]]
+             #['usb-creator', 'solydxk-usb-creator', 'purge', 0],
+             #['solydk-system-adjustments-8', 'solydk-system-adjustments', 'purge', 0],
+             #['solydx-system-adjustments-8', 'solydx-system-adjustments', 'purge', 0],
+             #['solydk-system-adjustments-9', 'solydk-system-adjustments', 'purge', 0],
+             #['solydx-system-adjustments-9', 'solydx-system-adjustments', 'purge', 0],
+             #'firefox-solydxk-adjustments', 'firefox-esr-solydxk-adjustments', 'purge', 0]]
              
 gtk_deprecated_properties = ['child-displacement', 
                              'scrollbars-within-bevel', 
@@ -128,6 +127,13 @@ try:
                         os.system("ln -sf %s %s" % (destination ,  link))
                         log.write("link %s created to %s" % (link,  destination),  'link')
 
+    # Remove resume file if no swap has been defined
+    resume = '/etc/initramfs-tools/conf.d/resume'
+    if get_swap_device():
+        os.system("echo 'RESUME=auto' > %s" % resume)
+    else:
+        os.system("echo 'RESUME=none' > %s" % resume)
+    
     # Restore LSB information
     codename = getoutput("grep CODENAME /usr/share/solydxk/info")[0].strip()
     if not has_string_in_file(codename, "/etc/lsb-release"):
