@@ -6,7 +6,7 @@ import os
 import threading
 import datetime
 import re
-from utils import getoutput, get_config_dict
+from utils import getoutput, get_config_dict, get_debian_version
 from os.path import join, abspath, dirname, exists, basename
 from urllib.request import urlopen
 
@@ -144,7 +144,7 @@ class MirrorGetSpeed(threading.Thread):
 
 class Mirror():
     def __init__(self):
-        pass
+        self.debian_version = get_debian_version()
 
     def save(self, replaceRepos, excludeStrings=[]):
         try:
@@ -190,7 +190,7 @@ class Mirror():
                         if not any(repo[1] in x for x in new_repos):
                             line = ''
                             if 'solydxk' in repo[1]:
-                                line = "deb http://%s solydxk main upstream import" % repo[1]
+                                line = "deb http://%s solydxk-%s main upstream import" % (repo[1], str(self.debian_version))
                             elif 'debian.org/debian' in repo[1] and debian_suite != '':
                                 line = "deb http://%s %s main contrib non-free" % (repo[1], debian_suite)
                             if line != '':
