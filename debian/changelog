@@ -1,3 +1,27 @@
+solydxk-system (3.0.6b2) solydxk; urgency=low
+
+  * Added Danish translations
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 11 Apr 2018 10:47:54 +0200
+
+solydxk-system (3.0.6b1) solydxk; urgency=low
+
+  * Resolve bug not creating correct solydxk sources line when switching mirrors
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 17 Mar 2018 11:02:45 +0100
+
+solydxk-system (3.0.5b10) solydxk; urgency=low
+
+  * Create correct /etc/initramfs-tools/conf.d/resume when swap or no swap is defined
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 12 Mar 2018 18:15:53 +0100
+
+solydxk-system (3.0.5b9) solydxk; urgency=low
+
+  * Add stretch-updates to sources.list
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 04 Mar 2018 11:49:25 +0100
+
 solydxk-system (3.0.5b8) solydxk; urgency=low
 
   * Fix fstab mounts regexp for multiline variable

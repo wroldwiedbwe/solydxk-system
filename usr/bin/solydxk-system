@@ -1,3 +1,8 @@
 #!/bin/bash
 
-pkexec solydxk-system-pkexec $@
+# Only one instance of the program is allowed
+PY='/usr/lib/solydxk/system/main.py'
+PROC=$(ps -ef | egrep "python3.*$PY" | grep -v grep)
+if [ "$PROC" == '' ]; then
+  pkexec solydxk-system-pkexec $@
+fi
