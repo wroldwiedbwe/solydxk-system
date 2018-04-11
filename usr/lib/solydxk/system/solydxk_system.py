@@ -22,7 +22,8 @@ from utils import getoutput, ExecuteThreadedCommands, \
                   in_virtualbox, get_apt_force, is_running_live, \
                   get_device_from_uuid, get_label, is_package_installed, \
                   get_logged_user, get_uuid, compare_package_versions, \
-                  get_current_resolution, get_resolutions, is_xfce_running
+                  get_current_resolution, get_resolutions, is_xfce_running, \
+                  is_process_running
 from dialogs import MessageDialog, QuestionDialog, InputDialog, \
                     WarningDialog
 from mirror import MirrorGetSpeed, Mirror, get_mirror_data, get_local_repos
@@ -1378,6 +1379,14 @@ class SolydXKSystemSettings(object):
     def save_locale(self):
         # Collect information
         if has_internet_connection():
+            # Check if FF and TB are running
+            msg = _("Firefox and/or Thunderbird are running.\n"
+                    "Please close these applications before you continue.")
+            while is_process_running('firefox') \
+                or is_process_running('firefox-esr') \
+                or is_process_running('thunderbird'):
+                WarningDialog(self.btnSaveLocale.get_label(), msg)
+            
             locales = self.tvLocaleHandler.model_to_list()
             timezone = join(self.cmbTimezoneContinentHandler.getValue(),
                             self.cmbTimezoneHandler.getValue())

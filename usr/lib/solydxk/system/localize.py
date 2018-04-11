@@ -1,11 +1,11 @@
 #! /usr/bin/env python3
 
-import os
+import re
 import threading
 from os.path import join, abspath, dirname, exists, basename
 from utils import getoutput, get_config_dict, shell_exec, has_string_in_file, \
                   does_package_exist, is_package_installed, \
-                  get_debian_version
+                  get_debian_version, get_firefox_version
 
 DEFAULTLOCALE = 'en_US'
 
@@ -107,14 +107,14 @@ class Localize(threading.Thread):
     def set_locale(self):
         print((" --> Set locale %s" % self.default_locale))
         self.queue_progress()
-        minus_list = []
+#        minus_list = []
         # First, comment all languages
         shell_exec("sed -i -e '/^[a-z]/ s/^#*/# /' /etc/locale.gen")
         # Loop through all locales
         for loc in self.locales:
             if loc[0]:
-                if not loc[3]:
-                    minus_list.append(loc[1].replace('_', '-'))
+#                if not loc[3]:
+#                    minus_list.append(loc[1].replace('_', '-'))
                 if has_string_in_file(loc[1], '/etc/locale.gen'):
                     # Uncomment the first occurence of the locale
                     shell_exec("sed -i '0,/^# *%(lan)s.UTF-8/{s/^# *%(lan)s.UTF-8/%(lan)s.UTF-8/}' /etc/locale.gen" % {'lan': loc[1].replace('.', '\.')})
@@ -157,21 +157,63 @@ class Localize(threading.Thread):
             
         # Change user settings
         if exists(self.user_dir):
-            cur_short = self.current_default.split('_')[0]
-            def_short = self.default_locale.split('_')[0]
             shell_exec("sudo -H -u %s bash -c \"sed -i 's/Language=.*/Language=%s\.utf8/' %s/.dmrc\"" % (self.user, self.default_locale, self.user_dir))
             shell_exec("sudo -H -u %s bash -c \"printf %s > %s/.config/user-dirs.locale\"" % (self.user, self.default_locale, self.user_dir))
             prefs = getoutput("find %s -type f -name \"prefs.js\" -not -path \"*/extensions/*\"" % self.user_dir)
             for pref in prefs:
-                shell_exec("sudo -H -u %s bash -c \"sed -i 's/%s/%s/g\' %s\"" % (self.user, self.current_default, self.default_locale, pref))
-                cmd = "sudo -H -u %s bash -c \"sed -i -E 's/(\\\")%s([\\\"#])/\\1%s\\2/' %s\"" % (self.user, cur_short, def_short, pref)
-                print((cmd))
-                os.system(cmd)
-                cmd = "sudo -H -u %s bash -c \"sed -i -E 's/(\\\"[a-z]*#).*([\\\"])/\\1%s\\2/' %s\"" % (self.user, '#'.join(minus_list), pref)
-                print(cmd)
-                os.system(cmd)
+                self.localizePref(pref)
 
         self.current_default = self.default_locale
+        
+    def localizePref(self, prefsPath):
+        if exists(prefsPath):
+            with open(prefsPath, 'r') as f:
+                text = f.read()
+
+            prev_lan = self.current_default.split('_')[0]
+            moz_prev_lan = self.current_default.replace('_', '-')
+            lan = self.default_locale.split('_')[0]
+            moz_lan = self.default_locale.replace('_', '-')
+            if 'thunderbird' in prefsPath:
+                ff_ver = 0
+            else:
+                ff_ver = get_firefox_version()
+
+            # Set Mozilla parameters in prefs file
+            mozLine = "user_pref(\"spellchecker.dictionary\", \"%s\");" % lan
+            text = self.searchAndReplace(text, "^user_pref.*spellchecker\.dictionary.*", mozLine, mozLine)
+            
+            mozLine = "user_pref(\"intl.locale.matchOS\", true);"
+            text = self.searchAndReplace(text, "^user_pref.*intl\.locale\.matchOS.*", mozLine, mozLine)
+            
+            # Setting these is not needed because of matchOS=true but
+            # it helps users if they want to manually change Mozilla's interface language into
+            # something different than the OS's locale.
+            if ff_ver < 59:
+                mozLine = "user_pref(\"general.useragent.locale\", \"%s\");" % moz_lan
+                text = self.searchAndReplace(text, "^user_pref.*general\.useragent\.locale.*", mozLine, mozLine)
+            else:
+                # From FF version 59 a new variable is used
+                mozLine = "user_pref(\"intl.locale.requested\", \"%s\");" % moz_lan
+                text = self.searchAndReplace(text, "^user_pref.*intl\.locale\.requested.*", mozLine, mozLine)
+
+            # Change language of anything that is left
+            text = self.searchAndReplace(text, moz_prev_lan, moz_lan)
+            text = self.searchAndReplace(text, '"{}"'.format(prev_lan), '"{}"'.format(lan))
+            text = self.searchAndReplace(text, '"{}"'.format(prev_lan.upper()), '"{}"'.format(lan.upper()))
+
+            with open(prefsPath, 'w') as f:
+                f.write(text)
+
+    def searchAndReplace(self, text, regexpSearch, replaceWithString, appendString=None):
+        matchObj = re.search(regexpSearch, text, re.MULTILINE)
+        if matchObj:
+            # We need the flags= or else the index of re.MULTILINE is passed
+            text = re.sub(regexpSearch, replaceWithString, text, flags=re.MULTILINE)
+        else:
+            if appendString is not None:
+                text += "\n%s" % appendString
+        return text
 
     def language_specific(self):
         localizeConf = join(self.scriptDir, "localize/%s" % self.default_locale)

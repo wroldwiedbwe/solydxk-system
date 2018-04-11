@@ -389,7 +389,7 @@ def is_running_live():
     return False
 
 
-def get_process_pids(process_name, process_argument=None, fuzzy=True):
+def get_process_pids(process_name, process_argument=None, fuzzy=False):
     if fuzzy:
         args = ''
         if process_argument is not None:
@@ -402,7 +402,7 @@ def get_process_pids(process_name, process_argument=None, fuzzy=True):
     return pids
 
 
-def is_process_running(process_name, process_argument=None, fuzzy=True):
+def is_process_running(process_name, process_argument=None, fuzzy=False):
     pids = get_process_pids(process_name, process_argument, fuzzy)
     if pids[0] != '':
         return True
@@ -443,8 +443,12 @@ def get_debian_name():
 
 # Get Debian's version number (float)
 def get_debian_version():
-    out = getoutput("head -n 1 /etc/debian_version | sed 's/[a-zA-Z]/0/' | cut -d'.' -f 1 2>/dev/null || echo 0")
+    out = getoutput("egrep -o '[0-9]{1,}' /etc/debian_version | head -n 1 2>/dev/null || echo 0")
     return str_to_nr(out[0], True)
+
+
+def get_firefox_version():
+    return str_to_nr(getoutput("firefox --version 2>/dev/null | egrep -o '[0-9]{2,}' || echo 0")[0], True)
 
 
 # Check for backports
@@ -531,6 +535,10 @@ def get_device_from_uuid(uuid):
 
 def get_label(partition_path):
     return getoutput("sudo blkid -o value -s LABEL %s" % partition_path)[0]
+
+
+def get_swap_device():
+    return getoutput("grep '/' /proc/swaps | awk '{print $1}'")[0]
 
 
 # Class to run commands in a thread and return the output in a queue
