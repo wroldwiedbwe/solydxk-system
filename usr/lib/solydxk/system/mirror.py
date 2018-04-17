@@ -100,7 +100,7 @@ class MirrorGetSpeed(threading.Thread):
                 httpCode = -1
                 dlSpeed = 0
                 config = get_config_dict(join(self.scriptDir, "solydxk-system.conf"))
-                dl_file = config.get('DLTEST', 'dltest')
+                dl_file = config.get('DLTEST', 'extrafiles')
                 url = os.path.join(mirror, dl_file)
                 http = "http://"
                 if url[0:4] == "http":
