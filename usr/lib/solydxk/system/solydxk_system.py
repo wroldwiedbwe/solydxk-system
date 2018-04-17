@@ -162,6 +162,7 @@ class SolydXKSystemSettings(object):
         self.default_title = _('Default')
         self.no_passphrase_msg = _("Please provide a passphrase (6-20 characters).")
         self.mount_error = _("Could not mount {0}\nPlease mount {0} and refresh when done.")
+        go("lblCleanup").set_label(_("Cleanup"))
         go("lblCleanupInfo").set_label(_("Remove unneeded packages\n"
                                           "Pre-selected packages are safe to remove (autoremove).\n"
                                           "Other packages: remove with caution!"))
@@ -173,6 +174,7 @@ class SolydXKSystemSettings(object):
         self.btnSaveFstabMounts.set_label(_("Save Fstab mounts"))
         self.btnSaveDeviceDriver.set_label(_("Save drivers"))
         self.chkBackportsDeviceDriver.set_label(_("Use Backports"))
+        go("lblDeviceDriver").set_label(_("Device Driver"))
         go("lblDeviceDriverInfo").set_label(_("Install drivers for supported hardware.\n"
                                           "Note: do not install these drivers if your hardware functions correctly with the current open drivers."))
         go("lblSplash").set_label(_("Plymouth splash"))
