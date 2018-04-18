@@ -3,6 +3,7 @@ solydxk-system (3.0.6b3) solydxk; urgency=low
   * Make sure apt-transport-https is installed
   * Missing translations added
   * Change default download file
+  * Change solydxk.com to solydxk.nl repository in sources.list
 
  -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 17 Apr 2018 11:03:30 +0200
 

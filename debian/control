@@ -54,6 +54,7 @@ Depends: ${misc:Depends}, ${python3:Depends}
   , bash
   , apt
   , apt-show-versions
+  , apt-transport-https
   , hwinfo
 Conflicts: solydkbo-grub2-theme
   , solydkbe-grub2-theme

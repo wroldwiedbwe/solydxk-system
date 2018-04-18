@@ -30,7 +30,6 @@ fix_progs = [['apache2', '/var/log/apache2', 'root:adm', 0],
              ['lightdm', '/var/lib/lightdm/data', 'lightdm:lightdm', 0],
              ['usbguard', '/etc/usbguard/rules.conf', 'touch', 0],
              ['v86d', 'v86d', 'purge', 0],
-             ['apt', 'apt-transport-https', 'install', 0],
              ['lightdm', 'accountsservice', 'install', 0]]
              #['usb-creator', 'solydxk-usb-creator', 'purge', 0],
              #['solydk-system-adjustments-8', 'solydk-system-adjustments', 'purge', 0],
