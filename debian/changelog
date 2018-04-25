@@ -1,3 +1,9 @@
+solydxk-system (3.0.6b4) solydxk; urgency=low
+
+  * Improved internet connection check
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 24 Apr 2018 22:53:34 +0200
+
 solydxk-system (3.0.6b3) solydxk; urgency=low
 
   * Make sure apt-transport-https is installed

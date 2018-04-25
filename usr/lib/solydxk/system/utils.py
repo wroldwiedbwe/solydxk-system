@@ -1,8 +1,9 @@
 #! /usr/bin/env python3
 
 import subprocess
-import urllib.request
-import urllib.error
+from socket import timeout
+from urllib.request import urlopen
+from urllib.error import URLError, HTTPError
 import re
 import threading
 import operator
@@ -83,26 +84,29 @@ def get_config_dict(file, key_value=re.compile(r'^\s*(\w+)\s*=\s*["\']?(.*?)["\'
 
 # Check for internet connection
 def has_internet_connection(test_url=None):
-    if test_url is None:
-        test_url == ''
+    urls = []
+    if test_url is not None:
+        urls.append(test_url)
+    if not urls:
         src_lst = '/etc/apt/sources.list'
         if exists(src_lst):
             with open(src_lst, 'r') as f:
                 for line in f:
                     line = line.strip()
                     if not line.startswith('#'):
-                        matchObj = re.search('http[a-z0-9:\/\.]+', line)
+                        matchObj = re.search(r'http[s]{,1}://[a-z0-9\.]+', line)
                         if matchObj:
-                            test_url = matchObj.group(0)
-                            break
-    if test_url == '':
-        test_url = 'http://google.com'
-    #print(("test_url = {}".format(test_url)))
-    try:
-        urllib.request.urlopen(test_url, timeout=1)
-        return True
-    except urllib.error.URLError:
-        pass
+                            urls.append(matchObj.group(0))
+    for url in urls:
+        try:
+            urlopen(url, timeout=5)
+        except (HTTPError, URLError) as error:
+            print(('Could not connect to {}: {}'.format(url, error)))
+        except timeout:
+            print(('Socket timeout on: {}'.format(url)))
+        else:
+            #print(('Successfull connection with: {}'.format(url)))
+            return True
     return False
 
 
