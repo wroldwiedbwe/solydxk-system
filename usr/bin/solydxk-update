@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo python3 /usr/lib/solydxk/system/adjust.py
+sudo apt sync
