@@ -1670,7 +1670,10 @@ class SolydXKSystemSettings(object):
         return mirrors
 
     def is_url_in_sources(self, url):
-        url = "://%s" % url
+        pre_str = ''
+        if not '://' in url:
+            pre_str = '://'
+        url = "%s%s" % (pre_str, url)
         blnRet = False
 
         for repo in get_local_repos():
