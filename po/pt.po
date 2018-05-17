@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 11:32+0200\n"
+"POT-Creation-Date: 2018-05-17 08:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Luis Filipe Teixeira <lufilte@gmail.com>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/solydxk/teams/54212/"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:165
 msgid "Cleanup"
-msgstr ""
+msgstr "Limpeza"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:166
 msgid ""
@@ -249,7 +249,7 @@ msgstr "Usar Backports"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:177
 msgid "Device Driver"
-msgstr ""
+msgstr "Driver do Dispositivo"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:178
 msgid ""
@@ -434,6 +434,8 @@ msgid ""
 "Firefox and/or Thunderbird are running.\n"
 "Please close these applications before you continue."
 msgstr ""
+"Firefox e/ou Thunderbird estão em execução.\n"
+"Por favor de fechar as aplicações antes de continuar."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1407
 msgid ""
@@ -483,21 +485,21 @@ msgstr "URL"
 msgid "Speed"
 msgstr "Velocidade"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1989
+#: ../usr/lib/solydxk/system/solydxk_system.py:1992
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "É necessário reiniciar o sistema para que as novas configurações sejam "
 "afetadas."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1990
+#: ../usr/lib/solydxk/system/solydxk_system.py:1993
 msgid "Reboot"
 msgstr "Reiniciar"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2001
+#: ../usr/lib/solydxk/system/solydxk_system.py:2004
 msgid "Encryption done"
 msgstr "Crifragem concluída."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2002
+#: ../usr/lib/solydxk/system/solydxk_system.py:2005
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -507,11 +509,11 @@ msgstr ""
 "\n"
 "Você deseja reiniciar o computador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2005
+#: ../usr/lib/solydxk/system/solydxk_system.py:2008
 msgid "Decryption done"
 msgstr "Decifração concluída"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2006
+#: ../usr/lib/solydxk/system/solydxk_system.py:2009
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -521,16 +523,16 @@ msgstr ""
 "\n"
 "Você deseja reiniciar o computador?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2018
+#: ../usr/lib/solydxk/system/solydxk_system.py:2021
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Frase-senha alterada para {0}."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2070
+#: ../usr/lib/solydxk/system/solydxk_system.py:2073
 msgid "Partition passphrase"
 msgstr "Frase-senha da partição"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2071
+#: ../usr/lib/solydxk/system/solydxk_system.py:2074
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
