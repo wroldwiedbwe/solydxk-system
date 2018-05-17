@@ -102,9 +102,9 @@ class MirrorGetSpeed(threading.Thread):
                 config = get_config_dict(join(self.scriptDir, "solydxk-system.conf"))
                 dl_file = config.get('DLTEST', 'extrafiles')
                 url = os.path.join(mirror, dl_file)
-                http = "http://"
-                if url[0:4] == "http":
-                    http = ""
+                http = 'http://'
+                if '://' in url:
+                    http = ''
                 cmd = "curl --connect-timeout 5 -m 5 -w '%%{http_code}\n%%{speed_download}\n' -o /dev/null -s --location %s%s" % (http, url)
 
                 lst = getoutput(cmd)
@@ -189,10 +189,16 @@ class Mirror():
                         # Check if repo is already present in new_repos (replacement)
                         if not any(repo[1] in x for x in new_repos):
                             line = ''
+                            http = ''
+                            if repo[1][:4] != 'http':
+                                http = 'http://'
                             if 'solydxk' in repo[1]:
-                                line = "deb http://%s solydxk-%s main upstream import" % (repo[1], str(self.debian_version))
+                                solydxk_ext = str(self.debian_version)
+                                if debian_suite == 'testing':
+                                    solydxk_ext = 'ee'
+                                line = "deb %s%s solydxk-%s main upstream import" % (http, repo[1], solydxk_ext)
                             elif 'debian.org/debian' in repo[1] and debian_suite != '':
-                                line = "deb http://%s %s main contrib non-free" % (repo[1], debian_suite)
+                                line = "deb %s%s %s main contrib non-free" % (http, repo[1], debian_suite)
                             if line != '':
                                 new_repos.append(line)
 

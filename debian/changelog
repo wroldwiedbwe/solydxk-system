@@ -1,3 +1,21 @@
+solydxk-system (3.0.6b7) solydxk; urgency=low
+
+  * Fix EE mirror rewrite
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 17 May 2018 08:39:50 +0200
+
+solydxk-system (3.0.6b6) solydxk; urgency=low
+
+  * Fix selecting repository when http protocol is added to url
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 30 Apr 2018 18:48:19 +0200
+
+solydxk-system (3.0.6b5) solydxk; urgency=low
+
+  * Fix solydxk sources url rewrite
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 29 Apr 2018 15:57:22 +0200
+
 solydxk-system (3.0.6b4) solydxk; urgency=low
 
   * Improved internet connection check
