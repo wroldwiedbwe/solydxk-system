@@ -1,3 +1,15 @@
+solydxk-system (3.0.6b9) solydxk; urgency=low
+
+  * Fix Plymouth configuration when Grub is not installed
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 31 May 2018 12:12:07 +0200
+
+solydxk-system (3.0.6b8) solydxk; urgency=low
+
+  * Change repository back to .com domain now that migration is done
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 31 May 2018 11:02:53 +0200
+
 solydxk-system (3.0.6b7) solydxk; urgency=low
 
   * Fix EE mirror rewrite

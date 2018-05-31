@@ -1,6 +1,8 @@
-1,8,replaceline, solydxk main,deb http://repository.solydxk.com/ solydxk-8 main upstream import
-1,9,replaceline, solydxk main,deb http://repository.solydxk.com/ solydxk-9 main upstream import
+1,8,replaceline, solydxk main,deb https://repository.solydxk.com/ solydxk-8 main upstream import
+1,9,replaceline, solydxk main,deb https://repository.solydxk.com/ solydxk-9 main upstream import
 1,0,replace,httpredir,deb
 1,0,replace,http://https://,https://
 1,9,append,stretch-updates,deb http://deb.debian.org/debian stretch-updates main contrib non-free
-1,0,replace,http://repository.solydxk.com,https://repository.solydxk.nl
+1,0,replace,http://repository.solydxk.nl,https://repository.solydxk.com
+1,0,replace,https://repository.solydxk.nl,https://repository.solydxk.com
+1,0,replace,http://repository.solydxk.com,https://repository.solydxk.com

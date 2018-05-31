@@ -33,7 +33,7 @@ def get_mirror_data(excludeMirrors=[], getDeadMirrors=False):
     mirrorData = []
     scriptDir = abspath(dirname(__file__))
     config = get_config_dict(join(scriptDir, "solydxk-system.conf"))
-    mirrors_url = config.get('MIRRORSLIST', 'https://repository.solydxk.nl/umfiles/mirrors.list')
+    mirrors_url = config.get('MIRRORSLIST', 'https://repository.solydxk.com/umfiles/mirrors.list')
     print(mirrors_url)
     mirrorsList = join(scriptDir, basename(mirrors_url))
     if getDeadMirrors:
