@@ -44,7 +44,7 @@ class Grub():
                         self.write_log("Current grub resolution: %(res)s" % { "res": res })
                     break
         else:
-            self.write_log(_("Neither grub nor burg found"), 'error')
+            self.write_log(_("Neither grub nor burg found"), 'warning')
         return res
         
     def write_log(self, message, level='debug'):

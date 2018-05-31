@@ -57,7 +57,6 @@ class Plymouth():
     def getCurrentTheme(self):
         try:
             if isfile(self.setThemePath) and \
-               self.boot is not None and \
                self.is_plymouth_booted():
                     return getoutput(self.setThemePath)[0]
         except:
@@ -134,7 +133,7 @@ class Plymouth():
                         self.write_log("Current Plymouth resolution: %(res)s" % { "res": res })
                         break
             else:
-                self.write_log(_("Neither grub nor burg found in /etc/default"), 'error')
+                self.write_log(_("Neither grub nor burg found in /etc/default"), 'warning')
         return res
         
     def write_log(self, message, level='debug'):
@@ -185,7 +184,7 @@ class PlymouthSave(threading.Thread):
             shell_exec("sed -i -e '/^radeon modeset.*/d' %s" % self.modulesPath)
             shell_exec("sed -i -e '/^i915 modeset.*/d' %s" % self.modulesPath)
             shell_exec("sed -i -e '/^uvesafb\s*mode_option.*/d' %s" % self.modulesPath)
-            if exists(self.boot):
+            if self.boot is not None:
                 shell_exec("sed -i -e '/^GRUB_GFXPAYLOAD_LINUX.*/d' %s" % self.boot)
             splashFile = '/etc/initramfs-tools/conf.d/splash'
             if exists(splashFile):
@@ -193,24 +192,25 @@ class PlymouthSave(threading.Thread):
 
             # Set/Unset splash
             self.queue_progress()
-            cmd = "sed -i -e 's/\s*[a-z]*splash//' {}".format(self.boot)
-            shell_exec(cmd)
-            if self.theme is None:
-                self.write_log("Set nosplash")
-                cmd = "sed -i -e '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nosplash\"/' {}".format(self.boot)
+            if self.boot is not None:
+                cmd = "sed -i -e 's/\s*[a-z]*splash//' {}".format(self.boot)
                 shell_exec(cmd)
-                # Comment the GRUB_GFXMODE line if needed
-                cmd = "sed -i '/GRUB_GFXMODE=/s/^/#/' %s" % self.boot
-                shell_exec(cmd)
-            else:
-                self.write_log("Set splash")
-                cmd = "sed -i -e '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ splash\"/' {}".format(self.boot)
-                shell_exec(cmd)
-                # Set resolution
-                if self.resolution is not None:
-                    self.write_log("GRUB_GFXMODE={}".format(self.resolution))
-                    cmd = "sed -i -e '/GRUB_GFXMODE=/ c GRUB_GFXMODE={0}' {1}".format(self.resolution, self.boot)
+                if self.theme is None:
+                    self.write_log("Set nosplash")
+                    cmd = "sed -i -e '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nosplash\"/' {}".format(self.boot)
                     shell_exec(cmd)
+                    # Comment the GRUB_GFXMODE line if needed
+                    cmd = "sed -i '/GRUB_GFXMODE=/s/^/#/' %s" % self.boot
+                    shell_exec(cmd)
+                else:
+                    self.write_log("Set splash")
+                    cmd = "sed -i -e '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ splash\"/' {}".format(self.boot)
+                    shell_exec(cmd)
+                    # Set resolution
+                    if self.resolution is not None:
+                        self.write_log("GRUB_GFXMODE={}".format(self.resolution))
+                        cmd = "sed -i -e '/GRUB_GFXMODE=/ c GRUB_GFXMODE={0}' {1}".format(self.resolution, self.boot)
+                        shell_exec(cmd)
 
             # Only for plymouth version older than 9
             self.queue_progress()
@@ -229,17 +229,18 @@ class PlymouthSave(threading.Thread):
                     with open('/etc/initramfs-tools/conf.d/splash', 'w') as f:
                         f.write(line)
 
-            # Read grub for debugging purposes
-            with open(self.boot, 'r') as f:
-                content = f.read()
-                self.write_log("\nNew grub:\n{}\n".format(content))
+            if self.boot is not None:
+                # Read grub for debugging purposes
+                with open(self.boot, 'r') as f:
+                    content = f.read()
+                    self.write_log("\nNew grub:\n{}\n".format(content))
 
-            # Update grub
-            self.queue_progress()
-            if 'grub' in self.boot:
-                shell_exec('update-grub')
-            else:
-                shell_exec('update-burg')
+                # Update grub
+                self.queue_progress()
+                if 'grub' in self.boot:
+                    shell_exec('update-grub')
+                else:
+                    shell_exec('update-burg')
 
             # Set the theme and update initramfs
             self.queue_progress()
