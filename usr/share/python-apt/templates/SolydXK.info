@@ -1,8 +1,8 @@
-ChangelogURI: http://repository.solydxk.com/changelogs/pool/%s/%s/%s/%s_%s/changelog
+ChangelogURI: https://repository.solydxk.com/changelogs/pool/%s/%s/%s/%s_%s/changelog
 
 Suite: solydxk-ee
 RepositoryType: deb
-BaseURI: http://repository.solydxk.com/
+BaseURI: https://repository.solydxk.com/
 MatchURI: repository.solydxk.com
 MirrorsFile: SolydXK.mirrors
 Description: SolydXK 10 EE
@@ -19,7 +19,7 @@ CompDescription: SolydXK packages for the Raspberry PI
 
 Suite: solydxk-10
 RepositoryType: deb
-BaseURI: http://repository.solydxk.com/
+BaseURI: https://repository.solydxk.com/
 MatchURI: repository.solydxk.com
 MirrorsFile: SolydXK.mirrors
 Description: SolydXK 10 EE
@@ -36,7 +36,7 @@ CompDescription: SolydXK packages for the Raspberry PI
 
 Suite: solydxk-9
 RepositoryType: deb
-BaseURI: http://repository.solydxk.com/
+BaseURI: https://repository.solydxk.com/
 MatchURI: repository.solydxk.com
 MirrorsFile: SolydXK.mirrors
 Description: SolydXK 9
@@ -53,7 +53,7 @@ CompDescription: SolydXK packages for the Raspberry PI
 
 Suite: solydxk-8
 RepositoryType: deb
-BaseURI: http://repository.solydxk.com/
+BaseURI: https://repository.solydxk.com/
 MatchURI: repository.solydxk.com
 MirrorsFile: SolydXK.mirrors
 Description: SolydXK 8
