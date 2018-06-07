@@ -1,0 +1,56 @@
+#!/bin/bash
+
+if [ $EUID == 0 ]; then
+  echo "You cannot run this script as root."
+  exit
+fi
+
+if [ "$(pidof firefox)" ] || [ "$(pidof thunderbird)" ]; then
+  echo "Firefox and/or Thunderbird are running."
+  echo "Please, close these programs before you continue."
+  exit
+fi
+
+FFUSR=$(find ~/.mozilla/firefox -name "prefs.js" -not -path "*/extensions/*")
+FFSKEL=$(find /etc/skel/.mozilla/firefox -name "prefs.js" -not -path "*/extensions/*")
+TBUSR=$(find ~/.thunderbird -name "prefs.js" -not -path "*/extensions/*")
+TBSKEL=$(find /etc/skel/.thunderbird -name "prefs.js" -not -path "*/extensions/*")
+
+echo "Append default configuration"
+if [ -e "$FFUSR" ] && [ -e "$FFSKEL" ]; then
+  echo "> $FFUSR"
+  cat "$FFSKEL" >> "$FFUSR"
+fi
+
+if [ -e "$TBUSR" ] && [ -e "$TBSKEL" ]; then
+  echo "> $TBUSR"
+  cat "$TBSKEL" >> "$TBUSR"
+fi
+
+echo
+echo "Upgrade Firefox add-ons"
+FFEXTSKEL=$(find /etc/skel/.mozilla/firefox -name "extensions")
+FFEXTUSR=$(find ~/.mozilla/firefox -name "extensions")
+if [ -e "$FFEXTUSR" ] && [ -e "$FFEXTSKEL" ]; then
+    for ITEM in $(ls "$FFEXTSKEL"); do
+    if [ -e "$FFEXTUSR/$ITEM" ]; then
+        echo "> $ITEM"
+        cp -r "$FFEXTSKEL/$ITEM" "$FFEXTUSR/$ITEM"
+    fi
+    done
+fi
+
+echo
+echo "Upgrade Thunderbird add-ons"
+TBEXTSKEL=$(find /etc/skel/.thunderbird -name "extensions")
+TBEXTUSR=$(find ~/.thunderbird -name "extensions")
+if [ -e "$TBEXTUSR" ] && [ -e "$TBEXTSKEL" ]; then
+    for ITEM in $(ls "$TBEXTSKEL"); do
+    if [ -e "$TBEXTUSR/$ITEM" ]; then
+        echo "> $ITEM"
+        cp -r "$TBEXTSKEL/$ITEM" "$TBEXTUSR/$ITEM"
+    fi
+    done
+fi
+
+echo "Done"
