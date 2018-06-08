@@ -26,23 +26,28 @@ TBEXTUSR=$(find ~/.thunderbird -name "extensions")
 
 # Firefox
 if [ -e "$FFSKEL" ]; then
+  # Loop all profiles for this user
   for FFUSR in $FFUSRS; do
     echo
     echo "Synchronize Firefox configuration: $FFUSR"
+    # Read prefs.js line by line
     while IFS='' read -r LINE || [[ -n "$LINE" ]]; do
+      # Get only lines that begin with user_pref
       UP=$(echo $LINE | egrep -o '^user_pref.*;')
+      # Get the configuration variable name
       CNF=$(echo $UP | grep -oP '"[^"]+"' | tr -d '"' | head -n 1)
       if [ "$CNF" != '' ] ; then
-        # Check for configuration to be skipped
+        # Check for configuration variable to be skipped
         SKIP=false
         for SC in $SKIPCNFS; do
           if [ "$SC" == "$CNF" ]; then
             SKIP=true
           fi
         done
-        # Check if configuration already exists
+        # Check if configuration already exists in user prefs.js file
         if ! $SKIP && ! grep -Fq "$CNF" "$FFUSR"; then
           echo "  + $UP"
+          # Add user_pref to user prefs.js
           echo "$UP" >> "$FFUSR"
         fi
       fi
@@ -53,33 +58,41 @@ fi
 if [ -e "$FFEXTUSR" ] && [ -e "$FFEXTSKEL" ]; then
     echo
     echo "Upgrade Firefox addons"
+    # Loop through all available addons
     for ITEM in $(ls "$FFEXTSKEL"); do
-    if [ -e "$FFEXTUSR/$ITEM" ]; then
+      # Check if the user has the addon installed
+      if [ -e "$FFEXTUSR/$ITEM" ]; then
         echo "  + $ITEM"
+        # Copy the addon to the user extensions directory
         cp -r "$FFEXTSKEL/$ITEM" "$FFEXTUSR/$ITEM"
-    fi
+      fi
     done
 fi
 
 # Thunderbird
 if [ -e "$TBSKEL" ]; then
+  # Loop all profiles for this user
   for TBUSR in $TBUSRS; do
     echo
     echo "Synchronize Thunderbird configuration: $TBUSR"
+    # Read prefs.js line by line
     while IFS='' read -r LINE || [[ -n "$LINE" ]]; do
+      # Get only lines that begin with user_pref
       UP=$(echo $LINE | egrep -o '^user_pref.*;')
+      # Get the configuration variable name
       CNF=$(echo $UP | grep -oP '"[^"]+"' | tr -d '"' | head -n 1)
       if [ "$CNF" != '' ] ; then
-        # Check for configuration to be skipped
+        # Check for configuration variable to be skipped
         SKIP=false
         for SC in $SKIPCNFS; do
           if [ "$SC" == "$CNF" ]; then
             SKIP=true
           fi
         done
-        # Check if configuration already exists
+        # Check if configuration already exists in user prefs.js file
         if ! $SKIP && ! grep -Fq "$CNF" "$TBUSR"; then
           echo "  + $UP"
+          # Add user_pref to user prefs.js
           echo "$UP" >> "$TBUSR"
         fi
       fi
@@ -90,9 +103,12 @@ fi
 if [ -e "$TBEXTUSR" ] && [ -e "$TBEXTSKEL" ]; then
   echo
   echo "Upgrade Thunderbird addons"
+  # Loop through all available addons
   for ITEM in $(ls "$TBEXTSKEL"); do
+    # Check if the user has the addon installed
     if [ -e "$TBEXTUSR/$ITEM" ]; then
         echo "  + $ITEM"
+        # Copy the addon to the user extensions directory
         cp -r "$TBEXTSKEL/$ITEM" "$TBEXTUSR/$ITEM"
     fi
     done
