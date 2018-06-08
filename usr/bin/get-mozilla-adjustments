@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Get configuration and addons from firefox-solydxk-adjustments if not already configured or upgraded.
+
 if [ $EUID == 0 ]; then
   echo "You cannot run this script as root."
   exit
@@ -11,46 +13,87 @@ if [ "$(pidof firefox)" ] || [ "$(pidof thunderbird)" ]; then
   exit
 fi
 
-FFUSR=$(find ~/.mozilla/firefox -name "prefs.js" -not -path "*/extensions/*")
+SKIPCNFS='extensions.enabled_addons browser.newtabpage.pinned'
+
+FFUSRS=$(find ~/.mozilla/firefox -name "prefs.js" -not -path "*/extensions/*")
 FFSKEL=$(find /etc/skel/.mozilla/firefox -name "prefs.js" -not -path "*/extensions/*")
 TBUSR=$(find ~/.thunderbird -name "prefs.js" -not -path "*/extensions/*")
 TBSKEL=$(find /etc/skel/.thunderbird -name "prefs.js" -not -path "*/extensions/*")
-
-echo "Append default configuration"
-if [ -e "$FFUSR" ] && [ -e "$FFSKEL" ]; then
-  echo "> $FFUSR"
-  cat "$FFSKEL" >> "$FFUSR"
-fi
-
-if [ -e "$TBUSR" ] && [ -e "$TBSKEL" ]; then
-  echo "> $TBUSR"
-  cat "$TBSKEL" >> "$TBUSR"
-fi
-
-echo
-echo "Upgrade Firefox add-ons"
 FFEXTSKEL=$(find /etc/skel/.mozilla/firefox -name "extensions")
 FFEXTUSR=$(find ~/.mozilla/firefox -name "extensions")
+TBEXTSKEL=$(find /etc/skel/.thunderbird -name "extensions")
+TBEXTUSR=$(find ~/.thunderbird -name "extensions")
+
+# Firefox
+if [ -e "$FFSKEL" ]; then
+  for FFUSR in $FFUSRS; do
+    echo
+    echo "Synchronize Firefox configuration: $FFUSR"
+    while IFS='' read -r LINE || [[ -n "$LINE" ]]; do
+      UP=$(echo $LINE | egrep -o '^user_pref.*;')
+      CNF=$(echo $UP | grep -oP '"[^"]+"' | tr -d '"' | head -n 1)
+      if [ "$CNF" != '' ] ; then
+        # Check for configuration to be skipped
+        SKIP=false
+        for SC in $SKIPCNFS; do
+          if [ "$SC" == "$CNF" ]; then
+            SKIP=true
+          fi
+        done
+        # Check if configuration already exists
+        if ! $SKIP && ! grep -Fq "$CNF" "$FFUSR"; then
+          echo "  + $UP"
+          echo "$UP" >> "$FFUSR"
+        fi
+      fi
+    done < "$FFSKEL"
+  done
+fi
+
 if [ -e "$FFEXTUSR" ] && [ -e "$FFEXTSKEL" ]; then
+    echo
+    echo "Upgrade Firefox addons"
     for ITEM in $(ls "$FFEXTSKEL"); do
     if [ -e "$FFEXTUSR/$ITEM" ]; then
-        echo "> $ITEM"
+        echo "  + $ITEM"
         cp -r "$FFEXTSKEL/$ITEM" "$FFEXTUSR/$ITEM"
     fi
     done
 fi
 
-echo
-echo "Upgrade Thunderbird add-ons"
-TBEXTSKEL=$(find /etc/skel/.thunderbird -name "extensions")
-TBEXTUSR=$(find ~/.thunderbird -name "extensions")
+# Thunderbird
+if [ -e "$TBSKEL" ]; then
+  for TBUSR in $TBUSRS; do
+    echo
+    echo "Synchronize Thunderbird configuration: $TBUSR"
+    while IFS='' read -r LINE || [[ -n "$LINE" ]]; do
+      UP=$(echo $LINE | egrep -o '^user_pref.*;')
+      CNF=$(echo $UP | grep -oP '"[^"]+"' | tr -d '"' | head -n 1)
+      if [ "$CNF" != '' ] ; then
+        # Check for configuration to be skipped
+        SKIP=false
+        for SC in $SKIPCNFS; do
+          if [ "$SC" == "$CNF" ]; then
+            SKIP=true
+          fi
+        done
+        # Check if configuration already exists
+        if ! $SKIP && ! grep -Fq "$CNF" "$TBUSR"; then
+          echo "  + $UP"
+          echo "$UP" >> "$TBUSR"
+        fi
+      fi
+    done < "$TBSKEL"
+  done
+fi
+
 if [ -e "$TBEXTUSR" ] && [ -e "$TBEXTSKEL" ]; then
-    for ITEM in $(ls "$TBEXTSKEL"); do
+  echo
+  echo "Upgrade Thunderbird addons"
+  for ITEM in $(ls "$TBEXTSKEL"); do
     if [ -e "$TBEXTUSR/$ITEM" ]; then
-        echo "> $ITEM"
+        echo "  + $ITEM"
         cp -r "$TBEXTSKEL/$ITEM" "$TBEXTUSR/$ITEM"
     fi
     done
 fi
-
-echo "Done"
