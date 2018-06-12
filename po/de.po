@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 11:32+0200\n"
+"POT-Creation-Date: 2018-06-01 16:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: pitfd <pitfd@posteo.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/solydxk/teams/54212/de/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:137
+#: ../usr/lib/solydxk/system/plymouth.py:136
 msgid "Neither grub nor burg found in /etc/default"
 msgstr "Weder grub noch burg wurden in /etc/default gefunden"
 
@@ -488,21 +488,21 @@ msgstr "URL"
 msgid "Speed"
 msgstr "Geschwindigkeit"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1989
+#: ../usr/lib/solydxk/system/solydxk_system.py:1992
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Sie müssen Ihr System neu starten, damit die neuen Einstellungen wirksam "
 "werden können."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1990
+#: ../usr/lib/solydxk/system/solydxk_system.py:1993
 msgid "Reboot"
 msgstr "Neustart"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2001
+#: ../usr/lib/solydxk/system/solydxk_system.py:2004
 msgid "Encryption done"
 msgstr "Veschlüsselung wurde durchgeführt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2002
+#: ../usr/lib/solydxk/system/solydxk_system.py:2005
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -512,11 +512,11 @@ msgstr ""
 "\n"
 "Wollen Sie Ihren Computer neu starten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2005
+#: ../usr/lib/solydxk/system/solydxk_system.py:2008
 msgid "Decryption done"
 msgstr "Entschlüsselung wurde durchgeführt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2006
+#: ../usr/lib/solydxk/system/solydxk_system.py:2009
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -526,16 +526,16 @@ msgstr ""
 "\n"
 "Wollen Sie Ihren Computer neu starten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2018
+#: ../usr/lib/solydxk/system/solydxk_system.py:2021
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Verschlüsselungskenntwort für{0} geändert."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2070
+#: ../usr/lib/solydxk/system/solydxk_system.py:2073
 msgid "Partition passphrase"
 msgstr "Partitionskennwort"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2071
+#: ../usr/lib/solydxk/system/solydxk_system.py:2074
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -840,13 +840,13 @@ msgstr ""
 #: en/help.html+html.body.div.p:50
 msgid ""
 "If for some reason your system does not mount the newly encrypted partition, "
-"please visit our <a href=\"http://forums.solydxk.com\" target=\"_blank"
+"please visit our <a href=\"https://forums.solydxk.com\" target=\"_blank"
 "\">forum</a> and post your issue there."
 msgstr ""
 "Sollte Ihr System aus irgendeinem Grund die neu verschlüsselte Partition "
-"nicht einhängen, besuchen Sie bitte unser <a href=\"http://forums.solydxk.com"
-"\" target=\"_blank\">Forum</a> und stellen Sie Ihre damit zusammenhängenden "
-"Fragen dort."
+"nicht einhängen, besuchen Sie bitte unser <a href=\"https://forums.solydxk."
+"com\" target=\"_blank\">Forum</a> und stellen Sie Ihre damit "
+"zusammenhängenden Fragen dort."
 
 #: en/help.html+html.body.div.p:51
 msgid ""

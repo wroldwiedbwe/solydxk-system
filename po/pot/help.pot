@@ -165,7 +165,7 @@ msgstr ""
 #: en/help.html+html.body.div.p:50
 msgid ""
 "If for some reason your system does not mount the newly encrypted partition, "
-"please visit our <a href=\"http://forums.solydxk.com\" target=\"_blank\""
+"please visit our <a href=\"https://forums.solydxk.com\" target=\"_blank\""
 ">forum</a> and post your issue there."
 msgstr ""
 

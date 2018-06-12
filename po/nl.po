@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 11:32+0200\n"
+"POT-Creation-Date: 2018-06-01 16:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/solydxk/teams/54212/nl/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../usr/lib/solydxk/system/plymouth.py:137
+#: ../usr/lib/solydxk/system/plymouth.py:136
 msgid "Neither grub nor burg found in /etc/default"
 msgstr "grub en burg zijn niet in /etc/default gevonden"
 
@@ -481,19 +481,19 @@ msgstr "URL"
 msgid "Speed"
 msgstr "Snelheid"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1989
+#: ../usr/lib/solydxk/system/solydxk_system.py:1992
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr "Herstart uw systeem om de nieuwe instellingen te gebruiken."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1990
+#: ../usr/lib/solydxk/system/solydxk_system.py:1993
 msgid "Reboot"
 msgstr "Herstarten"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2001
+#: ../usr/lib/solydxk/system/solydxk_system.py:2004
 msgid "Encryption done"
 msgstr "Versleuteling klaar"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2002
+#: ../usr/lib/solydxk/system/solydxk_system.py:2005
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -503,11 +503,11 @@ msgstr ""
 "\n"
 "Wilt u de computer herstarten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2005
+#: ../usr/lib/solydxk/system/solydxk_system.py:2008
 msgid "Decryption done"
 msgstr "Ontsleuteling klaar"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2006
+#: ../usr/lib/solydxk/system/solydxk_system.py:2009
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -517,16 +517,16 @@ msgstr ""
 "\n"
 "Wilt u de computer herstarten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2018
+#: ../usr/lib/solydxk/system/solydxk_system.py:2021
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Wachtwoord gewijzigd voor {0}."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2070
+#: ../usr/lib/solydxk/system/solydxk_system.py:2073
 msgid "Partition passphrase"
 msgstr "Partitie wachtwoord"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2071
+#: ../usr/lib/solydxk/system/solydxk_system.py:2074
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -815,12 +815,12 @@ msgstr ""
 #: en/help.html+html.body.div.p:50
 msgid ""
 "If for some reason your system does not mount the newly encrypted partition, "
-"please visit our <a href=\"http://forums.solydxk.com\" target=\"_blank"
+"please visit our <a href=\"https://forums.solydxk.com\" target=\"_blank"
 "\">forum</a> and post your issue there."
 msgstr ""
 "Als uw systeem om een bepaalde reden de nieuwe versleutelde partitie niet "
-"koppelt, bezoek dan ons <a href=\"http://forums.solydxk.com\" target=\"_blank"
-"\">forum</a> en post uw probleem daar."
+"koppelt, bezoek dan ons <a href=\"https://forums.solydxk.com\" target="
+"\"_blank\">forum</a> en post uw probleem daar."
 
 #: en/help.html+html.body.div.p:51
 msgid ""
