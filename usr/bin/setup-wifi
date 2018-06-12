@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# Configure wifi without a network manager.
+# Makes use of netstat, iwconfig, nmcli, ifup, ifdown
+
+INT='/etc/network/interfaces'
+WPCONF='/etc/wpa_supplicant/wpa_supplicant.conf'
+
+# Get the wireless adapter
+for IFACE in $(netstat -rn | grep '^0\.0\.0\.0' | awk '{print $8}'); do
+  if [[ $IFACE == $(/sbin/iwconfig 2>&1 | grep IEEE | grep $IFACE | awk '{print $1}') ]]; then
+    WIFIADAPTER=$IFACE
+  fi
+done
+
+if [ "$WIFIADAPTER" == '' ]; then
+  # Last resort: skip netstat check
+  WIFIADAPTER=$(/sbin/iwconfig 2>&1 | grep IEEE | awk '{print $1}')
+fi
+if [ "$WIFIADAPTER" == '' ]; then
+  echo "No wireless adapter found - exiting."
+  echo
+  exit
+else
+   echo "Wireless adapter found: $WIFIADAPTER"
+   echo
+fi
+
+# Be root to run this script
+if [ $EUID -ne 0 ]; then
+  echo "Please, type root password..."
+  su -c "$0 $@"
+  exit
+fi
+
+echo "Scanning for available networks..."
+nmcli dev wifi
+echo
+
+echo "Fill in your network SSID and password."
+read -p 'SSID: ' SSID
+read -sp 'Password: ' PSK
+echo
+
+ifdown $WIFIADAPTER 2>/dev/null
+
+if [ ! -e "$WPCONF" ]; then
+    # Create wpa_supplicant.conf
+    echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid=\"$SSID\"            # SSID of the wifi network
+    psk=\"$PSK\"             # Password for SSID network
+    proto=RSN          # RSN (for WP2), WPA (for WPA1)
+    key_mgmt=WPA-PSK   # WPA-PSK or WPA-EAP (Pre-Shared or Enterprise)
+}
+" > "$WPCONF"
+else
+    sed -i "s/ssid=.*/ssid=\"$SSID\"/" "$WPCONF"
+    sed -i "s/psk=.*/psk=\"$PSK\"/" "$WPCONF"
+fi
+
+# Cleanup before adding wlan settings
+sed -i "/$WIFIADAPTER/d" "$INT"
+sed -i '/wpa-conf/d' "$INT"
+echo "
+allow-hotplug $WIFIADAPTER
+iface $WIFIADAPTER inet dhcp
+wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+" >> "$INT"
+
+echo
+echo "Try to connect..."
+ifup $WIFIADAPTER
+
+# Check if the network is up
+WIFIUP=$(iwconfig 2>&1 | grep "$SSID" | awk '{print $1}')
+if [ "$WIFIUP" == '' ]; then
+    echo
+    echo "Could not connect to the network: $SSID."
+    read -p "Do you want to edit the configuration files manually? [yN]" YN
+    case $YN in
+        [Yy]* )
+            nano "$INT"
+            nano "$WPCONF"
+            echo
+            echo "Try to connect..."
+            ifup $WIFIADAPTER
+        ;;
+        * )
+        ;;
+    esac
+fi
+
+echo
+echo "Done."
