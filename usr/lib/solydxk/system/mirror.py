@@ -6,9 +6,9 @@ import os
 import threading
 import datetime
 import re
-from utils import getoutput, get_config_dict, get_debian_version
+from utils import getoutput, get_config_dict, get_debian_version, \
+                  get_value_from_url
 from os.path import join, abspath, dirname, exists, basename
-from urllib.request import urlopen
 
 
 def get_local_repos():
@@ -44,8 +44,8 @@ def get_mirror_data(excludeMirrors=[], getDeadMirrors=False):
         url = mirrors_url
         if getDeadMirrors:
             url = "%s.dead" % url
-        txt = urlopen(url).read().decode('utf-8')
-        if txt != '':
+        txt = get_value_from_url(url)
+        if txt is not None:
             # Save to a file
             with open(mirrorsList, 'w') as f:
                 f.write(txt)

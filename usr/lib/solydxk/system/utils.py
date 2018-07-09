@@ -2,8 +2,10 @@
 
 import subprocess
 from socket import timeout
-from urllib.request import urlopen
+from urllib.request import ProxyHandler, HTTPBasicAuthHandler, Request, \
+                           build_opener, HTTPHandler, install_opener, urlopen
 from urllib.error import URLError, HTTPError
+from random import choice
 import re
 import threading
 import operator
@@ -98,16 +100,56 @@ def has_internet_connection(test_url=None):
                         if matchObj:
                             urls.append(matchObj.group(0))
     for url in urls:
-        try:
-            urlopen(url, timeout=5)
-        except (HTTPError, URLError) as error:
-            print(('Could not connect to {}: {}'.format(url, error)))
-        except timeout:
-            print(('Socket timeout on: {}'.format(url)))
-        else:
-            #print(('Successfull connection with: {}'.format(url)))
+        if get_value_from_url(url) is not None:
             return True
     return False
+
+
+def get_value_from_url(url, timeout_secs=5, return_errors=False):
+    try:
+        # http://www.webuseragents.com/my-user-agent
+        user_agents = [
+            'Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0',
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36',
+            'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
+        ]
+
+        # Create proxy handler
+        proxy = ProxyHandler({})
+        auth = HTTPBasicAuthHandler()
+        opener = build_opener(proxy, auth, HTTPHandler)
+        install_opener(opener)
+
+        # Create a request object with given url
+        req = Request(url)
+
+        # Get a random user agent and add that to the request object
+        ua = choice(user_agents)
+        req.add_header('User-Agent', ua)
+
+        # Get the output of the URL
+        output = urlopen(req, timeout=timeout_secs)
+
+        # Decode to text
+        txt = output.read().decode('utf-8')
+        
+        # Return the text
+        return txt
+        
+    except (HTTPError, URLError) as error:
+        err = 'ERROR: could not connect to {}: {}'.format(url, error)
+        if return_errors:
+            return err
+        else:
+            print((err))
+            return None
+    except timeout:
+        err = 'ERROR: socket timeout on: {}'.format(url)
+        if return_errors:
+            return err
+        else:
+            print((err))
+            return None
 
 
 # Check if running in VB
