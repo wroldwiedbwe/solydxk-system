@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 16:09+0200\n"
+"POT-Creation-Date: 2018-07-03 11:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: pitfd <pitfd@posteo.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/solydxk/teams/54212/de/)\n"
@@ -207,7 +207,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:165
 msgid "Cleanup"
-msgstr ""
+msgstr "Bereinigung"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:166
 msgid ""
@@ -250,7 +250,7 @@ msgstr "Verwende Backports"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:177
 msgid "Device Driver"
-msgstr ""
+msgstr "Gerätetreiber"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:178
 msgid ""
@@ -439,6 +439,8 @@ msgid ""
 "Firefox and/or Thunderbird are running.\n"
 "Please close these applications before you continue."
 msgstr ""
+"Firefox and/or Thunderbird are running.Please close these applications "
+"before you continue."
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:1407
 msgid ""
@@ -607,6 +609,8 @@ msgstr "System"
 #: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
 msgid "Authentication is required to run SolydXK System Settings"
 msgstr ""
+"Für die Ausführung der SolydXK-Systemeinstellungen ist eine "
+"Authentifizierung erforderlich."
 
 #: en/help.html+html.body.h1:8
 msgid "SolydXK System Settings Encryption Help"
