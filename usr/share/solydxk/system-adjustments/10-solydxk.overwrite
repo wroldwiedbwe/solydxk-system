@@ -16,3 +16,4 @@
 /usr/share/solydxk/adjustments/systemadm.desktop /usr/share/applications/systemadm.desktop
 /usr/share/solydxk/adjustments/konqpopupmenuplugin.desktop /usr/share/kservicetypes5/konqpopupmenuplugin.desktop
 /usr/share/solydxk/adjustments/pk-update-icon.desktop /etc/xdg/autostart/pk-update-icon.desktop
+/usr/share/solydxk/adjustments/avahi-daemon.service /lib/systemd/system/avahi-daemon.service

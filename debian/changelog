@@ -1,3 +1,9 @@
+solydxk-system (3.0.7b6) solydxk; urgency=low
+
+  * Let avahi-daemon.service wait for network
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Mon, 30 Jul 2018 20:03:01 +0200
+
 solydxk-system (3.0.7b5) solydxk; urgency=low
 
   * Proxy implementation for urlopen
