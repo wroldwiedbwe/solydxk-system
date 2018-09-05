@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 16:09+0200\n"
+"POT-Creation-Date: 2018-08-01 08:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2018\n"
 "Language-Team: Danish (https://www.transifex.com/solydxk/teams/54212/da/)\n"
@@ -203,7 +203,7 @@ msgstr ""
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:165
 msgid "Cleanup"
-msgstr ""
+msgstr "Oprydning"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:166
 msgid ""
@@ -246,7 +246,7 @@ msgstr "Anvend 'backports'"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:177
 msgid "Device Driver"
-msgstr ""
+msgstr "Enhedsdriver"
 
 #: ../usr/lib/solydxk/system/solydxk_system.py:178
 msgid ""

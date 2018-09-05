@@ -1,3 +1,10 @@
+solydxk-system (3.0.7b7) solydxk; urgency=low
+
+  * Updated translations: da
+  * Include bootinfoscript
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 26 Aug 2018 11:04:36 +0200
+
 solydxk-system (3.0.7b6) solydxk; urgency=low
 
   * Let avahi-daemon.service wait for network
