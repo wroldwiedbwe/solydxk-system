@@ -1,3 +1,9 @@
+solydxk-system (3.0.7b8) solydxk; urgency=low
+
+  * Include adapted hardinfo.desktop
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 11 Sep 2018 10:37:40 +0200
+
 solydxk-system (3.0.7b7) solydxk; urgency=low
 
   * Updated translations: da
