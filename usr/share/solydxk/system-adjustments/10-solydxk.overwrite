@@ -1,4 +1,4 @@
-/usr/share/solydxk/adjustments/am /usr/share/X11/xkb/symbols/am
+/usr/share/solydxk/adjustments/avahi-daemon.service /lib/systemd/system/avahi-daemon.service
 /usr/share/solydxk/adjustments/debian-uxterm.desktop /usr/share/applications/debian-uxterm.desktop
 /usr/share/solydxk/adjustments/debian-xterm.desktop /usr/share/applications/debian-xterm.desktop
 /usr/share/solydxk/adjustments/display-im6.desktop /usr/share/applications/display-im6.desktop
@@ -8,14 +8,12 @@
 /usr/share/solydxk/adjustments/gwenview.desktop /usr/share/applications/kde4/gwenview.desktop
 /usr/share/solydxk/adjustments/hardinfo.desktop /usr/share/applications/hardinfo.desktop
 /usr/share/solydxk/adjustments/ksystemlog.desktop /usr/share/applications/kde4/ksystemlog.desktop
+/usr/share/solydxk/adjustments/libreoffice-math.desktop /usr/share/applications/libreoffice-math.desktop
 /usr/share/solydxk/adjustments/luckybackup-gnome-su.desktop /usr/share/applications/luckybackup-gnome-su.desktop
 /usr/share/solydxk/adjustments/luckybackup-kde-su.desktop /usr/share/applications/luckybackup-kde-su.desktop
 /usr/share/solydxk/adjustments/luckybackup.desktop /usr/share/applications/luckybackup.desktop
 /usr/share/solydxk/adjustments/math.desktop /usr/lib/libreoffice/share/xdg/math.desktop
 /usr/share/solydxk/adjustments/os-release /etc/os-release
-/usr/share/solydxk/adjustments/PlayOnLinux.desktop /usr/share/applications/PlayOnLinux.desktop
-/usr/share/solydxk/adjustments/systemadm.desktop /usr/share/applications/systemadm.desktop
-/usr/share/solydxk/adjustments/timidity.desktop /usr/share/applications/timidity.desktop
-/usr/share/solydxk/adjustments/konqpopupmenuplugin.desktop /usr/share/kservicetypes5/konqpopupmenuplugin.desktop
 /usr/share/solydxk/adjustments/pk-update-icon.desktop /etc/xdg/autostart/pk-update-icon.desktop
-/usr/share/solydxk/adjustments/avahi-daemon.service /lib/systemd/system/avahi-daemon.service
+/usr/share/solydxk/adjustments/PlayOnLinux.desktop /usr/share/applications/PlayOnLinux.desktop
+/usr/share/solydxk/adjustments/timidity.desktop /usr/share/applications/timidity.desktop
