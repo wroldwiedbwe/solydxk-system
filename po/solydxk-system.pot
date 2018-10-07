@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-11 18:08+0200\n"
+"POT-Creation-Date: 2018-10-07 13:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -511,6 +511,14 @@ msgstr ""
 
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
+msgstr ""
+
+#: ../etc/skel/.config/autostart/xsession-logcontrol.desktop.in.h:1
+msgid "Limit the xsession-errors file size"
+msgstr ""
+
+#: ../etc/skel/.config/autostart/xsession-logcontrol.desktop.in.h:2
+msgid "Xsession Errors Log Control"
 msgstr ""
 #. (itstool) path: action/message
 #: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8
