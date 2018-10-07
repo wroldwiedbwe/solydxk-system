@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Limit the xsession-errors file size
+Exec=xsession-logcontrol
+Name=Xsession Errors Log Control
+StartupNotify=false
+Terminal=false
+Type=Application
