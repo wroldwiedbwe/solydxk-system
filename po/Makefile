@@ -45,7 +45,7 @@ update:
 	
 	# get strings from the desktop file
 	#@ for LAUNCHER in `find .. -name '*.desktop'`; do
-	@ for LAUNCHER in `find ../usr/share/k* ../usr/share/applications -name '*.desktop'`; do \
+	@ for LAUNCHER in `find ../usr/share/k* ../usr/share/applications ../etc/skel/.config/autostart -name '*.desktop'`; do \
 		sed -r \
 			-e '/^(Name|Comment|GenericName|Keywords)\[/d' \
 			-e 's/^(Comment=|Name=|GenericName=|Keywords=)/_\1/' \
@@ -101,7 +101,7 @@ update:
 	
 	# apply desktop file modifications
 	#@ for LAUNCHER in `find .. -name '*.desktop'`; do
-	@ for LAUNCHER in `find ../usr/share/k* ../usr/share/applications -name '*.desktop'`; do \
+	@ for LAUNCHER in `find ../usr/share/k* ../usr/share/applications ../etc/skel/.config/autostart -name '*.desktop'`; do \
 		intltool-merge --quiet --desktop-style . $$LAUNCHER.in $$LAUNCHER ; \
 		rm $$LAUNCHER.in.h $$LAUNCHER.in ; \
 	done && echo "Desktop files updated with new translations"
