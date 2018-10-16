@@ -15,14 +15,14 @@ fi
 
 SKIPCNFS='extensions.enabled_addons browser.newtabpage.pinned'
 
-FFUSRS=$(find ~/.mozilla/firefox -name "prefs.js" -not -path "*/extensions/*")
+FFUSRS=$(find $HOME/.mozilla/firefox -name "prefs.js" -not -path "*/extensions/*")
 FFSKEL=$(find /etc/skel/.mozilla/firefox -name "prefs.js" -not -path "*/extensions/*")
-TBUSR=$(find ~/.thunderbird -name "prefs.js" -not -path "*/extensions/*")
+TBUSR=$(find $HOME/.thunderbird -name "prefs.js" -not -path "*/extensions/*")
 TBSKEL=$(find /etc/skel/.thunderbird -name "prefs.js" -not -path "*/extensions/*")
 FFEXTSKEL=$(find /etc/skel/.mozilla/firefox -name "extensions")
-FFEXTUSR=$(find ~/.mozilla/firefox -name "extensions")
+FFEXTUSR=$(find $HOME/.mozilla/firefox -name "extensions")
 TBEXTSKEL=$(find /etc/skel/.thunderbird -name "extensions")
-TBEXTUSR=$(find ~/.thunderbird -name "extensions")
+TBEXTUSR=$(find $HOME/.thunderbird -name "extensions")
 
 # Firefox
 if [ -e "$FFSKEL" ]; then

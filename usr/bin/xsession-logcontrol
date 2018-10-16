@@ -4,14 +4,14 @@
 # Backup last n lines (LEAVE_LINES: set to 0 to skip backup)
 # Check every n minutes (INTERVAL_MIN)
 
-MAX_MB=100
+MAX_MB=500
 LEAVE_LINES=10000
 INTERVAL_MIN=60
 LOG="$HOME/.xsession-errors"
 
 while true; do
     LOG_BYTES=$(stat --printf=%s "$LOG")
-    MAX_BYTES=$((MAX_MB*1000))
+    MAX_BYTES=$((MAX_MB*1000000))
     if (( $LOG_BYTES > $MAX_BYTES )); then
         if (( $LEAVE_LINES > 0 )); then tail -n $LEAVE_LINES "$LOG" > "$LOG.bak"; fi
         truncate -s 0 "$LOG"
