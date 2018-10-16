@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 16:09+0200\n"
+"POT-Creation-Date: 2018-10-07 20:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Moo, 2017\n"
 "Language-Team: Lithuanian (https://www.transifex.com/solydxk/teams/54212/"
@@ -600,6 +600,14 @@ msgstr "Keisti SolydXK sistemos nustatymus"
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
 msgstr "Sistema"
+
+#: ../etc/skel/.config/autostart/xsession-logcontrol.desktop.in.h:1
+msgid "Limit the xsession-errors file size"
+msgstr "Apriboti xsession-errors failo dydį"
+
+#: ../etc/skel/.config/autostart/xsession-logcontrol.desktop.in.h:2
+msgid "Xsession Errors Log Control"
+msgstr "Xsession klaidų žurnalo valdymas"
 
 #. (itstool) path: action/message
 #: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8

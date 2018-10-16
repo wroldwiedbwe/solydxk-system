@@ -1,7 +1,11 @@
 [Desktop Entry]
 Comment=Limit the xsession-errors file size
+Comment[lt]=Apriboti xsession-errors failo dydį
+Comment[nl]=Beperk de bestandsgrootte van xsession-errors
 Exec=xsession-logcontrol
 Name=Xsession Errors Log Control
+Name[lt]=Xsession klaidų žurnalo valdymas
+Name[nl]=Xsession Errors Log Beheer
 StartupNotify=false
 Terminal=false
 Type=Application
