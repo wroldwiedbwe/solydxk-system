@@ -1,3 +1,9 @@
+solydxk-system (3.1.0) solydxk; urgency=low
+
+  * Debug: not ending thread on Plymouth save
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 06 Nov 2018 16:02:35 +0100
+
 solydxk-system (3.0.9) solydxk; urgency=low
 
   * Include .xsession-errors log control

@@ -1907,7 +1907,8 @@ class SolydXKSystemSettings(object):
         self.threads[name] = t
         t.daemon = True
         t.start()
-        self.queue.join()
+        # join does not return
+        #self.queue.join()
         GObject.timeout_add(5, self.check_thread, name)
 
     # ===============================================
