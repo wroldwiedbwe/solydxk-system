@@ -3,14 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# Arjen Balfoort <arjenbalfoort@solydxk.com>, 2018
+# pitfd <pitfd@posteo.de>, 2018
+# ilu lu, 2018
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-03 11:17+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: pitfd <pitfd@posteo.de>, 2017\n"
+"POT-Creation-Date: 2018-11-06 16:04+0100\n"
+"PO-Revision-Date: 2017-04-24 19:40+0000\n"
+"Last-Translator: ilu lu, 2018\n"
 "Language-Team: German (https://www.transifex.com/solydxk/teams/54212/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -490,21 +495,21 @@ msgstr "URL"
 msgid "Speed"
 msgstr "Geschwindigkeit"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1992
+#: ../usr/lib/solydxk/system/solydxk_system.py:1993
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr ""
 "Sie müssen Ihr System neu starten, damit die neuen Einstellungen wirksam "
 "werden können."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1993
+#: ../usr/lib/solydxk/system/solydxk_system.py:1994
 msgid "Reboot"
 msgstr "Neustart"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2004
+#: ../usr/lib/solydxk/system/solydxk_system.py:2005
 msgid "Encryption done"
 msgstr "Veschlüsselung wurde durchgeführt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2005
+#: ../usr/lib/solydxk/system/solydxk_system.py:2006
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -514,11 +519,11 @@ msgstr ""
 "\n"
 "Wollen Sie Ihren Computer neu starten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2008
+#: ../usr/lib/solydxk/system/solydxk_system.py:2009
 msgid "Decryption done"
 msgstr "Entschlüsselung wurde durchgeführt"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2009
+#: ../usr/lib/solydxk/system/solydxk_system.py:2010
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -528,16 +533,16 @@ msgstr ""
 "\n"
 "Wollen Sie Ihren Computer neu starten?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2021
+#: ../usr/lib/solydxk/system/solydxk_system.py:2022
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Verschlüsselungskenntwort für{0} geändert."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2073
+#: ../usr/lib/solydxk/system/solydxk_system.py:2074
 msgid "Partition passphrase"
 msgstr "Partitionskennwort"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2074
+#: ../usr/lib/solydxk/system/solydxk_system.py:2075
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -604,6 +609,14 @@ msgstr "Ändere Systemeinstellungen für SolydXK"
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
 msgstr "System"
+
+#: ../etc/skel/.config/autostart/xsession-logcontrol.desktop.in.h:1
+msgid "Limit the xsession-errors file size"
+msgstr "Die Größe der Datei xsession-errors begrenzen"
+
+#: ../etc/skel/.config/autostart/xsession-logcontrol.desktop.in.h:2
+msgid "Xsession Errors Log Control"
+msgstr ""
 
 #. (itstool) path: action/message
 #: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8

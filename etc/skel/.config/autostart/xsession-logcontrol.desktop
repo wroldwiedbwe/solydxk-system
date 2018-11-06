@@ -1,5 +1,6 @@
 [Desktop Entry]
 Comment=Limit the xsession-errors file size
+Comment[de]=Die Größe der Datei xsession-errors begrenzen
 Comment[lt]=Apriboti xsession-errors failo dydį
 Comment[nl]=Beperk de bestandsgrootte van xsession-errors
 Exec=xsession-logcontrol
