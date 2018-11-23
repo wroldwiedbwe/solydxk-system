@@ -1,3 +1,16 @@
+solydxk-system (3.1.2) solydxk; urgency=low
+
+  * Add /etc/skel/.gnupg/* files
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 22 Nov 2018 15:57:57 +0100
+
+solydxk-system (3.1.1) solydxk; urgency=low
+
+  * Do not show LO Math in Science & Math category
+  * Do not overwrite symlink with file
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 07 Nov 2018 14:08:01 +0100
+
 solydxk-system (3.1.0) solydxk; urgency=low
 
   * Debug: not ending thread on Plymouth save

@@ -12,7 +12,7 @@ import operator
 import apt
 import filecmp
 from os import walk, listdir
-from os.path import exists, isdir, expanduser,  splitext,  dirname
+from os.path import exists, isdir, expanduser,  splitext,  dirname, islink
 from distutils.version import LooseVersion, StrictVersion
 
     
@@ -356,7 +356,7 @@ def human_size(nkbytes):
 def can_copy(file1, file2):
     ret = False
     if exists(file1):
-        if exists(file2):
+        if exists(file2) and not islink(file2):
             if not filecmp.cmp(file1, file2):
                 ret = True
         else:
