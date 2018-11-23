@@ -21,7 +21,7 @@ Terminal=false
 NoDisplay=false
 Icon=libreoffice-math
 Type=Application
-Categories=Office;Spreadsheet;Science;Math;
+Categories=Office;Spreadsheet;
 Exec=libreoffice --math %U
 MimeType=application/vnd.oasis.opendocument.formula;application/vnd.sun.xml.math;application/vnd.oasis.opendocument.formula-template;text/mathml;application/mathml+xml;
 Name=LibreOffice Math
@@ -219,7 +219,6 @@ Keywords=Equation;OpenDocument Formula;Formula;odf;MathML;
 InitialPreference=5
 StartupWMClass=libreoffice-math
 X-KDE-Protocols=file,http,ftp,webdav,webdavs
-NotShowIn=GNOME;
 
 Actions=NewDocument;
 [Desktop Action NewDocument]
