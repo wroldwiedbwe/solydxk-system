@@ -126,6 +126,11 @@ case "$1" in
 	  mkdir -p /usr/local/bin
 	fi
 	
+	# Set the right permissions to /etc/skel/.gnupg
+	if [ -d /etc/skel/.gnupg ]; then
+	  chmod -R 700 /etc/skel/.gnupg
+	fi
+	
 	# Check for rogue files
 	find /usr/share/applications -type l -name "*firefox.desktop" -exec rm {} \;
 	

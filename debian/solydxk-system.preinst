@@ -10,3 +10,9 @@ FLE=/etc/X11/xorg.conf.d/solydxk-synaptics.conf
 if [ -f $FLE ]; then
   rm $FLE
 fi
+
+if [ -e /etc/skel/.gnupg/.gpg* ]; then rm -r /etc/skel/.gnupg/.gpg*; fi
+if [ -e /etc/skel/.gnupg/private-keys* ]; then rm -r /etc/skel/.gnupg/private-keys*; fi
+if [ -e /etc/skel/.gnupg/pubring.gpg ]; then rm /etc/skel/.gnupg/pubring.gpg*; fi
+if [ -e /etc/skel/.gnupg/secring.gpg ]; then rm /etc/skel/.gnupg/secring.gpg*; fi
+if [ -e /etc/skel/.gnupg/S.gpg-agent ]; then rm /etc/skel/.gnupg/S.gpg-agent*; fi
