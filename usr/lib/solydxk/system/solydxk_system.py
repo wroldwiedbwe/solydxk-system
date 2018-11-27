@@ -1738,9 +1738,13 @@ class SolydXKSystemSettings(object):
         for pck in self.get_autoremove_packages():
             pck_data.append([True, pck])
         for pck in self.get_deborphan_packages():
-            pck_data.append([False, pck])
+            pck_lst = [False, pck]
+            if pck_lst not in pck_data:
+                pck_data.append(pck_lst)
         for pck in self.get_old_kernel_packages():
-            pck_data.append([False, pck])
+            pck_lst = [False, pck]
+            if pck_lst not in pck_data:
+                pck_data.append([False, pck_lst])
         # Fill treeview
         col_type_lst = ['bool', 'str']
         self.tvCleanupHandler.fillTreeview(pck_data, col_type_lst, 0, 400, False)
