@@ -167,6 +167,7 @@ class Mirror():
                     else:
                         debian_suite = 'stable'
 
+                # Replace existing repository with new one
                 for line in srcList:
                     line = line.strip()
                     if not line.startswith('#'):
@@ -179,19 +180,19 @@ class Mirror():
                                         break
                                 if not skip:
                                     # Change repository url
-                                    line = line.replace(repo[0], repo[1])
+                                    regexp = 'https*://{0}'.format(repo[0]) if repo[0][:4] != 'http' else repo[0]
+                                    substr = 'http://{0}'.format(repo[1]) if repo[1][:4] != 'http' else repo[1]
+                                    line = re.sub(regexp, substr, line)
                                     break
                     if line != '':
                         new_repos.append(line)
 
+                # Add repository if it doesn't exist
                 for repo in replaceRepos:
                     if repo[0] == '':
-                        # Check if repo is already present in new_repos (replacement)
                         if not any(repo[1] in x for x in new_repos):
                             line = ''
-                            http = ''
-                            if repo[1][:4] != 'http':
-                                http = 'http://'
+                            http = 'http://' if repo[1][:4] != 'http' else ''
                             if 'solydxk' in repo[1]:
                                 solydxk_ext = str(self.debian_version)
                                 if debian_suite == 'testing':
