@@ -3,14 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# Arjen Balfoort <arjenbalfoort@solydxk.com>, 2018
+# Tony Albers, 2018
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-01 08:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Arjen Balfoort <arjenbalfoort@solydxk.com>, 2018\n"
+"POT-Creation-Date: 2018-11-27 12:48+0100\n"
+"PO-Revision-Date: 2017-04-24 19:40+0000\n"
+"Last-Translator: Tony Albers, 2018\n"
 "Language-Team: Danish (https://www.transifex.com/solydxk/teams/54212/da/)\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -482,19 +486,19 @@ msgstr "URL-adresse"
 msgid "Speed"
 msgstr "Hastighed"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1992
+#: ../usr/lib/solydxk/system/solydxk_system.py:1997
 msgid "You need to reboot your system for the new settings to take affect."
 msgstr "Du skal genstarte maskinen før ændringerne træder i kraft."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:1993
+#: ../usr/lib/solydxk/system/solydxk_system.py:1998
 msgid "Reboot"
 msgstr "Genstart"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2004
+#: ../usr/lib/solydxk/system/solydxk_system.py:2009
 msgid "Encryption done"
 msgstr "Kryptering udført"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2005
+#: ../usr/lib/solydxk/system/solydxk_system.py:2010
 msgid ""
 "Encryption has finished.\n"
 "\n"
@@ -504,11 +508,11 @@ msgstr ""
 "\n"
 "Vil du genstarte maskinen nu?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2008
+#: ../usr/lib/solydxk/system/solydxk_system.py:2013
 msgid "Decryption done"
 msgstr "Dekryptering udført"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2009
+#: ../usr/lib/solydxk/system/solydxk_system.py:2014
 msgid ""
 "Decryption has finished.\n"
 "\n"
@@ -518,16 +522,16 @@ msgstr ""
 "\n"
 "Vil du genstarte maskinen nu?"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2021
+#: ../usr/lib/solydxk/system/solydxk_system.py:2026
 #, python-brace-format
 msgid "Passphrase changed for {0}."
 msgstr "Kodeordssætning ændret for {0}."
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2073
+#: ../usr/lib/solydxk/system/solydxk_system.py:2078
 msgid "Partition passphrase"
 msgstr "Kodeordssætning til partition"
 
-#: ../usr/lib/solydxk/system/solydxk_system.py:2074
+#: ../usr/lib/solydxk/system/solydxk_system.py:2079
 msgid ""
 "Please, provide the current passphrase\n"
 "for the encrypted partition"
@@ -591,6 +595,14 @@ msgstr "Skift systemindstillinger for SolydXK"
 #: ../usr/share/kservices5/settings-system-admin.desktop.in.h:1
 msgid "System"
 msgstr "System"
+
+#: ../etc/skel/.config/autostart/xsession-logcontrol.desktop.in.h:1
+msgid "Limit the xsession-errors file size"
+msgstr "Begræns størrelsen på xsession-errors-filen"
+
+#: ../etc/skel/.config/autostart/xsession-logcontrol.desktop.in.h:2
+msgid "Xsession Errors Log Control"
+msgstr "Xsession Errors logstyring"
 
 #. (itstool) path: action/message
 #: ../usr/share/polkit-1/actions/com.solydxk.pkexec.solydxk-system.policy:8

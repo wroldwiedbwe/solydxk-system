@@ -1,3 +1,9 @@
+solydxk-system (3.1.4) solydxk; urgency=low
+
+  * Updated translations: da
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 04 Dec 2018 12:06:12 +0100
+
 solydxk-system (3.1.3) solydxk; urgency=low
 
   * Solve bug not adding http:// to new sources url
