@@ -1,12 +1,12 @@
 #!/bin/bash
 
-partition=$1
-passphrase=$2
-commands=$3
+PARTITION=$1
+PASSPHRASE=$2
+COMMANDS=$3
 
-target='/target'
+TARGET='/target'
 
-if [ -z $partition ] || [ ! -e $partition ]; then
+if [ -z $PARTITION ] || [ ! -e $PARTITION ]; then
   echo "An existing OS partition path is needed"
   echo "E.g.: chroot-partition /dev/sda1"
   echo
@@ -23,15 +23,15 @@ fi
 
 
 # Check if partition is already mounted and use that as the target
-MOUNTCHK=$(grep "$partition " /proc/mounts | awk '{print $2}')
+MOUNTCHK=$(grep "$PARTITION " /proc/mounts | awk '{print $2}')
 if [ "$MOUNTCHK" != "" ]; then
-  target=$MOUNTCHK
+  TARGET=$MOUNTCHK
 fi
 
 # Check if target is used as mount point by anything other than partition
-MOUNTCHK=$(grep " $target " /proc/mounts | grep -v "$partition")
+MOUNTCHK=$(grep " $TARGET " /proc/mounts | grep -v "$PARTITION")
 if [ "$MOUNTCHK" != "" ]; then
-  echo "$target in use - exiting"
+  echo "$TARGET in use - exiting"
   exit
 fi
 
@@ -42,63 +42,80 @@ if [ $UID -ne 0 ]; then
 fi
 
 # Create temporary dir
-if [ ! -d $target ]; then
-  echo "Create directory $target"
-  mkdir $target
+if [ ! -d $TARGET ]; then
+  echo "Create directory $TARGET"
+  mkdir $TARGET
+fi
+
+# Map luks encrypted partition
+echo "Map encrypted partition $PARTITION"
+FS=$(blkid -s TYPE -o value $PARTITION)
+if [ "$FS" == 'crypto_LUKS' ]; then
+  PNAME=$(basename $PARTITION)
+  if [ "$PASSPHRASE" != '' ]; then
+    printf "$PASSPHRASE" | cryptsetup open --type luks $PARTITION $PNAME
+  else
+    cryptsetup open --type luks $PARTITION $PNAME
+  fi
+  if [ ! -e "/dev/mapper/$PNAME" ]; then
+    echo "Unable to map encrypted partition $PARTITION - exiting"
+    exit
+  fi
+  PARTITION="/dev/mapper/$PNAME"
 fi
 
 # Mounting
-echo "Mounting $partition on $target"
-if [ "$passphrase" != '' ]; then
-  bn=$(basename $partition)
-  printf "$passphrase" | cryptsetup open $partition $bn
-  partition="/dev/mapper/$bn"
-fi
-mount $partition $target
+echo "Mounting $PARTITION on $TARGET"
+mount $PARTITION $TARGET
 
-if [ ! -e $target/dev ] || [ ! -e $target/sys ]; then
-  echo "Could not find $target/dev and $target/sys - exiting"
-  umount $target
-  rmdir $target
+if [ ! -e $TARGET/dev ] || [ ! -e $TARGET/sys ]; then
+  echo "Could not find $TARGET/dev and $TARGET/sys - exiting"
+  umount $TARGET
+  rmdir $TARGET
   exit
 fi
 
-MOUNTCHK=$(grep "$target" /proc/mounts | awk '{print $2}')
-if [[ ! "$MOUNTCHKT" =~ '$target/dev' ]]; then
-  mount --bind /dev/ $target/dev
-  mount --bind /dev/shm $target/dev/shm
-  mount --bind /dev/pts $target/dev/pts
-  UMOUNTS="$target/dev $target/dev/shm $target/dev/pts"
+MOUNTCHK=$(grep "$TARGET" /proc/mounts | awk '{print $2}')
+if [[ ! "$MOUNTCHKT" =~ '$TARGET/dev' ]]; then
+  mount --bind /dev/ $TARGET/dev
+  mount --bind /dev/shm $TARGET/dev/shm
+  mount --bind /dev/pts $TARGET/dev/pts
+  UMOUNTS="$TARGET/dev $TARGET/dev/shm $TARGET/dev/pts"
 fi
-if [[ ! "$MOUNTCHKT" =~ '$target/sys' ]]; then
-  mount --bind /sys/ $target/sys
-  mount --bind /sys/fs/fuse/connections $target/sys/fs/fuse/connections
-  UMOUNTS="$UMOUNTS $target/sys $target/sys/fs/fuse/connections"
+if [[ ! "$MOUNTCHKT" =~ '$TARGET/sys' ]]; then
+  mount --bind /sys/ $TARGET/sys
+  mount --bind /sys/fs/fuse/connections $TARGET/sys/fs/fuse/connections
+  UMOUNTS="$UMOUNTS $TARGET/sys $TARGET/sys/fs/fuse/connections"
 fi
-if [[ ! "$MOUNTCHKT" =~ '$target/proc' ]]; then
-  mount --bind /proc/ $target/proc
-  UMOUNTS="$UMOUNTS $target/proc"
+if [[ ! "$MOUNTCHKT" =~ '$TARGET/proc' ]]; then
+  mount --bind /proc/ $TARGET/proc
+  UMOUNTS="$UMOUNTS $TARGET/proc"
+fi
+if [[ ! "$MOUNTCHKT" =~ '$TARGET/etc/resolv.conf' ]]; then
+  mount --bind /etc/resolv.conf $TARGET/etc/resolv.conf
+  UMOUNTS="$UMOUNTS $TARGET/etc/resolv.conf"
 fi
 
+
 # Chroot into dir
-echo "Chrooting into $target"
+echo "Chrooting into $TARGET"
 # Mount all partitions in the chrooted fstab
-chroot $target/ /bin/sh -c "mount -a 2>/dev/null"
+chroot $TARGET/ /bin/sh -c "mount -a 2>/dev/null"
 # Execute any passed commands
-if [ "$commands" != "" ]; then
-  chroot $target/ /bin/sh -c "$commands"
+if [ "$COMMANDS" != "" ]; then
+  chroot $TARGET/ /bin/sh -c "$COMMANDS"
 fi
 # If the last command wasn't exit, keep the chrooted partition open
 if [ "${commands: -4}" != "exit" ]; then
-  chroot $target
+  chroot $TARGET
 fi
 
 # Unmount when done
 umount -f $UMOUNTS 2>/dev/null
-grep "$target" /proc/mounts | grep ^/dev | grep -v "$partition" | awk '{print $1}' | xargs umount -f 2>/dev/null
+grep "$TARGET" /proc/mounts | grep ^/dev | grep -v "$PARTITION" | awk '{print $1}' | xargs umount -f 2>/dev/null
 
-if [ "$target" == "/target" ]; then
-  echo "Unmounting $target"
-  umount -lf $target
-  rmdir $target 2>/dev/null
+if [ "$TARGET" == "/target" ]; then
+  echo "Unmounting $TARGET"
+  umount -lf $TARGET
+  rmdir $TARGET 2>/dev/null
 fi
