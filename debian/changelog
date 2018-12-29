@@ -1,6 +1,13 @@
+solydxk-system (3.1.5) solydxk; urgency=low
+
+  * adjust.py: Change Firefox widget theme for SolydX
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sat, 29 Dec 2018 11:09:38 +0100
+
 solydxk-system (3.1.4) solydxk; urgency=low
 
   * Updated translations: da
+  * Remove symlinks and move them to the .links file
 
  -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Tue, 04 Dec 2018 12:06:12 +0100
 

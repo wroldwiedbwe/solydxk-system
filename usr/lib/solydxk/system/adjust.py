@@ -190,7 +190,19 @@ try:
             if exists(config):
                 if not has_string_in_file(dt,  config):
                     os.system("sed -i -e 's/firefox[a-z-]*.desktop/%s/' %s" % (dt, config))
-        log.write("Firefox configuration adapted",  'firefox')
+        log.write("Start menu for Firefox adapted",  'firefox')
+        
+    # Change Mozilla widget theme for SolydX
+    bx = '/usr/share/themes/Breeze-X'
+    if exists(bx):
+        configs = ['/usr/lib/firefox-esr/distribution/distribution.ini',
+                   '/usr/lib/thunderbird/distribution/distribution.ini',
+                   '/opt/waterfox/distribution/distribution.ini',
+                   '/etc/skel/.thunderbird/user.default/user.js']
+        for config in configs:
+            if exists(config):
+                os.system("sed -i 's/\"Breeze\"/\"Breeze-X\"/g' %s" % config)
+        log.write("Mozilla configuration adapted",  'mozilla')
 
     # Add live menus in grub when needed
     grubsh = "/etc/grub.d/10_linux"
