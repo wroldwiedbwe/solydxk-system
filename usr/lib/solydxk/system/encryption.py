@@ -3,10 +3,30 @@
 import re
 from os.path import basename, exists, join
 from utils import shell_exec, getoutput, get_uuid, \
-                  get_filesystem, get_device_from_uuid
+                  get_filesystem, get_device_from_uuid, \
+                  get_package_version, compare_package_versions
 
 
-def unmount_device(device):
+def clear_partition(partition):
+    unmount_partition(partition)
+    enc_key = '-pbkdf2'
+    openssl_version = get_package_version('openssl')
+    if compare_package_versions(openssl_version, '1.1.1') == 'smaller':
+        # deprecated key derivation in openssl 1.1.1+
+        enc_key = '-aes-256-ctr'
+    shell_exec("openssl enc {0} -pass pass:\"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)\" -nosalt < /dev/zero > {1}".format(enc_key, partition.enc_status['device']))
+
+
+def encrypt_partition(device, passphrase):
+    if unmount_partition(device):
+        # Cannot use echo to pass the passphrase to cryptsetup because that adds a carriadge return
+        shell_exec("printf \"%s\" | cryptsetup luksFormat --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random %s" % (passphrase, device))
+        mapped_device, filesystem = connect_block_device(device, passphrase)
+        return mapped_device
+    return ''
+
+
+def unmount_partition(device):
     shell_exec("umount -f {}".format(device))
     if is_connected(device):
         shell_exec("cryptsetup close {} 2>/dev/null".format(device))
@@ -14,20 +34,6 @@ def unmount_device(device):
     if not device in ret:
         return True
     return False
-
-
-def clear_partition(device):
-    if unmount_device(device):
-        shell_exec("openssl enc -aes-256-ctr -pass pass:\"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)\" -nosalt < /dev/zero > %s 2>/dev/null" % device)
-
-
-def encrypt_partition(device, passphrase):
-    if unmount_device(device):
-        # Cannot use echo to pass the passphrase to cryptsetup because that adds a carriadge return
-        shell_exec("printf \"%s\" | cryptsetup luksFormat --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random %s" % (passphrase, device))
-        mapped_device, filesystem = connect_block_device(device, passphrase)
-        return mapped_device
-    return ''
 
 
 def connect_block_device(device, passphrase):

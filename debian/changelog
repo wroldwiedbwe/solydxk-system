@@ -1,3 +1,9 @@
+solydxk-system (3.1.6) solydxk; urgency=low
+
+  * Encrypt for openssl 1.1.1+
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 02 Jan 2019 18:02:29 +0100
+
 solydxk-system (3.1.5) solydxk; urgency=low
 
   * adjust.py: Change Firefox widget theme for SolydX
