@@ -60,9 +60,10 @@ sys.excepthook = uncaught_excepthook
 if __name__ == '__main__':
     # Create an instance of our GTK application
     try:
-        # Calling GObject.threads_init() is not needed for PyGObject 3.10.2+
-        version = sys.version.split()[0]
-        if compare_package_versions(version, '3.10.2+') == 'smaller':
+        # Calling GObject.threads_init() is not needed for PyGObject 3.10.2 and up
+        gtk_ver = (Gtk.get_major_version(), Gtk.get_minor_version(), Gtk.get_micro_version())
+        version = '.'.join(map(str, gtk_ver))
+        if compare_package_versions(version, '3.10.2') == 'smaller':
             #print(("Call GObject.threads_init for PyGObject %s" % version))
             GObject.threads_init()
         
