@@ -2,6 +2,7 @@
 Comment=Limit the xsession-errors file size
 Comment[da]=Begræns størrelsen på xsession-errors-filen
 Comment[de]=Die Größe der Datei xsession-errors begrenzen
+Comment[fr]=Limiter la taille du registre d'erreur xsession
 Comment[lt]=Apriboti xsession-errors failo dydį
 Comment[nl]=Beperk de bestandsgrootte van xsession-errors
 Comment[pt]=Limitar o tamanho do ficheiro xsession-errors
@@ -9,6 +10,7 @@ Comment[pt_PT]=Limitar o tamanho do ficheiro xsession-errors
 Exec=xsession-logcontrol
 Name=Xsession Errors Log Control
 Name[da]=Xsession Errors logstyring
+Name[fr]=Contrôle des registres d'erreurs (logs) Xsession
 Name[lt]=Xsession klaidų žurnalo valdymas
 Name[nl]=Xsession Errors Log Beheer
 Name[pt]=Controle de Log de Erros Xsession
