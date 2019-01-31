@@ -152,7 +152,7 @@ try:
         log.write("/etc/issue overwritten",  'issue')
     if not has_string_in_file(issue, "/etc/issue.net"):
         with open("/etc/issue.net", "w") as f:
-            f.writelines(issue)
+            f.writelines(issue + '\n')
         log.write("/etc/issue.net overwritten",  'issue')
 
     # Force prompt colors in bashrc
