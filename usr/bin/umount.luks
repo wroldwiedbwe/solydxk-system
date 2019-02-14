@@ -1,0 +1,28 @@
+#!/bin/bash
+
+PARMS=$@
+
+# Before unmounting, check if encrypted and mapped
+if [ ! -z $(sudo which cryptsetup) ]; then
+    for W in ${PARMS}; do
+        if [ "${W:0:5}" == '/dev/' ]; then
+            PART=$W
+            if $(sudo cryptsetup isLuks $PART); then
+                PART=/dev/mapper/$(basename $PART)
+            fi
+            break
+        fi
+    done
+
+    if [ -z $PART ]; then
+        sudo umount $PARMS
+    else
+        sudo umount -v $PART
+        if [ "${PART:4:8}" == '/mapper/' ]; then
+            echo "cryptsetup close $PART"
+            sudo cryptsetup close $PART
+        fi
+    fi
+else
+    sudo umount $PARMS
+fi

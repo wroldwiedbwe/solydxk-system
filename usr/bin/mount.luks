@@ -1,0 +1,40 @@
+#!/bin/bash
+
+PARMS=$@
+
+# Before mounting, map if encrypted
+if [ ! -z $(sudo which cryptsetup) ]; then
+    for W in ${PARMS}; do
+        if [ "${W:0:5}" == '/dev/' ] && [ "${W:4:8}" != '/mapper/' ]; then
+            PART=$W
+            break
+        fi
+    done
+
+    if [ ! -z $PART ]; then
+        # Check if encrypted
+        if $(sudo cryptsetup isLuks $PART); then
+            BN=$(basename $PART)
+            MAP=/dev/mapper/$BN
+            # Check that partition is mapped
+            if [ "$(sudo cryptsetup status $BN | grep 'device:' | awk '{print $NF}')" == "$PART" ]; then
+                echo "$PART already mapped to $MAP"
+                PARMS='-v '$(echo $PARMS | sed "s|$PART|$MAP|")
+            else
+                echo "cryptsetup open $PART $BN"
+                sudo cryptsetup open $PART $BN
+                # Check again that the partition is mapped
+                if [ "$(sudo cryptsetup status $BN | grep 'device:' | awk '{print $NF}')" == "$PART" ]; then
+                    echo "$PART mapped to $MAP"
+                    PARMS='-v '$(echo $PARMS | sed "s|$PART|$MAP|")
+                else
+                    # Partition probably already manually mapped
+                    # but cannot retrieve the mapped drive from device path
+                    echo "ERROR: could not map $PART to $MAP"
+                fi
+            fi
+        fi
+    fi
+fi
+
+sudo mount $PARMS
