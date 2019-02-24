@@ -303,11 +303,12 @@ class Localize(threading.Thread):
                 if package != "":
                     self.queue_progress()
                     shell_exec("%s apt-get install %s thunderbird %s" % (self.debian_frontend, self.apt_options, package))
-                if is_package_installed("lightning"):
-                    print(" --> Localizing Lightning")
-                    package = self.get_localized_package("lightning-l10n", locale)
-                    if package != "":
-                        shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
+                # lightning-l10n has been integrated into thunderbird-l10n
+                #if is_package_installed("lightning"):
+                #    print(" --> Localizing Lightning")
+                #    package = self.get_localized_package("lightning-l10n", locale)
+                #    if package != "":
+                #        shell_exec("%s apt-get install %s %s" % (self.debian_frontend, self.apt_options, package))
                 if not spellchecker:
                     package = self.get_localized_package("hunspell", locale)
                     if package == '':

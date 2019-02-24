@@ -1,3 +1,9 @@
+solydxk-system (3.2.1) solydxk; urgency=low
+
+  * Do not install lightning-l10n packages
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Sun, 24 Feb 2019 15:35:21 +0100
+
 solydxk-system (3.2.0) solydxk; urgency=low
 
   * Added mount.luks and umount.luks
