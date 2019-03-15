@@ -11,6 +11,7 @@
 /usr/share/solydxk/adjustments/libreoffice-math.desktop /usr/share/applications/libreoffice-math.desktop
 /usr/share/solydxk/adjustments/luckybackup-gnome-su.desktop /usr/share/applications/luckybackup-gnome-su.desktop
 /usr/share/solydxk/adjustments/luckybackup-kde-su.desktop /usr/share/applications/luckybackup-kde-su.desktop
+/usr/share/solydxk/adjustments/luckybackup-su.desktop /usr/share/applications/luckybackup-su.desktop
 /usr/share/solydxk/adjustments/luckybackup.desktop /usr/share/applications/luckybackup.desktop
 /usr/share/solydxk/adjustments/math.desktop /usr/lib/libreoffice/share/xdg/math.desktop
 /usr/share/solydxk/adjustments/os-release /etc/os-release
