@@ -1,3 +1,15 @@
+solydxk-system (3.2.3) solydxk; urgency=low
+
+  * Added XDG_CURRENT_DESKTOP to pkexec command
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 14 Mar 2019 10:46:28 +0100
+
+solydxk-system (3.2.2) solydxk; urgency=low
+
+  * Added missing triggers
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Wed, 13 Mar 2019 10:22:38 +0100
+
 solydxk-system (3.2.1) solydxk; urgency=low
 
   * Do not install lightning-l10n packages

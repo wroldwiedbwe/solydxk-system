@@ -5,8 +5,8 @@ from os.path import exists, splitext, dirname, isdir, basename, join
 from adjust_sources import Sources
 from logger import Logger
 from utils import getoutput,  get_apt_force,  get_package_version,  \
-                             get_apt_cache_locked_program,  has_string_in_file,  \
-                             get_debian_version,  can_copy, get_swap_device
+                  get_apt_cache_locked_program,  has_string_in_file,  \
+                  get_debian_version,  can_copy, get_swap_device
 
 # Init logging
 log_file = "/var/log/solydxk-system.log"
@@ -157,6 +157,7 @@ try:
 
     # Force prompt colors in bashrc
     bashrc = '/etc/skel/.bashrc'
+    pkexec = "alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY XDG_CURRENT_DESKTOP=$XDG_CURRENT_DESKTOP'"
     if exists(bashrc):
         os.system("sed -i 's/#\s*force_color_prompt=.*/force_color_prompt=yes/' %s" % bashrc)
         os.system("sed -i 's/;31m/;34m/' %s" % bashrc)
@@ -171,7 +172,9 @@ try:
         if not has_string_in_file("alias pkexec=",  bashrc):
             with open(bashrc, 'a') as f:
                 f.write("\n# Make pkexec use environment variables\n"
-                        "alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'\n")
+                        "%s\n" % pkexec)
+        else:
+            os.system("sed -i \"s/alias pkexec=.*/%s/\" %s" % (pkexec.replace('$', '\$'), bashrc))
         log.write("%s adapted" % bashrc,  'bashrc')
 
     # Check start menu favorite for either Firefox ESR or Firefox
