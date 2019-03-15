@@ -6,10 +6,13 @@ interest /usr/share/applications/display-im6.q16.desktop
 interest /usr/share/applications/gdebi.desktop
 interest /usr/share/applications/gufw.desktop
 interest /usr/share/applications/kde4/gwenview.desktop
+interest /usr/share/applications/hardinfo.desktop
 interest /usr/share/applications/kde4/ksystemlog.desktop
 interest /usr/share/applications/luckybackup-gnome-su.desktop
 interest /usr/share/applications/luckybackup-kde-su.desktop
+interest /usr/share/applications/luckybackup-su.desktop
 interest /usr/share/applications/luckybackup.desktop
 interest /usr/lib/libreoffice/share/xdg/math.desktop
+interest /etc/xdg/autostart/pk-update-icon.desktop
 interest /usr/share/applications/PlayOnLinux.desktop
-interest /usr/share/kservicetypes5/konqpopupmenuplugin.desktop
+interest /usr/share/applications/timidity.desktop
