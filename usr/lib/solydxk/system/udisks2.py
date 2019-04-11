@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
-# Udisks2 API reference: https://udisks.freedesktop.org/docs/latest/
-# Example code: https://www.apt-browse.org/browse/ubuntu/trusty/main/i386/usb-creator-common/0.2.56/file/usr/share/usb-creator/usb-creator-helper
+# Udisks2 API reference: 
+# http://storaged.org/doc/udisks2-api/latest/ref-library.html
 
 import gi
 # Make sure the right UDisks version is loaded
@@ -9,10 +9,9 @@ gi.require_version('UDisks', '2.0')
 from gi.repository import UDisks, GLib
 from os.path import exists, join, basename
 import os
-import time
 from os import makedirs
 from utils import getoutput, shell_exec, has_grub, get_uuid, \
-                  get_mount_point, get_filesystem, get_label
+                  get_mount_points, get_filesystem, get_label
 from encryption import get_status, is_encrypted, \
                        is_connected, connect_block_device
 
@@ -96,24 +95,24 @@ class Udisks2():
                     fs = obj.get_filesystem()
                     if fs is not None:
                         unmount = False
+                        # Get the file system's mount point
                         mount_points = fs.get_cached_property('MountPoints').get_bytestring_array()
+                        if not mount_points:
+                            # It can be manually mounted (with mount command)
+                            mount_points = get_mount_points(device_path)
+                        if not mount_points:
+                            # If not mounted, temporary mount it to get needed info
+                            mount_points = self._mount_filesystem(fs)
+                            unmount = True
                         if mount_points:
                             mount_point = mount_points[0]
-                        else:
-                            # It can be manually mounted (with mount command)
-                            mount_point = get_mount_point(device_path)
-                            if not mount_point:
-                                # If not mounted, temporally mount it to get needed info
-                                mount_point = self._mount_filesystem(fs)
-                                unmount = True
-                        if exists(mount_point):
-                            total_size, free_size, used_size = self.get_mount_size(mount_point)
-                        if unmount:
-                            try:
-                                self._unmount_filesystem(fs)
-                                mount_point = ''
-                            except:
-                                pass
+                            if exists(mount_point):
+                                # Get the info of the mounted file system
+                                total_size, free_size, used_size = self.get_mount_size(mount_point)
+                            if unmount:
+                                # Unmount the temporary mounted file system
+                                if self._unmount_filesystem(fs):
+                                    mount_point = ''
 
                 # There are no partitions: set free size to total size
                 partition = obj.get_partition()
@@ -201,35 +200,21 @@ class Udisks2():
 
     def _unmount_filesystem(self, fs):
         try:
-            return fs.call_unmount_sync(self.no_options, None)
+            fs.call_unmount_sync(self.no_options, None)
+            return True
         except:
-            raise
+            return False
 
-    # Adapted from udisk's test harness.
     # This is why the entire backend needs to be its own thread.
     def _mount_filesystem(self, fs):
         mount_points = []
         if fs is not None:
-            '''Try to mount until it does not fail with "Busy".'''
-            timeout = 10
-            while timeout >= 0:
-                try:
-                    return fs.call_mount_sync(self.no_options, None)
-                except GLib.GError as e:
-                    if 'UDisks2.Error.AlreadyMounted' in e.message or \
-                        not 'UDisks2.Error.DeviceBusy' in e.message:
-                        break
-                    print('Busy.')
-                    time.sleep(0.3)
-                    timeout -= 1
-            if timeout >= 0:
-                mount_points = fs.get_cached_property('MountPoints').get_bytestring_array()
-            else:
-                raise
-        if mount_points:
-            return mount_points[0]
-        else:
-            return ''
+            try:
+                mount_points = [fs.call_mount_sync(self.no_options, None)]
+            except:
+                # Best effort
+                pass
+        return mount_points
 
     def get_drives(self):
         drives = []
@@ -281,14 +266,14 @@ class Udisks2():
         if not mount_point:
             fs = self._get_filesystem(device_path)
             if fs is not None:
-                mount = self._mount_filesystem(fs)
-                if mount != '':
+                mount_points = self._mount_filesystem(fs)
+                if mount_points:
                     # Set mount point and free space for this device
-                    total, free, used = self.get_mount_size(mount)
-                    self.devices[device_path]['mount_point'] = mount
+                    total, free, used = self.get_mount_size(mount_points[0])
+                    self.devices[device_path]['mount_point'] = mount_points[0]
                     self.devices[device_path]['free_size'] = free
                     filesystem = get_filesystem(device_path)
-                    return (device_path, mount, filesystem)
+                    return (device_path, mount_points[0], filesystem)
             # Try a temporary mount point on uuid
             uuid = get_uuid(device_path)
             if uuid:
@@ -399,7 +384,7 @@ class Udisks2():
 
     def get_luks_info(self, partition_path):
         mapper_path = ''
-        mount_point = ''
+        mount_points = []
         mapper = '/dev/mapper'
         mapper_name = getoutput("ls %s | grep %s$" % (mapper, basename(partition_path)))[0]
         if not mapper_name:
@@ -409,5 +394,5 @@ class Udisks2():
         if mapper_name:
             mapper_path = join(mapper, mapper_name)
         if mapper_path:
-            mount_point = get_mount_point(mapper_path)
-        return (mapper_path, mount_point)
+            mount_points = get_mount_points(mapper_path)
+        return (mapper_path, mount_points[0])

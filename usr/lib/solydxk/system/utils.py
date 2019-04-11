@@ -566,9 +566,9 @@ def get_uuid(partition_path):
     return getoutput("blkid -o value -s UUID {}".format(partition_path))[0]
 
 
-def get_mount_point(partition_path):
-    return getoutput("lsblk -o MOUNTPOINT -n %s | grep -v '^$'" % partition_path)[0]
-
+def get_mount_points(partition_path):
+    out = getoutput("lsblk -o MOUNTPOINT -n %s | grep -v '^$'" % partition_path)
+    return out if out[0] else []
 
 def get_filesystem(partition_path):
     return getoutput("blkid -o value -s TYPE %s" % partition_path)[0]
