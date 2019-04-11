@@ -1,3 +1,10 @@
+solydxk-system (3.2.4) solydxk; urgency=low
+
+  * Fix bug not unmounting temporary mounted devices
+  * Updated translation: de
+
+ -- Arjen Balfoort <arjenbalfoort@solydxk.com>  Thu, 11 Apr 2019 11:42:42 +0200
+
 solydxk-system (3.2.3) solydxk; urgency=low
 
   * Added XDG_CURRENT_DESKTOP to pkexec command
