@@ -10,6 +10,7 @@ Comment[pt_PT]=Limitar o tamanho do ficheiro xsession-errors
 Exec=xsession-logcontrol
 Name=Xsession Errors Log Control
 Name[da]=Xsession Errors logstyring
+Name[de]=Xsession-Fehler Protokollsteuerung
 Name[fr]=Contrôle des registres d'erreurs (logs) Xsession
 Name[lt]=Xsession klaidų žurnalo valdymas
 Name[nl]=Xsession Errors Log Beheer
