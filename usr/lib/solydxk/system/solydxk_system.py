@@ -866,7 +866,7 @@ class SolydXKSystemSettings(object):
             return True
         return False
     
-    def fill_partitions(self, check_encryptable=True):
+    def fill_partitions(self, check_encryptable=True, include_flash=False):
         # Exclude these device paths
         exclude_devices = ['/dev/sr0', '/dev/sr1', '/dev/cdrom', '/dev/dvd', '/dev/fd0', '/dev/mmcblk0boot0', '/dev/mmcblk0boot1', '/dev/mmcblk0rpmb']
 
@@ -874,7 +874,7 @@ class SolydXKSystemSettings(object):
         self.my_partitions = []
         self.partitions = []
         tmp_partitions = []
-        self.udisks2.fill_devices(flash_only=False)
+        self.udisks2.fill_devices(include_flash=include_flash)
         for device_path in self.udisks2.devices:
             if device_path not in exclude_devices:
                 device = self.udisks2.devices[device_path]
@@ -941,7 +941,7 @@ class SolydXKSystemSettings(object):
 
     def fill_treeview_partition(self):
         # Get available partitions
-        self.fill_partitions()
+        self.fill_partitions(include_flash=True)
         
         # Create human readable list of partitions
         # Copy the header first by using list()

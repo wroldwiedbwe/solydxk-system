@@ -29,11 +29,12 @@ class Udisks2():
     def __init__(self):
         super(Udisks2, self).__init__()
         self.no_options = GLib.Variant('a{sv}', {})
+        self.read_only = GLib.Variant('a{sv}', {'options': GLib.Variant('s', 'ro')})
         self.no_interaction = GLib.Variant('a{sv}', {'auth.no_user_interaction': GLib.Variant('b', True)})
         self.devices = Tree()
 
     # Create multi-dimensional dictionary with drive/device/deviceinfo
-    def fill_devices(self, flash_only=True):
+    def fill_devices(self, include_drives=True, include_flash=True):
 
         self.devices.clear()
 
@@ -102,7 +103,7 @@ class Udisks2():
                             mount_points = get_mount_points(device_path)
                         if not mount_points:
                             # If not mounted, temporary mount it to get needed info
-                            mount_points = self._mount_filesystem(fs)
+                            mount_points = self._mount_filesystem(fs, read_only=True)
                             unmount = True
                         if mount_points:
                             mount_point = mount_points[0]
@@ -126,13 +127,15 @@ class Udisks2():
                 drive = drive_obj.get_drive()
                 removable = drive.get_cached_property("Removable").get_boolean()
                 connectionbus = drive.get_cached_property("ConnectionBus").get_string()
+                ejectable = drive.get_cached_property("Ejectable").get_boolean()
+                canpoweroff = drive.get_cached_property("CanPowerOff").get_boolean()
+                
 
-                if flash_only:
-                    # Check for usb mounted flash drives
-                    if connectionbus == 'usb' and removable:
-                        add_device = True
-                else:
-                    add_device = True
+                # Check for usb mounted flash drives
+                if include_flash:
+                    if connectionbus == 'usb' and removable and ejectable: add_device = True
+                elif include_drives:
+                    if connectionbus != 'usb' and not removable and not ejectable: add_device = True
 
                 if add_device:
                     uuid = get_uuid(device_path)
@@ -149,6 +152,8 @@ class Udisks2():
                     print(('Used size: %s' % used_size))
                     print(('ConnectionBus: %s' % connectionbus))
                     print(('Removable: %s' % str(removable)))
+                    print(('Ejectable: %s' % str(ejectable)))
+                    print(('CanPowerOff: %s' % str(canpoweroff)))
                     print(('Has Grub: %s' % str(grub)))
                     print((('=' * 22) + ('=' * len(debug_title))))
 
@@ -162,6 +167,8 @@ class Udisks2():
                     self.devices[device_path]['used_size'] = used_size
                     self.devices[device_path]['connectionbus'] = connectionbus
                     self.devices[device_path]['removable'] = removable
+                    self.devices[device_path]['ejectable'] = ejectable
+                    self.devices[device_path]['canpoweroff'] = canpoweroff
                     self.devices[device_path]['has_grub'] = grub
 
     def _get_object_path(self, device_path):
@@ -206,11 +213,12 @@ class Udisks2():
             return False
 
     # This is why the entire backend needs to be its own thread.
-    def _mount_filesystem(self, fs):
+    def _mount_filesystem(self, fs, read_only=False):
         mount_points = []
         if fs is not None:
             try:
-                mount_points = [fs.call_mount_sync(self.no_options, None)]
+                options = self.read_only if read_only else self.no_options
+                mount_points = [fs.call_mount_sync(options, None)]
             except:
                 # Best effort
                 pass
